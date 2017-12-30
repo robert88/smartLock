@@ -1,0 +1,25 @@
+.tab-wrap .tab-head {
+	height: 2.175rem;
+	line-height: 1.75rem;
+	padding-top:3.25rem;
+	text-align: center;
+}
+.tab-wrap .tab-head .tab-head-item {
+	background-image: url(../images/btnbg.png);
+	background-size: auto 30.25rem;
+	background-repeat:  no-repeat;
+	background-position: 0 -21.8rem;
+	position: relative;
+	display: inline-block;
+	height: 1.85rem;
+	width: 5.625rem;
+}
+.tab-wrap .tab-head .tab-head-item.active {
+	background-position: 0 -16.875rem;
+}
+.tab-wrap .tab-body .tab-body-item {
+	display: none
+}
+.tab-wrap .tab-body .tab-body-item.active {
+	display: block
+}

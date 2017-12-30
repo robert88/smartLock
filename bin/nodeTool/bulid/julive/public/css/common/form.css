@@ -1,0 +1,213 @@
+select, input {
+	font-weight: inherit;
+	color: inherit;
+	font-size: inherit;
+	outline: 0;
+	outline-offset:0;
+	border: 1px solid #e1e1e1;
+}
+select{
+	box-sizing: content-box;
+}
+
+input[type=radio], input[type=checkbox] {
+	vertical-align: middle;
+}
+
+input:focus, textarea:focus, button:focus, select:focus {
+	outline: 0;
+	border: 1px solid #acadc8;
+}
+select {
+	/*很关键：将默认的select选择框样式清除*/
+	appearance:none;
+	-moz-appearance:none;
+	-webkit-appearance:none;
+}
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+select::-ms-expand { display: none; }
+::-webkit-input-placeholder{	font-weight: inherit;
+	color: #bbb;
+	font-size: inherit;}    /* 使用webkit内核的浏览器 */
+:-moz-placeholder{	font-weight: inherit;
+	color: #bbb;
+	font-size: inherit;}                  /* Firefox版本4-18 */
+::-moz-placeholder{	font-weight: inherit;
+	color: #bbb;
+	font-size: inherit;}                  /* Firefox版本19+ */
+:-ms-input-placeholder{	font-weight: inherit;
+	color: #bbb;
+	font-size: inherit;}           /* IE浏览器 */
+fieldset {
+	border: 0
+}
+
+.ipt-label-block{
+	display: block;
+	line-height: 4rem;
+	height: 4rem;
+	position:relative;
+	padding:0px 20% 0px 20%;
+	margin-bottom: 0.96rem;
+}
+.ipt-label{
+	position:absolute;
+	width:17%;
+	padding-right:3%;
+	left:0;
+	text-align: right;
+	top: 2px;
+	height: 4rem;
+}
+.ipt-block{
+	display: block;
+	height: 100%;
+	width:100%;
+}
+.ipt-inline{
+	position:relative;
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+	width:100%;
+}
+.ipt{
+	display: inline-block;
+	line-height: 0.38rem;
+	width:100%;
+	box-sizing: border-box;
+	padding-left:0.05rem;
+	border: 1px solid #e1e1e1;
+}
+
+.ipt-prepend [class^="icon-"],
+.ipt-prepend [class*=" icon-"]{
+	left: 0.07rem;
+	top: 50%;
+	margin-top: -4rem;
+}
+.ipt-prepend .ipt{
+	padding-left:0.3rem;
+}
+.ipt-append.ipt-label-block{
+	padding:0px 0.38rem 0px 1rem
+}
+.ipt-prepend.ipt-label-block{
+	padding: 0px 0.33rem 0px 1rem;
+}
+
+.ipt-append [class^="icon-"],
+.ipt-append [class*=" icon-"]{
+	top: 50%;
+	margin-top: -0.07rem;
+	right: -0.37rem;
+	width: 0.23rem;
+}
+.ipt-append .ipt{
+	 padding-right:0.3rem;
+}
+.ipt-btn-append{
+	border-radius: 0.05rem;
+	overflow: hidden;
+	background: #fff;
+}
+.ipt-btn-append .btn{
+	position: absolute;
+	right:0px;
+	top: 0px;
+	height: 5.44rem;
+	border-radius: 0 0.05rem 0.05rem 0;
+}
+.ipt-btn-append .ipt{
+	border: none;
+	padding-right:0.8rem;
+	width:92%;
+	background: none;
+}
+.ipt-radius .ipt{
+	border-radius: 0.05rem;
+}
+.form-sea .ipt{
+background: #1f2229;
+}
+.form-sea .ipt{
+	background: #1f2229;
+	-moz-box-shadow:0.05rem 0.05rem 0.05rem #1d2025 inset;               /* For Firefox3.6+ */
+	-webkit-box-shadow:0.05rem 0.05rem 0.05rem #1d2025 inset;            /* For Chrome5+, Safari5+ */
+	box-shadow:0.05rem 0.05rem 0.05rem #1d2025 inset;                    /* For Latest Opera */
+	border:1px solid transparent;
+	color:#fff;
+}
+.form-sea .focus .ipt{
+	color: #00ce9a;
+	border:1px solid #00ce9a;
+}
+.form-sea .focus .ipt::-webkit-input-placeholder { /* WebKit browsers */
+	color: #00ce9a;
+}
+.form-sea .focus .ipt:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	color: #00ce9a;
+}
+.form-sea .focus .ipt::-moz-placeholder { /* Mozilla Firefox 19+ */
+	color: #00ce9a;
+}
+.form-sea .focus .ipt:-ms-input-placeholder { /* Internet Explorer 10+ */
+	color: #00ce9a;
+}
+.label-radio-group input{
+	display: none;
+}
+.label-radio-group i{
+	display:inline-block;
+}
+.validErr input,.validErr select{
+	border:1px solid #da0e0e;
+}
+.validItem{
+	position:relative;
+}
+.validErrMsg{
+	display: none;
+	position: absolute;
+	top:100%;
+	line-height: 0.23rem;
+}
+.validErr .validErrMsg{
+	color:#da0e0e;
+	display: block;
+}
+.validIcon{
+	display: none;
+	position: absolute;
+	top: 50%;
+	margin-top: -0.13rem;
+	right: -0.3rem;
+}
+.validErr .validIcon{
+	color:#da0e0e;
+	display: block;
+}
+.form-checkbox{
+	display: inline-block;
+	background:url(../images/iconItem.png) no-repeat;
+	background-position: -1.93rem -1.19rem;
+	width: 0.22rem;
+	height: 0.21rem;
+}
+.form-checkbox.checked{
+	background-position: -1.61rem -1.19rem;
+}
+.form-checkbox input{
+	display: none;
+}
+.ipt-register{
+	background-image: url(../images/btnbg.png);
+	background-position: 0px -1.96rem;
+	background-size:2.91rem 3.84rem;
+	width: 1.61rem;
+	height: 0.34rem;
+	background-position: 0px -1.96rem;
+	background-size: 181% 4.8rem;
+	width: 100%;
+	height: 0.34rem;
+}

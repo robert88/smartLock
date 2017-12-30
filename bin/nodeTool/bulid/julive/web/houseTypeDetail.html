@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>首页</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8">
+		<meta name="apple-mobile-web-app-capable" content="no">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta content="telephone=no" name="format-detection">
+
+		<!--start mergeCss:main.min-->
+		<link rel="stylesheet" type="text/css" href="/public/css/common/base.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/common/main.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/skin/main_color.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/common/index.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/common/form.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/font/style.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/common/swiper.min.css">
+		<!--end mergeCss-->
+
+		<!--start mergeJs:lib.min-->
+		<script src="/public/js/lib/jquery-1.12.4.js"></script>
+		<script src="/public/js/common/prototype.js"></script>
+		<script src="/public/js/common/base.js"></script>
+		<script src="/public/js/common/config.js"></script>
+		<script src="/public/js/common/main.js"></script>
+		<script src="/public/js/lib/swiper-3.4.2.jquery.min.js"></script>
+		<!--end mergeJs-->
+
+
+	</head>
+	
+	<body>
+
+	<style  type='text/css'> /*../julive/web/houseTypeDetail.css*/.banner .swiper-container{ background: #999; height:2.8rem; overflow: hidden; } .banner .swiper-container img{ height:100%; width: 100%; border: none; } .banner .swiper-container .banner-info{ background: rgba(0,0,0,0.5); color: #fff; z-index: 2; position: absolute; bottom: 0.1rem; left: 0.1rem; padding: 0 0.1rem; border-radius: 0.51rem; } .banner .swiper-container .banner-info .img{display: inline-block;} .banner .swiper-container .banner-info .swiper-slide-info{display: inline-block;} .houserHeader{ position: relative; padding-right: 0.3rem; } .houserHeader .tips{ font-size: 0.12rem; padding:0.05rem; display: inline-block; line-height: 0.12rem; vertical-align: middle; border-radius: 0.1rem; } .discount-area {  padding: 0.1rem; line-height: 0.3rem; vertical-align: middle; background-color: #fff1f1; border: 1px solid #f15a5d; border-radius: 0.03rem; overflow: hidden; } .discount-area .btn-dis { float: right; width: 1rem; color: #fff; text-align: center;  border-radius: 0.03rem; background-color: #ff6d6f; } .discount-area .txt { color: #f15a5d; margin-right: 0.1rem; max-width: 1rem; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }  .Huxing-wrap .info{ text-align: center; } .Huxing-wrap .swiper-slide{ text-align: center; } .Huxing-wrap .swiper-slide img { height: 1.51rem; } .img-border-radius{ padding:0 0.2rem; text-align: center; } .img-border-radius img{ margin-bottom: 0.1rem; width: 80%; border-radius: 50%; } .free-search-mobile{position:relative;line-height: 0.36rem;} .free-search-mobile .ipt{ line-height: 0.47rem; } .free-search-mobile .btn{ position: absolute; border-radius: 0; right: 0; top: 0; }</style><style  type='text/css'> /*../julive/web/common/header.css*/ .header-wrap{position:relative;min-height: 0.5rem;} header{text-align: center;position: fixed;width: 100%;max-width: 6.4rem;min-width: 3rem;background:#fff;padding-top: 0.1rem;padding-bottom: 0.1rem;-moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, .3);box-shadow: 0px 1px 2px rgba(0, 0, 0, .3);} header .back{position: absolute;left: 0.1rem;top:50%;height: 0.26rem;font-size: 0.38rem;margin-top: -0.13rem;} header .header-right{position:absolute;right: 0.2rem;top:50%;margin-top: -0.13rem;} .mobileCode{ position:relative; } .mobileCode .btn{ position:absolute; right: 0.12rem; top: 0.11rem; } </style><style  type='text/css'> /*../julive/web/common/footerTips.css*/.footerTips{ position: fixed; bottom: 0; height:0.5rem; }</style>
+	<!--s:头部-->
+<div class="header-wrap wrap">
+<header>
+	<i class="icon-chevron-left back" onclick="history.back(-1)"></i>
+	<a class="city" href="citys.html">
+		<span >北京</span>
+		<span class="icon-chevron-down"></span>
+	</a>
+	<span class="header-right">
+		<a href="home.html"><i class="icon-home2"></i></a>
+		<a class="loginBtn" ><i class="icon-user"></i></a>
+	</span>
+</header>
+</div>
+<!--e:头部-->
+
+
+<!--s:登陆弹窗-->
+<div class="dialog-mask login-dialog">
+	<div class="dialog p20 bd-radius-5">
+		<h3 class="p10 tc">手机快捷登录</h3>
+		<p class="p10 tc">未注册过的手机号将自动注册为居理新房账号；咨询师不会看到您的手机号码</p>
+		<p class="p10"><input type="text" class="ipt" placeholder="输入手机号"></p>
+		<p class="p10 mobileCode"><input type="text" class="ipt" placeholder="输入手机验证码"> <span class="btn btn-warn">获取验证码</span></p>
+		<p  class="p10 tc"><a class="btn btn-info J-dialog-close " style="display: block" href="loginSuccess.html">登录</a></p>
+
+	</div>
+</div>
+<!--e:登陆弹窗-->
+
+<!--s:详细内容-->
+<div class="wrap banner shadow-2">
+	<!-- Swiper -->
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+				<!-- Required swiper-lazy class and image source specified in data-src attribute -->
+				<img data-src="/public/images/house1.jpg" class="swiper-lazy">
+				<!-- Preloader image -->
+				<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+			</div>
+			<div class="swiper-slide">
+				<img data-src="/public/images/house1.jpg" class="swiper-lazy">
+				<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+			</div>
+			<div class="swiper-slide">
+				<img data-src="/public/images/house1.jpg" class="swiper-lazy">
+				<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+			</div>
+		</div>
+		<!--<div class="swiper-pagination" style="display: none"></div>-->
+		<div class="banner-info paginationBulletRender">
+			<div class="img tc">
+				<i class="icon-picture fs14 fb"></i>
+			</div>
+			<div class="swiper-slide-info tc ">
+			</div>
+		</div>
+	</div>
+</div>
+<!--e:头部查询-->
+
+<div class="wrap shadow-2 p10 mt10 more-info-wrap">
+	<div class="houserHeader mt20">
+		<h3><span class="inline-block vm"></span>4室2厅2卫 <span class="tips bd bd-info t-info">在售</span></h3>
+		<p class="mt10 fs14">
+			<span class="bd bd-radius-5 p5 inline-block lh20">户型方正</span>
+			<span class="bd bd-radius-5 p5 inline-block  lh20">超大赠送</span>
+			<span class="bd bd-radius-5 p5 inline-block  lh20">卧室带卫</span>
+		</p>
+	</div>
+
+	<div class="mt20 t-danger">	总价：940万元</div>
+	<div class="fs14 mt10">单价：69629元</div>
+	<div class="fs14 mt10">朝向：南北</div>
+	<div class="fs14 mt10">面积：建面135m²</div>
+	<div class="fs14 mt10">层高：3.0m</div>
+</div>
+
+
+<div class="wrap mt10 shadow-2 p10">
+	<h3>中骏·西山天璟户型分析</h3>
+	<div class="mt20 fb">	户型优势：</div>
+	<div class="fs14 mt10">1.超大赠送，使用面积150平</div>
+	<div class="fs14 mt10">2.南北通透，三面采光</div>
+	<div class="fs14 mt10">3.主卧套间设计，带衣帽间和独卫，生活便捷性和私密性高</div>
+	<div class="fs14 mt10">4.明厨明卫，通透性好</div>
+</div>
+
+<div class="wrap mt10 shadow-2 p10 bg-light">
+	<div class="col">
+		<h3 class="col8 fb">了解最新楼盘和户型详情</h3>
+		<div class="col4 tr">
+			<div class="btn btn-danger">
+				<i class="icon-phone"></i><a class="ml5 inline-block vm" href="tel:10086">售楼热线</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--s:固定顶部app下载入口-->
+<div class="h50 lh50 wrap">
+<div class="footerTips col tc wrap">
+	<div class="col4 bg-white">
+		<a class="a-wrap" href="helpSearch.html">
+		<i class="icon-search"></i><span class="ml5 inline-block vm" >帮你找房</span>
+		</a>
+	</div>
+	<div class="col4  t-white bg-info"> <i class="icon-bubbles4"></i><a  class="ml5 inline-block vm" href="mqqwpa://im/chat?chat_type=wpa&uin=191221801&version=1&src_type=web&web_src=oicqzone.com" target="_blank">在线咨询</a></div>
+	<div class="col4 t-white bg-danger"><i class="icon-phone"></i><a class="ml5 inline-block vm" href="tel:10086">售楼热线</a></div>
+</div>
+</div>
+<!--e:固定顶部app下载入口-->
+	<script>$(function(){;(function(){ var innerModule = {};var innerRequire = function(index){ return innerModule[index]; }; /*../julive/web/houseTypeDetail.js*/(function() {
+    var swiper = new Swiper(".banner .swiper-container", {
+        pagination: ".swiper-pagination",
+        onInit: function(swiper) {
+            var len = swiper.wrapper.find(".swiper-slide").length;
+            swiper.wrapper.parent().find(".swiper-slide-info").html('<span class="">' + (swiper.activeIndex + 1) + "/" + len + "</span>");
+        },
+        onSlideChangeEnd: function(swiper) {
+            var len = swiper.wrapper.find(".swiper-slide").length;
+            swiper.wrapper.parent().find(".swiper-slide-info").html('<span class="">' + (swiper.activeIndex + 1) + "/" + len + "</span>");
+        },
+        paginationClickable: true,
+        preloadImages: false,
+        lazyLoading: true
+    });
+    var swiper2 = new Swiper(".Huxing-wrap .swiper-container", {
+        pagination: ".swiper-pagination",
+        slidesPerView: 3,
+        paginationClickable: true,
+        spaceBetween: 30,
+        height: 131,
+        paginationClickable: true,
+        preloadImages: false,
+        lazyLoading: true
+    });
+    $(".more-info-btn").click(function() {
+        $(this).parents(".more-info-wrap").find(".more-info").slideToggle();
+    });
+    $(".picViewWrap  .swiper-container img").click(function() {
+        initPicview([ "<a>效果图(<span>11</span>)</a>", "<a>样板间(<span>8</span>)</a>", "<a>环境规划图(<span>1</span>)</a>", "<a>楼盘实景图(<span>27</span>)</a>", "<a>配套实景图(<span>5</span>)</a>" ], [ "<img src='/public/images/house1.jpg'>", "<img src='/public/images/house2.jpg'>" ]);
+    });
+    var scrollToMap = location.href.split("?");
+    if (scrollToMap[1]) {
+        var scrollTarget = $.getParam(scrollToMap[1]).scroll;
+        if ($("#" + scrollTarget).length) {
+            $("html,body").stop(true, true).animate({
+                scrollTop: $("#" + scrollTarget).offset().top - $(".header-wrap").height()
+            });
+        }
+    }
+    function dialog($dialog) {
+        $dialog.show();
+        centerDialog($dialog.find(".dialog"));
+    }
+    function centerDialog($dialog) {
+        var t = ($(window).height() - $dialog.height()) / 2;
+        t = t < 0 ? 0 : t;
+        $dialog.css("top", t);
+    }
+    function closeDialog($dialog) {
+        $dialog.hide();
+    }
+    $(".J-dialog-close").click(function(e) {
+        closeDialog($(this).parents(".dialog-mask"));
+    });
+    $("#collection").click(function() {
+        dialog($(".dialog-collection"));
+    });
+})();})();})</script><script>$(function(){;(function(){ var innerModule = {};var innerRequire = function(index){ return innerModule[index]; }; /*../julive/web/common/header.js*/(function() {
+    $(".subscription-dialog-btn").click(function() {
+        dialog($(".subscription-dialog"));
+    });
+    $(".loginBtn").click(function() {
+        dialog($(".login-dialog"));
+    });
+})();})();})</script>
+
+    <div id="pageLoad">
+        <div class="loader">
+            <div class="loader-inner line-scale-pulse-out">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+	</body>
+
+</html>

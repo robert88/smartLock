@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>首页</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8">
+		<meta name="apple-mobile-web-app-capable" content="no">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta content="telephone=no" name="format-detection">
+
+		<!--start mergeCss:main.min-->
+		<link rel="stylesheet" type="text/css" href="/public/css/common/base.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/common/main.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/skin/main_color.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/common/index.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/common/form.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/font/style.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/common/swiper.min.css">
+		<!--end mergeCss-->
+
+		<!--start mergeJs:lib.min-->
+		<script src="/public/js/lib/jquery-1.12.4.js"></script>
+		<script src="/public/js/common/prototype.js"></script>
+		<script src="/public/js/common/base.js"></script>
+		<script src="/public/js/common/config.js"></script>
+		<script src="/public/js/common/main.js"></script>
+		<script src="/public/js/lib/swiper-3.4.2.jquery.min.js"></script>
+		<!--end mergeJs-->
+
+
+	</head>
+	
+	<body>
+
+	<style  type='text/css'> /*../julive/web/houseSearch.css*/.search-condition{ padding:0.15rem 0; } .search-condition>li{ border-right:1px solid #e1e1e1; } .search-condition>li:last-child{ border-right:none; } .search-condition dl{ background:#fff; position:absolute; display: none; z-index: 101; top:100%; left: 0; width: 100%; } .turndown{ font-size: 0.14rem; color:#999; margin-left:0.2rem; } .case-type.current{color:#428bca} .case-type-item{display: none} .case-type-item.active{display: block} .case-type-option.selected{color:#428bca} .case-ipt{display: inline-block;width:40%;border: none;vertical-align: middle;background: #f4f1ea;} .case-more .case-type-option.selected{ color: #48B3E2; border-color: #48B3E2; background: rgba(72,179,226,.2); } .case-more .case-type-option{ display: inline-block; text-align: center; color: #999; padding: 0 0.12rem; margin: 0.05rem 0.05rem; border: 1px solid #c6c6c6; border-radius: 2px; } .search-select-mask{position:absolute;background:rgba(0,0,0,0.3);left:0;top:0;right:0;bottom:0;z-index: 100;display: none;}</style><style  type='text/css'> /*../julive/web/common/header.css*/ .header-wrap{position:relative;min-height: 0.5rem;} header{text-align: center;position: fixed;width: 100%;max-width: 6.4rem;min-width: 3rem;background:#fff;padding-top: 0.1rem;padding-bottom: 0.1rem;-moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, .3);box-shadow: 0px 1px 2px rgba(0, 0, 0, .3);} header .back{position: absolute;left: 0.1rem;top:50%;height: 0.26rem;font-size: 0.38rem;margin-top: -0.13rem;} header .header-right{position:absolute;right: 0.2rem;top:50%;margin-top: -0.13rem;} .mobileCode{ position:relative; } .mobileCode .btn{ position:absolute; right: 0.12rem; top: 0.11rem; } </style><style  type='text/css'> /*../julive/web/common/dynamicSubscription.css*/ .case-dynamic { position: relative; padding-left: 0.8rem; padding-right: 1rem; height: 0.75rem; } .dyn-center{ height: 100%; overflow: hidden; } .dyn-left{ position: absolute; left: 0.08rem; top: 0.14rem; } .dyn-right{ position: absolute; right: 0px; top: 50%; margin-top: -0.18rem; } .dyn-left a{ display: block; margin-top: 0.09rem; } .lb .dynamic .dyn-left { float: left; width: 0.2336rem; height: .1.44rem; border-right: 1px solid #DDD } .lb .dynamic .dyn-left .dyn-left-content a { display: block; width: 0.192rem; height: .1.44rem } .lb .dynamic .dyn-left img { display: block; width: 100%; height: 100% } .lb .dynamic .dyn-center { float: right } .lb .dynamic .dyn-center ul { width: 1.2rem; height: .1.44rem } .lb .dynamic .dyn-center .scroll_logo { overflow: hidden } .lb .dynamic .dyn-center .scroll_logo .sl_lf { font-weight: 700; height: .0.8rem; line-height: .0.8rem; font-size: .55.36rem; max-width: 0.9279999999999999rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis } .lb .dynamic .dyn-center .scroll_logo .sl_time { float: right; font-size: .59.68rem; color: #48b3e2 } .lb .dynamic .dyn-center .scroll_news { width: 1.2rem; height: .7.2rem; line-height: .7.2rem; font-size: .5.12rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis } </style><style  type='text/css'> /*../julive/web/common/houseList.css*/ .case-list{ margin: 0.2rem 0 0.1rem; padding: 0.05rem 0 0.2rem 1.4rem; border-bottom: 1px solid #e1e1e1; position:relative; } .case-list .info>div{ color:#999; } .case-list .price-wrap{ position: relative; } .case-list .info .price{ position:absolute; right:0px; top:0; color: #ff6d6f; font-weight: 700; } .case-list .img{ position:absolute; left:0; top: 0.04rem; overflow: hidden; width: 1.2rem; height: 1.2rem; } .case-list .img img{ height: 1rem; width:100%; } </style><style  type='text/css'> /*../julive/web/common/goTop.css*/.gotop { position: fixed; bottom: 0.8rem; right: 0.1rem; z-index: 98; width: 0.4rem; height: 0.4rem; border-radius: 50%; box-shadow: 0 0 0.03rem rgba(0, 0, 0, 0.3); line-height: 0.38rem; text-align: center; background: #fff; } .toorbar-sort { color: #333; position: fixed; bottom: 1.4rem; right: 0.1rem; width: 0.4rem; z-index: 98; height: 0.4rem; border-radius: 50%; box-shadow: 0 0 0.03rem rgba(0, 0, 0, 0.3); line-height: 0.38rem; background: #fff; text-align: center; } .toorbar-sort-mask { display: none; position: fixed; pointer-events: auto; top: 0; left: 0; width: 100%; height: 100%; background-color:rgba(0,0,0,.6); z-index: 998; } .toorbar-condition { position: absolute; bottom: 0; width: 100%;  background: #fff; z-index: 999; } .toorbar-condition li{ margin: 0.1rem 0; text-align: center; } .toorbar-condition li.on a{ color: #48b3e2; }</style><style  type='text/css'> /*../julive/web/common/footerTips.css*/.footerTips{ position: fixed; bottom: 0; height:0.5rem; }</style>
+	<!--s:头部-->
+<div class="header-wrap wrap">
+<header>
+	<i class="icon-chevron-left back" onclick="history.back(-1)"></i>
+	<a class="city" href="citys.html">
+		<span >北京</span>
+		<span class="icon-chevron-down"></span>
+	</a>
+	<span class="header-right">
+		<a href="home.html"><i class="icon-home2"></i></a>
+		<a class="loginBtn" ><i class="icon-user"></i></a>
+	</span>
+</header>
+</div>
+<!--e:头部-->
+
+
+<!--s:登陆弹窗-->
+<div class="dialog-mask login-dialog">
+	<div class="dialog p20 bd-radius-5">
+		<h3 class="p10 tc">手机快捷登录</h3>
+		<p class="p10 tc">未注册过的手机号将自动注册为居理新房账号；咨询师不会看到您的手机号码</p>
+		<p class="p10"><input type="text" class="ipt" placeholder="输入手机号"></p>
+		<p class="p10 mobileCode"><input type="text" class="ipt" placeholder="输入手机验证码"> <span class="btn btn-warn">获取验证码</span></p>
+		<p  class="p10 tc"><a class="btn btn-info J-dialog-close " style="display: block" href="loginSuccess.html">登录</a></p>
+
+	</div>
+</div>
+<!--e:登陆弹窗-->
+
+<!--s:新房情况局-->
+
+<!--s:新房情况局-->
+<div class="mt20 wrap">
+	<div class="p10 bg-white  shadow-2">
+		<div class="case-dynamic">
+			<div class="dyn-left tc">
+				<i class="ico icon_linshen"></i>
+				<a href="http://m.julive.com/tops" >房产情报</a>
+			</div>
+			<div class="dyn-center scrollDiv">
+				<ul>
+					<li>
+						<div class="col title">
+							<div class="col8 mt10"><h3>限售到底什么时候才可开卖</h3></div>
+							<div class="col4 tr mt10 pr10 fs14 t-info"><span>09.26 08:24</span></div>
+						</div>
+						<p class="text t-muted fs14 t-overflow mt10 pr10">
+							昨天跟其他人沟通的时候，看到有些人对于取得不动产证满两年方可转让不是太理解。这里在已限售2年新房为例进行说明：
+							一般购买新房的用户，大约都是两年才能拿到现房，这时，你才可以申请房产证，等到你拿到房产证后，从这时开始，两年后才可以交易。所以意味着中间最少有4年的时间，你才可以出售房产的。房产证的下发一般周期也相对比较长，所以整个限售的时间，可能就会在4~5年之间。
+						</p>
+					</li>
+					<li>
+						<div class="col title">
+							<div class="col8 mt10"><h3>限售到底什么时候才可开卖</h3></div>
+							<div class="col4 tr mt10 pr10 fs14 t-info"><span>09.26 08:24</span></div>
+						</div>
+						<p class="text t-muted fs14 t-overflow mt10 pr10">
+							昨天跟其他人沟通的时候，看到有些人对于取得不动产证满两年方可转让不是太理解。这里在已限售2年新房为例进行说明：
+							一般购买新房的用户，大约都是两年才能拿到现房，这时，你才可以申请房产证，等到你拿到房产证后，从这时开始，两年后才可以交易。所以意味着中间最少有4年的时间，你才可以出售房产的。房产证的下发一般周期也相对比较长，所以整个限售的时间，可能就会在4~5年之间。
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div class="dyn-right"><span class="btn btn-info btn-empty subscription-dialog-btn">+订阅</span></div>
+		</div>
+	</div>
+</div>
+<!--E:新房情况局-->
+
+
+<div class="dialog-mask subscription-dialog">
+	<div class="dialog p20 bd-radius-5">
+		<h3 class="p10 tc">订阅最新楼盘动态</h3>
+		<p class="p10 tc">房源变动太频繁，一键订阅楼盘动态，限时折扣、特价房、房源变动我们将第一时间通知您！</p>
+		<p class="p10"><input type="text" class="ipt" placeholder="输入订阅手机号"></p>
+		<p  class="p10 tc"><a class="btn btn-info J-dialog-close" style="display: block">确认</a></p>
+
+	</div>
+</div>
+<!--E:新房情况局-->
+
+
+<!--s:查询条件-->
+<div class="search-select-mask"></div>
+<div class="mt20 wrap relative bg-white" style="z-index: 101">
+	<ul class="col tc search-condition relative">
+		<li class="col3">
+			<span>区域</span><span class="turndown">▼</span>
+			<dl class="col shadow-2 pb40">
+				<dt class="col6">
+					<div class="current case-type">区域</div>
+					<div class="case-type">地铁</div>
+				</dt>
+				<dt class="col6 bg-muted">
+					<div class="case-type-item active">
+						<p class="selected case-type-option">丰台</p>
+						<p class="case-type-option">丰台</p>
+						<p class="case-type-option">丰台</p>
+					</div>
+					<div class="case-type-item">
+						<p class="selected case-type-option">一号线</p>
+						<p class="case-type-option">一号线</p>
+						<p class="case-type-option">一号线</p>
+					</div>
+				</dt>
+			</dl>
+		</li>
+		<li class="col3">
+			<span>总价 </span><span class="turndown">▼</span>
+			<dl class="shadow-2 pb40">
+				<dd class="case-type-option selected">不限</dd>
+				<dd class="case-type-option">&lt;200万</dd>
+				<dd class="case-type-option">200-400万</dd>
+				<dd class="case-type-option">400-500万</dd>
+				<dd class="case-type-option">500-600万</dd>
+				<dd class="case-type-option">600-800万</dd>
+				<dd class="case-type-option">800-1000万</dd>
+				<dd class="case-type-option">1000-2000万</dd>
+				<dd class="case-type-option">&gt;2000万</dd>
+				<dt class="col fs14">
+					<div class="col3">自定义价格</div>
+					<div class="col6 tc">
+						<input type="text" placeholder="最低" class="ipt case-ipt">
+						-
+						<input type="text" placeholder="最高"  class="ipt case-ipt">
+					</div>
+					<div class="col3">
+						<a class="btn btn-info btn-empty">确定</a>
+					</div>
+				</dt>
+			</dl>
+		</li>
+		<li class="col3">
+			<span>户型</span><span class="turndown">▼</span>
+			<dl class="shadow-2 pb40">
+				<dd class="case-type-option selected">不限</dd>
+				<dd class="case-type-option">一居</dd>
+				<dd class="case-type-option">二居</dd>
+				<dd class="case-type-option">三居</dd>
+				<dd class="case-type-option">四居</dd>
+				<dd class="case-type-option">五居及以上</dd>
+			</dl>
+		</li>
+		<li class="col3">
+			<span>更多</span><span class="turndown">▼</span>
+			<dl class="tl plr10 case-more shadow-2 pb40">
+				<dt>类型</dt>
+				<dd>
+					<span class="selected case-type-option"> 不限</span>
+					<span class="case-type-option">住宅</span>
+					<span class="case-type-option">别墅</span>
+				</dd>
+				<dt>特色</dt>
+				<dd>
+					<span class="case-type-option selected"> 不限</span>
+					<span class="case-type-option">住宅</span>
+					<span class="case-type-option">别墅</span>
+				</dd>
+				<dt>环线</dt>
+				<dd>
+					<span class="case-type-option selected"> 不限</span>
+					<span class="case-type-option">二环内</span>
+					<span class="case-type-option">二-三环内</span>
+					<span class="case-type-option">三-四环内</span>
+					<span class="case-type-option">四-五环内</span>
+					<span class="case-type-option">五-六环内</span>
+					<span class="case-type-option">六环外</span>
+				</dd>
+				<dt>售卖情况</dt>
+				<dd>
+					<span class="case-type-option selected"> 不限</span>
+					<span class="case-type-option">未售</span>
+					<span class="case-type-option">在售</span>
+					<span class="case-type-option">售罄</span>
+					<span class="case-type-option">待售</span>
+				</dd>
+
+				<dd class="tc">
+					<span class="btn btn-warn">重置条件</span>
+					<span class="btn btn-info">确定</span>
+				</dd>
+			</dl>
+		</li>
+	</ul>
+</div>
+<!--e查询条件-->
+
+<div class="plr10">
+<a href="houseDetail.html" class="a-wrap">
+	<ul class="case-list">
+		<li class="img"><img src="/public/images/info.jpg" alt="五和万科长阳天地"></li>
+		<li class="info">
+			<h4>西山燕庐</h4>
+			<div class="price-wrap">门头沟-大峪 	<div class="price">410万 ~ 540万</div></div>
+			<div>纯板楼 改善宜居 位置好 </div>
+			<div>近90天实地看房：25次</div>
+		</li>
+	</ul>
+</a>
+<a href="houseDetail.html" class="a-wrap">
+	<ul class="case-list">
+		<li class="img"><img src="/public/images/info.jpg" alt="五和万科长阳天地"></li>
+		<li class="info">
+			<h4>西山燕庐</h4>
+			<div class="price-wrap">门头沟-大峪 	<div class="price">410万 ~ 540万</div></div>
+			<div>纯板楼 改善宜居 位置好 </div>
+			<div>近90天实地看房：25次</div>
+		</li>
+	</ul>
+</a>
+<a href="houseDetail.html" class="a-wrap">
+	<ul class="case-list">
+		<li class="img"><img src="/public/images/info.jpg" alt="五和万科长阳天地"></li>
+		<li class="info">
+			<h4>西山燕庐</h4>
+			<div class="price-wrap">门头沟-大峪 	<div class="price">410万 ~ 540万</div></div>
+			<div>纯板楼 改善宜居 位置好 </div>
+			<div>近90天实地看房：25次</div>
+		</li>
+	</ul>
+</a>
+<div class="case-list-more tc pt5 pb10">
+	<a href="/project">查看更多楼盘</a>
+</div>
+</div>
+
+<!--s:头部-->
+<div class="toorbar-sort">
+	<i class="icon-sort"></i>
+</div>
+<!--e:头部-->
+<!--s:头部-->
+<div class="gotop">
+	<i class="icon-chevrons-up"></i>
+</div>
+<!--e:头部-->
+<div class="toorbar-sort-mask">
+	<ul class="toorbar-condition">
+		<li class="on">
+			<a class="a-wrap">不限</a>        </li>
+		<li >
+			<a class="a-wrap">看房人次最多</a>        </li>
+		<li >
+			<a class="a-wrap">单价最低</a>        </li>
+		<li>
+			<a class="a-wrap">单价最高</a>        </li>
+		<li>
+			<a class="a-wrap">成交量最高</a>        </li>
+	</ul>
+</div>
+
+<!--s:固定顶部app下载入口-->
+<div class="h50 lh50 wrap">
+<div class="footerTips col tc wrap">
+	<div class="col4 bg-white">
+		<a class="a-wrap" href="helpSearch.html">
+		<i class="icon-search"></i><span class="ml5 inline-block vm" >帮你找房</span>
+		</a>
+	</div>
+	<div class="col4  t-white bg-info"> <i class="icon-bubbles4"></i><a  class="ml5 inline-block vm" href="mqqwpa://im/chat?chat_type=wpa&uin=191221801&version=1&src_type=web&web_src=oicqzone.com" target="_blank">在线咨询</a></div>
+	<div class="col4 t-white bg-danger"><i class="icon-phone"></i><a class="ml5 inline-block vm" href="tel:10086">售楼热线</a></div>
+</div>
+</div>
+<!--e:固定顶部app下载入口-->
+	<script>$(function(){;(function(){ var innerModule = {};var innerRequire = function(index){ return innerModule[index]; }; /*../julive/web/houseSearch.js*/(function() {
+    $(".search-condition").on("click", ">li", function() {
+        $(".search-condition>li dl").not($(this)).slideUp();
+        $(this).find("dl").slideDown();
+        $(".search-select-mask").show();
+    }).on("click", "dl .case-type", function() {
+        $(this).addClass("current").siblings().removeClass("current");
+        $(this).parents("dl").find(".case-type-item").eq($(this).index()).addClass("active").siblings().removeClass("active");
+        return false;
+    }).on("click", "dl .case-type-option", function() {
+        $(this).parents("dl").slideUp();
+        $(".search-select-mask").hide();
+        $(this).addClass("selected").siblings().removeClass("selected");
+        return false;
+    }).on("click", "dl", function() {
+        return false;
+    });
+    $(".search-select-mask").click(function() {
+        $(".search-condition>li dl").slideUp();
+        $(".search-select-mask").hide();
+    });
+})();})();})</script><script>$(function(){;(function(){ var innerModule = {};var innerRequire = function(index){ return innerModule[index]; }; /*../julive/web/common/header.js*/(function() {
+    $(".subscription-dialog-btn").click(function() {
+        dialog($(".subscription-dialog"));
+    });
+    $(".loginBtn").click(function() {
+        dialog($(".login-dialog"));
+    });
+})();})();})</script><script>$(function(){;(function(){ var innerModule = {};var innerRequire = function(index){ return innerModule[index]; }; /*../julive/web/common/dynamicSubscription.js*/(function() {
+    window.AutoScroll = function(t) {
+        var h = $(t).find("li").height();
+        if ($(t).find("li").length <= 1) {
+            return;
+        }
+        $(t).find("ul:first").animate({
+            marginTop: "-" + h + "px"
+        }, 3e3, function() {
+            $(this).css({
+                marginTop: "0"
+            }).find("li:first").appendTo(this), setTimeout('AutoScroll(".scrollDiv")', 3e3);
+        });
+    };
+    window.AutoScroll(".scrollDiv");
+    $(".subscription-dialog-btn").click(function() {
+        dialog($(".subscription-dialog"));
+    });
+})();})();})</script><script>$(function(){;(function(){ var innerModule = {};var innerRequire = function(index){ return innerModule[index]; }; /*../julive/web/common/goTop.js*/(function() {
+    $(".gotop").click(function() {
+        $("html,body").stop(true, true).animate({
+            scrollTop: 0
+        });
+    });
+    $(".toorbar-sort").click(function() {
+        $(".toorbar-sort-mask").show();
+    });
+    $(".toorbar-sort-mask").click(function() {
+        $(".toorbar-sort-mask").hide();
+    });
+})();})();})</script>
+
+    <div id="pageLoad">
+        <div class="loader">
+            <div class="loader-inner line-scale-pulse-out">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+	</body>
+
+</html>

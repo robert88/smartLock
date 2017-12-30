@@ -1,0 +1,222 @@
+@charset "UTF-8";
+.ico{
+	display: inline-block;
+	width: 0.32rem;
+	height: 0.32rem;
+	background-repeat: no-repeat;
+	background-image: url("../../images/sprite.svg");
+	transform: scale(1.5);
+	background-size: 0.32rem 14.6rem;
+}
+.ico.icon_b_huanjing, .ico.icon_huanjing {
+}
+
+.ico.icon_agent {
+	background-position: 0 0
+}
+
+.ico.icon_chengjiao {
+	background-position: 0 -0.42rem
+}
+
+.ico.icon_ditie {
+	background-position: 0 -0.84rem
+}
+
+.ico.icon_ershoufang {
+	background-position: 0 -1.22rem;
+}
+
+.ico.icon_maifang {
+	background-position: 0 -1.68rem
+}
+
+.ico.icon_wiki {
+	background-position: 0 -2.06rem;
+}
+
+.ico.icon_xinfang {
+	background-position: 0 -2.46rem;
+}
+
+.ico.icon_xuequfang {
+	background-position: 0 -2.87rem;
+}
+
+.ico.icon_wenda {
+	background-position: 0 -3.28rem;
+}
+
+.ico.icon_zufang {
+	background-position: 0 -3.78rem
+}
+
+.ico.icon_haiwai {
+	background-position: 0 -4.2rem
+}
+
+.ico.icon_zhinan {
+	background-position: 0 -6.56rem;
+}
+
+.ico.icon_gujia {
+	background-position: 0 -7.14rem
+}
+.ico.icon_b_wenda {
+	background-position: 0 -7.39rem;
+}
+
+.ico.icon_b_baike {
+	background-position: 0 -7.98rem
+}
+
+.ico.icon_b_lanmu {
+	background-position: 0 -8.4rem
+}
+
+.ico.icon_b_fangjia {
+	background-position: 0 -8.82rem
+}
+
+.ico.icon_b_gujia {
+	background-position: 0 -9.24rem
+}
+
+.ico.icon_b_xiaoqu {
+	background-position: 0 -9.66rem
+}
+
+.ico.icon_b_jingjiren {
+	background-position: 0 -10.08rem
+}
+
+.ico.icon_b_shuifei {
+	background-position: 0 -10.5rem
+}
+
+.ico.icon_b_daikuan {
+	background-position: 0 -10.92rem
+}
+
+.ico.icon_b_kefu {
+	background-position: 0 -11.34rem
+}
+
+.ico.icon_xiaoqu {
+	background-position: 0 -11.76rem
+}
+
+.ico.icon_app {
+	background-position: 0 -11.91rem;
+}
+
+.ico.icon_linshen {
+	background-position: 0 -12.33rem;
+}
+
+.ico.icon_goufang {
+	background-position: 0 -13.02rem
+}
+
+.ico.icon_b_shoufu {
+	background-position: 0 -13.44rem
+}
+
+.ico.icon_b_lanrenzhaofang {
+	background-position: 0 -13.86rem
+}
+.ico.icon_tel {
+	background-position: 0 -14.34rem;
+}
+
+.bg-icon{
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-image: url("../../images/icon.png");
+	vertical-align: middle;
+	width:0.2rem;
+	height: 0.1rem;
+}
+.bg-icon.icon-down{
+	background-position: -7.86rem 0px;
+
+}
+.bg-icon.icon-search{
+	background-position: -4.27rem 0.03rem;
+	width: 0.4rem;
+	height: 0.4rem;
+}
+.bg-icon.icon-user{
+	background-position: -4.92rem 0px;
+	height: 0.24rem;
+}
+.bg-icon.icon-back{
+	background-position: -5.24rem 0px;
+	height: 0.24rem;
+}
+.bg-icon.icon-home{
+	background-position: -5.9rem 0px;
+	height: 0.24rem;
+	width: 0.28rem;
+}
+::-webkit-input-placeholder{color:#999;font-size: 0.16rem;}    /* 使用webkit内核的浏览器 */
+:-moz-placeholder{color:#999;font-size: 0.16rem;}                  /* Firefox版本4-18 */
+::-moz-placeholder{color:#999;font-size: 0.16rem;}                  /* Firefox版本19+ */
+:-ms-input-placeholder{color:#999;font-size: 0.16rem;}
+
+
+
+.nlb {
+	font-size: 0.136rem;
+	padding: 0.03rem 0.05rem;
+	margin-bottom: 0.1rem;
+	margin-right: 0.1rem;
+	border-radius: 2px;
+}
+
+.nlb-1 {
+	background-color: #e1ecff;
+	color: #5f9bff
+}
+
+.nlb-2 {
+	background-color: #e7f8ff;
+	color: #5fc3d7
+}
+
+.nlb-3 {
+	background-color: #fff0f0;
+	color: #eb8686
+}
+
+.nlb-4 {
+	background-color: #e4ffed;
+	color: #64bb79
+}
+.lb-area {
+	position: relative;
+	vertical-align: middle;
+	top: -0.05rem;
+}
+
+.lb-area .lb {
+	float: left;
+	margin: 0.04rem 0.08rem 0 0;
+	line-height: 1.5;
+	padding: 0 0.1rem;
+	box-sizing: border-box;
+	color: #66d2b4;
+	border: 1px solid #66d2b4;
+	overflow: hidden;
+}
+
+.lb-area .lb2 {
+	color: #ffb6a7;
+	border-color: #ffb6a7
+}
+.lb-area .lb3 {
+	color: #8ed1ee;
+	border-color: #8ed1ee
+}
+
+
