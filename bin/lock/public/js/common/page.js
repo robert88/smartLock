@@ -29,8 +29,10 @@
 			PAGE.timer.splice(index,1)
 		}
 	}
+	PAGE.oldSetTimeout = window.setTimeout;
+	PAGE.oldClearTimeout = window.clearTimeout;
 
-	PAGE.setTimeout = function(callback){
+	window.setTimeout = function(callback){
 		var args = Array.prototype.slice.call(arguments,0);
 
 		args[0] = function(){
@@ -40,16 +42,19 @@
 			remove(PAGE.timer.indexOf(timer));
 		}
 
-		var timer = setTimeout.apply(window,args);
+		var timer = PAGE.oldSetTimeout.apply(window,args);
 
 		PAGE.timer.push(timer);
 		return timer
 	};
 
-	PAGE.clearTimeout = function(timer){
-		clearTimeout(timer);
+	window.clearTimeout = function(timer){
+		remove(PAGE.timer.indexOf(timer));
+		PAGE.oldClearTimeout(timer);
 	};
 
+	PAGE.setTimeout = setTimeout;
+	PAGE.clearTimeout = clearTimeout;
 	/*
 	 *页面重新加载
 	 * */
@@ -223,9 +228,10 @@
 	 * */
 	function destroyPage(){
 
-		$body.scrollTop(0);
 
 		var newDestroy = [];
+
+		pathmap = {};
 
 		for(var i=0;i<PAGE.destroy.length;i++){
 			if(typeof PAGE.destroy[i]=="function"){
@@ -236,9 +242,60 @@
 			}
 		}
 
+		for(i=0;i<PAGE.timer.length;i++){
+			clearTimeout(PAGE.timer[i]);
+		}
+
 		PAGE.destroy = newDestroy;
 	}
 
+	/**
+	 *清除多余的事件
+	 * */
+
+	function destroyPageEvent(){
+		$pageLoadContain.html("");
+		$pageCss.html("");
+		$pageJs.html("");
+		$body.scrollTop(0);
+
+		removeEventByGuid(window);
+		removeEventByGuid(document);
+		removeEventByGuid(document.body);
+
+		$("body *").each(function () {
+			removeEventByGuid(this);
+		});
+	}
+
+	/**
+	 *根据uuid清除多余的事件
+	 * */
+
+	function removeEventByGuid(elem){
+		var elemData = jQuery.hasData( elem ) && jQuery._data( elem );
+		var events;
+		if ( !elemData || !( events = elemData.events ) || typeof events!="object" ) {
+			return;
+		}
+
+		//标识之前的事件
+		if(!$body.data("eventuuid")){
+			$body.data("eventuuid",jQuery.guid);
+		}
+		var guid = $body.data("eventuuid");
+
+		for(var type in events){
+			var handlers = events[type];
+			var j = handlers.length;
+			while ( j-- ) {
+				var handleObj = handlers[ j ];
+				if(handleObj.guid > guid ){
+					jQuery.event.remove( elem, handleObj.type, {guid:handleObj.guid } )
+				}
+			}
+		}
+	}
 
 	/*
 	 * 开发模式和生产模式的切换
@@ -340,11 +397,17 @@
 
 	function pageLoadSuccess(innerHtml,config){
 
-		pathmap = {};
-		$pageCss.html("");
-		$pageJs.html("");
+
 		destroyPage();
 
+		destroyPageEvent();
+
+		insertHtml(innerHtml,$pageLoadContain,config,"#pageDsync")
+
+	}
+
+	/*动态插入dom和css pageDsync表示会插入id为pageDsync作为临时dom*/
+	function insertHtml(innerHtml,$dom,config,pageDsync){
 		PAGE.handlerInclude(innerHtml,function (innerHtml,subConfigs) {
 			//优先加载css
 			var cssFile=[],jsFile=[];
@@ -362,19 +425,39 @@
 					jsFile.push("{0}.js".tpl(val.action, PAGE.version));
 				}
 			});
+
 			//加载样式
 			load(cssFile,function () {
+
 				//加载内容
-				$pageLoadContain.html("<div id='pageDsync'>"+innerHtml+"</div>");
+				if(typeof pageDsync=="string"){
+					$dom.html("<div id='pageDsync'>"+innerHtml+"</div>");
+				}else{
+					$dom.html(innerHtml);
+				}
+
 				//加载js
 				load(jsFile,function () {
-					$("#pageDsync").trigger("pagecontentloaded");
+					if(typeof pageDsync=="string"){
+						$(pageDsync).trigger("pagecontentloaded");
+					}else if(typeof pageDsync=="function"){
+						pageDsync();
+					}
 				},"script");
+
 			},"link");
-
 		});
-
 	}
+	/**
+	 * 动态插入html
+	 * */
+	PAGE.insertByUrl = function (dom,url,callBack) {
+
+		PAGE.load(url,function (subhtml,config) {
+			//不需要传动态div
+			insertHtml(subhtml,$(dom),config,callBack)
+		});
+	};
 
 
 	/*

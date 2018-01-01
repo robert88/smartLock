@@ -47,26 +47,53 @@
 	String.prototype.format = function (parten) {
 		return this.toFloat().format(parten);
 	};
+	String.prototype.templ = function (json) {
+			var templStr= this.replace(/\\/g,"\\\\").replace(/("|')/g,"\\\$1")
+				.replace(/\n/g,"\"+\n\"")
+				//循环
+				.replace(/\{\{#each\s+([^}]+)\s*\}\}/g,function(m,m1){
+					return "\"+(function(){try{var $length ="+m1+"&&"+m1+".length; var t=\"\";"+m1+"&&"+m1+".forEach(function($value,$index){ \n t+= \""
+				})
+				.replace(/\{\{#endEach\s*\}\}/g,"\"});return t;}catch(e){console.log(e&&e.stack)}}()) +\"")
+				//ifelse
+				.replace(/\{\{#if\s+([^}]+)\s*\}\}/g,function(m,m1){
+					return "\"; try{if("+m1.replace(/\\/g,"")+"){ t+=\""
+				}).replace(/\{\{#elseIf\s+([^}]+)\s*\}\}/gi,function(m,m1){
+					return "\"; }else if("+m1.replace(/\\/g,"")+"){ t+=\""
+				}).replace(/\{\{#else\s*\}\}/g,function(m,m1){
+					return "\";}else{ t+=\""
+				}).replace(/\{\{#endIf\s*\}\}/gi,function(m,m1){
+					return "\"}}catch(e){console.log(e&&e.stack)} t+=\""
+				})
+				//变量
+				.replace(/\{\{\s*([^}]+)\s*\}\}/g,function(m,m1){
+					return "\"+"+m1.replace(/\\/g,"")+"+\""
+				})
+			var result = "with(obj){var $this =this;var t =\""+templStr.replace(/\+$/,"")+"\"} return t;"
+			//return result;
+			var fn = new Function("obj",result);
+			return fn(json);
+		}
 	/*
 	 * 数字转字符串###,##.##
 	 *小数点超过4位，0.0001将会被转化为0
 	 * 整数不超过16位
 	 * */
 	Number.prototype.format = function( parten ){
-		
+
 
 		var pointIdx = parten.lastIndexOf(".");
 
 		var accuracy = pointIdx!=-1?(parten.length-pointIdx-1):0;
 
         var result = ( Math.round(this * Math.pow(10, accuracy)) / Math.pow(10, accuracy) + Math.pow(10, -(accuracy + 1))).toString();
-		
+
 		var pointStrIdx = result.lastIndexOf(".");
 
         if( pointStrIdx==-1 ){
             pointStrIdx = result.length
         }
-		
+
 		var prefixStr = result.slice(0,pointStrIdx);
 		var suffixStr = result.slice(pointStrIdx,result.length);
 
@@ -96,7 +123,7 @@
 		for(i=0;(i<accuracy+1)&&accuracy;i++){
 			str.push(suffixStr[i])
 		}
-		
+
 		return str.join("");
 
     };
@@ -320,5 +347,4 @@
 		return this;
 	};
 
-			
-	
+

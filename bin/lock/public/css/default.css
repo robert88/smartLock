@@ -23,7 +23,7 @@
   height: 30px;
   width: 120px;
   top: 8px;
-  left: 60px;
+  left: 85px;
 }
 .navbar .dropdown-toggle {
   color: #FFFFFF;
@@ -293,7 +293,7 @@
   border-top: 1px solid #FFFFFF !important;
 }
 .sidebar-menu > ul > li {
-  display: block;
+  /* display: block; */
   margin: 0;
   padding: 0;
   border: 0px;
@@ -339,7 +339,7 @@
   margin-right: 5px;
   display: inline;
   font-size: 16px;
-  font-family: FontAwesome;
+  font-family: 'icomoon' !important;
   height: auto;
   content: "\f0d9";
   font-weight: 300;
@@ -350,7 +350,7 @@
   margin-top: 1px;
   margin-right: 5px;
   display: inline;
-  font-family: FontAwesome;
+  font-family: 'icomoon' !important;
   height: auto;
   font-size: 16px;
   content: "\f0d7";

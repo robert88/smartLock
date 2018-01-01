@@ -1,27 +1,156 @@
-;
-(function () {
-
-	//等比
-	function getResize(max, min, cur, maxCur, minCur) {
-		return (cur - min) * (maxCur - minCur) / (max - min) + minCur;
-	}
-
-	//获取范围
-	function getRagen(val, max, min) {
-		return (val <= min) ? min : ((val <= max) ? val : max);
-	}
-	/*
-	*refrence,refrenceMax,refrenceMin,setMax,setMin
-	*/
-	function changeRootrem(obj,callback) {
-		var val = getRagen(obj.refrence, obj.refrenceMax, obj.refrenceMin);
-		var rem = getResize(obj.refrenceMax, obj.refrenceMin,val, obj.setMax, obj.setMin);
-		if(typeof callback=="function"){
-			callback(rem)
+$(function () {
+	var slideBars = [
+		{
+			hasSub:"",
+			active:"",
+			sub:[],
+			href:"",
+			tips:0,
+			text:"成员管理",
+			icon:"fa-group-users"
+		},
+		{
+			hasSub:"",
+			active:"",
+			sub:[],
+			href:"",
+			tips:0,
+			text:"设备管理",
+			icon:"fa-hdd-o"
+		},
+		{
+			hasSub:"",
+			active:"",
+			sub:[],
+			href:"",
+			tips:0,
+			text:"权限管理",
+			icon:"fa-legal"
+		},
+		{
+			hasSub:"",
+			active:"",
+			sub:[],
+			href:"",
+			tips:0,
+			text:"密码管理",
+			icon:"fa-key"
 		}
-	}
-/*TAB*/
-	$(document).on("click",".tab-wrap>.tab-head>.tab-head-item",function(){
+		,
+		{
+			hasSub:"",
+			active:"",
+			sub:[],
+			href:"",
+			tips:0,
+			text:"门况信息",
+			icon:"fa-beer"
+		},
+		{
+			hasSub:"",
+			active:"",
+			sub:[],
+			href:"",
+			tips:0,
+			text:"紧急预警",
+			icon:"fa-bell"
+		},
+		{
+			hasSub:"",
+			active:"",
+			sub:[],
+			href:"",
+			tips:0,
+			text:"情景模式",
+			icon:"fa-crop"
+		},
+
+		{
+			hasSub:"",
+			active:"",
+			sub:[],
+			href:"",
+			tips:0,
+			text:"我的智控",
+			icon:"fa-cloud"
+		},
+		{
+			hasSub:"",
+			active:"",
+			sub:[],
+			href:"",
+			tips:0,
+			text:"勿扰模式",
+			icon:"fa-umbrella"
+		},
+		{
+			hasSub:"",
+			active:"",
+			sub:[],
+			href:"",
+			tips:0,
+			text:"服务热线",
+			icon:"fa-bell"
+		},
+		{
+			hasSub:"",
+			active:"",
+			sub:[],
+			href:"",
+			tips:0,
+			text:"服务热线",
+			icon:"fa-phone-square"
+		},
+		{
+			hasSub:"",
+			active:"",
+			sub:[],
+			href:"",
+			tips:0,
+			text:"维修申报",
+			icon:"fa-truck"
+		}
+	];
+
+	PAGE.$pageVue = new Vue({
+		el:"#sidebar",
+		data:{
+			slideBars:slideBars
+		},
+		filters:{
+			href:function (href) {
+				if(href){
+					return href;
+				}else{
+					return "javascript:void(0);";
+				}
+			},
+
+		},
+		methods:{
+			setSubClass:function (flag,oldClass) {
+				return flag?("hasSub " +oldClass):oldClass;
+			},
+			setSlideActive:function (type) {
+				type  = type||"index";
+				for(var i=0;this.slideBars.length;i++){
+					var item = this.slideBars[i];
+					if(item.type==type){
+						item.active = true;
+					}else{
+						item.active =false;
+					}
+				}
+			}
+		},
+		ready:function () {
+			this.setSlideActive("index");
+
+		}
+	});
+
+	/*TAB*/
+	$(document).on("click",".nav-tabs>li",function(){
 
 		var $this = $(this);
 		var handle = $this.data("handle");
@@ -31,12 +160,13 @@
 			return false;
 		}
 
-		var $parent = $this.parents(".tab-wrap");
+		var $parent =  $this.parents(".header-tabs");
 		var curIndex = $this.index();
-		var $allHeadItem  = $parent.find(".tab-head-item");
-		var $allBodyItem = $parent.find(".tab-body-item");
-		var $body =  $parent.find(".tab-body");
-		var bodyItemStr = $body[0].nodeName == "UL"?("<li class='tab-body-item'></li>"):("<div class='tab-body-item'></div>");
+		var $allHeadItem  = $parent.find(".nav-tabs>li");
+		var $allBodyItem = $parent.find(".tab-content-item");
+
+		var $body =  $parent.find(".tab-content");
+		var bodyItemStr = $body[0].nodeName == "UL"?("<li class='tab-content-item'></li>"):("<div class='tab-content-item'></div>");
 
 
 		//不存在目标
@@ -46,13 +176,14 @@
 				for(var i=0;i<time;i++){
 					$body.append(bodyItemStr);
 				}
-				$allBodyItem = $parent.find(".tab-body-item");
+				$allBodyItem = $parent.find(".tab-content-item");
 			}
 		}
+		var $curBodyItem = $allBodyItem.eq(curIndex);
 		//隐式函数
 		if(typeof $this[0][handle] =="function"){
 			//利用函数的返回值添加功能
-			if($this[0][handle]($allBodyItem.eq(curIndex),$this) === false){
+			if($this[0][handle]($curBodyItem,$this) === false){
 				return
 			}
 		}
@@ -61,74 +192,18 @@
 		$allBodyItem.removeClass("active");
 		$this.addClass("active");
 		$allBodyItem.eq(curIndex).addClass("active");
+
+		if( !$.trim($curBodyItem.html()) && $this.attr("href") && !$curBodyItem.hasClass("loading")){
+			$curBodyItem.addClass("loading");
+			PAGE.insertByUrl($curBodyItem,$this.attr("href"),function () {
+				$curBodyItem.removeClass("loading");
+			})
+		}
 		return false;
 	});
+	
+	$("#sidebar-collapse").click(function () {
+		$("#sidebar").find(".nav-collapse").toggleClass(".collapse")
+	})
 
-	/*SELECT*/
-	$(document).on("click",".selectWrap .select",function(){
-
-		var $this = $(this);
-		//取消切换
-		if($this.hasClass("disabled") ){
-			return false;
-		}
-
-		var $parent = $this.parents(".selectWrap");
-		if($parent.hasClass("active")){
-			$(".selectWrap").removeClass("active");
-		}else{
-			$(".selectWrap").removeClass("active");
-			$parent.addClass("active");
-		}
-
-	}).on("click",".selectWrap .option p",function(){
-		var $this = $(this);
-		var text = $this.html().trim();
-		var val = $this.attr("value");
-		var $parent = $this.parents(".selectWrap");
-		$parent.find(".selectValue").val(val).change();
-		var $text = $parent.find(".selectText")
-		if($text[0].nodeName=="INPUT"){
-			$text.val(text);
-		}else{
-			$text.html(text);
-		}
-		$(".selectWrap").removeClass("active");
-	});
-
-	function changeRem() {
-		changeRootrem({
-			refrence:$(window).width(),
-			refrenceMax:640,
-			refrenceMin:300,
-			setMax:703.125,//625*18/16
-			setMin:468.75,
-		},function(rem){
-			$("html").css("font-size", rem + "%");
-		});
-	}
-	$(window).on("resize",function () {
-		changeRem();
-	});
-	changeRem()
-})();
-
-/*简单弹窗*/
-function dialog($dialog) {
-	$dialog.show();
-	centerDialog($dialog.find(".dialog"));
-}
-function centerDialog($dialog) {
-	var t = ($(window).height()-$dialog.height())/2
-	t = t<0?0:t;
-	$dialog.css("top",t)
-}
-function closeDialog($dialog) {
-	$dialog.hide()
-}
-$(document).on("click",".J-dialog-close",function (e) {
-	closeDialog($(this).parents(".dialog-mask"))
 });
-
-
-
