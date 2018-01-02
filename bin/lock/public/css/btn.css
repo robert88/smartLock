@@ -18,16 +18,7 @@
 	-o-user-select: none;
 	user-select: none;
 }
-.btn:focus {
-	outline: thin dotted;
-	outline: 5px auto -webkit-focus-ring-color;
-	outline-offset: -2px;
-}
 .btn:hover,
-.btn:focus {
-	color: #333333;
-	text-decoration: none;
-}
 .btn:active,
 .btn.active {
 	outline: 0;
@@ -51,7 +42,6 @@ fieldset[disabled] .btn {
 	border-color: #cccccc;
 }
 .btn-default:hover,
-.btn-default:focus,
 .btn-default:active,
 .btn-default.active,
 .open .dropdown-toggle.btn-default {
@@ -70,9 +60,6 @@ fieldset[disabled] .btn-default,
 .btn-default.disabled:hover,
 .btn-default[disabled]:hover,
 fieldset[disabled] .btn-default:hover,
-.btn-default.disabled:focus,
-.btn-default[disabled]:focus,
-fieldset[disabled] .btn-default:focus,
 .btn-default.disabled:active,
 .btn-default[disabled]:active,
 fieldset[disabled] .btn-default:active,
@@ -92,7 +79,6 @@ fieldset[disabled] .btn-default.active {
 	border-color: #507aa4;
 }
 .btn-primary:hover,
-.btn-primary:focus,
 .btn-primary:active,
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
@@ -111,9 +97,6 @@ fieldset[disabled] .btn-primary,
 .btn-primary.disabled:hover,
 .btn-primary[disabled]:hover,
 fieldset[disabled] .btn-primary:hover,
-.btn-primary.disabled:focus,
-.btn-primary[disabled]:focus,
-fieldset[disabled] .btn-primary:focus,
 .btn-primary.disabled:active,
 .btn-primary[disabled]:active,
 fieldset[disabled] .btn-primary:active,
@@ -133,7 +116,6 @@ fieldset[disabled] .btn-primary.active {
 	border-color: #eea236;
 }
 .btn-warning:hover,
-.btn-warning:focus,
 .btn-warning:active,
 .btn-warning.active,
 .open .dropdown-toggle.btn-warning {
@@ -152,9 +134,6 @@ fieldset[disabled] .btn-warning,
 .btn-warning.disabled:hover,
 .btn-warning[disabled]:hover,
 fieldset[disabled] .btn-warning:hover,
-.btn-warning.disabled:focus,
-.btn-warning[disabled]:focus,
-fieldset[disabled] .btn-warning:focus,
 .btn-warning.disabled:active,
 .btn-warning[disabled]:active,
 fieldset[disabled] .btn-warning:active,
@@ -174,7 +153,6 @@ fieldset[disabled] .btn-warning.active {
 	border-color: #d43f3a;
 }
 .btn-danger:hover,
-.btn-danger:focus,
 .btn-danger:active,
 .btn-danger.active,
 .open .dropdown-toggle.btn-danger {
@@ -193,9 +171,6 @@ fieldset[disabled] .btn-danger,
 .btn-danger.disabled:hover,
 .btn-danger[disabled]:hover,
 fieldset[disabled] .btn-danger:hover,
-.btn-danger.disabled:focus,
-.btn-danger[disabled]:focus,
-fieldset[disabled] .btn-danger:focus,
 .btn-danger.disabled:active,
 .btn-danger[disabled]:active,
 fieldset[disabled] .btn-danger:active,
@@ -215,7 +190,6 @@ fieldset[disabled] .btn-danger.active {
 	border-color: #9db36a;
 }
 .btn-success:hover,
-.btn-success:focus,
 .btn-success:active,
 .btn-success.active,
 .open .dropdown-toggle.btn-success {
@@ -234,9 +208,6 @@ fieldset[disabled] .btn-success,
 .btn-success.disabled:hover,
 .btn-success[disabled]:hover,
 fieldset[disabled] .btn-success:hover,
-.btn-success.disabled:focus,
-.btn-success[disabled]:focus,
-fieldset[disabled] .btn-success:focus,
 .btn-success.disabled:active,
 .btn-success[disabled]:active,
 fieldset[disabled] .btn-success:active,
@@ -256,7 +227,6 @@ fieldset[disabled] .btn-success.active {
 	border-color: #5ea5bd;
 }
 .btn-info:hover,
-.btn-info:focus,
 .btn-info:active,
 .btn-info.active,
 .open .dropdown-toggle.btn-info {
@@ -275,9 +245,6 @@ fieldset[disabled] .btn-info,
 .btn-info.disabled:hover,
 .btn-info[disabled]:hover,
 fieldset[disabled] .btn-info:hover,
-.btn-info.disabled:focus,
-.btn-info[disabled]:focus,
-fieldset[disabled] .btn-info:focus,
 .btn-info.disabled:active,
 .btn-info[disabled]:active,
 fieldset[disabled] .btn-info:active,
@@ -307,23 +274,12 @@ fieldset[disabled] .btn-link {
 }
 .btn-link,
 .btn-link:hover,
-.btn-link:focus,
 .btn-link:active {
 	border-color: transparent;
 }
 .btn-link:hover,
-.btn-link:focus {
-	color: #406182;
-	text-decoration: underline;
-	background-color: transparent;
-}
 .btn-link[disabled]:hover,
 fieldset[disabled] .btn-link:hover,
-.btn-link[disabled]:focus,
-fieldset[disabled] .btn-link:focus {
-	color: #999999;
-	text-decoration: none;
-}
 .btn-lg {
 	padding: 10px 16px;
 	font-size: 18px;
