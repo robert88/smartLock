@@ -4,7 +4,7 @@ $(function () {
 			hasSub:"",
 			active:"",
 			sub:[],
-			href:"",
+			href:"#/web/home.html",
 			tips:0,
 			text:"成员管理",
 			icon:"fa-group-users"
@@ -13,7 +13,7 @@ $(function () {
 			hasSub:"",
 			active:"",
 			sub:[],
-			href:"",
+			href:"#/web/device.html",
 			tips:0,
 			text:"设备管理",
 			icon:"fa-hdd-o"
@@ -203,7 +203,12 @@ $(function () {
 	});
 	
 	$("#sidebar-collapse").click(function () {
-		$("#sidebar").find(".nav-collapse").toggleClass(".collapse")
+		$("#sidebar,#main-content").toggleClass("mini-menu");
 	})
+	$(document).on("click",".dropdown",function () {
+		$(this).toggleClass("open");
+		return false;
+    })
+
 
 });
