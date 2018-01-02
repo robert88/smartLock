@@ -23,6 +23,8 @@
 		<link rel="stylesheet" type="text/css" href="/public/css/label.css">
 		<link rel="stylesheet" type="text/css" href="/public/css/form.css">
 		<link rel="stylesheet" type="text/css" href="/public/css/pager.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/nomenu.css">
+		<link rel="stylesheet" type="text/css" href="/public/js/dialog/jquery.dialog.css">
 		<!--end mergeCss-->
 
 		<!--start mergeCss:lib.min-->
@@ -43,11 +45,12 @@
 		<script src="/public/js/common/prototype.js"></script>
 		<script src="/public/js/common/base.js"></script>
 		<script src="/public/js/common/require.js"></script>
+		<script src="/public/js/dialog/jquery.dialog.js"></script>
 		<!--end mergeJs-->
 
 	</head>
 	
-	<body>
+	<body class="nomenu">
 
     <div id="pageLoad">
         <div class="loader">
@@ -63,7 +66,7 @@
 
 	<!-- HEADER -->
 	<header>
-		<div class="wrap">
+		<div class="wrap navbar">
 			<div class="navbar-brand">
 				<!-- COMPANY LOGO -->
 				<a href="#/web/home.html">
@@ -175,9 +178,6 @@
 						<i class="fa fa-angle-down"></i>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="#"><i class="fa fa-user"></i> My Profile</a></li>
-						<li><a href="#"><i class="fa fa-cog"></i> Account Settings</a></li>
-						<li><a href="#"><i class="fa fa-eye"></i> Privacy Settings</a></li>
 						<li><a href="login.html"><i class="fa fa-power-off"></i> Log Out</a></li>
 					</ul>
 				</li>
@@ -200,8 +200,8 @@
 				<!-- SIDEBAR MENU -->
 				<ul slot="sidebar">
 					<li  v-for="($item, $index) in slideBars"  :class="setSubClass($item.hasSub)" v-cloak>
-						<a :href="$item.href|href">
-							<i :class="$item.icon"></i> <span class="menu-text">{{$item.text}}<span class="badge pull-right" v-show="$item.tips">{{$item.tips}}</span></span>
+						<a :href="$item.href|href" class="ease">
+							<i :class="$item.icon"></i> <span class="menu-text ease">{{$item.text}}<span class="badge pull-right" v-show="$item.tips">{{$item.tips}}</span></span>
 							<span  :class="setSubClass($item.hasSub,'sidebarStatus')"></span>
 						</a>
 
@@ -214,7 +214,7 @@
 			</div>
 		</div>
 		<!-- /SIDEBAR -->
-		<div id="main-content">
+		<div id="main-content" class="ease">
 			<div class="main-content-header">
 				<ul class="breadcrumb">
 					<li>
