@@ -480,7 +480,11 @@
 	function hashChange(hash) {
 
 		var config = PAGE.getHashConfig(hash);
-
+		if(config.params&&config.params.nomenu){
+                $body.addClass("nomenu");
+        }else{
+            $body.removeClass("nomenu");
+		}
 		//显示加载ui
 		PAGE.loading();
 
@@ -543,8 +547,8 @@
 	 *监听hashchange事件切换页面，监听事件load事件
 	 * */
 	$(window).on("hashchange", function() {
-		// hashChange();
-		window.location.reload();
+		hashChange();
+		// window.location.reload();
 	});
 
 	/**
