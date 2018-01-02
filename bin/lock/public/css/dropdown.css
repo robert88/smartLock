@@ -1,3 +1,22 @@
+
+.dropdown{
+	position:relative
+}
+.navbar .nav .open > a,
+.navbar .nav .open > a:hover,
+.navbar .nav .open > a :focus {
+	background-color: #80a0c1 !important;
+}
+.open > .dropdown-menu {
+	display: block;
+}
+.open > a {
+	outline: 0;
+}
+ .navbar-nav > li > .dropdown-menu {
+	left: auto;
+	right: 0;
+}
 .navbar .dropdown-toggle {
 	color: #FFFFFF;
 }
@@ -67,6 +86,10 @@
 	top: 100%;
 	z-index: 1000;
 	font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	background-clip: padding-box;
 }
 .dropdown-menu .dropdown-title {
 	background: none repeat scroll 0 0 #486d93;
