@@ -1,6 +1,6 @@
 /*--login--*/
 body,#main-content{background: url(/public/images/login_bgx.gif);  }
-.login_m{ width:403px; margin:0 auto; padding-top:98px; }
+.login_m{width: 553px;margin:0 auto;padding-top:98px;}
 .login_logo{ text-align:center; margin-bottom:25px;}
 .login_boder{ background: #fff; overflow:hidden;box-shadow: 0 3px 12px rgba(27,31,35,0.15);}
 .login_padding{ padding:28px 47px 20px 47px ;}
@@ -12,7 +12,7 @@ body,#main-content{background: url(/public/images/login_bgx.gif);  }
 }
 .login_boder input.form-control {
 	border: 1px solid #cad2db;
-	padding: 0 5px;
+	padding: 0 5px 0 30px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
@@ -25,17 +25,22 @@ body,#main-content{background: url(/public/images/login_bgx.gif);  }
 .forgot{
 	margin-top:10px;
 }
+.forgot a{
+    text-decoration:underline;
+    color: #ccc;
+}
 .btn-info {
 	color: #ffffff;
 	background-color: #3ba4de;
+	display: block;
 	border-color: #3ea6df;
 }
-.btn-info:hover, btn-info:active, .btn-info.active, .open .dropdown-toggle.btn-info {
+.btn-info:hover, .btn-info:active, .btn-info.active, .open .dropdown-toggle.btn-info {
 	color: #ffffff;
 	background-color: #3ba4de;
 	border-color: #72bce4;
 }
-.form-group i{
+.form-group>i{
 	color: #CCCCCC;
 	display: block !important;
 	font-size: 16px;

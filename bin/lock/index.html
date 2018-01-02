@@ -46,6 +46,7 @@
 		<script src="/public/js/common/base.js"></script>
 		<script src="/public/js/common/require.js"></script>
 		<script src="/public/js/dialog/jquery.dialog.js"></script>
+		<script src="/public/js/common/validForm.js"></script>
 		<!--end mergeJs-->
 
 	</head>
@@ -174,11 +175,11 @@
 				<!-- BEGIN USER LOGIN DROPDOWN -->
 				<li class="dropdown user" id="header-user">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<span class="username">John Doe</span>
+						<span class="username">张三</span>
 						<i class="fa fa-angle-down"></i>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="login.html"><i class="fa fa-power-off"></i> Log Out</a></li>
+						<li class="J-loginout"><a><i class="fa fa-power-off"></i> 退出</a></li>
 					</ul>
 				</li>
 				<!-- END USER LOGIN DROPDOWN -->
@@ -260,6 +261,7 @@
 			window.PAGE.data = {};
 		})()
 	</script>
+	<script src="/public/js/common/ajax.js"></script>
 	<script src="/public/js/common/page.js"></script>
 
 </html>

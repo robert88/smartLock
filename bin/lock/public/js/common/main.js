@@ -166,6 +166,7 @@ $(function () {
 		var $allBodyItem = $parent.find(".tab-content-item");
 
 		var $body =  $parent.find(".tab-content");
+		var $boxTitle = $this.parents(".box").find(".box-title-text")
 		var bodyItemStr = $body[0].nodeName == "UL"?("<li class='tab-content-item'></li>"):("<div class='tab-content-item'></div>");
 
 
@@ -199,12 +200,28 @@ $(function () {
 				$curBodyItem.removeClass("loading");
 			})
 		}
+		if($boxTitle.length&&$this.data("title")){
+			$boxTitle.html($this.data("title"));
+		}
 		return false;
 	});
 	
 	$("#sidebar-collapse").click(function () {
 		$("#sidebar,#main-content").toggleClass("mini-menu");
-	})
+	});
+
+	$(document).on("click",".J-loginout",function () {
+		window.location.hash="#/web/login.html?nomenu=1";
+		return;
+		// PAGE.ajax({
+		// 	type:'post',
+		// 	url:"/api/user/register",
+		// 	success:function (ret) {
+		//
+		// 	}
+		// })
+	});
+
 	$(document).on("click",".dropdown",function () {
 		$(this).toggleClass("open");
 		return false;
