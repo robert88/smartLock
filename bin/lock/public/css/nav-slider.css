@@ -286,4 +286,97 @@
 	text-align: center;
 	width: 50px;
 }
-
+/*mini menu*/
+.mini-menu#sidebar {
+	width: 50px;
+}
+.mini-menu#main-content {
+	margin-left: 50px
+}
+.mini-menu#sidebar {
+	width: 50px;
+}
+.mini-menu#sidebar:before {
+	width: 50px;
+}
+.mini-menu#sidebar .sidebar-menu > ul > li > a > .menu-text .badge {
+	top: 15px;
+	right: 10px;
+}
+.mini-menu#sidebar .sidebar-menu > ul > li > a > .menu-text .label {
+	position: absolute;
+	top: 15px;
+	right: 10px;
+}
+.mini-menu#sidebar .sidebar-menu > ul > li > a > .menu-text {
+	background-color: #f4f4f4;
+	height: 50px;
+	left: 50px;
+	line-height: 38px;
+	padding-left: 12px;
+	position: absolute;
+	top: 0;
+	width: 0px;
+	opacity: 0;
+	z-index: 121;
+	padding: 0px;
+	border: 1px solid #cecece;
+	overflow: hidden;
+}
+.mini-menu#sidebar .sidebar-menu > ul > li.has-sub > a > .menu-text {
+	border-right: none;
+	border-top: none;
+}
+.mini-menu#sidebar .sidebar-menu > ul > li:hover > a > .menu-text {
+	width: 174px;
+	opacity: 1;
+	padding: 5px 0 0 15px;
+}
+.mini-menu#sidebar .sidebar-menu > ul > li > ul.sub {
+	background-color: #e7e7e7;
+	border: 1px solid #cecece;
+	display: none !important;
+	left: 50px;
+	padding-bottom: 2px;
+	padding-top: 50px;
+	position: absolute;
+	top: 0;
+	width: 176px;
+	z-index: 120;
+	border-top: 1px solid #e7e7e7;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) inset;
+}
+.mini-menu#sidebar .sidebar-menu > ul > li:hover > ul.sub {
+	display: block !important;
+}
+.mini-menu#sidebar .sidebar-menu ul > li > a .arrow:before {
+	display: none;
+}
+.mini-menu#sidebar .sidebar-menu > ul > li > a .arrow.open:before {
+	display: none;
+}
+.mini-menu#sidebar .quicklaunch-mini {
+	display: block;
+}
+.mini-menu#sidebar #quicklaunch {
+	position: relative;
+}
+.mini-menu#sidebar .quicklaunch-lg {
+	background-color: #f4f4f4;
+	display: none;
+	left: 50px;
+	position: absolute;
+	top: -1px;
+	width: 190px;
+	z-index: 20;
+	padding: 0 0 0 1px;
+	max-height: 50px;
+	height: 115%;
+	border: 1px solid #cecece;
+}
+.mini-menu#sidebar .quicklaunch-lg .btn {
+	margin-right: 0.25rem;
+}
+.mini-menu#sidebar #quicklaunch:hover .quicklaunch-lg {
+	display: block;
+}
