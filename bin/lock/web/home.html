@@ -10,11 +10,11 @@
 				<li href="#/web/module/personHistory.html" data-title="已减成员列表"><a data-toggle="tab"><i class="fa fa-bar-chart-o"></i> <span>已减成员</span></a></li>
 			</ul>
 			<ul class="tab-content">
-				<li class="tab-content-item active">
+				<li class="tab-content-item active" id="systemPerson">
 					<div class="mb10">
-						<a class=" btn btn-info" ><i class="fa-turkish-lira-try"></i>添加成员</a>
-						<a class=" btn btn-info" ><i class="fa-filter"></i>帅选</a>
-						<a class=" btn btn-danger" ><i class="fa"></i>批量删除成员</a>
+						<a class=" btn btn-info" ><i class="fa-turkish-lira-try mr5"></i>添加成员</a>
+						<a class=" btn btn-info" ><i class="fa-filter mr5"></i>帅选</a>
+						<a class=" btn btn-danger" ><i class="fa-trash-o mr5"></i>批量删除成员</a>
 					</div>
 					<table class="table table-striped table-bordered table-hover">
 						<thead>
@@ -31,59 +31,21 @@
 						</tr>
 						</thead>
 						<tbody>
-						<tr>
+						<tr v-for="($item, $index) in list.list">
 							<td><label class="label-checkbox"><input type="checkbox"><i class="fa-check"></i><i class="fa-square-o"></i></label></td>
-							<td><a href="#">小龙</a></td>
-							<td>18688714537</td>
-							<td>841354162@qq.com</td>
-							<td>362034222215545222</td>
-							<td>设计师</td>
-							<td class="t-warning"> 编号100被打开</td>
-							<td>2017-09-08 12:12:56</td>
+							<td><a class="J-dialog" data-dialog-url="#/web/personDetail.html" :data-id="$item.id">{{$item.user_name}}</a></td>
+							<td>{{$item.user_name}}</td>
+							<td>{{$item.user_phone}}</td>
+							<td>{{$item.user_email}}</td>
+							<td>{{$item.role_id | role}}</td>
+							<td class="t-warning"> {{$item.type|type}}</td>
+							<td>{{$item.update_pwd_time}}</td>
 							<td><span class="label label-danger label-sm"><i class="fa-trash-o" title="删除"></i></span><span class="label label-success label-sm ml10">授权</span></td>
 						</tr>
-						<tr>
-							<td><label class="label-checkbox"><input type="checkbox"><i class="fa-check"></i><i class="fa-square-o"></i></label></td>
-							<td><a href="#">小龙</a></td>
-							<td>18688714537</td>
-							<td>841354162@qq.com</td>
-							<td>362034222215545222</td>
-							<td>设计师</td>
-							<td class="t-warning"> 编号100被打开</td>
-							<td>2017-09-08 12:12:56</td>
-							<td><span class="label label-danger label-sm"><i class="fa-trash-o" title="删除"></i></span><span class="label label-success label-sm ml10">授权</span></td>
-						</tr>
+
 						</tbody>
 					</table>
-					<ul class="pagination">
-						<li class="disabled">
-							<a href="#">
-								<i class="fa fa-angle-left"></i>
-							</a>
-						</li>
-						<li class="active">
-							<a href="#">
-								1
-							</a>
-						</li>
-						<li>
-							<a href="#">2</a>
-						</li>
-						<li>
-							<a href="#">3</a>
-						</li>
-						<li>
-							<a href="#">4</a>
-						</li>
-						<li>
-							<a href="#">5</a>
-						</li>
-						<li>
-							<a href="#">
-								<i class="fa fa-angle-right"></i>
-							</a>
-						</li>
-					</ul>
+					<ul class="pagination"></ul>
 				</li>
 
 

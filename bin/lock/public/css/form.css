@@ -160,7 +160,7 @@ background: #1f2229;
 .label-radio-group i{
 	display:inline-block;
 }
-.validErr input,.validErr select{
+.validError input,.validError select{
 	border:1px solid #da0e0e;
 }
 .validItem{
@@ -168,11 +168,12 @@ background: #1f2229;
 }
 .validErrMsg{
 	display: none;
-	position: absolute;
+	padding-bottom: 10px;
+	margin-top: -10px;
 	top:100%;
 	line-height: 23px;
 }
-.validErr .validErrMsg{
+.validError .validErrMsg{
 	color:#da0e0e;
 	display: block;
 }
@@ -183,7 +184,7 @@ background: #1f2229;
 	margin-top: -13px;
 	right: -30px;
 }
-.validErr .validIcon{
+.validError .validIcon{
 	color:#da0e0e;
 	display: block;
 }
@@ -205,6 +206,9 @@ background: #1f2229;
 }
 .label-checkbox input:checked + .fa-check{
  display: block;
+ font-size: 14px;
+ top: 5px;
+ left: 2px;
 }
 .label-checkbox{
 	position:relative;
@@ -215,5 +219,6 @@ background: #1f2229;
 .label-checkbox i{
 	position:absolute;
 	left:0;
-	top: 4px;
+	font-size: 23px;
+	top: 0px;
 }

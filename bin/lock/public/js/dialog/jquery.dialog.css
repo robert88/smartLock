@@ -44,11 +44,17 @@
 }
 
 .dl-tips {
+    min-width: 180px;
+    /* min-height:100px; */
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-bordder-radius: 5px;
     -o-user-select: 5px;
     background: #fff;
+    background-color: #ffffff;
+    border-radius: 6px;
+    background-clip: padding-box;
+    box-shadow: 0px 0px 46px rgba(0, 0, 0, .3);
 }
 
 .dl-alert {

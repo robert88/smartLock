@@ -50,7 +50,8 @@
 
 	window.clearTimeout = function(timer){
 		remove(PAGE.timer.indexOf(timer));
-		PAGE.oldClearTimeout(timer);
+		//必须使用call将this变成window才能调成功
+		PAGE.oldClearTimeout.call(window,timer);
 	};
 
 	PAGE.setTimeout = setTimeout;

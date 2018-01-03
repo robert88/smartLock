@@ -1,6 +1,6 @@
 ﻿
 	//设置分页的页面--
-    LS.setpageFooter = function($pageFooter, totalPage, pageNo, refreshData, num_display_entries, items_per_page){
+    PAGE.setpageFooter = function($pageFooter, totalPage, pageNo, refreshData, num_display_entries, items_per_page){
 
         function f(num){
             return Math.floor(num)||0;
@@ -103,38 +103,37 @@
         var pageHTML = [];
         //上一页已经到头了
         if(pageNo == 1){
-            pageHTML.push( '<a href="' + prev + '" class="pageMove disabled" style="cursor:not-allow">Back</a>' );
+            pageHTML.push( '<li href="' + prev + '" class="pageMove disabled" style="cursor:not-allow"><a><i class="fa fa-angle-left"></i></a></li>' );
         }else{
-            pageHTML.push( '<a href="' + prev + '" class="pageMove">Back</a>' );
+            pageHTML.push( '<li  href="' + prev + '" class="pageMove"><a><i class="fa fa-angle-left"></i></a></li>' );
         }
 
         for(var i=0; i<showPage.length; i++){
             if(showPage[i]=="..."){
-                pageHTML.push( '<span >' + showPage[i] + '</span>' );
+                pageHTML.push( '<li class="dot"><a>' + showPage[i] + '</a></li>' );
             }else if(showPage[i] == pageNo){
-                pageHTML.push( '<a class="current" href="' + showPage[i] + '">' + showPage[i] + '</a>' );
+                pageHTML.push( '<li class="active" href="' + showPage[i] + '"> <a>' + showPage[i] + '</a></li>' );
             }else{
-                pageHTML.push( '<a href="' + showPage[i] + '">' + showPage[i] + '</a>' );
+                pageHTML.push( '<li href="' + showPage[i] + '"><a>' + showPage[i] + '</a></li>' );
             }
         }
 
         //下一页已经到头了
         if(pageNo == totalPage){
-            pageHTML.push( '<a href="' + next + '" class="pageMove disabled" style="cursor:not-allow">Next</a>' );
+            pageHTML.push( '<li href="' + next + '" class="pageMove disabled" style="cursor:not-allow"><a><i class="fa fa-angle-right"></i></a></li>' );
         }else{
-            pageHTML.push( '<a href="' + next + '" class="pageMove">Next</a>' );
+            pageHTML.push( '<li href="' + next + '" class="pageMove"><a ><i class="fa fa-angle-right"></i></a></li>' );
         }
-
 
 
         $pageFooter.html(pageHTML.join(""));
 
         /*分页*/
-        $pageFooter.off('click','a').on( 'click','a', function (e) {
+        $pageFooter.off('click','>li').on( 'click','>li', function (e) {
 
 
             var $this = $(this);
-            if ($this.hasClass('current') || $this.hasClass('disabled')) {
+            if ($this.hasClass('active') || $this.hasClass('disabled') || $this.hasClass('dot')) {
                 return false;
             }
 

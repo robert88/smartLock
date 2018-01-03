@@ -51,9 +51,9 @@
 
 		if (typeof ret == "object" && ret != null) {
 			if(codeMap){
-				text = codeMap[ret.code]||"unknown"
+				text = codeMap[ret.code]|| ret.msg||"unknown"
 			}else{
-				text = ret.code || ret.message || "";
+				text = ret.code || ret.msg || "";
 			}
 
 		} else {
@@ -94,14 +94,18 @@
 			complete = ajaxOption.complete,
 			errorCallBack = ajaxOption.errorCallBack;
 		
-		try{
-			document.domain = "smart-api.kitcloud.cn";
-			var apiDomain = "smart-api.kitcloud.cn";
-			if(ajaxOption.url.indexOf("http://")==-1){
-				ajaxOption.url= "http://" + (apiDomain+ajaxOption.url).toURI()
-			}
-		}catch (e){
-			console.error(e);
+		// try{
+		// 	document.domain = "smart-api.kitcloud.cn";
+		// 	var apiDomain = "smart-api.kitcloud.cn";
+		// 	if(ajaxOption.url.indexOf("http://")==-1){
+		// 		ajaxOption.url= "http://" + (apiDomain+ajaxOption.url).toURI()
+		// 	}
+		// }catch (e){
+		// 	console.error(e);
+		// }
+		var apiDomain = "smart-api.kitcloud.cn";
+		if(ajaxOption.url.indexOf("http://")==-1){
+			ajaxOption.url= "http://" + (apiDomain+ajaxOption.url).toURI()
 		}
 
 		if (checkAction(ajaxOption.url, ajaxOption.limitTime, error, errorCallBack) == false) {
@@ -128,7 +132,7 @@
 			}
 
 			//state为true的时候表示请求成功
-			if (ret && ret.code==1) {
+			if (ret && ret.code==200) {
 				if (typeof success == "function") {
 					success(ret.data, ret, "success");
 				}
@@ -157,7 +161,7 @@
 			}
 			var msg = {
 				code: XMLHttpRequest.status,
-				message: $text.text()
+				msg: $text.text()||(XMLHttpRequest.status==0?"网络断开":"网络异常")
 			}
 			errorHander(msg, "sysError", error, errorCallBack,ajaxOption.msg)
 		}
@@ -209,189 +213,5 @@
 		PAGE.ajax(opts)
 
 	};
-
-
-	PAGE.validForm = function (opts) {
-
-		var $form = $(opts.form);
-
-		var validOpts = {
-			success: function () {
-
-				console.log("valiform ok");
-
-				if (typeof opts.validSuccess == "function") {
-					opts.validSuccess($form);
-				}
-
-				$form.removeClass("checking");
-
-			},
-			successList: function ($target) {
-				var $parent = $target.parents(".J-validItem");
-				$parent.addClass("validSuccess");
-			},
-			blurCallback: function ($target) {
-				var $parent = $target.parents(".J-validItem");
-				var action = $target.data("blur-ajax");
-
-				if (action) {
-					//将参数带入到action中
-					action = action.tpl($target.val());
-
-					//提供一个单独的处理ajax的接口
-					if (typeof $target[0].blurAjaxBefore == "function") {
-						if ($target[0].blurAjaxBefore() === false) {
-							return;
-						}
-					}
-					PAGE.ajax({
-						url: action,
-						success: function (data, ret) {
-							//公共处理
-							$parent.addClass("validSuccess");
-							//提供一个单独的处理ajax的接口
-							if (typeof $target[0].blurAjaxSuccess == "function") {
-								if ($target[0].blurAjaxSuccess() === false) {
-									return;
-								}
-							}
-						},
-						error: function (ret) {
-							$parent.addClass("validErr");
-							//提供一个单独的处理ajax的接口
-							if (typeof $target[0].blurAjaxError == "function") {
-								if ($target[0].blurAjaxError() === false) {
-									return;
-								}
-							}
-						}
-					});
-				}
-			},
-			focusCallback: function ($target) {
-				var $parent = $target.parents(".J-validItem");
-				$parent.removeClass("validErr").removeClass("validSuccess");
-			},
-			error: function ($target, msg, checkTypeName) {
-
-				console.log("error", $target, msg, checkTypeName);
-
-				var $parents = $target.parents(".J-validItem");
-
-				$parents.addClass("validErr");
-
-				$parents.find(".J-valid-msg").html(msg);
-				$parents.find(".J-validIcon").html('<i class="icon-error"></i>');
-
-				if (typeof opts.validError == "function") {
-					opts.validError($target, msg, checkTypeName);
-				}
-
-				$form.removeClass("checking");
-
-			}
-		};
-
-		$form.off("click", ".J-submitBtn").on("click", ".J-submitBtn", function () {
-			//提交按钮在提交之后如果表正在校验就停止校验，没有变亮按钮也是不能校验的
-			if ($form.hasClass("checking")||$(this).hasClass("disabled")) {
-				console.log("form checking is lock!");
-				return false;
-			}
-			$form.submit();
-		});
-
-		var $input = $form.find( "input" )
-			.add( $form.find( "textarea" ) )
-			.not( ".noCheck" )
-			.not(":disabled")
-			.filter( function(){
-				var checkType = $( this ).attr( "check-type" )
-				if(checkType || (checkType && checkType.indexOf("required")==-1 )){
-					return true;
-				}
-				return false;
-			});
-		var $select = $form.find( "select" )
-			.not( ".noCheck" )
-			.not(":disabled")
-			.filter( function(){
-				var checkType = $( this ).attr( "check-type" )
-				if(checkType || (checkType && checkType.indexOf("required")==-1 )){
-					return true;
-				}
-				return false;
-			});
-
-		function checkBtn(){
-			var ret = true;
-			$input.each(function () {
-				if($(this).val()==""){
-					ret = false;
-					return false;
-				}
-				if($(this).attr("type")=="radio"){
-					if( $(this).parents(".J-label-radio-group").find(".checked").length==0 ){
-						ret = false;
-						return false;
-					}
-				}
-			});
-			if(ret){
-				$select.each(function () {
-					if($(this).val()==""){
-						ret = false;
-						return false;
-					}
-				});
-			}
-			if(ret){
-				$form.find(".J-submitBtn").removeClass("disabled");
-			}else{
-				$form.find(".J-submitBtn").addClass("disabled");
-			}
-		}
-		//输入之后变亮
-		$form.off("keyup.checkBtn", $input).on("keyup.checkBtn",$input,function () {
-			checkBtn()
-		});
-
-		$form.off("change.checkBtn", $select).on("change.checkBtn",$select,function () {
-			checkBtn()
-		});
-		checkBtn();
-		//对于提交按钮要求指定focus
-		$("body").off("keyup.submit").on("keyup.submit",function (e) {
-			if(e.key=="Enter"){
-				$(this).find(".J-submitBtn.J-submitFocus").trigger("click");
-			}
-		});
-
-		var validForm = $.valiForm($.extend(opts, validOpts));
-
-		//提交
-		$form.off("submit").on("submit", function () {
-			try {
-				/*防止重复提交*/
-				var $this = $(this);
-				if ($this.hasClass("checking")) {
-					console.log("form checking is lock!");
-					return false;
-				}
-
-				$this.addClass("checking");
-
-				validForm();
-			} catch (e) {
-				$.tips(e, "error");
-				console.error(e);
-			}
-			return false;
-		});
-
-		return validForm;
-	}
-
 
 })()

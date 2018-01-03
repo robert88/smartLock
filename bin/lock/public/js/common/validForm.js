@@ -87,7 +87,6 @@
                 letter:{check:function(value) { value = $.trim(value);return (!getByteLen(value)==value.length)} },
                 chinese:{check:function(value) {return (!/^[\u4e00-\u9fff]+$/.test($.trim(value)));} },
                 date:{check:function(value){return(/Invalid|NaN/.test(new Date($.trim(value)).toString()));}},
-                //请输入有效身份证
                 idcard:{ check:function(value){return(!(/^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$/.test(value)||/^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{4}$/.test(value)));}},
                 maxvalue:{check:function(value, $obj) {
                                 //传递了比较值
@@ -171,15 +170,9 @@
                             }
                         },
                 password: {
-                    check:function(value, $obj) {
-                        if(/^\d+$/.test(value.trim())){
-                            return true;
-                        }else if(!/\d/.test(value.trim())){
-                            return true;
-                        }else{
-                            return false
-                        }
-                    },
+                    check:function(value) {
+						return ( !(/^[a-z0-9]{8,}$/i.test(value)&&/[a-z]/i.test(value)&&/[0-9]/.test(value)) );
+                    }
                 }
 
         };
@@ -217,10 +210,10 @@
                     if(typeof errorCode=="object"){
                         errorParams = errorCode.slice(1);
                         errorCode = errorCode[0].toLowerCase();
-                        errorMsg = tpl.apply($target.data( checkTypeName+"-"+ errorCode + "-msg" ),errorParams);
+                        errorMsg = tpl.apply($target.data( checkTypeName+"-"+ errorCode + "-msg" ),errorParams) || errorMsg;
                     }else if(typeof errorCode=="string"){
                         errorCode = errorCode.toLowerCase();
-                        errorMsg = $target.data( checkTypeName+"-"+ errorCode + "-msg" )
+                        errorMsg = $target.data( checkTypeName+"-"+ errorCode + "-msg" ) || errorMsg
                     }
 
                  //校验成功之后的函数,“或”规则只要成功就跳出
@@ -509,6 +502,9 @@
                         return ;
                     }
                     var $parents = $target.parents(".J-validItem").addClass("validError");
+					if(!$parents.find(".J-valid-msg").length){
+						$parents.append("<div class='J-valid-msg validErrMsg'></div>")
+					}
                     $parents.find(".J-valid-msg").html(msg);
                     $form.removeClass("validing");
                 }
@@ -560,44 +556,6 @@
 				valiFormMiddle($(this),opts)
             })
         }
-        /**
-         * 下拉菜单
-         * */
-        $(document).off("click", ".J-select").on("click", ".J-select", function () {
-            $(".J-select").not($(this)).removeClass("current");
-            $(this).toggleClass("current");
-        }).off("click", ".J-select-option .option").on("click", ".J-select-option .option", function () {
-            var value = $(this).data("value");
-            var $select = $(this).parents(".J-select");
-            if (value != "") {
-                $select.find(".J-select-text").addClass("ipt-not-empty");
-            } else {
-                $select.find(".J-select-text").removeClass("ipt-not-empty");
-            }
-            $select.find(".J-select-text").val($(this).html().replace(/^\s+|\s+$/, "")).change();
-            $select.find(".J-select-value").val(value).data("option",$(this).data()).change();
-            $(".J-select").removeClass("current");
-            return false;
-        }).on("focus.select",".J-select-text",function () {
-            $(this).parents(".J-validItem").removeClass("validError").removeClass("validSuccess");
-        }).on("click.select", function (e) {
-            if (!$(e.target).hasClass("J-select") && $(e.target).parents(".J-select").length == 0) {
-                $(".J-select").removeClass("current");
-            }
-            //支持搜索功能，data-jp,data-qp,data-name
-        }).on("keyup.select",".J-select-text",function () {
-            var key = $.trim($(this).val())
-            if($(this).parents(".J-select-search").length){
-                $(this).parents(".J-select-search").find('.J-select-option .option').each(function () {
-                   var searchStr = [( $(this).data("jp")||"") ,($(this).data("jp")||"")  , ($(this).data("jp")||"" )].join(",")
-                    if( searchStr.toLowerCase().indexOf(key.toLowerCase())==-1){
-                        $(this).hide()
-                    }else{
-                        $(this).show()
-                    }
-                })
-            }
 
-        });
     })(jQuery, window.undefined);
 

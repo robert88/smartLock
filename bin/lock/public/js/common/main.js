@@ -192,7 +192,7 @@ $(function () {
 		$allHeadItem.removeClass("active");
 		$allBodyItem.removeClass("active");
 		$this.addClass("active");
-		$allBodyItem.eq(curIndex).addClass("active");
+		$allBodyItem.eq(curIndex).addClass("active").trigger("updateContent");
 
 		if( !$.trim($curBodyItem.html()) && $this.attr("href") && !$curBodyItem.hasClass("loading")){
 			$curBodyItem.addClass("loading");

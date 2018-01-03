@@ -1,16 +1,16 @@
 /*--login--*/
 body,#main-content{background: url(/public/images/login_bgx.gif);  }
 .login_m{width: 553px;margin:0 auto;padding-top:98px;}
-.login_logo{ text-align:center; margin-bottom:25px;}
+.login_logo{text-align:center;margin-bottom: 10px;}
 .login_boder{ background: #fff; overflow:hidden;box-shadow: 0 3px 12px rgba(27,31,35,0.15);}
-.login_padding{ padding:28px 47px 20px 47px ;}
+.login_padding{padding: 28px 47px 30px 47px;}
 .form-group{position:relative;}
 .form-group input{
 	display: block;
 	width:100%;
 	margin-top:10px;
 }
-.login_boder input.form-control {
+.form-control {
 	border: 1px solid #cad2db;
 	padding: 0 5px 0 30px;
 	-moz-border-radius: 5px;
@@ -27,7 +27,7 @@ body,#main-content{background: url(/public/images/login_bgx.gif);  }
 }
 .forgot a{
     text-decoration:underline;
-    color: #ccc;
+    color: #259cc5;
 }
 .btn-info {
 	color: #ffffff;
@@ -51,4 +51,11 @@ body,#main-content{background: url(/public/images/login_bgx.gif);  }
 	text-align: center;
 	width: 16px;
 	z-index: 1;
+}
+.captcha{
+	position:absolute;
+	right: 4px;
+	top: 33px;
+	width: 100px;
+	height: 30px;
 }
