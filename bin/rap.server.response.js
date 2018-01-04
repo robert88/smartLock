@@ -14,6 +14,8 @@ var fs = require("fs");
 
 var path = require("path");
 
+var qs = require('querystring');
+
 var zlibMap = {
 
 	"gzip": zlib.createGzip,
@@ -102,9 +104,49 @@ exports = module.exports = function (request, response) {
 
 	var url = filter(request.url, request.params) || request.url;
 
-
 	//匹配action文件
-    if (typeof actionMap[url] == "function") {
+	if (request.params.proxy){
+
+		var http = require('http');
+		var opt = {
+			host:'47.93.7.238',
+			port:'80',
+			method:request.method,//这里是发送的方法
+			path:"http://smart-api.kitcloud.cn"+url
+			// headers:{}
+		}
+
+		if(request.method=="POST"){
+			// 	写完body之后一定要在end之前write，且必须设置content-type
+			opt.headers={
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+			}
+		}else if(qs.stringify(request.params)){
+			http.path  = http.path +"?"+qs.stringify(request.params)
+		}
+
+
+		var body = '';
+		var req = http.request(opt, function(res) {
+			console.log("Got response: ".info , res.statusCode);
+			res.on('data',function(d){
+				body += d;
+			}).on('end', function(){
+				console.log( body.info);
+				console.log(res.headers.cookie)
+				response.writeHead(res.statusCode,res.headers);
+				response.end( body);
+			});
+
+		}).on('error', function(e) {
+			console.log("Got error: ".red + e.message);
+		});
+		if(request.method=="POST"){
+			req.write(qs.stringify(request.params));
+		}
+		req.end();
+		return;
+	}else if (typeof actionMap[url] == "function") {
         var timer = setTimeout(function () {
             throw new Error("response timeout");
         },600000);

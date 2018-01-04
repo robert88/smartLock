@@ -17,7 +17,7 @@
 			})
 		}
 	});
-	
+
 	//发送短信验证码
 	$form.find(".J-getMobileCode").click(function () {
 		var $this =$(this);
@@ -39,7 +39,7 @@
 		$text.data("text",60).html(60);
 
 		PAGE.ajax({type:"post",
-			data:{type:"register",mobile:mobile},
+			data:{sms_type:"register",phone:mobile},
 			url:"/smart_lock/v1/member/sms",
 			success:function () {
 				timoutCount($text,60,function(){

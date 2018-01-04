@@ -53,7 +53,7 @@
 			if(codeMap){
 				text = codeMap[ret.code]|| ret.msg||"unknown"
 			}else{
-				text = ret.code || ret.msg || "";
+				text =  ret.msg || ret.code || "";
 			}
 
 		} else {
@@ -103,10 +103,10 @@
 		// }catch (e){
 		// 	console.error(e);
 		// }
-		var apiDomain = "smart-api.kitcloud.cn";
-		if(ajaxOption.url.indexOf("http://")==-1){
-			ajaxOption.url= "http://" + (apiDomain+ajaxOption.url).toURI()
-		}
+		// var apiDomain = "smart-api.kitcloud.cn";
+//if(ajaxOption.url.indexOf("http://")==-1){
+//ajaxOption.url= "http://" + (apiDomain+ajaxOption.url).toURI()
+	//	}
 
 		if (checkAction(ajaxOption.url, ajaxOption.limitTime, error, errorCallBack) == false) {
 			console.error("canot find action:", ajaxOption.url, " or ajax limit time >", ajaxOption.limitTime);
@@ -169,6 +169,9 @@
 		//ajax不会转json
 		if (typeof ajaxOption.data != "string" && ajaxOption.processData == false) {
 			ajaxOption.data = $.param(ajaxOption.data);
+		}
+		if(typeof ajaxOption.data=="object"){
+			ajaxOption.data.proxy="true";
 		}
 
 		//发送请求

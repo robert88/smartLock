@@ -34,8 +34,8 @@
 						<tr v-for="($item, $index) in list.list">
 							<td><label class="label-checkbox"><input type="checkbox"><i class="fa-check"></i><i class="fa-square-o"></i></label></td>
 							<td><a class="J-dialog" data-dialog-url="#/web/personDetail.html" :data-id="$item.id">{{$item.user_name}}</a></td>
-							<td>{{$item.user_name}}</td>
 							<td>{{$item.user_phone}}</td>
+							<td>{{$item.user_email}}</td>
 							<td>{{$item.user_email}}</td>
 							<td>{{$item.role_id | role}}</td>
 							<td class="t-warning"> {{$item.type|type}}</td>

@@ -54,11 +54,11 @@ process.env.DEBUG =0;
 if(process.env.DEBUG*1){
 	var debugerProcess = childProcess.exec('start "%windir%\\system32\\cmd.exe" node-inspector --web-port=8081',function (err,stdout) {
 
-		// if(err){
-		// 	rap.error(err);
-		// }else {
-		// 	console.log("debuger process exit!");
-		// }
+		if(err){
+			rap.error(err);
+		}else {
+			console.log("debuger process exit!");
+		}
 		// wake.writeData(processConfigURL,JSON.stringify({pid:debugerProcess.pid}));
 	});
 
