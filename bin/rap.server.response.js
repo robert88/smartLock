@@ -106,7 +106,8 @@ exports = module.exports = function (request, response) {
 
 	//匹配action文件
 	if (request.params.proxy){
-
+		console.log("47.93.7.238".blue)
+		console.log(request)
 		var http = require('http');
 		var opt = {
 			host:'47.93.7.238',
@@ -118,9 +119,7 @@ exports = module.exports = function (request, response) {
 
 		if(request.method=="POST"){
 			// 	写完body之后一定要在end之前write，且必须设置content-type
-			opt.headers={
-				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-			}
+			opt.headers=request.headers
 		}else if(qs.stringify(request.params)){
 			http.path  = http.path +"?"+qs.stringify(request.params)
 		}
@@ -128,7 +127,7 @@ exports = module.exports = function (request, response) {
 
 		var body = '';
 		var req = http.request(opt, function(res) {
-			console.log("Got response: ".info , res.statusCode);
+			console.log("Got response: ".info , res);
 			res.on('data',function(d){
 				body += d;
 			}).on('end', function(){

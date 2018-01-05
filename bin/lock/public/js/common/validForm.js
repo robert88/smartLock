@@ -210,7 +210,7 @@
                     if(typeof errorCode=="object"){
                         errorParams = errorCode.slice(1);
                         errorCode = errorCode[0].toLowerCase();
-                        errorMsg = tpl.apply($target.data( checkTypeName+"-"+ errorCode + "-msg" ),errorParams) || errorMsg;
+                        errorMsg = tpl.apply($target.data( checkTypeName+"-"+ errorCode + "-msg" )||"",errorParams) || errorMsg;
                     }else if(typeof errorCode=="string"){
                         errorCode = errorCode.toLowerCase();
                         errorMsg = $target.data( checkTypeName+"-"+ errorCode + "-msg" ) || errorMsg

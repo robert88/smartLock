@@ -170,8 +170,13 @@
 		if (typeof ajaxOption.data != "string" && ajaxOption.processData == false) {
 			ajaxOption.data = $.param(ajaxOption.data);
 		}
+		//代理
 		if(typeof ajaxOption.data=="object"){
 			ajaxOption.data.proxy="true";
+		}else if(typeof ajaxOption.data!="string"){
+			ajaxOption.data ={proxy:true}
+		}else{
+			ajaxOption.data =ajaxOption.data+"&proxy=true"
 		}
 
 		//发送请求

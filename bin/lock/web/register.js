@@ -3,7 +3,21 @@
 	var $form = $("#registerForm");
 
 	$form.find(".J-submitBtn").addClass("J-submitFocus");
+	var $captcha = $form.find(".J-captcha");
+	$captcha.click(changeImage);
+	function changeImage(){
+		PAGE.ajax({
+			url:"/smart_lock/v1/member/captcha",
+			type:"get",
+			success:function (data) {
+				if(data){
+					$captcha[0].src = data.src;
+				}
+			}
+		})
+	}
 
+	changeImage();
 	//表单注册
 	$form.validForm({
 		success:function ($btn) {
@@ -25,8 +39,13 @@
 			return ;
 		}
 		var mobile = $form.find("input[name='phone']").val();
+		var captcha_code =  $form.find("input[name='captcha_code']").val();
 		if(!/^\d{11,}$/.test($.trim(mobile))){
-			$.tips("请填写正确的手机号","error");
+			$form.find("input[name='phone']").focus().parents(".J-validItem").removeClass("validSuccess").addClass("validError").find(".J-valid-msg").html("请填写正确的手机号");
+			return ;
+		}
+		if(!captcha_code){
+			$form.find("input[name='captcha_code']").parents(".J-validItem").removeClass("validSuccess").addClass("validError").find(".J-valid-msg").html("请填写正确的图形验证码")
 			return ;
 		}
 		$this.data("lock",true).data("lock-text",true);
@@ -39,7 +58,7 @@
 		$text.data("text",60).html(60);
 
 		PAGE.ajax({type:"post",
-			data:{sms_type:"register",phone:mobile},
+			data:{sms_type:"register",phone:mobile,captcha_code:captcha_code},
 			url:"/smart_lock/v1/member/sms",
 			success:function () {
 				timoutCount($text,60,function(){

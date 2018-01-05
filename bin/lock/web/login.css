@@ -40,6 +40,7 @@ body,#main-content{background: url(/public/images/login_bgx.gif);  }
 	background-color: #3ba4de;
 	border-color: #72bce4;
 }
+.captcha_code-img{position:absolute;right:0;top: 32px;}
 .form-group>i{
 	color: #CCCCCC;
 	display: block !important;
