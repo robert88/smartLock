@@ -1,0 +1,99 @@
+
+			<form role="form" id="addPerson">
+				<ul class="col">
+					<li class="col6 plr10">
+						<div class="form-group J-validItem validItem">
+							<label><i class="t-danger fa-asterisk mr5 fs10"></i>账号</label>
+							<i class="fa fa-user"></i>
+							<input type="text" class="form-control" placeholder="请输入邮箱！" name="user_email"
+								   check-type="required,email"
+								   data-email-msg="请填写正确的邮箱!"
+								   data-focus="true">
+						</div>
+					</li>
+					<li class="col6 plr10">
+						<div class="form-group J-validItem validItem">
+							<label ><i class="t-danger fa-asterisk mr5 fs10"></i>昵称</label>
+							<i class="fa fa-font"></i>
+							<input type="text" class="form-control" placeholder="请输入昵称！"  name="user_name"
+								   check-type="required maxlength" data-maxlength="30"
+								   data-maxlength-msg="最多只能输入30字符！"
+								   data-focus="true">
+						</div>
+					</li>
+				</ul>
+				<ul class="col">
+					<li class="col6 plr10">
+						<div class="form-group J-validItem validItem">
+							<label><i class="t-danger fa-asterisk mr5 fs10" style="visibility: hidden"></i>地址</label>
+							<i class="fa-building-o"></i>
+							<input type="text" class="form-control" name="address" placeholder="请输入地址!">
+						</div>
+					</li>
+					<li class="col6 plr10">
+						<div class="form-group J-validItem validItem">
+							<label><i class="t-danger fa-asterisk mr5 fs10" style="visibility: hidden"></i>身份证</label>
+							<i class="fa-list-alt"></i>
+							<input type="text" class="form-control" name="user_card" placeholder="请确认身份证!"
+								   check-type="idcard">
+						</div>
+					</li>
+				</ul>
+				<ul class="col">
+					<li class="col6 plr10">
+						<div class="form-group J-validItem validItem">
+							<label><i class="t-danger fa-asterisk mr5 fs10"></i>手机号码</label>
+							<i class="fa-phone"></i>
+							<input type="text" class="form-control" name="user_phone" placeholder="请输入手机号码!"
+								   check-type="required,mobile"
+								   data-mobile-msg="请填写正确的手机号码!"
+								   data-focus="true">
+						</div>
+					</li>
+					<li class="col6 plr10">
+						<div class="form-group J-validItem validItem">
+							<label><i class="t-danger fa-asterisk mr5 fs10"></i>角色</label>
+							<i class="fa-microphone-slash"></i>
+							<div class="J-select  J-select-search">
+								<input class="form-control J-select-text" type="text" placeholder="请选择类型">
+								<input class="J-select-value" name="role_id" type="hidden" check-type="required">
+								<i class="fa-angle-down"></i>
+								<div class="J-select-option" id="roleList">
+									<a v-for="($item, $index) in list"
+									   v-bind="{ 'data-jp':$item.jp, 'data-qp': $item.qp ,'data-name':$item.name, 'data-value':$item.id}"
+									   class="option">{{$item.name}}</a>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<ul class="col">
+					<li class="col6 plr10">
+						<div class="form-group J-validItem validItem">
+							<label><i class="t-danger fa-asterisk mr5 fs10"></i>密码</label>
+							<i class="fa fa-lock"></i>
+							<input type="password" class="form-control" name="login_pwd" id="J-password"
+								   placeholder="请输入密码!"
+								   check-type="required,password"
+								   data-password-msg="密码必须包含字母和数字，且至少8个字符！"
+								   data-focus="true">
+						</div>
+					</li>
+					<li class="col6 plr10">
+						<div class="form-group J-validItem validItem">
+							<label><i class="t-danger fa-asterisk mr5 fs10"></i>确认密码</label>
+							<i class="fa fa-check-square-o"></i>
+							<input type="password" class="form-control"
+								   placeholder="请确认密码!"
+								   data-pswagain="#J-password"
+								   check-type="required,pswagain"
+								   data-pswagain-msg="密码不一致!">
+						</div>
+					</li>
+
+				</ul>
+
+				<div class="dialogBtns">
+					<a class="btn btn-danger J-submitBtn" >提交</a>
+				</div>
+			</form>

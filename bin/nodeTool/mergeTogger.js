@@ -102,7 +102,7 @@ function handleOneInclude(file,outPath,indexData){
 		//将简写替换加上.html
 		lastData = lastData.replace(/href\s*=\s*"?#([^"]+)"?/gm,function(m,m1){var t=m1.split("?");return ('href="'+(t[0].indexOf(".html")!=-1?t[0]:t[0]+".html")+'"')})
 
-		lastData = lastData.replace(/"\/index\.html#!\/web/gm,"\"/web").replace(/"\/admin\.html#!\/admin/gm,"\"/admin").replace(/"\/index\.html#/gm,"\"/web/home.html#").replace(/"\/index\.html"/gm,"\"/web/home.html\"").replace(/"\/admin\.html"/gm,"\"/admin/index.html\"")
+		lastData = lastData.replace(/"\/index\.html#!\/web/gm,"\"/web").replace(/"\/admin\.html#!\/admin/gm,"\"/admin").replace(/"\/index\.html#/gm,"\"/web/person.html#").replace(/"\/index\.html"/gm,"\"/web/person.html\"").replace(/"\/admin\.html"/gm,"\"/admin/index.html\"")
 		wake.writeData(outFile,lastData)
 }
 /**

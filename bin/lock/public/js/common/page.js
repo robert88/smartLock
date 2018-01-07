@@ -152,7 +152,7 @@
 
 		$.each(includeInfo.fileList,function (idx,val) {
 
-			PAGE.load(val.url,function (subhtml,config) {
+			PAGE.loadPage(val.url,function (subhtml,config) {
 				//去重复
 				if(!uniqueAction[config.action]){
 					configs.push(config);
@@ -248,6 +248,8 @@
 		}
 
 		PAGE.destroy = newDestroy;
+
+		$.dialog.closeAll("all");
 	}
 
 	/**
@@ -326,13 +328,24 @@
 		}
 	}
 
-	function load(paths, callback, loadFileType) {
+	function load(paths, loadFileType,callback) {
 		paths = $.toArray(paths);
 		var loadStackHandle = [];
 		for (var i = 0; i < paths.length; i++) {
 			if (!pathmap[paths[i]]) {
 				pathmap[paths[i]] = {status: "ready"};
-			}
+			} else if(pathmap[paths[i]].status=="loaded"){
+		         //加加了但是删除掉了
+		        var $path;
+		        if(loadFileType == "link"){
+                    $path = $("[href='"+pathmap[paths[i]].src+"']");
+		        }else{
+                    $path = $("[src='"+pathmap[paths[i]].src+"']");
+		        }
+		        if($path.length==0){
+		            pathmap[paths[i]] = {status: "ready"};
+		        }
+		    }
 			loadStackHandle.push({src: paths[i]});
 		}
 		var len = loadStackHandle.length;
@@ -341,6 +354,7 @@
 		}//最后一个js带上callback
 		append(loadStackHandle, loadFileType);
 	}
+	PAGE.loadFile = load;
 	function append(loadStackHandle, loadFileType) {
 		if (loadStackHandle.length == 0) {
 			return;
@@ -348,6 +362,7 @@
 		var handle = loadStackHandle.shift();
 		var path = handle.src;
 		if (pathmap[path].status != "ready"){
+	
 			return
 		}
 		pathmap[path].status = "loadding";
@@ -428,7 +443,7 @@
 			});
 
 			//加载样式
-			load(cssFile,function () {
+			load(cssFile,"link",function () {
 
 				//加载内容
 				if(typeof pageDsync=="string"){
@@ -438,15 +453,15 @@
 				}
 
 				//加载js
-				load(jsFile,function () {
+				load(jsFile,"script",function () {
 					if(typeof pageDsync=="string"){
 						$(pageDsync).trigger("pagecontentloaded");
 					}else if(typeof pageDsync=="function"){
 						pageDsync();
 					}
-				},"script");
+				});
 
-			},"link");
+			});
 		});
 	}
 	/**
@@ -454,7 +469,7 @@
 	 * */
 	PAGE.insertByUrl = function (dom,url,callBack) {
 
-		PAGE.load(url,function (subhtml,config) {
+		PAGE.loadPage(url,function (subhtml,config) {
 			//不需要传动态div
 			insertHtml(subhtml,$(dom),config,callBack)
 		});
@@ -507,7 +522,7 @@
 		});
 	}
 
-	PAGE.load = function (hash,callback) {
+	PAGE.loadPage = function (hash,callback) {
 
 		var config = PAGE.getHashConfig(hash,false);
 

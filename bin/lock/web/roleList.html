@@ -1,0 +1,103 @@
+<div class="wrap">
+	<div class="box border blue">
+		<div class="box-title">
+			<h4><i class="fa fa-bars"></i> <span class="box-title-text">角色列表</span></h4>
+		</div>
+		<div class="box-body">
+			<div class="tabbable header-tabs">
+				<ul class="nav nav-tabs">
+					<li class="active" href="#/web/home.html" data-title="角色列表"><a data-toggle="tab"><i class="fa fa-search-plus"></i> <span>角色列表</span></a></li>
+				</ul>
+				<ul class="tab-content">
+					<li class="tab-content-item active" id="roleList">
+						<div class="mb10">
+							<a class=" btn btn-info J-add" ><i class="fa-turkish-lira-try mr5"></i>添加角色</a>
+							<a class=" btn btn-danger" ><i class="fa-trash-o mr5"></i>批量删除角色</a>
+							<a class="search-wrap"><input type="text" class="form-control"  placeholder="请输入角色名查询"> <i class="fa-search" v-on:click="seachPerson"></i></a>
+						</div>
+
+						<!--<div class="search-filter-wrap ease">-->
+							<!--<form class="search-filter plr10 pt20 pb10 m10">-->
+								<!--<ul class="col">-->
+									<!--<li class="col3 plr10">-->
+										<!--<div class="form-group-inline">-->
+											<!--<label>账号</label>-->
+											<!--<input type="text" class="form-control" placeholder="请输入手机或者邮箱">-->
+										<!--</div>-->
+									<!--</li>-->
+									<!--<li class="col3 plr10">-->
+										<!--<div class="form-group-inline">-->
+											<!--<label >昵称</label>-->
+											<!--<input type="text" class="form-control" >-->
+										<!--</div>-->
+									<!--</li>-->
+									<!--<li class="col3 plr10">-->
+										<!--<div class="form-group-inline">-->
+											<!--<label >身份证</label>-->
+											<!--<input type="text" class="form-control" name="user_card" >-->
+										<!--</div>-->
+									<!--</li>-->
+
+									<!--<li class="col3 plr10">-->
+										<!--<div class="form-group-inline">-->
+											<!--<label>角色</label>-->
+											<!--<div class="J-select  J-select-search form-control-select">-->
+												<!--<input class="form-control J-select-text" type="text" placeholder="请选择类型">-->
+												<!--<input class="J-select-value" name="Country" type="hidden" check-type="required">-->
+												<!--<i class="fa-angle-down"></i>-->
+												<!--<div class="J-select-option">-->
+													<!--<a class="option" data-jp="gly" data-qp="guanliyuan" data-value="1" data-name="管理员">管理员</a>-->
+													<!--<a class="option" data-jp="gly" data-qp="guanliyuan" data-value="1" data-name="管理员">管理员</a>-->
+												<!--</div>-->
+											<!--</div>-->
+										<!--</div>-->
+									<!--</li>-->
+								<!--</ul>-->
+								<!--<div class="tc bd-top mt10 pt10">-->
+									<!--<a class="btn btn-warning" style="min-width: 100px"><i class="fa-search mr5"></i>查询</a>-->
+								<!--</div>-->
+							<!--</form>-->
+						<!--</div>-->
+
+						<table class="table table-striped table-bordered table-hover J-table" id="roleList-table">
+							<thead>
+							<tr>
+								<th><label class="label-checkbox "><input type="checkbox" class="J-all-checkBox"><i class="fa-check"></i><i class="fa-square-o"></i></label></th>
+								<th><i class="fa-user"></i> 角色名</th>
+								<th><i class="fa-tablet "></i> 是否是管理员</th>
+								<th><i class="fa-bars"></i> 更新时间</th>
+								<th><i class="fa-wrench"></i> 操作</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr v-for="($item, $index) in list"  v-if="!$item.isTempl">
+								<td><label class="label-checkbox"><input type="checkbox"><i class="fa-check"></i><i class="fa-square-o"></i></label></td>
+								<td>{{$item.role_name}}</td>
+								<td>{{$item.is_admin|isAdmin}}</td>
+								<td>{{$item.update_time}}</td>
+								<td>
+									<a class="label label-success label-sm mr20 J-modify" v-bind="{'data-templ-index':$index}">修改</a>
+									<a class="label label-danger label-sm J-delete" v-bind="{'data-templ-index':$index}"><i class="fa-trash-o" title="删除"></i></a>
+								</td>
+							</tr>
+							<tr v-for="($item, $index) in list" v-if="$item.isTempl" class="templ-data" >
+								<td></td>
+								<td><input type="text" v-model="$item.role_name"></td>
+								<td><label class="label-checkbox"><input type="checkbox" v-model="$item.is_admin"><i class="fa-check"></i><i class="fa-square-o"></i></label></td>
+								<td>&nbsp;</td>
+								<td>
+									<a class="label label-success label-sm mr20 J-save" v-bind="{'data-templ-index':$index}" v-show="$item.isTempl=='add'">保存</a>
+									<a class="label label-success label-sm mr20 J-update" v-bind="{'data-templ-index':$index}" v-show="$item.isTempl=='modify'">保存</a>
+									<a class="label label-danger label-sm J-delete" v-bind="{'data-templ-index':$index}"><i class="fa-trash-o" title="删除"></i></a>
+								</td>
+							</tr>
+
+							</tbody>
+						</table>
+						<ul class="pagination"></ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

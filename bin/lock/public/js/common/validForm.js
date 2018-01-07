@@ -82,12 +82,15 @@
                                     return false;
                                 }
                         },
-                required:{ check:function(value) {return ($.trim(value) == '');} },
+                required:{ check:function(value) {return ($.trim(value) == '');} ,msg:"该项为必填项！"},
                 mobile:{ check:function(value) {return (!/^\d{11,}$/.test($.trim(value)));}},
                 letter:{check:function(value) { value = $.trim(value);return (!getByteLen(value)==value.length)} },
                 chinese:{check:function(value) {return (!/^[\u4e00-\u9fff]+$/.test($.trim(value)));} },
                 date:{check:function(value){return(/Invalid|NaN/.test(new Date($.trim(value)).toString()));}},
-                idcard:{ check:function(value){return(!(/^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$/.test(value)||/^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{4}$/.test(value)));}},
+                idcard:{
+					check:function(value){return(!(/^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$/.test(value)||/^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{4}$/.test(value)));},
+					msg:"请输入正确的身份证号码"
+				},
                 maxvalue:{check:function(value, $obj) {
                                 //传递了比较值
                                 var value2 = $obj.data("maxvalue");
@@ -172,7 +175,8 @@
                 password: {
                     check:function(value) {
 						return ( !(/^[a-z0-9]{8,}$/i.test(value)&&/[a-z]/i.test(value)&&/[0-9]/.test(value)) );
-                    }
+                    },
+					msg:"密码必须包含字母和数字，且至少8个字符！"
                 }
 
         };
@@ -215,8 +219,10 @@
                         errorCode = errorCode.toLowerCase();
                         errorMsg = $target.data( checkTypeName+"-"+ errorCode + "-msg" ) || errorMsg
                     }
+					//使用系统自带
+					errorMsg = errorMsg || validRules[ checkTypeName ].msg
 
-                 //校验成功之后的函数,“或”规则只要成功就跳出
+					//校验成功之后的函数,“或”规则只要成功就跳出
                 }else if( orCheck ){
                     errorMsg ="";
                     errorCode ="";
@@ -245,27 +251,31 @@
 			}
 
             var checkTypes = $target.attr( "check-type" );
-			var checkBothType
+			var checkBothType;
+			//不是必填，且如果输入就要校验
+			if(checkTypes.indexOf("required")==-1 && !value){
+				
+			}else{
+				//共同校验分隔符'空格' '，' '&&'
+				checkTypes = ( checkTypes && checkTypes.split( /\s+|,|&&/ ) ) ||[];
 
-            //共同校验分隔符'空格' '，' '&&'
-            checkTypes = ( checkTypes && checkTypes.split( /\s+|,|&&/ ) ) ||[];
+				for(var i=0; i<checkTypes.length; i++){
+					//"或"规则的检测项
+					checkBothType = checkTypes[ i ].split( "|" );
+					//校验"或"规则
+					var checkStatus = checkBothRule(checkBothType,$target,value,from);
 
-            for(var i=0; i<checkTypes.length; i++){
-                //"或"规则的检测项
-                checkBothType = checkTypes[ i ].split( "|" );
-                //校验"或"规则
-               var checkStatus = checkBothRule(checkBothType,$target,value,from);
-
-               //当前校验有错误
-                if(checkStatus.code){
-                    if( $.type( error ) == "function"){
-                        error( $target, checkStatus.code, checkStatus.msg ,checkStatus.checkType);
-                    }
-                    return false;
-                }
+					//当前校验有错误
+					if(checkStatus.code){
+						if( $.type( error ) == "function"){
+							error( $target, checkStatus.code, checkStatus.msg ,checkStatus.checkType);
+						}
+						return false;
+					}
 
 
-            }//end for i
+				}//end for i
+			}
 
 			//全部成功之后单个校验完成
 			if( $.type( success ) == "function" ){
@@ -418,7 +428,7 @@
             var $input = $form.find( "input" );
             var $select = $form.find( "select" );
             var $textarea = $form.find( "textarea" )
-            var $check = $input.add($select).add($textarea).not( ".noCheck" ).not(":disabled").filter( function(){
+            var $check = $input.add($select).add($textarea).not( ".noCheck" ).not("[type='checkbox']").not(":disabled").filter( function(){
                 var checkType = $( this ).attr( "check-type" )
                 if(checkType || (checkType && checkType.indexOf("required")==-1   )){
                     return true;
@@ -439,6 +449,12 @@
                             return false;
                         }
                     }
+					if($(this).attr("type")=="checkbox"){
+						if($(this).prop("checked") ){
+							ret = false;
+							return false;
+						}
+					}
                 });
                 if(ret){
                     $form.find(".J-submitBtn.J-submitFocus").removeClass("disabled");
@@ -447,6 +463,14 @@
                 }
             }
             //输入之后变亮
+			$form.off("blur.checkBtn", "input,textarea").on("blur.checkBtn","input,textarea",function () {
+				checkBtn();
+				if($.trim( $(this).val() )){
+					$(this).addClass("ipt-not-empty");
+				}else{
+					$(this).removeClass("ipt-not-empty");
+				}
+			});
             $form.off("keyup.checkBtn", "input,textarea").on("keyup.checkBtn","input,textarea",function () {
                 checkBtn();
                 if($.trim( $(this).val() )){
@@ -501,7 +525,7 @@
                     if (typeof opts.error == "function" && opts.error($target,code, msg, type,$form)===false) {
                         return ;
                     }
-                    var $parents = $target.parents(".J-validItem").addClass("validError");
+                    var $parents = $target.parents(".J-validItem").addClass("validError").removeClass("validSuccess")
 					if(!$parents.find(".J-valid-msg").length){
 						$parents.append("<div class='J-valid-msg validErrMsg'></div>")
 					}

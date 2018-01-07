@@ -4,7 +4,7 @@ $(function () {
 			hasSub:"",
 			active:"",
 			sub:[],
-			href:"#/web/home.html",
+			href:"#/web/person.html",
 			tips:0,
 			text:"成员管理",
 			icon:"fa-group-users"
@@ -22,7 +22,7 @@ $(function () {
 			hasSub:"",
 			active:"",
 			sub:[],
-			href:"",
+			href:"#/web/roleList.html",
 			tips:0,
 			text:"权限管理",
 			icon:"fa-legal"
@@ -112,10 +112,17 @@ $(function () {
 		}
 	];
 
-	PAGE.$pageVue = new Vue({
+	var $$header = new Vue({
+		el:"#header-user",
+		data:{
+			user_name:""
+		}
+	});
+	var $$slider = new Vue({
 		el:"#sidebar",
 		data:{
-			slideBars:slideBars
+			slideBars:slideBars,
+			user_name:""
 		},
 		filters:{
 			href:function (href) {
@@ -211,21 +218,146 @@ $(function () {
 	});
 
 	$(document).on("click",".J-loginout",function () {
-		window.location.hash="#/web/login.html?nomenu=1";
-		return;
-		// PAGE.ajax({
-		// 	type:'post',
-		// 	url:"/api/user/register",
-		// 	success:function (ret) {
-		//
-		// 	}
-		// })
+		PAGE.clearToken();
+		return false;
 	});
 
-	$(document).on("click",".dropdown",function () {
+	PAGE.setToken = function (ret) {
+		if(!ret){
+			return
+		}
+		if(ret.token){
+			$.cookie("token",ret.token);
+		}
+		if(ret.role_id){
+			$.cookie("role_id",ret.role_id);
+		}
+		if(ret.user_email){
+			$.cookie("user_email",ret.user_email);
+		}
+		if(ret.user_name){
+			$.cookie("user_name",ret.user_name);
+			$$header.user_name = ret.user_name
+		}
+		location.hash = ""
+	}
+	PAGE.getToken = function () {
+		var token =$.cookie("token");
+		if($.cookie("user_name")){
+			$$header.user_name = $.cookie("user_name");
+		}
+		if(token){
+			return token;
+		}else{
+			window.location.hash="#/web/login.html?nomenu=1";
+		}
+		return "";
+	}
+	PAGE.clearToken = function () {
+		$.cookie("token","");
+		$.cookie("role_id","");
+		$.cookie("user_email","");
+		$.cookie("user_name","");
+		$$header.user_name = "";
+		window.location.hash="#/web/login.html?nomenu=1";
+	}
+	$(document).on("click",function (e) {
+		var $dropdown;
+		if($(e.target).hasClass("dropdown")){
+			$dropdown = $(e.target);
+		}else if($(this).parents(".dropdown").length){
+			$dropdown = $(this).parents(".dropdown");
+		}
+		$(".dropdown").not($dropdown).removeClass("open");
+	}).on("click",".dropdown",function () {
 		$(this).toggleClass("open");
 		return false;
-    })
+    }).off("click.dragbg touchstart.dragbg", ".J-dialog").on("click.dragbg touchstart.dragbg", ".J-dialog", function (evt) {
+		var $this = $(this);
+		var $pageDsync = $("#pageDsync")
+		//防止重复弹出
+		if($pageDsync.data("dialog")){
+			return;
+		}
+		$.dialog.closeAll();
+		$pageDsync.data("dialog",true);
+		var url = $this.data("url");
+		var dialogId = $this.data("id");
+		var dialogClass = $this.data("class");
+		if (url) {
+			$(".loading").show();
+			$.dialog("url:" + url, {
+				dialogClass: dialogClass,
+				title:$this.data("title"),
+				bodyStyle:"max-width:1000px",
+				id: (dialogId ? dialogId : ""),
+				maskClose: false,
+				closeAfter: function () {
+					$pageDsync.data("dialog",false);
+				},
+				ready: function ($dialog) {
+					$(".loading").hide();
+					//绑定到按钮上的ready事件
+					if (typeof $this[0].dialogReady == "function") {
+						$this[0].dialogReady($dialog);
+					}
+				}
+			});
+		}
 
+
+	});
+	/*
+	* table组件
+	* */
+	$(document).on("click",".J-all-checkBox",function () {
+		var $this = $(this);
+		var $table = $this.parents(".J-table");
+		if($this.prop("checked")){
+			$table.find("input[type='checkbox']").not($this).prop("checked",true);
+		}else{
+			$table.find("input[type='checkbox']").not($this).prop("checked",false);
+		}
+	})
+
+	/**
+	 * 下拉菜单
+	 * */
+	$(document).off("click", ".J-select").on("click", ".J-select", function () {
+		$(".J-select").not($(this)).removeClass("current");
+		$(this).toggleClass("current");
+	}).off("click", ".J-select-option .option").on("click", ".J-select-option .option", function () {
+		var value = $(this).data("value");
+		var $select = $(this).parents(".J-select");
+		if (value != "") {
+			$select.find(".J-select-text").addClass("ipt-not-empty");
+		} else {
+			$select.find(".J-select-text").removeClass("ipt-not-empty");
+		}
+		$select.find(".J-select-text").val($(this).html().replace(/^\s+|\s+$/, "")).change();
+		$select.find(".J-select-value").val(value).data("option",$(this).data()).change();
+		$(".J-select").removeClass("current");
+		return false;
+	}).on("focus.select",".J-select-text",function () {
+		$(this).parents(".J-validItem").removeClass("validError").removeClass("validSuccess");
+	}).on("click.select", function (e) {
+		if (!$(e.target).hasClass("J-select") && $(e.target).parents(".J-select").length == 0) {
+			$(".J-select").removeClass("current");
+		}
+		//支持搜索功能，data-jp,data-qp,data-name
+	}).on("keyup.select",".J-select-text",function () {
+		var key = $.trim($(this).val())
+		if($(this).parents(".J-select-search").length){
+			$(this).parents(".J-select-search").find('.J-select-option .option').each(function () {
+				var searchStr = [( $(this).data("jp")||"") ,($(this).data("qp")||"")  , ($(this).data("name")||"" )].join(",")
+				if( searchStr.toLowerCase().indexOf(key.toLowerCase())==-1){
+					$(this).hide()
+				}else{
+					$(this).show()
+				}
+			})
+		}
+
+	});
 
 });

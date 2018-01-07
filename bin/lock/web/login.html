@@ -3,32 +3,34 @@
 	<div class="login_boder">
 		<div class="login_padding" id="login_model">
 			<form role="form" id="loginForm">
-				<div class="form-group">
-					<label >账号</label>
-					<i class="fa-user"></i>
+				<div class="form-group J-validItem validItem">
+					<label><i class="t-danger fa-asterisk mr5 fs10"></i>账号</label>
+					<i class="fa fa-user"></i>
 					<input type="text" class="form-control" placeholder="请输入邮箱！" name="email"
 						   check-type="required,email"
 						   data-email-msg="请填写正确的邮箱!"
 						   data-focus="true">
 				</div>
-				<div class="form-group">
-					<label >密码</label>
-					<i class="fa-lock"></i>
-					<input type="password" class="form-control" name="password"  placeholder="请输入密码!"
+				<div class="form-group J-validItem validItem">
+					<label ><i class="t-danger fa-asterisk mr5 fs10"></i>密码</label>
+					<i class="fa fa-lock"></i>
+					<input type="password" class="form-control" name="password" id="J-password" placeholder="请输入密码!"
+						   check-type="required"
+						   data-focus="true">
+				</div>
+				<div class="form-group J-validItem validItem">
+					<label ><i class="t-danger fa-asterisk mr5 fs10"></i>图像验证码</label>
+					<i class="fa-picture-o"></i>
+					<img class="captcha-code-img J-captcha" >
+					<input type="text" class="form-control" name="captcha_code" placeholder="请输入图片验证码!"
 						   check-type="required"
 						   data-focus="true">
 				</div>
 				<div class="form-group">
-					<label>图片验证码</label>
-					<i class="fa-check-square-o"></i>
-					<img class="J-captcha captcha">
-					<input type="password" class="form-control" name="" placeholder="请输入图片验证码">
-				</div>
-				<div class="form-group">
-					<a class="btn btn-info" href="#/web/home.html">登录</a>
+					<a class="btn btn-info J-submitBtn">登录</a>
 				</div>
 			</form>
-			<p class="forgot"><a  href="javascript:void(0);">忘记密码?</a><a class="fr" href="#/web/register.html?nomenu=1">注册</a></p>
+			<p class="forgot"><a  href="#/web/forgetPsw.html?nomenu=1">忘记密码?</a><a class="fr" href="#/web/register.html?nomenu=1">注册</a></p>
 		</div>
 
 	</div><!--login_boder end-->

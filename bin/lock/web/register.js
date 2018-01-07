@@ -2,8 +2,12 @@
 
 	var $form = $("#registerForm");
 
-	$form.find(".J-submitBtn").addClass("J-submitFocus");
 	var $captcha = $form.find(".J-captcha");
+
+	//回车提交
+	$form.find(".J-submitBtn").addClass("J-submitFocus");
+
+
 	$captcha.click(changeImage);
 	function changeImage(){
 		PAGE.ajax({
@@ -26,7 +30,9 @@
 				type:'post',
 				url:"/smart_lock/v1/member/register",
 				success:function (ret) {
+					PAGE.setToken(ret);
 					$.tips("注册成功","success");
+					
 				}
 			})
 		}
@@ -61,8 +67,8 @@
 			data:{sms_type:"register",phone:mobile,captcha_code:captcha_code},
 			url:"/smart_lock/v1/member/sms",
 			success:function () {
+				$.tips("发送成功","success");
 				timoutCount($text,60,function(){
-					$.tips("发送成功","success")
 					$text.data("text",originText).html(originText);
 					$this.data("lock-text",false);
 				});

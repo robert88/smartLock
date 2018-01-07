@@ -93,20 +93,39 @@
 			error = ajaxOption.error || defaultError,
 			complete = ajaxOption.complete,
 			errorCallBack = ajaxOption.errorCallBack;
-		
-		// try{
-		// 	document.domain = "smart-api.kitcloud.cn";
-		// 	var apiDomain = "smart-api.kitcloud.cn";
-		// 	if(ajaxOption.url.indexOf("http://")==-1){
-		// 		ajaxOption.url= "http://" + (apiDomain+ajaxOption.url).toURI()
-		// 	}
-		// }catch (e){
-		// 	console.error(e);
-		// }
-		// var apiDomain = "smart-api.kitcloud.cn";
-//if(ajaxOption.url.indexOf("http://")==-1){
-//ajaxOption.url= "http://" + (apiDomain+ajaxOption.url).toURI()
-	//	}
+		//ajax不会转json
+		if (typeof ajaxOption.data != "string" && ajaxOption.processData == false) {
+			ajaxOption.data = $.param(ajaxOption.data);
+		}
+		//代理
+		var apiDomain = "smart-api.kitcloud.cn";
+		try{
+
+			if(window.location.host.indexOf(".kitcloud.cn")!=-1){
+				document.domain = "kitcloud.cn";
+			}
+			
+			if(ajaxOption.url.indexOf("http://")==-1){
+				ajaxOption.url= "http://" + (apiDomain+ajaxOption.url).toURI()
+			}
+		}catch (e){
+			console.error(e);
+		}
+
+		if(ajaxOption.url.indexOf("http://")==-1){
+			ajaxOption.url= "http://" + (apiDomain+ajaxOption.url).toURI()
+		}
+
+		if(typeof ajaxOption.data=="object"){
+			ajaxOption.data.proxy="true";
+		}else if(typeof ajaxOption.data!="string"){
+			ajaxOption.data ={proxy:true}
+		}else{
+			ajaxOption.data =ajaxOption.data+"&"+$.param({proxy:true})
+		}
+		ajaxOption.crossDomain=true;
+		ajaxOption.xhrFields={withCredentials:true};
+
 
 		if (checkAction(ajaxOption.url, ajaxOption.limitTime, error, errorCallBack) == false) {
 			console.error("canot find action:", ajaxOption.url, " or ajax limit time >", ajaxOption.limitTime);
@@ -166,18 +185,7 @@
 			errorHander(msg, "sysError", error, errorCallBack,ajaxOption.msg)
 		}
 
-		//ajax不会转json
-		if (typeof ajaxOption.data != "string" && ajaxOption.processData == false) {
-			ajaxOption.data = $.param(ajaxOption.data);
-		}
-		//代理
-		if(typeof ajaxOption.data=="object"){
-			ajaxOption.data.proxy="true";
-		}else if(typeof ajaxOption.data!="string"){
-			ajaxOption.data ={proxy:true}
-		}else{
-			ajaxOption.data =ajaxOption.data+"&proxy=true"
-		}
+
 
 		//发送请求
 		if(options.loading){

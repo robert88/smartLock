@@ -105,21 +105,23 @@ exports = module.exports = function (request, response) {
 	var url = filter(request.url, request.params) || request.url;
 
 	//匹配action文件
+
 	if (request.params.proxy){
-		console.log("47.93.7.238".blue)
-		console.log(request)
+		console.log("proxy:47.93.7.238".blue,url.blue);
+		console.log(request.headers)
 		var http = require('http');
 		var opt = {
 			host:'47.93.7.238',
 			port:'80',
 			method:request.method,//这里是发送的方法
-			path:"http://smart-api.kitcloud.cn"+url
+			path:(url.indexOf("http")==-1)?("http://smart-api.kitcloud.cn"+url):url
 			// headers:{}
 		}
 
 		if(request.method=="POST"){
 			// 	写完body之后一定要在end之前write，且必须设置content-type
 			opt.headers=request.headers
+
 		}else if(qs.stringify(request.params)){
 			http.path  = http.path +"?"+qs.stringify(request.params)
 		}
@@ -127,14 +129,21 @@ exports = module.exports = function (request, response) {
 
 		var body = '';
 		var req = http.request(opt, function(res) {
-			console.log("Got response: ".info , res);
+			console.log("Got response: ".info , res.headers);
 			res.on('data',function(d){
 				body += d;
 			}).on('end', function(){
 				console.log( body.info);
-				console.log(res.headers.cookie)
+				// if(res.headers["set-cookie"]){
+				// 	res.headers["set-cookie"].forEach(function(val,idx){
+				// 		res.headers["set-cookie"][idx] = val.replace("Domain=smart-api.ckitcloud.cn;","HttpOnly;");
+				// 	});
+				// 	response.writeHead(res.statusCode,{
+				// 		"date":new Date(),
+				// 		"Connection":"Keep-Alive","content-type":"text/html;charset=utf-8","set-cookie":res.headers["set-cookie"]});
+				// 	response.end( body);
+				// }
 				response.writeHead(res.statusCode,res.headers);
-				response.end( body);
 			});
 
 		}).on('error', function(e) {

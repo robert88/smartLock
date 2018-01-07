@@ -28,11 +28,16 @@
 		closeAfter:null,//关闭之前
 		closeBefore:null,//关闭之后
 		changeSize:false,//调节宽高
+		minTop:20,
 		ready:null//dialog的dom已经初始化
 		//headerStyle,titleStyle,closeStyle,bodyStyle,maskStyle
 		//renderAfter
 	}
-
+if(!$.i18n){
+	$.i18n = function (key) {
+		return key;
+	}
+}
 	//dialog初始化程序入口
 	// dialog($(".data"))-->弹出一个默认窗口
 	//dialog("msg",opts)
@@ -63,23 +68,21 @@
 
 				$loading.remove();
 
-				initDialog($dialog,$header,$title,$close,$body,$footer,$mask,opts);
+				PAGE.loadFile(action.replace(".html",".css?ver="+PAGE.version),"link",function () {
+					initDialog($dialog,$header,$title,$close,$body,$footer,$mask,opts);
 
-				if(window.PAGE.STATICDEBUG){
+					if(window.PAGE.STATICDEBUG){
+						var s = document.createElement("script");
 
-					$body.prepend('<link rel="stylesheet" type="text/css" href="{0}">'.tpl(action.replace(".html",".css?ver="+PAGE.version)) );
+						s.type="text/javascript";
 
-					var s = document.createElement("script");
+						$body.append(s);
 
-					s.type="text/javascript";
+						//应该在append之后赋值
+						s.src =action.replace(".html",".js?ver="+PAGE.version);
 
-					$body.append(s);
-
-					//应该在append之后赋值
-					s.src =action.replace(".html",".js?ver="+PAGE.version);
-
-				}
-
+					}
+				});
 			});
 
 		}else{
@@ -102,6 +105,8 @@
 
 		opts.frame = $dialog[0];
 
+		$dialog.data("opts",opts);
+
 		$.dialog.dlOpts.push(opts);
 		
 		if(typeof opts.ready=="function"){
@@ -114,7 +119,7 @@
 	function renderDialog($dialog,$header,$title,$close,$body,$footer,$mask,opts){
 
 		var dialogIndex = ";z-index:"+ (opts.zindex*1 + ($.dialog.dlOpts.length*2+1))+";";
-	
+
 		//--dl-mask----------------------
 		if(opts.mask){
 
@@ -148,7 +153,7 @@
 		if(opts.dialogClass){
 			$dialog.addClass(opts.dialogClass);
 		}
-		renderStyle($dialog,"position:fixed;" + dialogIndex + (opts.dialogStyle||"") );
+		renderStyle($dialog,"position:absolute;" + dialogIndex + (opts.dialogStyle||"") );
 
 		//--dl-body 样式------------------
 		//兼容之前代码
@@ -158,7 +163,7 @@
 		if(opts.height!="auto"){
 			var h = parseFloat($.trim(opts.height),10)+"px";
 		}
-		var oldBodyCode = "width:"+(w?w:opts.width)+";"+"height:"+(h?h:opts.height)+";padding:10px;";
+		var oldBodyCode = "width:"+(w?w:opts.width)+";"+"height:"+(h?h:opts.height)+";padding:15px;";
 	
 		renderStyle($body, oldBodyCode+ (opts.bodyStyle||"") );
 
@@ -170,9 +175,10 @@
 			//关闭样式
 			var titleHasClose;
 			if(opts.title){
-				titleHasClose = "right:0;top:0;color:#fff;font-size:28px;line-height:42px;background-color:#cb0101;width:42px;height:40px;"
+				titleHasClose = "right:0;top:0;color:#fff;font-size:28px;line-height:38px;background-color:#cb0101;width:42px;height:40px;"
 			}else{
-				 titleHasClose = "background-color:#fff;right:-18px;top:0px;width:18px;height:100%;font-size:12px;"
+
+				 titleHasClose = "background-color:#fff;right: 10px;top: 4px;width: 24px;line-height: 20px;height: 24px;font-size: 24px;"
 			}
 			if(typeof opts.close=="string" && $(opts.close).length ){
 				$close = $dialog.find(opts.close).addClass('dl-close');
@@ -204,7 +210,7 @@
 			$footer.appendTo($dialog);
 		}
 
-		setCenter($dialog);
+		setCenter($dialog,opts);
 
 		if(typeof opts.renderAfter=="function"){
 			opts.renderAfter($dialog,opts,$header,$title,$close,$body,$footer,$mask);
@@ -290,12 +296,17 @@
 		},
 		tips: function(msg, type,time,callback) {
 			var opts = {};
+
+			if(typeof time=="function"){
+				callback=time;
+				time = 3000;
+			}
 			if(typeof type=="object"){
 				opts = type;
-
 			}else{
 				opts = {type:type,time:time,closeAfter:callback}
 			}
+
 
             opts = $.extend(true,{type:"warn",time:3000,zindex:2000,frameType:"tips",maskClose:true},opts);
 
@@ -486,19 +497,27 @@
 		getCenter:function($target) {
 			var w = $target.width(),   h = $target.height();
 			var innerH = getInnerHeight(),    innerW = getInnerWidth();
-			var left = $target.offset().left,    top = $target.offset().top;
+			var left = $target.parent().offset().left,    top = $target.parent().offset().top;
 			var x = getFloat($target.css("left")),    y = getFloat($target.css("top"));
-
+			var scrollTop = $(window).scrollTop();
+			var scrollLeft = $(window).scrollLeft();
+			var dw =(innerW - w);
+			var dh = (innerH - h);
+			dw = dw<0?0:dw;
+			dh = dh<0?0:dh;
 			if ($target.css("position") == "absolute") {
-				x = (innerW - w) / 2 - left + x;
-				y = (innerH - h) / 2 - top + y
+				x =dw/ 2 +scrollLeft -left;
+				y = dh / 2+scrollTop -top;
+
 			} else {
-				x = (innerW - w) / 2;
-				y = (innerH - h) / 2;
+				x = dw / 2;
+				y = dh/ 2;
 			}
 			return {
-				x: x<0?0:x,
-				y: y<0?0:y
+				x: x,
+				y: y,
+				isover:dh==0?true:false,
+				isTop:y==scrollTop?true:false
 			};
 		},
 		fadeTop:function($target){
@@ -519,10 +538,18 @@
 	}
 
 	//使用call设置居中
-	function setCenter($target) {
+	function setCenter($target,opts) {
 		$target.each(function(){
 			var $this = $(this);
 			var center = $.dialog.getCenter($target);
+			if(center.isover && $target.data("setcenter")){
+				return;
+			}
+			$target.data("setcenter",true);
+			 opts = opts||$target.data("opts");
+			if(center.isTop&&opts&& opts.minTop){
+				center.y = center.y+opts.minTop;
+			}
 			$this.css({top: center.y,left: center.x});
 		});
 	}
@@ -535,6 +562,7 @@
 	//窗口大小改变时始终保持居中
 	var initResize = function(){
 		var perHeight = 0;
+		var timer;
 		$(window).resize(function() {
 			if (Math.abs(getInnerHeight() - perHeight) > 10) {
 				$(".dl-dialog").add(".dl-confirm").add(".dl-tips").add(".dl-alert").not(".dl-noresize").each(function(){
@@ -542,6 +570,13 @@
 				});
 				preHeight = getInnerHeight();
 			}
+		}).scroll(function () {
+			clearTimeout(timer);
+			setTimeout(function () {
+				$(".dl-dialog").add(".dl-confirm").add(".dl-tips").add(".dl-alert").not(".dl-noresize").each(function(){
+					setCenter($(this));
+				});
+			},200);
 		})
 	}.call();
 
