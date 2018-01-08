@@ -2,46 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52c3e8da-7557-487b-b2c0-c1f8decfaf1f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/lock/web/device.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/lock/web/dialog/addPerson.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/lock/web/dialog/addPerson.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/lock/web/dialog/addPerson.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/lock/web/forgetPsw.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/lock/web/forgetPsw.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/lock/web/forgetPsw.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/lock/web/module/personHistory.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/lock/web/person.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/lock/web/person.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/lock/web/roleList.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/lock/web/roleList.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/lock/web/roleList.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/lock/web/home.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/index.html" afterPath="$PROJECT_DIR$/bin/lock/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/public/css/base.css" afterPath="$PROJECT_DIR$/bin/lock/public/css/base.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/public/css/btn.css" afterPath="$PROJECT_DIR$/bin/lock/public/css/btn.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/public/css/form.css" afterPath="$PROJECT_DIR$/bin/lock/public/css/form.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/public/js/common/ajax.js" afterPath="$PROJECT_DIR$/bin/lock/public/js/common/ajax.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/public/js/common/main.js" afterPath="$PROJECT_DIR$/bin/lock/public/js/common/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/public/js/common/page.js" afterPath="$PROJECT_DIR$/bin/lock/public/js/common/page.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/public/js/common/validForm.js" afterPath="$PROJECT_DIR$/bin/lock/public/js/common/validForm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/public/css/table.css" afterPath="$PROJECT_DIR$/bin/lock/public/css/table.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/public/js/dialog/jquery.dialog.css" afterPath="$PROJECT_DIR$/bin/lock/public/js/dialog/jquery.dialog.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/public/js/dialog/jquery.dialog.js" afterPath="$PROJECT_DIR$/bin/lock/public/js/dialog/jquery.dialog.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/web/device.html" afterPath="$PROJECT_DIR$/bin/lock/web/device.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/web/login.css" afterPath="$PROJECT_DIR$/bin/lock/web/login.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/web/login.html" afterPath="$PROJECT_DIR$/bin/lock/web/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/web/login.js" afterPath="$PROJECT_DIR$/bin/lock/web/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/web/module/personHistory.html" afterPath="$PROJECT_DIR$/bin/lock/web/module/personHistory.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/web/register.html" afterPath="$PROJECT_DIR$/bin/lock/web/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/web/register.js" afterPath="$PROJECT_DIR$/bin/lock/web/register.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/mergeTogger.js" afterPath="$PROJECT_DIR$/bin/nodeTool/mergeTogger.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/rap.server.response.js" afterPath="$PROJECT_DIR$/bin/rap.server.response.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/web/roleList.html" afterPath="$PROJECT_DIR$/bin/lock/web/roleList.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/web/roleList.js" afterPath="$PROJECT_DIR$/bin/lock/web/roleList.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/error20171129_014046.log" afterPath="$PROJECT_DIR$/log/error20171129_014046.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/info20171129_014046.log" afterPath="$PROJECT_DIR$/log/info20171129_014046.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/log20171129_014046.log" afterPath="$PROJECT_DIR$/log/log20171129_014046.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/handlebars-layouts/README.md" afterPath="$PROJECT_DIR$/node_modules/handlebars-layouts/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/handlebars-layouts/test/fixtures/partials/layout.hbs" afterPath="$PROJECT_DIR$/node_modules/handlebars-layouts/test/fixtures/partials/layout.hbs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bin/lock/web/home.html" afterPath="$PROJECT_DIR$/bin/lock/web/person.html" />
     </list>
     <ignored path="smartLock.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,7 +34,7 @@
       <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/lock/web/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
+            <state relative-caret-position="120">
               <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
               <folding />
             </state>
@@ -76,8 +44,8 @@
       <file leaf-file-name="roleList.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/lock/web/roleList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="119" column="57" selection-start-line="119" selection-start-column="57" selection-end-line="119" selection-end-column="57" />
+            <state relative-caret-position="360">
+              <caret line="96" column="27" selection-start-line="96" selection-start-column="27" selection-end-line="96" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -89,30 +57,6 @@
             <state relative-caret-position="444">
               <caret line="85" column="20" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="28" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addPerson.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bin/lock/web/dialog/addPerson.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addPerson.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bin/lock/web/dialog/addPerson.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="58" column="75" selection-start-line="58" selection-start-column="75" selection-end-line="58" selection-end-column="75" />
-              <folding>
-                <element signature="n#style#0;n#i#0;n#label#0;n#div#0;n#li#0;n#ul#1;n#form#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#label#0;n#div#0;n#li#1;n#ul#1;n#form#0;n#!!top" expanded="true" />
-                <element signature="n#ul#3;n#form#0;n#!!top" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -141,11 +85,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/lock/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-498">
               <caret line="175" column="57" selection-start-line="175" selection-start-column="46" selection-end-line="175" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="roleList.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bin/lock/web/roleList.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="84" column="55" selection-start-line="84" selection-start-column="55" selection-end-line="84" selection-end-column="80" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="form.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/lock/public/css/form.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="464">
+              <caret line="167" column="12" selection-start-line="167" selection-start-column="1" selection-end-line="167" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -234,14 +198,14 @@
         <option value="$PROJECT_DIR$/bin/lock/index.html" />
         <option value="$PROJECT_DIR$/bin/lock/web/dialog/addRole.html" />
         <option value="$PROJECT_DIR$/bin/lock/web/roleList.css" />
-        <option value="$PROJECT_DIR$/bin/lock/public/css/form.css" />
         <option value="$PROJECT_DIR$/bin/lock/public/js/common/main.js" />
-        <option value="$PROJECT_DIR$/bin/lock/web/roleList.html" />
-        <option value="$PROJECT_DIR$/bin/lock/web/roleList.js" />
         <option value="$PROJECT_DIR$/bin/lock/web/dialog/addPerson.js" />
         <option value="$PROJECT_DIR$/bin/lock/web/dialog/addPerson.html" />
         <option value="$PROJECT_DIR$/bin/lock/web/person.html" />
         <option value="$PROJECT_DIR$/bin/lock/web/device.html" />
+        <option value="$PROJECT_DIR$/bin/lock/public/css/form.css" />
+        <option value="$PROJECT_DIR$/bin/lock/web/roleList.js" />
+        <option value="$PROJECT_DIR$/bin/lock/web/roleList.html" />
       </list>
     </option>
   </component>
@@ -1048,12 +1012,12 @@
       <workItem from="1514932111146" duration="24831000" />
       <workItem from="1515071233468" duration="50531000" />
       <workItem from="1515290133570" duration="15007000" />
-      <workItem from="1515323710439" duration="22366000" />
+      <workItem from="1515323710439" duration="30589000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180349000" />
+    <option name="totallyTimeSpent" value="188572000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1932" height="1038" extended-state="0" />
@@ -1066,7 +1030,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26369864" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26369864" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1373,14 +1337,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock/public/css/form.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="695">
-          <caret line="167" column="34" selection-start-line="167" selection-start-column="34" selection-end-line="167" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bin/lock/web/login.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="564">
@@ -1416,21 +1372,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock/web/roleList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="89" column="88" selection-start-line="89" selection-start-column="80" selection-end-line="89" selection-end-column="88" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bin/lock/web/dialog/addPerson.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="58" column="75" selection-start-line="58" selection-start-column="75" selection-end-line="58" selection-end-column="75" />
           <folding>
-            <element signature="n#style#0;n#i#0;n#label#0;n#div#0;n#li#0;n#ul#1;n#form#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#label#0;n#div#0;n#li#1;n#ul#1;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#label#0;n#div#0;n#li#0;n#ul#1;n#form#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#i#0;n#label#0;n#div#0;n#li#1;n#ul#1;n#form#0;n#!!top" expanded="false" />
             <element signature="n#ul#3;n#form#0;n#!!top" expanded="false" />
           </folding>
         </state>
@@ -1440,22 +1388,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock/web/roleList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="119" column="57" selection-start-line="119" selection-start-column="57" selection-end-line="119" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock/web/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
           <folding />
         </state>
       </provider>
@@ -1508,6 +1440,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-498">
           <caret line="175" column="57" selection-start-line="175" selection-start-column="46" selection-end-line="175" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock/web/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock/public/css/form.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="167" column="12" selection-start-line="167" selection-start-column="1" selection-end-line="167" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock/web/roleList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="96" column="27" selection-start-line="96" selection-start-column="27" selection-end-line="96" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock/web/roleList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="84" column="55" selection-start-line="84" selection-start-column="55" selection-end-line="84" selection-end-column="80" />
           <folding />
         </state>
       </provider>
