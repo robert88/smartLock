@@ -13,7 +13,7 @@
 						<div class="mb10">
 							<a class=" btn btn-info J-add"  v-on:click="add()"><i class="fa-turkish-lira-try mr5"></i>添加角色</a>
 							<a class=" btn btn-danger" ><i class="fa-trash-o mr5"></i>批量删除角色</a>
-							<a class="search-wrap"><input type="text" class="form-control"  placeholder="请输入角色名查询" v-modle="params.user_name"> <i class="fa-search" v-on:click="refreshList"></i></a>
+							<a class="search-wrap"><input type="text" class="form-control"  placeholder="请输入角色名查询" v-model.lazy="params.user_name"> <i class="fa-search" v-on:click="refreshList"></i></a>
 						</div>
 
 						<!--<div class="search-filter-wrap ease">-->
@@ -73,7 +73,7 @@
 							<tr v-for="($item, $index) in list"  v-if="!$item.status">
 								<td><label class="label-checkbox"><input type="checkbox"><i class="fa-check"></i><i class="fa-square-o"></i></label></td>
 								<td>{{$item.role_name}}</td>
-								<td>{{$item.is_admin|isAdmin}}</td>
+								<td :class="$item.is_admin==11?'t-info':''">{{$item.is_admin|isAdmin}}</td>
 								<td>{{$item.update_time}}</td>
 								<td>
 									<a class="label label-success label-sm mr20 J-modify"  v-on:click="modify($index, $event)">修改</a>
@@ -82,10 +82,10 @@
 							</tr>
 							<tr  class="template-tr" v-else>
 								<td></td>
-								<td><input type="text" v-model="$item.role_name"></td>
+								<td><input type="text" v-model="role_name_template"></td>
 								<td>
 									<label class="label-checkbox">
-										<input type="checkbox" >
+										<input type="checkbox"  v-model="is_admin_template">
 										<i class="fa-check"></i><i class="fa-square-o"></i>
 									</label>
 								</td>

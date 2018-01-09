@@ -7,7 +7,7 @@ $(function () {
 
 	var $moudle = $("#roleList");
 
-	var vue = new Vue({
+	var $$vue = new Vue({
 		el: "#roleList",
 		data: {
 			list: [],
@@ -45,8 +45,8 @@ $(function () {
 		filters: {
 			isAdmin: function (value) {
 				switch (value) {
-					case 0:
-						return "否"
+					case 11:
+						return "管理员"
 						break;
 					default:
 						return "普通人员"
@@ -73,38 +73,23 @@ $(function () {
 					}
 				});
 			},
-			add:function () {
-				this.list.push({
-					status: "add",
-					role_name: "",
-					is_admin: "",
-					update_time: ""
-				})
-			},
-			modify:function (index) {
-				this.list[index].status = "modify";
-				this.$forceUpdate()
-			},
-			filter:function () {
-				$moudle.find(".search-filter-wrap").toggleClass("open");
-			},
 			saveAdd:function (index) {
 				var $$vue = this;
 				var url =  "/smart_lock/v1/role/add";
 				var type = "post";
-				if(!this.list[index].role_name){
+				this.list[index].name = this.role_name_template;
+				this.list[index].is_admin = this.is_admin;
+				if(!this.list[index].name){
 					$.tips("请输入角色名","warn");
 					return;
 				}
 				PAGE.ajax({
 					url: url,
 					type: type,
-					data: {role_name: this.list[index].role_name, is_admin: this.list[index].is_admin ? 11 : 12, token: token},
+					data: {role_name: this.list[index].name, is_admin: this.list[index].is_admin ? 11 : 12, token: token},
 					success: function (ret) {
+						$.tips("保存成功！","success");
 						$$vue.list[index].status="";
-						$$vue.list[index].role_id = ret.role_id;
-						$$vue.list[index].role_name = ret.role_name;
-						$$vue.list[index].consumer_id = ret.consumer_id;
 					}
 				});
 			},
@@ -149,6 +134,21 @@ $(function () {
 					}]
 
 				})
+			},
+			add:function () {
+				this.list.push({
+					status: "add",
+					role_name: "",
+					is_admin: "",
+					update_time: ""
+				})
+			},
+			modify:function (index) {
+				this.list[index].status = "modify";
+				this.$forceUpdate()
+			},
+			filter:function () {
+				$moudle.find(".search-filter-wrap").toggleClass("open");
 			}
 		},
 		mounted: function () {
@@ -158,4 +158,10 @@ $(function () {
 		}
 	});
 
+	PAGE.destroy.push(function () {
+		if($$vue){
+			$$vue.$destroy();
+			$$vue = null;
+		}
+	})
 });

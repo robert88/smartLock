@@ -50,25 +50,34 @@ if(!$.i18n){
 		var $close = get$("dl-close").html("×");
 		var $body = get$("dl-body");
 		var $footer = get$("dl-footer");
-		var $loading = get$("dl-load");
+		// var $loading = get$("dl-load");
 		var $mask = get$("dl-mask");//创建一次 dl-mask全局
+		var $css = get$("dl-css");//创建一次 dl-mask全局
+		var $js = get$("dl-js");//创建一次 dl-mask全局
 
 		//dialog 避免id
 		if ( /\s+id\s*=\s*"?'?\s*(\w+)\s*'?"?(\s|>)/.test(content.replace(/\s+/mg," ")) ){
 				console.log("warn dialog has id=",RegExp["$1"]);
 		}
+
 		//添加dialog标识
 		if(opts.id){
 			$dialog.attr("id",opts.id)
 		}
+
+		renderStructure($mask,$dialog,opts);
+
 		if (content.match(/^url:(.*)$/ig)) {
 			var action = $.trim(RegExp.$1);
-			$body.html($loading);
+			
+			$dialog.addClass("loading");
+
 			$body.load(action,function(){
 
-				$loading.remove();
-
 				PAGE.loadFile(action.replace(".html",".css?ver="+PAGE.version),"link",function () {
+
+					$dialog.removeClass("loading");
+
 					initDialog($dialog,$header,$title,$close,$body,$footer,$mask,opts);
 
 					if(window.PAGE.STATICDEBUG){
@@ -82,7 +91,7 @@ if(!$.i18n){
 						s.src =action.replace(".html",".js?ver="+PAGE.version);
 
 					}
-				});
+				},$dialog,$dialog);
 			});
 
 		}else{
@@ -114,7 +123,14 @@ if(!$.i18n){
 		}
 		
 	}
-	
+	//渲染结构
+	function renderStructure($mask,$dialog,opts){
+		if(opts.mask){
+			$mask.appendTo('body').show();
+		}
+
+		$dialog.appendTo('body');
+	}
 	//渲染dialog
 	function renderDialog($dialog,$header,$title,$close,$body,$footer,$mask,opts){
 
@@ -127,7 +143,7 @@ if(!$.i18n){
 			var maskIndex = ";z-index:"+ (opts.zindex*1 + ($.dialog.dlOpts.length*2) )+";";
 
 			renderStyle($mask,""+ maskIndex +(opts.maskStyle||"") );
-			$mask.appendTo('body').show();
+
 			opts.$mask = $mask
 		}
 
@@ -167,7 +183,7 @@ if(!$.i18n){
 	
 		renderStyle($body, oldBodyCode+ (opts.bodyStyle||"") );
 
-		$dialog.append($body).appendTo('body');
+		$dialog.append($body)
 
 		//标题--dl-close----------------------
 

@@ -29,8 +29,8 @@
 
 		<!--start mergeCss:lib.min-->
 		<link rel="stylesheet" type="text/css" href="/public/css/animate.min.css" />
-		<link rel="stylesheet" type="text/css" href="/public/css/fullcalendar.min.css" />
-		<link rel="stylesheet" type="text/css" href="/public/css/jquery.gritter.css" />
+		<!--<link rel="stylesheet" type="text/css" href="/public/css/fullcalendar.min.css" />-->
+		<!--<link rel="stylesheet" type="text/css" href="/public/css/jquery.gritter.css" />-->
 		<!--end mergeCss-->
 
 		<!--[if lt IE 9]>
@@ -39,9 +39,9 @@
 		<![endif]-->
 
 		<!--start mergeJs:lib.min-->
-		<script src="/public/js/lib/jquery-1.12.4.js"></script>
+		<script src="/public/js/lib/jquery-1.12.4.min.js"></script>
 		<script type="text/javascript" src="/public/js/common/jquery.cookie.min.js"></script>
-		<script src="/public/js/lib/vue.js"></script>
+		<script src="/public/js/lib/vue.min.js"></script>
 		<script src="/public/js/common/prototype.js"></script>
 		<script src="/public/js/common/base.js"></script>
 		<script src="/public/js/common/require.js"></script>
@@ -248,6 +248,7 @@
 			window.PAGE = {};
 			window.PAGE.HOME = "#/web/person.html";
 			window.PAGE.ERROR404 = "#/html/web404";
+			window.PAGE.version="20180110";
 			window.PAGE.destroy = [];
 			window.PAGE.loading = null;
 			window.PAGE.closeLoading = null;

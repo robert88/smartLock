@@ -328,7 +328,8 @@
 		}
 	}
 
-	function load(paths, loadFileType,callback) {
+	function load(paths, loadFileType,callback,$css,$js) {
+
 		paths = $.toArray(paths);
 		var loadStackHandle = [];
 		for (var i = 0; i < paths.length; i++) {
@@ -352,10 +353,12 @@
 		if (len) {
 			loadStackHandle[len - 1].callback = callback;
 		}//最后一个js带上callback
-		append(loadStackHandle, loadFileType);
+		append(loadStackHandle, loadFileType,$css,$js);
 	}
 	PAGE.loadFile = load;
-	function append(loadStackHandle, loadFileType) {
+	function append(loadStackHandle, loadFileType,$css,$js) {
+		$css = $pageCss;
+		$js = $pageJs;
 		if (loadStackHandle.length == 0) {
 			return;
 		}
@@ -369,11 +372,11 @@
 		var loadFileDom;
 		if (loadFileType == "link") {
 			loadFileDom = document.createElement("link");
-			$pageCss.append(loadFileDom);
+			$css.append(loadFileDom);
 
 		} else {
 			loadFileDom = document.createElement("script");
-			$pageJs.append(loadFileDom);
+			$js.append(loadFileDom);
 		}
 
 		loadFileDom.onerror = function () {
@@ -391,18 +394,18 @@
 			loadFileDom.type = "text/javascript";
 			loadFileDom.src = path
 		}
-		waitload(path, handle, loadStackHandle, loadFileType)
+		waitload(path, handle, loadStackHandle, loadFileType,$css,$js)
 	}
 
-	function waitload(path, handle, loadStackHandle, loadFileType) {
+	function waitload(path, handle, loadStackHandle, loadFileType,$css,$js) {
 		if (pathmap[path].status == "loaded") {
 			if (typeof handle.callback == "function") {
 				handle.callback();
 			}
-			append(loadStackHandle, loadFileType)
+			append(loadStackHandle, loadFileType,$css,$js);
 		} else {
 			setTimeout(function () {
-				waitload(path, handle, loadStackHandle, loadFileType);
+				waitload(path, handle, loadStackHandle, loadFileType,$css,$js);
 			}, 50)
 		}
 	}

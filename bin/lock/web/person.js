@@ -5,11 +5,14 @@ $(function () {
 		if(!token){
 			return;
 		}
-	var $moudle = $("#systemPerson")
-	var VsystemPerson = new Vue({
+
+	var $moudle = $("#systemPerson");
+
+	var $$vue = new Vue({
 		el: "#systemPerson-table",
 		data: {
-			list: []
+			list: [],
+			params:{page_number:1,page_size:10,user_name:"",token:token}
 		},
 		filters: {
 			role:function (value) {
@@ -40,61 +43,110 @@ $(function () {
 			},
 		},
 		methods:{
-			seachPerson:function (event) {
-				seachPerson($(event.target).parents(".search-wrap").find("input").val());
+			refreshList:function () {
+				var $$vue = this;
+				var url = "/smart_lock/v1/user/find_list";
+				var type = "post";
+				PAGE.ajax({
+					url: url, data: this.params, type: type, success: function (ret) {
+						if (!ret) {
+							return;
+						}
+						$$vue.list = ret.list;
+
+						PAGE.setpageFooter($moudle.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
+							$$vue.params.page_number = page_number
+						});
+					}
+				});
+			},
+			saveAdd:function (index) {
+				var $$vue = this;
+				var url =  "/smart_lock/v1/role/add";
+				var type = "post";
+				this.list[index].name = this.role_name_template;
+				this.list[index].is_admin = this.is_admin;
+				if(!this.list[index].name){
+					$.tips("请输入角色名","warn");
+					return;
+				}
+				PAGE.ajax({
+					url: url,
+					type: type,
+					data: {role_name: this.list[index].name, is_admin: this.list[index].is_admin ? 11 : 12, token: token},
+					success: function (ret) {
+						$.tips("保存成功！","success");
+						$$vue.list[index].status="";
+					}
+				});
+			},
+			saveModify:function (index) {
+				var $$vue = this;
+				var url =  "/smart_lock/v1/role/add";
+				var type = "post";
+				PAGE.ajax({
+					url: url,
+					type: type,
+					data: {role_name: this.list[index].role_name, is_admin: this.list[index].is_admin ? 11 : 12, token: token},
+					success: function (ret) {
+						$$vue.list[index].status="";
+						$$vue.list[index].role_id = ret.role_id;
+						$$vue.list[index].role_name = ret.role_name;
+						$$vue.list[index].consumer_id = ret.consumer_id;
+					}
+				});
+			},
+			del:function (index) {
+				var $$vue = this;
+				var url =  "/smart_lock/v1/user/delete";
+				var type = "post";
+				$.dialog("是否要删除该记录？", {
+					title: "删除记录",
+					width:400,
+					button: [{
+						text: "确认", click: function () {
+							PAGE.ajax({
+								url: url,
+								type: type,
+								data: {role_id: this.list[index].role_id, token: token},
+								success: function () {
+									$$vue.list.splice(index,1);
+								}
+							});
+						}
+					}, {
+						text: "取消", click: function () {
+
+						}
+					}]
+
+				})
+			},
+			add:function () {
+				this.list.push({
+					status: "add",
+					role_name: "",
+					is_admin: "",
+					update_time: ""
+				})
+			},
+			modify:function (index) {
+				this.list[index].status = "modify";
+				this.$forceUpdate()
+			},
+			filter:function () {
+				$moudle.find(".search-filter-wrap").toggleClass("open");
 			}
+		},
+		mounted: function () {
+			this.$nextTick(function () {
+				this.refreshList();
+			})
 		}
 	});
 
-	function refrashPerson(page_number,user_name) {
-		var params = {page_number: page_number || 1, page_size: 10,token:token}
-		if (user_name) {
-			params.user_name = user_name;
-		}
-
-		PAGE.ajax({url:"/smart_lock/v1/user/find_list",data:params,type:"post",success:function (ret) {
-			var data = ret&&ret.list;
-			if( !data ){
-				return;
-			}
-
-			VsystemPerson.list = data;
-
-			PAGE.setpageFooter($moudle.find(".pagination"),data.total_page,data.page_number,function (page_number) {
-				refrashPerson(page_number);
-			});
-		}});
-	}
-	function seachPerson(val) {
-		if(val){
-			refrashPerson(1,val);
-		}
-	}
-
-	refrashPerson();
-
-
-	$moudle.find(".J-filter").click(function () {
-		$moudle.find(".search-filter-wrap").toggleClass("open")
-	}
-	);
-
-	$moudle.find(".J-search input").keyup(function (e) {
-		if(e.key=="enter"){
-			seachPerson($(this).val());
-		}
-	}).on("click",".J-delete",function () {
-		$.dialog("是否要删除该记录？",{
-			title:"提示",
-			button:[{text:"确认",click:function () {
-				var $btn = $(this);
-				PAGE.ajax({url:"smart_lock/v1/user/delete",data:{user_id:$btn.data(id)},type:"post",success:function (ret) {
-					refrashPerson();
-				}});
-			}},{text:"取消",click:function () {
-
-			}}]
-
-		})
+	$moudle.on("update",function () {
+		$$vue.refreshList();
 	})
+
 });
