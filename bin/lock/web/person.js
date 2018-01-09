@@ -147,6 +147,13 @@ $(function () {
 
 	$moudle.on("update",function () {
 		$$vue.refreshList();
-	})
+	});
 
+	PAGE.destroy.push(function () {
+		if($$vue){
+			$$vue.$destroy();
+			$$vue = null;
+			$moudle=null
+		}
+	})
 });

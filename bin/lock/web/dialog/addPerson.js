@@ -6,6 +6,7 @@ $(function () {
 	}
 	var $form = $("#addPerson")
 	var $dialog = $form.parents(".dl-dialog");
+	var listMap = [];
 
 	//表单注册
 	$form.validForm({
@@ -31,6 +32,31 @@ $(function () {
 			params:{page_number:1,page_size:20,role_name:"",token:token}
 		},
 		methods:{
+			mergeArray:function (obj) {
+				if(typeof obj !== "object") {
+					return [];
+				};
+				var arr = [];
+				for(var no in obj) {
+					if($.type(obj[no]) != "array") {
+						//console.error("mergeObject", no, "is not array!");
+						continue;
+					}
+					arr = arr.concat(obj[no]);
+				}
+				return arr;
+			},
+			stopPropagation:function (e) {
+				e = e||window.event;
+				if(e.stopPropagation){
+					e.stopPropagation()
+				}else if(e.cancelBubble){
+					e.cancelBubble =false
+				}
+			},
+			scroll:function (e) {
+				this.stopPropagation(e);
+			},
 			getRole:function () {
 				var $$vue = this;
 				var url = "/smart_lock/v1/role/find_list";
@@ -44,7 +70,8 @@ $(function () {
 							window.location.hash="#/web/roleList.html";
 						});
 					}
-					$$vue.list[$$vue.params.page_number] = ret.list;
+					listMap[$$vue.params.page_number] = ret.list;
+					$$vue.list = $$vue.mergeArray(listMap);
 				}});
 			}
 		},
@@ -59,7 +86,10 @@ $(function () {
 	$dialog[0].destory = function () {
 		if($$vue){
 			$$vue.$destroy();
+			$form = null;
 			$$vue = null;
+			listMap = null;
+			$dialog = null;
 		}
 	}
 });

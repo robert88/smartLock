@@ -58,7 +58,7 @@
 								<input class="form-control J-select-text" type="text" placeholder="请选择类型">
 								<input class="J-select-value" name="role_id" type="hidden" check-type="required">
 								<i class="fa-angle-down"></i>
-								<div class="J-select-option" id="roleList">
+								<div class="J-select-option J-scroll" id="roleList" v-on:scroll="scroll">
 									<a v-for="($item, $index) in list"
 									   v-bind="{ 'data-jp':$item.jp, 'data-qp': $item.qp ,'data-name':$item.name, 'data-value':$item.id}"
 									   class="option">{{$item.name}}</a>

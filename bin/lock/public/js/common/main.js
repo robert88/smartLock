@@ -222,6 +222,7 @@ $(function () {
 		return false;
 	});
 
+
 	PAGE.setToken = function (ret) {
 		if(!ret){
 			return

@@ -3,3 +3,7 @@
 		width: 960px;
 	}
 }
+#addPerson .J-scroll{
+	max-height: 176px;
+	overflow: auto;
+}
