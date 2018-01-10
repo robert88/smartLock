@@ -13,7 +13,7 @@
 						<div class="mb10">
 							<a class=" btn btn-info J-add"  v-on:click="add()"><i class="fa-turkish-lira-try mr5"></i>添加角色</a>
 							<a class=" btn btn-danger" ><i class="fa-trash-o mr5"></i>批量删除角色</a>
-							<a class="search-wrap"><input type="text" class="form-control"  placeholder="请输入角色名查询" v-model.lazy="params.user_name"> <i class="fa-search" v-on:click="refreshList"></i></a>
+							<a class="search-wrap"><input type="text" class="form-control"  placeholder="请输入角色名查询" v-model.lazy="params.role_name"> <i class="fa-search" v-on:click="refreshList"></i></a>
 						</div>
 
 						<!--<div class="search-filter-wrap ease">-->
@@ -74,7 +74,7 @@
 								<td><label class="label-checkbox"><input type="checkbox"><i class="fa-check"></i><i class="fa-square-o"></i></label></td>
 								<td>{{$item.role_name}}</td>
 								<td :class="$item.is_admin==11?'t-info':''">{{$item.is_admin|isAdmin}}</td>
-								<td>{{$item.update_time}}</td>
+								<td><a class="label label-info label-sm J-dialog" data-url="/web/dialog/addPerson.html" data-title="添加成员">查看权限</a></td>
 								<td>
 									<a class="label label-success label-sm mr20 J-modify"  v-on:click="modify($index, $event)">修改</a>
 									<a class="label label-danger label-sm J-delete" v-on:click="del($index, $event)"><i class="fa-trash-o" title="删除"></i></a>
@@ -99,7 +99,7 @@
 
 							</tbody>
 						</table>
-						<ul class="pagination"></ul>
+						<ul class="pagination" v-once><li>d</li></ul>
 					</li>
 				</ul>
 			</div>

@@ -25,11 +25,13 @@ $(function () {
 	});
 
 	//添加角色
-	new Vue({
-		el:"#roleList",
+	var $$vue = new Vue({
+		el:"#addPerson_roleList",
 		data:{
 			list:[],
-			params:{page_number:1,page_size:20,role_name:"",token:token}
+			loading:false,
+			total_page:0,
+			params:{page_number:1,page_size:6,role_name:"",token:token}
 		},
 		methods:{
 			mergeArray:function (obj) {
@@ -54,13 +56,22 @@ $(function () {
 					e.cancelBubble =false
 				}
 			},
-			scroll:function (e) {
-				this.stopPropagation(e);
+			getNextPageRole:function () {
+				if(!this.total_page){
+					return;
+				}
+				if(this.params.page_number<this.total_page){
+					this.params.page_number++;
+					this.getRole();
+				}
+
 			},
 			getRole:function () {
 				var $$vue = this;
 				var url = "/smart_lock/v1/role/find_list";
 				var type = "post";
+				$$vue.loading = true;
+				$$vue.$forceUpdate();
 				PAGE.ajax({url:url,type:type,data:$$vue.params,success:function (ret) {
 					if( !ret ){
 						return;
@@ -71,7 +82,11 @@ $(function () {
 						});
 					}
 					listMap[$$vue.params.page_number] = ret.list;
+					$$vue.total_page = ret.total_page;
 					$$vue.list = $$vue.mergeArray(listMap);
+				},complete:function () {
+					$$vue.loading = false;
+					$$vue.$forceUpdate();
 				}});
 			}
 		},
@@ -82,6 +97,11 @@ $(function () {
 		}
 	});
 
+	$dialog.find(".J-scroll").on("scrollDown",function () {
+		if(!$$vue.loading){
+			$$vue.getNextPageRole();
+		}
+	});
 	//窗口关闭时调用
 	$dialog[0].destory = function () {
 		if($$vue){

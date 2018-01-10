@@ -220,6 +220,14 @@ $(function () {
 	$(document).on("click",".J-loginout",function () {
 		PAGE.clearToken();
 		return false;
+	}).on("mousewheel",".J-scroll",function () {
+		var childrenHeight = 0 ;
+		$(this).children().each(function () {
+			childrenHeight += $(this).height()+$(this).css("padding-top").toFloat()+$(this).css("padding-bottom").toFloat()
+		});
+		if($(this).scrollTop()+$(this).height()+2>childrenHeight){
+			$(this).trigger("scrollDown");
+		}
 	});
 
 
@@ -287,7 +295,7 @@ $(function () {
 		var dialogClass = $this.data("class");
 		if (url) {
 			$(".loading").show();
-			$.dialog("url:" + url, {
+			 $.dialog("url:" + url, {
 				dialogClass: dialogClass,
 				title:$this.data("title"),
 				bodyStyle:"max-width:1000px",
@@ -295,6 +303,10 @@ $(function () {
 				maskClose: false,
 				closeAfter: function () {
 					$pageDsync.data("dialog",false);
+				},
+				structureReady:function ($dialog) {
+					//跨页面传递传递数据
+					$dialog.data("trigger",$this);
 				},
 				ready: function ($dialog) {
 					$(".loading").hide();

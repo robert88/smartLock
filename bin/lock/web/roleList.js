@@ -11,7 +11,9 @@ $(function () {
 		el: "#roleList",
 		data: {
 			list: [],
-			params:{page_number:1,page_size:10,user_name:"",token:token}
+			role_name_template:"",
+			is_admin_template:"",
+			params:{page_number:1,page_size:10,role_name:"",token:token}
 		},
 		watch: {
 			list: {
@@ -22,24 +24,27 @@ $(function () {
 					for (var i = 0; i < newValue.length; i++) {
 
 						//将请求字段统一使用role_name
-						if ((oldValue[i] && oldValue[i].role_name) != newValue[i].name) {
+						if (newValue[i].role_name !=  newValue[i].name) {
 							newValue[i].role_name = newValue[i].name
 						}
 					}
 				},
 				deep: true
 			},
-			params:{
-				handler: function (newValue, oldValue) {
-					for (var i in newValue) {
-						//参数改变了就刷新数据
-						if (oldValue[i] != newValue[i]) {
-							refreshList();
-							break;
-						}
+			//对象不应该用handler方式，应该值改变了但是引用没有改变
+			"params.page_number":function (newValue, oldValue) {
+				if(newValue!=oldValue){
+					this.refreshList();
+				}
+			},
+			"params.role_name":function (newValue, oldValue) {
+				if(newValue!=oldValue){
+					if(this.params.page_number!=1){
+						this.params.page_number =1;
+					}else{
+						this.refreshList();
 					}
-				},
-				deep: true
+				}
 			}
 		},
 		filters: {
@@ -62,13 +67,14 @@ $(function () {
 				PAGE.ajax({
 					url: url, data: this.params, type: type, success: function (ret) {
 						console.log("ajax success:", url, "data:", ret);
-						if (!ret) {
+						if (!ret ) {
 							return;
 						}
-						$$vue.list = ret.list;
+
+						$$vue.list = ret.list||[];
 
 						PAGE.setpageFooter($moudle.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
-							$$vue.params.page_number = page_number
+							$$vue.params.page_number = page_number*1
 						});
 					}
 				});
@@ -78,7 +84,7 @@ $(function () {
 				var url =  "/smart_lock/v1/role/add";
 				var type = "post";
 				this.list[index].name = this.role_name_template;
-				this.list[index].is_admin = this.is_admin;
+				this.list[index].is_admin = this.is_admin_template;
 				if(!this.list[index].name){
 					$.tips("请输入角色名","warn");
 					return;
@@ -136,6 +142,8 @@ $(function () {
 				})
 			},
 			add:function () {
+				this.role_name_template="";
+				this.is_admin_template="";
 				this.list.push({
 					status: "add",
 					role_name: "",
@@ -154,6 +162,7 @@ $(function () {
 		mounted: function () {
 			this.$nextTick(function () {
 				this.refreshList();
+				$moudle = $("#roleList")
 			})
 		}
 	});

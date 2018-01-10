@@ -6,17 +6,29 @@
 }
 .pagination > li {
 	display: inline;
+	position: relative;
 }
 .pagination > li > a,
 .pagination > li > span {
-	position: relative;
-	float: left;
-	padding: 6px 12px;
-	line-height: 1.428571429;
-	text-decoration: none;
-	background-color: #ffffff;
-	border: 1px solid #dddddd;
-	margin-left: -1px;
+    min-height: 30px;
+    position: relative;
+    overflow: hidden;
+    float: left;
+    padding: 6px 12px;
+    line-height: 1.428571429;
+    text-decoration: none;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    margin-left: -1px;
+}
+.pagination > li > a:after{
+    height: 33px;
+}
+.pagination > li > a:before{
+    height: 35px;
+    background-size: 72%;
+    margin-top: -15px;
+    margin-left: -14px;
 }
 .pagination > li:first-child > a,
 .pagination > li:first-child > span {

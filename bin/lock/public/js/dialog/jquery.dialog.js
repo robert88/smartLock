@@ -28,6 +28,7 @@
 		closeAfter:null,//关闭之前
 		closeBefore:null,//关闭之后
 		changeSize:false,//调节宽高
+		structureReady:null,//根结构渲染了
 		minTop:20,
 		ready:null//dialog的dom已经初始化
 		//headerStyle,titleStyle,closeStyle,bodyStyle,maskStyle
@@ -69,7 +70,7 @@ if(!$.i18n){
 
 		if (content.match(/^url:(.*)$/ig)) {
 			var action = $.trim(RegExp.$1);
-			
+
 			$dialog.addClass("loading");
 
 			$body.load(action,function(){
@@ -130,6 +131,9 @@ if(!$.i18n){
 		}
 
 		$dialog.appendTo('body');
+		if(typeof opts.structureReady){
+			opts.structureReady($dialog)
+		}
 	}
 	//渲染dialog
 	function renderDialog($dialog,$header,$title,$close,$body,$footer,$mask,opts){

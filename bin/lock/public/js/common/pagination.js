@@ -137,7 +137,7 @@
                 return false;
             }
 
-            $this.html('<div class="loader"><div class="loader-inner line-scale-pulse-out"><div></div><div></div><div></div></div></div>');
+            $this.find("a").addClass("loading");
             if(typeof refreshData =="function"){
                 refreshData($this.attr("href"))
             }
