@@ -222,7 +222,7 @@ $(function () {
 		return false;
 	}).on("mousewheel",".J-scroll",function () {
 		var childrenHeight = 0 ;
-		$(this).children().each(function () {
+		$(this).children(".option").each(function () {
 			childrenHeight += $(this).height()+$(this).css("padding-top").toFloat()+$(this).css("padding-bottom").toFloat()
 		});
 		if($(this).scrollTop()+$(this).height()+2>childrenHeight){

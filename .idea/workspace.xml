@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52c3e8da-7557-487b-b2c0-c1f8decfaf1f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/index.html" afterPath="$PROJECT_DIR$/bin/lock/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/public/css/base.css" afterPath="$PROJECT_DIR$/bin/lock/public/css/base.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/public/css/pager.css" afterPath="$PROJECT_DIR$/bin/lock/public/css/pager.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/public/js/common/main.js" afterPath="$PROJECT_DIR$/bin/lock/public/js/common/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/public/js/common/pagination.js" afterPath="$PROJECT_DIR$/bin/lock/public/js/common/pagination.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/public/js/dialog/jquery.dialog.css" afterPath="$PROJECT_DIR$/bin/lock/public/js/dialog/jquery.dialog.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/public/js/dialog/jquery.dialog.js" afterPath="$PROJECT_DIR$/bin/lock/public/js/dialog/jquery.dialog.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/web/dialog/addPerson.html" afterPath="$PROJECT_DIR$/bin/lock/web/dialog/addPerson.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/web/dialog/addPerson.js" afterPath="$PROJECT_DIR$/bin/lock/web/dialog/addPerson.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/web/person.html" afterPath="$PROJECT_DIR$/bin/lock/web/person.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/web/roleList.html" afterPath="$PROJECT_DIR$/bin/lock/web/roleList.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock/web/roleList.js" afterPath="$PROJECT_DIR$/bin/lock/web/roleList.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/error20171129_014046.log" afterPath="$PROJECT_DIR$/log/error20171129_014046.log" />
@@ -37,11 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="roleList.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="roleList.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bin/lock/web/roleList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
-              <caret line="144" column="39" selection-start-line="144" selection-start-column="39" selection-end-line="144" selection-end-column="39" />
+            <state relative-caret-position="-1180">
+              <caret line="13" column="25" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -70,18 +66,18 @@
       <file leaf-file-name="roleList.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/lock/web/roleList.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="76" column="62" selection-start-line="76" selection-start-column="62" selection-end-line="76" selection-end-column="62" />
+            <state relative-caret-position="360">
+              <caret line="87" column="82" selection-start-line="87" selection-start-column="64" selection-end-line="87" selection-end-column="82" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addPerson.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="addPerson.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/lock/web/dialog/addPerson.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="82" column="21" selection-start-line="82" selection-start-column="21" selection-end-line="82" selection-end-column="21" />
+            <state relative-caret-position="414">
+              <caret line="96" column="4" selection-start-line="96" selection-start-column="4" selection-end-line="96" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -101,7 +97,7 @@
         <entry file="file://$PROJECT_DIR$/bin/lock/public/js/common/main.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="474">
-              <caret line="307" column="31" selection-start-line="307" selection-start-column="31" selection-end-line="307" selection-end-column="31" />
+              <caret line="308" column="31" selection-start-line="308" selection-start-column="31" selection-end-line="308" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -111,10 +107,10 @@
         <entry file="file://$PROJECT_DIR$/bin/lock/public/js/dialog/jquery.dialog.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="538">
-              <caret line="30" column="22" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="22" />
+              <caret line="31" column="18" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="22" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
-                <marker date="1515624795643" expanded="true" signature="3650:3681" placeholder="..." />
+                <marker date="1515679523277" expanded="true" signature="3662:3693" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -123,8 +119,8 @@
       <file leaf-file-name="person.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/lock/web/person.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-935">
-              <caret line="14" column="113" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="113" />
+            <state relative-caret-position="365">
+              <caret line="85" column="28" selection-start-line="85" selection-start-column="28" selection-end-line="85" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -199,7 +195,6 @@
         <option value="$PROJECT_DIR$/bin/lock/web/register.js" />
         <option value="$PROJECT_DIR$/bin/lock/web/dialog/addRole.html" />
         <option value="$PROJECT_DIR$/bin/lock/web/roleList.css" />
-        <option value="$PROJECT_DIR$/bin/lock/web/person.html" />
         <option value="$PROJECT_DIR$/bin/lock/web/device.html" />
         <option value="$PROJECT_DIR$/bin/lock/public/css/form.css" />
         <option value="$PROJECT_DIR$/bin/lock/public/js/common/page.js" />
@@ -207,12 +202,13 @@
         <option value="$PROJECT_DIR$/bin/lock/web/dialog/addPerson.css" />
         <option value="$PROJECT_DIR$/bin/lock/public/js/common/pagination.js" />
         <option value="$PROJECT_DIR$/bin/lock/index.html" />
-        <option value="$PROJECT_DIR$/bin/lock/web/roleList.js" />
         <option value="$PROJECT_DIR$/bin/lock/public/js/dialog/jquery.dialog.js" />
         <option value="$PROJECT_DIR$/bin/lock/public/js/common/main.js" />
-        <option value="$PROJECT_DIR$/bin/lock/web/roleList.html" />
         <option value="$PROJECT_DIR$/bin/lock/web/dialog/addPerson.html" />
         <option value="$PROJECT_DIR$/bin/lock/web/dialog/addPerson.js" />
+        <option value="$PROJECT_DIR$/bin/lock/web/person.html" />
+        <option value="$PROJECT_DIR$/bin/lock/web/roleList.html" />
+        <option value="$PROJECT_DIR$/bin/lock/web/roleList.js" />
       </list>
     </option>
   </component>
@@ -1019,12 +1015,12 @@
       <workItem from="1514932111146" duration="24831000" />
       <workItem from="1515071233468" duration="50531000" />
       <workItem from="1515290133570" duration="15007000" />
-      <workItem from="1515323710439" duration="56713000" />
+      <workItem from="1515323710439" duration="61135000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="214696000" />
+    <option name="totallyTimeSpent" value="219118000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1932" height="1038" extended-state="0" />
@@ -1411,21 +1407,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock/web/person.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-935">
-          <caret line="14" column="113" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="113" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bin/lock/public/js/dialog/jquery.dialog.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="538">
-          <caret line="30" column="22" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="22" />
+          <caret line="31" column="18" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="22" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <marker date="1515624795643" expanded="true" signature="3650:3681" placeholder="..." />
+            <marker date="1515679523277" expanded="true" signature="3662:3693" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1433,23 +1421,7 @@
     <entry file="file://$PROJECT_DIR$/bin/lock/public/js/common/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="474">
-          <caret line="307" column="31" selection-start-line="307" selection-start-column="31" selection-end-line="307" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock/web/roleList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="76" column="62" selection-start-line="76" selection-start-column="62" selection-end-line="76" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock/web/roleList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="144" column="39" selection-start-line="144" selection-start-column="39" selection-end-line="144" selection-end-column="39" />
+          <caret line="308" column="31" selection-start-line="308" selection-start-column="31" selection-end-line="308" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -1482,8 +1454,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bin/lock/web/dialog/addPerson.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="82" column="21" selection-start-line="82" selection-start-column="21" selection-end-line="82" selection-end-column="21" />
+        <state relative-caret-position="414">
+          <caret line="96" column="4" selection-start-line="96" selection-start-column="4" selection-end-line="96" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock/web/person.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="85" column="28" selection-start-line="85" selection-start-column="28" selection-end-line="85" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock/web/roleList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="87" column="82" selection-start-line="87" selection-start-column="64" selection-end-line="87" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock/web/roleList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1180">
+          <caret line="13" column="25" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="25" />
           <folding />
         </state>
       </provider>

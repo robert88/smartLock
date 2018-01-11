@@ -71,7 +71,6 @@ $(function () {
 				var url = "/smart_lock/v1/role/find_list";
 				var type = "post";
 				$$vue.loading = true;
-				$$vue.$forceUpdate();
 				PAGE.ajax({url:url,type:type,data:$$vue.params,success:function (ret) {
 					if( !ret ){
 						return;
@@ -86,7 +85,6 @@ $(function () {
 					$$vue.list = $$vue.mergeArray(listMap);
 				},complete:function () {
 					$$vue.loading = false;
-					$$vue.$forceUpdate();
 				}});
 			}
 		},
@@ -96,12 +94,13 @@ $(function () {
 			})
 		}
 	});
-
+	
 	$dialog.find(".J-scroll").on("scrollDown",function () {
 		if(!$$vue.loading){
 			$$vue.getNextPageRole();
 		}
 	});
+
 	//窗口关闭时调用
 	$dialog[0].destory = function () {
 		if($$vue){

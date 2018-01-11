@@ -11,8 +11,7 @@ $(function () {
 		el: "#roleList",
 		data: {
 			list: [],
-			role_name_template:"",
-			is_admin_template:"",
+			template_list:[],
 			params:{page_number:1,page_size:10,role_name:"",token:token}
 		},
 		watch: {
@@ -99,22 +98,6 @@ $(function () {
 					}
 				});
 			},
-			saveModify:function (index) {
-				var $$vue = this;
-				var url =  "/smart_lock/v1/role/add";
-				var type = "post";
-				PAGE.ajax({
-					url: url,
-					type: type,
-					data: {role_name: this.list[index].role_name, is_admin: this.list[index].is_admin ? 11 : 12, token: token},
-					success: function (ret) {
-						$$vue.list[index].status="";
-						$$vue.list[index].role_id = ret.role_id;
-						$$vue.list[index].role_name = ret.role_name;
-						$$vue.list[index].consumer_id = ret.consumer_id;
-					}
-				});
-			},
 			del:function (index) {
 				var $$vue = this;
 				var url =  "/smart_lock/v1/role/delete";
@@ -124,14 +107,19 @@ $(function () {
 					width:400,
 					button: [{
 						text: "确认", click: function () {
-							PAGE.ajax({
-								url: url,
-								type: type,
-								data: {role_id: this.list[index].role_id, token: token},
-								success: function () {
-									$$vue.list.splice(index,1);
-								}
-							});
+						    if($$vue.list[index].id){
+						        PAGE.ajax({
+                                    url: url,
+                                    type: type,
+                                    data: {role_id: $$vue.list[index].id, token: token},
+                                    success: function () {
+                                        $$vue.list.splice(index,1);
+                                    }
+                                });
+						    }else{
+								$$vue.list.splice(index,1);
+							}
+							
 						}
 					}, {
 						text: "取消", click: function () {
@@ -153,7 +141,33 @@ $(function () {
 			},
 			modify:function (index) {
 				this.list[index].status = "modify";
+				this.is_admin_template = this.list[index].is_admin==11?true:false;
+				this.role_name_template = this.list[index].name
 				this.$forceUpdate()
+			},
+			cancelModify:function () {
+				this.list[index].status = "";
+				this.$forceUpdate()
+			},
+			saveModify:function (index) {
+				var $$vue = this;
+				var url =  "/smart_lock/v1/role/add";
+				var type = "post";
+				if(!this.list[index].name){
+					$.tips("请输入角色名","warn");
+					return;
+				}
+				PAGE.ajax({
+					url: url,
+					type: type,
+					data: {role_name: this.list[index].name, is_admin: this.list[index].is_admin ? 11 : 12, token: token},
+					success: function (ret) {
+						$$vue.list[index].status="";
+						$$vue.list[index].id = ret.id;
+						$$vue.list[index].role_name = ret.role_name;
+						$$vue.list[index].consumer_id = ret.consumer_id;
+					}
+				});
 			},
 			filter:function () {
 				$moudle.find(".search-filter-wrap").toggleClass("open");

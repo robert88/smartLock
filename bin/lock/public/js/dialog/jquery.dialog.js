@@ -131,7 +131,7 @@ if(!$.i18n){
 		}
 
 		$dialog.appendTo('body');
-		if(typeof opts.structureReady){
+		if(typeof opts.structureReady=="function"){
 			opts.structureReady($dialog)
 		}
 	}
