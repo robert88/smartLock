@@ -101,7 +101,9 @@ fieldset {
 }
 
 .form-group{position:relative;}
-.form-group input{
+.form-group input,
+.form-group textarea
+{
 	display: block;
 	width:100%;
 	margin-top:10px;

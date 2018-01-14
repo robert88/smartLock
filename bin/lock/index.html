@@ -173,7 +173,7 @@
 				<!--</li>-->
 				<!-- END NOTIFICATION DROPDOWN -->
 				<!-- BEGIN USER LOGIN DROPDOWN -->
-				<li class="dropdown user" id="header-user">
+				<li class="dropdown user" id="pageCommonHeaderVue">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<span class="username">{{user_name}}</span>
 						<i class="fa fa-angle-down"></i>
@@ -199,8 +199,8 @@
 					欢迎来到欧美嘉！
 				</div>
 				<!-- SIDEBAR MENU -->
-				<ul slot="sidebar">
-					<li  v-for="($item, $index) in slideBars"  :class="setSubClass($item.hasSub)" v-cloak>
+				<ul id="pageCommonSlideVue">
+					<li  v-for="($item, $index) in slideBars"  :class="($item.active +' '+$item.hasSub)" v-cloak>
 						<a :href="$item.href|href" class="ease">
 							<i :class="$item.icon"></i> <span class="menu-text ease">{{$item.text}}<span class="badge pull-right" v-show="$item.tips">{{$item.tips}}</span></span>
 							<span  :class="setSubClass($item.hasSub,'sidebarStatus')"></span>
@@ -216,15 +216,14 @@
 		</div>
 		<!-- /SIDEBAR -->
 		<div id="main-content" class="ease">
-			<div class="main-content-header">
+			<div class="main-content-header" id="pageCommonBreadcrumbVue" style="min-height: 50px">
 				<ul class="breadcrumb">
-					<li>
-						<i class="fa fa-home"></i>
-						<a href="index.html">Home</a>
+					<li  v-for="($item, $index) in breadcrumb">
+						<i :class="$item.icon"></i>
+						<a :href="$item.href">{{$item.text}}</a>
 					</li>
-					<li>成员管理</li>
 				</ul>
-				<h3 class="title">成员管理</h3>
+				<h3 class="title">{{breadcrumb[breadcrumb.length-1]&&breadcrumb[breadcrumb.length-1].text}}</h3>
 			</div>
 			<div id="main-content-css"></div>
 			<div id="main-content-page"></div>

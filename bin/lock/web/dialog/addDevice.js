@@ -13,19 +13,21 @@ $(function () {
 	//表单注册
 	$form.validForm({
 		success:function ($btn) {
-			// ### 4.2 添加设备（设备端）
-			// |  POST  |  smart_lock/v1/device/add_by_device  |
+			// ### 4.1 添加设备（pc端）
+			// |  POST  |  smart_lock/v1/device/add_by_user  |
 			// | ------------- |:-------------:|
 			//
 			// **请求参数：**
 			//
 			// |  参数名称 | 参数类型 | 是否必填 | 参数描述 | 备注 |
 			// |  -------- | -------- | -------- | -------- | ---- |
-			// |  device_code  | String   | 是 | 设备唯一编码  |  |
+			// |  device_code  | String   | 是 | 设备硬件唯一编码  |  |
+			// |  device_name | String | 是 | 设备名称 | |
+			// | device_model| String | 是 | 设备型号 | |
 			PAGE.ajax({
 				data:$form.serialize()+"&token="+token,
 				type:'post',
-				url:"/smart_lock/v1/device/add_by_device",
+				url:"/smart_lock/v1/device/add_by_user",
 				success:function (ret) {
 					$.dialog.closeAll();
 					$.tips("添加成功！","success");

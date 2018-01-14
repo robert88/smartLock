@@ -498,7 +498,12 @@
 	 * */
 	function hashChange(hash) {
 
+		clearBreadcrumb();
+
 		var config = PAGE.getHashConfig(hash);
+
+		setBreadcrumb(config.action);
+
 		if(config.params&&config.params.nomenu){
                 $body.addClass("nomenu");
         }else{
@@ -570,6 +575,213 @@
 		// window.location.reload();
 	});
 
+
+	var $$header = new Vue({
+		el:"#pageCommonHeaderVue",
+		data:{
+			user_name:""
+		}
+	});
+	var $$Breadcrumb =  new Vue({
+		el:"#pageCommonBreadcrumbVue",
+		data:{
+			breadcrumb:[]
+		},
+	});
+
+	var $$slider = new Vue({
+		el:"#pageCommonSlideVue",
+		data:{
+			slideBars:[
+				{
+					hasSub:"",
+					active:"",
+					sub:[],
+					href:"#/web/person.html",
+					tips:0,
+					text:"成员管理",
+					icon:"fa-group-users"
+				},
+				{
+					hasSub:"",
+					active:"",
+					sub:[],
+					href:"#/web/device.html",
+					tips:0,
+					text:"设备管理",
+					icon:"fa-hdd-o"
+				},
+				{
+					hasSub:"",
+					active:"",
+					sub:[],
+					href:"#/web/roleList.html",
+					tips:0,
+					text:"权限管理",
+					icon:"fa-legal"
+				},
+				{
+					hasSub:"",
+					active:"",
+					sub:[],
+					href:"#/web/forgetPsw.html",
+					tips:0,
+					text:"密码管理",
+					icon:"fa-key"
+				}
+				,
+				{
+					hasSub:"",
+					active:"",
+					sub:[],
+					href:"#/web/deviceCtl.html",
+					tips:0,
+					text:"门况信息",
+					icon:"fa-beer"
+				},
+				// {
+				// 	hasSub:"",
+				// 	active:"",
+				// 	sub:[],
+				// 	href:"",
+				// 	tips:0,
+				// 	text:"紧急预警",
+				// 	icon:"fa-bell"
+				// },
+				{
+					hasSub:"",
+					active:"",
+					sub:[],
+					href:"#/web/scenery.html",
+					tips:0,
+					text:"情景模式",
+					icon:"fa-crop"
+				},
+
+				// {
+				// 	hasSub:"",
+				// 	active:"",
+				// 	sub:[],
+				// 	href:"",
+				// 	tips:0,
+				// 	text:"我的智控",
+				// 	icon:"fa-cloud"
+				// },
+				// {
+				// 	hasSub:"",
+				// 	active:"",
+				// 	sub:[],
+				// 	href:"",
+				// 	tips:0,
+				// 	text:"勿扰模式",
+				// 	icon:"fa-umbrella"
+				// },
+				{
+					hasSub:"",
+					active:"",
+					sub:[],
+					href:"#/web/companyInfo.html",
+					tips:0,
+					text:"服务热线",
+					icon:"fa-phone-square"
+				},
+				{
+					hasSub:"",
+					active:"",
+					sub:[],
+					href:"#/web/repair.html",
+					tips:0,
+					text:"维修申报",
+					icon:"fa-truck"
+				}
+			]
+		},
+		filters:{
+			href:function (href) {
+				if(href){
+					return href;
+				}else{
+					return "javascript:void(0);";
+				}
+			},
+
+		},
+		methods:{
+			setSubClass:function (flag,oldClass) {
+				return flag?("hasSub " +oldClass):oldClass;
+			}
+		},
+		ready:function () {
+
+
+		}
+	});
+
+	function clearBreadcrumb(){
+		$$Breadcrumb.breadcrumb = [];
+		$$Breadcrumb.breadcrumb.push({icon:"fa-home",href:"#/web/person.html","text":"首页"});
+	}
+	function setBreadcrumb(action) {
+		var setActive = 0
+		for(var i=0;i<$$slider.slideBars.length;i++){
+			if(action&&$$slider.slideBars[i].href.indexOf(action)!=-1){
+				if(i!=0){
+					$$Breadcrumb.breadcrumb.push({icon:$$slider.slideBars[i].icon,href:$$slider.slideBars[i].href,"text":$$slider.slideBars[i].text})
+				}
+				$$slider.slideBars[i].active = "active";
+				setActive = i;
+			}else{
+				$$slider.slideBars[i].active = "";
+			}
+		}
+		//默认第一个
+		if(!setActive){
+			$$slider.slideBars[setActive].active= "active";
+		}
+
+	}
+	PAGE.setToken = function (ret) {
+		if(!ret){
+			return
+		}
+		if(ret.token){
+			$.cookie("token",ret.token);
+		}
+		if(ret.role_id){
+			$.cookie("role_id",ret.role_id);
+		}
+		if(ret.user_email){
+			$.cookie("user_email",ret.user_email);
+		}
+		if(ret.user_name){
+			$.cookie("user_name",ret.user_name);
+			$$header.user_name = ret.user_name
+		}
+		location.hash = ""
+	}
+	PAGE.getToken = function () {
+		var token =$.cookie("token");
+		if($.cookie("user_name")){
+			$$header.user_name = $.cookie("user_name");
+		}
+		if(token){
+			return token;
+		}else{
+			window.location.hash="#/web/login.html?nomenu=1";
+		}
+		return "";
+	}
+	/**
+	 *启动页面
+	 * */
+	PAGE.clearToken = function () {
+		$.cookie("token","");
+		$.cookie("role_id","");
+		$.cookie("user_email","");
+		$.cookie("user_name","");
+		$$header.user_name = "";
+		window.location.hash="#/web/login.html?nomenu=1";
+	}
 	/**
 	 *启动页面
 	 * */

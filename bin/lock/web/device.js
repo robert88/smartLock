@@ -6,14 +6,34 @@ $(function () {
 	if(!token){
 		return;
 	}
-
-	var $moudle = $("#deviceMoudle");
+	var curAccordEmail = $.cookie("user_email");
+	var moudleId = "deviceMoudle";
+	var moudleVueId = moudleId+"Vue";
+	var $moudle = $("#"+moudleId);
 
 	var $$vue = new Vue({
-		el: "#device-table",
+		el: "#"+moudleVueId,
 		data: {
 			list: [],
-			params:{page_number:1,page_size:10,user_name:"",token:token}
+			params:{page_number:1,page_size:10,device_name:"",device_code:"",token:token}
+		},
+		watch: {
+
+			//对象不应该用handler方式，应该值改变了但是引用没有改变
+			"params.page_number":function (newValue, oldValue) {
+				if(newValue!=oldValue){
+					this.refreshList();
+				}
+			},
+			// "params.role_name":function (newValue, oldValue) {
+			// 	if(newValue!=oldValue){
+			// 		if(this.params.page_number!=1){
+			// 			this.params.page_number =1;
+			// 		}else{
+			// 			this.refreshList();
+			// 		}
+			// 	}
+			// }
 		},
 		filters: {
 			role:function (value) {
@@ -46,6 +66,12 @@ $(function () {
 		methods:{
 			filter:function () {
 				$moudle.find(".search-filter-wrap").toggleClass("open");
+			},
+			isSelf:function (email) {
+				if(email&&(email==curAccordEmail)){
+					return false;
+				}
+				return true;
 			},
 			refreshList:function () {
 			// ### 4.5 查询设备列表
@@ -183,6 +209,7 @@ $(function () {
 		mounted: function () {
 			this.$nextTick(function () {
 				this.refreshList();
+				$moudle = $("#"+moudleId)
 			})
 		}
 	});

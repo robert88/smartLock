@@ -1,100 +1,210 @@
 
-			<form role="form" id="addPerson">
-				<ul class="col">
-					<li class="col6 plr10">
-						<div class="form-group J-validItem validItem">
-							<label><i class="t-danger fa-asterisk mr5 fs10"></i>账号</label>
-							<i class="fa fa-user"></i>
-							<input type="text" class="form-control" placeholder="请输入邮箱！" name="user_email"
-								   check-type="required,email"
-								   data-email-msg="请填写正确的邮箱!"
-								   data-focus="true">
-						</div>
-					</li>
-					<li class="col6 plr10">
-						<div class="form-group J-validItem validItem">
-							<label ><i class="t-danger fa-asterisk mr5 fs10"></i>昵称</label>
-							<i class="fa fa-font"></i>
-							<input type="text" class="form-control" placeholder="请输入昵称！"  name="user_name"
-								   check-type="required maxlength" data-maxlength="30"
-								   data-maxlength-msg="最多只能输入30字符！"
-								   data-focus="true">
-						</div>
-					</li>
-				</ul>
-				<ul class="col">
-					<li class="col6 plr10">
-						<div class="form-group J-validItem validItem">
-							<label><i class="t-danger fa-asterisk mr5 fs10" style="visibility: hidden"></i>地址</label>
-							<i class="fa-building-o"></i>
-							<input type="text" class="form-control" name="address" placeholder="请输入地址!">
-						</div>
-					</li>
-					<li class="col6 plr10">
-						<div class="form-group J-validItem validItem">
-							<label><i class="t-danger fa-asterisk mr5 fs10" style="visibility: hidden"></i>身份证</label>
-							<i class="fa-list-alt"></i>
-							<input type="text" class="form-control" name="user_card" placeholder="请确认身份证!"
-								   check-type="idcard">
-						</div>
-					</li>
-				</ul>
-				<ul class="col">
-					<li class="col6 plr10">
-						<div class="form-group J-validItem validItem">
-							<label><i class="t-danger fa-asterisk mr5 fs10"></i>手机号码</label>
-							<i class="fa-phone"></i>
-							<input type="text" class="form-control" name="user_phone" placeholder="请输入手机号码!"
-								   check-type="required,mobile"
-								   data-mobile-msg="请填写正确的手机号码!"
-								   data-focus="true">
-						</div>
-					</li>
-					<li class="col6 plr10">
-						<div class="form-group J-validItem validItem">
-							<label><i class="t-danger fa-asterisk mr5 fs10"></i>角色</label>
-							<i class="fa-microphone-slash"></i>
-							<div class="J-select  J-select-search">
-								<input class="form-control J-select-text" type="text" placeholder="请选择类型">
-								<input class="J-select-value" name="role_id" type="hidden" check-type="required">
-								<i class="fa-angle-down"></i>
-								<div class="J-select-option J-scroll" id="addPerson_roleList" >
-									<a v-for="($item, $index) in list"
-									   v-bind="{ 'data-jp':$item.jp, 'data-qp': $item.qp ,'data-name':$item.name, 'data-value':$item.id}"
-									   class="option">{{$item.name}}</a>
-									<a v-show="loading">加载更多...</a>
-								</div>
-							</div>
-						</div>
-					</li>
-				</ul>
-				<ul class="col">
-					<li class="col6 plr10">
-						<div class="form-group J-validItem validItem">
-							<label><i class="t-danger fa-asterisk mr5 fs10"></i>密码</label>
-							<i class="fa fa-lock"></i>
-							<input type="password" class="form-control" name="login_pwd" id="J-password"
-								   placeholder="请输入密码!"
-								   check-type="required,password"
-								   data-password-msg="密码必须包含字母和数字，且至少8个字符！"
-								   data-focus="true">
-						</div>
-					</li>
-					<li class="col6 plr10">
-						<div class="form-group J-validItem validItem">
-							<label><i class="t-danger fa-asterisk mr5 fs10"></i>确认密码</label>
-							<i class="fa fa-check-square-o"></i>
-							<input type="password" class="form-control"
-								   placeholder="请确认密码!"
-								   data-pswagain="#J-password"
-								   check-type="required,pswagain"
-								   data-pswagain-msg="密码不一致!">
-						</div>
-					</li>
 
-				</ul>
+$(function () {
 
-				<div class="dialogBtns">
-					<a class="btn btn-danger J-submitBtn" >提交</a>
-				</div>
-			</form>
+	var token = PAGE.getToken();
+	if(!token){
+		return;
+	}
+
+	var $moudle = $("#deviceMoudle");
+
+	var $$vue = new Vue({
+		el: "#device-table",
+		data: {
+			list: [],
+			params:{page_number:1,page_size:10,user_name:"",token:token}
+		},
+		filters: {
+			role:function (value) {
+				switch (value){
+					case 10:
+						return "超级管理员"
+						break;
+					case 11:
+						return "普通管理员"
+						break;
+					default:
+						return "普通人员"
+						break;
+				}
+			},
+			type:function (value) {
+				switch (value){
+					case 1:
+						return "开门"
+						break;
+					case 2:
+						return "关门"
+						break;
+					default:
+						return "更新密码"
+						break;
+				}
+			},
+		},
+		methods:{
+			filter:function () {
+				$moudle.find(".search-filter-wrap").toggleClass("open");
+			},
+			refreshList:function () {
+				// ### 4.5 查询设备列表
+				// |  POST  |  smart_lock/v1/device/find_list  |
+				// | ------------- |:-------------:|
+				//
+				// **请求参数：**
+				//
+				// |  参数名称 | 参数类型 | 是否必填 | 参数描述 | 备注 |
+				// |  -------- |: -------- | -------- | -------- | ---- |
+				// | page_size | Interger | 是 | 每页数量 | |
+				// |page_number | Interger |是 | 页数 ||
+				// | device_name | String | 否 | 设备名称| |
+				// | device_code | String | 否 | 设备编码 | |
+				var $$vue = this;
+				var url = "/smart_lock/v1/device/find_list";
+				var type = "post";
+				PAGE.ajax({
+					url: url, data: this.params, type: type, success: function (ret) {
+						if (!ret) {
+							return;
+						}
+						$$vue.list = ret.list;
+
+						PAGE.setpageFooter($moudle.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
+							$$vue.params.page_number = page_number
+						});
+					}
+				});
+			},
+			// 		### 2.2 删除用户
+			// |  POST  |  smart_lock/v1/user/delete  |
+			// | ------------- |:-------------:|
+			//
+			// **请求参数：**
+			//
+			// |  参数名称 | 参数类型 | 是否必填 | 参数描述 | 备注 |
+			// |  -------- | -------- | -------- | -------- | ---- |
+			// |  token | string | 是 | 用户登录的token |  |
+			// |  user_id | Interger | 是 |  用户id  | 整形 |
+
+			del:function (index) {
+				var $$vue = this;
+				var url =  "/smart_lock/v1/user/delete";
+				var type = "post";
+				$.dialog("是否要删除该记录？", {
+					title: "删除记录",
+					width:400,
+					button: [{
+						text: "确认", click: function () {
+							if($$vue.list[index].id){
+								PAGE.ajax({
+									url: url,
+									type: type,
+									data: {user_id: $$vue.list[index].id, token: token},
+									success: function () {
+										$$vue.list.splice(index,1);
+									}
+								});
+							}else{
+								$$vue.list.splice(index,1);
+							}
+
+						}
+					}, {
+						text: "取消", click: function () {
+
+						}
+					}]
+
+				})
+			},
+			add:function () {
+				this.list.unshift({
+					edit: "add",
+					role_name: "",
+					name:"",
+					new_role_name:"",
+					is_admin: 12
+				})
+			},
+			saveAdd:function (index) {
+				var $$vue = this;
+				var url =  "/smart_lock/v1/role/add";
+				var type = "post";
+				this.list[index].role_name = this.list[index].name = this.list[index].new_role_name;
+				if(!this.list[index].name){
+					$.tips("请输入角色名","warn");
+					return;
+				}
+				PAGE.ajax({
+					url: url,
+					type: type,
+					data: {role_name: this.list[index].name, is_admin: this.list[index].is_admin, token: token},
+					success: function (ret) {
+						$.tips("保存成功！","success");
+						$$vue.list[index].edit="";
+						$$vue.list[index].id=ret.id;
+					}
+				});
+			},
+			canselAdd:function (index) {
+				this.del(index);
+			},
+			modify:function (index) {
+				this.list[index].edit = "modify";
+				this.list[index].new_role_name = this.list[index].name;
+				this.$forceUpdate()
+			},
+			cancelModify:function (index) {
+				this.list[index].edit = "";
+				this.$forceUpdate()
+			},
+			saveModify:function (index) {
+				$.tips("wu api");
+				return;
+				var $$vue = this;
+				var url =  "/smart_lock/v1/role/add";
+				var type = "post";
+				this.list[index].role_name = this.list[index].name = this.list[index].new_role_name;
+				if(!this.list[index].name){
+					$.tips("请输入角色名","warn");
+					return;
+				}
+				PAGE.ajax({
+					url: url,
+					type: type,
+					data: {role_name: this.list[index].name, is_admin: this.list[index].is_admin, token: token},
+					success: function (ret) {
+						$$vue.list[index].edit="";
+					}
+				});
+			}
+		},
+		mounted: function () {
+			this.$nextTick(function () {
+				this.refreshList();
+			})
+		}
+	});
+
+	$moudle.parents(".tab-content-item").on("updateContent",function () {
+		$$vue.refreshList();
+	});
+
+	$moudle.on("update",function () {
+		$$vue.refreshList();
+	});
+
+	$moudle.on("click",".J-filter",function () {
+		$$vue.filter();
+	})
+
+
+	PAGE.destroy.push(function () {
+		if($$vue){
+			$$vue.$destroy();
+			$$vue = null;
+			$moudle=null
+		}
+	})
+});

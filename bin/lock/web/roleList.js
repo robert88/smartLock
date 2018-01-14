@@ -4,11 +4,13 @@ $(function () {
 	if (!token) {
 		return;
 	}
-
-	var $moudle = $("#roleList");
+	var curAccordEmail = $.cookie("user_email");
+	var moudleId = "roleList";
+	var moudleVueId = moudleId;
+	var $moudle = $("#"+moudleId);
 
 	var $$vue = new Vue({
-		el: "#roleList",
+		el: "#"+moudleVueId,
 		data: {
 			list: [],
 			params:{page_number:1,page_size:10,role_name:"",token:token}
@@ -58,6 +60,15 @@ $(function () {
 			},
 		},
 		methods:{
+			filter:function () {
+				$moudle.find(".search-filter-wrap").toggleClass("open");
+			},
+			isSelf:function (email) {
+				if(email&&(email==curAccordEmail)){
+					return false;
+				}
+				return true;
+			},
 			refreshList:function () {
 				var $$vue = this;
 				var url = "/smart_lock/v1/role/find_list";
@@ -148,11 +159,20 @@ $(function () {
 				this.list[index].edit = "";
 				this.$forceUpdate()
 			},
+	// ### 6.2 更新角色
+	// |  POST  |  smart_lock/v1/role/modify  |
+	// | ------------- |:-------------:|
+	//
+	// **请求参数：**
+	//
+	// |  参数名称 | 参数类型 | 是否必填 | 参数描述 | 备注 |
+	// |  -------- | -------- | -------- | -------- | ---- |
+	// |  role_name | String | 是 |  角色名称  | |
+	// | role_id |  Interger | 是 | 角色ID | |
+	// | token | String | 是 | 用户Token |示例：06REbYPmid30pL75pfauECjxFuYGx |
 			saveModify:function (index) {
-				$.tips("wu api");
-				return;
 				var $$vue = this;
-				var url =  "/smart_lock/v1/role/add";
+				var url =  "smart_lock/v1/role/modify";
 				var type = "post";
 				this.list[index].role_name = this.list[index].name = this.list[index].new_role_name;
 				if(!this.list[index].name){
@@ -162,7 +182,7 @@ $(function () {
 				PAGE.ajax({
 					url: url,
 					type: type,
-					data: {role_name: this.list[index].name, is_admin: this.list[index].is_admin, token: token},
+					data: {role_name: this.list[index].name, role_id: this.list[index].id, token: token},
 					success: function (ret) {
 						$$vue.list[index].edit="";
 					}
@@ -172,15 +192,26 @@ $(function () {
 		mounted: function () {
 			this.$nextTick(function () {
 				this.refreshList();
-				$moudle = $("#roleList")
+				$moudle = $("#"+moudleId)
 			})
 		}
 	});
 
+	$moudle.parents(".tab-content-item").on("updateContent",function () {
+		$$vue.refreshList();
+	});
+
+	$moudle.on("update",function () {
+		$$vue.refreshList();
+	});
+	$moudle.on("click",".J-filter",function () {
+		$$vue.filter();
+	})
 	PAGE.destroy.push(function () {
 		if($$vue){
 			$$vue.$destroy();
 			$$vue = null;
+			$moudle=null
 		}
 	})
 });

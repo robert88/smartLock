@@ -5,14 +5,48 @@ $(function () {
 		if(!token){
 			return;
 		}
-
-	var $moudle = $("#systemPerson");
+	var curAccordEmail = $.cookie("user_email");
+	var moudleId = "systemPerson";
+	var moudleVueId = moudleId+"Vue";
+	var $moudle = $("#"+moudleId);
 
 	var $$vue = new Vue({
-		el: "#systemPerson-table",
+		el: "#"+moudleVueId,
 		data: {
 			list: [],
 			params:{page_number:1,page_size:10,user_name:"",token:token}
+		},
+		watch: {
+		//	list: {
+		//		handler: function (newValue, oldValue) {
+		//			if(this.edit){
+		//				return;
+		//			}
+		//			for (var i = 0; i < newValue.length; i++) {
+//
+		//				//将请求字段统一使用role_name
+		//				if (newValue[i].role_name !=  newValue[i].name) {
+		//					newValue[i].role_name = newValue[i].name
+		//				}
+	//				}
+		//		},
+		//		deep: true
+		//	},
+			//对象不应该用handler方式，应该值改变了但是引用没有改变
+			"params.page_number":function (newValue, oldValue) {
+				if(newValue!=oldValue){
+					this.refreshList();
+				}
+			},
+			"params.role_name":function (newValue, oldValue) {
+				if(newValue!=oldValue){
+					if(this.params.page_number!=1){
+						this.params.page_number =1;
+					}else{
+						this.refreshList();
+					}
+				}
+			}
 		},
 		filters: {
 			role:function (value) {
@@ -45,6 +79,12 @@ $(function () {
 		methods:{
 			filter:function () {
 				$moudle.find(".search-filter-wrap").toggleClass("open");
+			},
+			isSelf:function (email) {
+				if(email&&(email==curAccordEmail)){
+					return false;
+				}
+				return true;
 			},
 			refreshList:function () {
 				var $$vue = this;
@@ -147,10 +187,8 @@ $(function () {
 				this.$forceUpdate()
 			},
 			saveModify:function (index) {
-				$.tips("wu api");
-				return;
 				var $$vue = this;
-				var url =  "/smart_lock/v1/role/add";
+				var url =  "smart_lock/v1/role/modify";
 				var type = "post";
 				this.list[index].role_name = this.list[index].name = this.list[index].new_role_name;
 				if(!this.list[index].name){
@@ -170,6 +208,7 @@ $(function () {
 		mounted: function () {
 			this.$nextTick(function () {
 				this.refreshList();
+				$moudle = $("#"+moudleId)
 			})
 		}
 	});
@@ -181,7 +220,9 @@ $(function () {
 	$moudle.on("update",function () {
 		$$vue.refreshList();
 	});
-
+	$moudle.on("click",".J-filter",function () {
+		$$vue.filter();
+	})
 	PAGE.destroy.push(function () {
 		if($$vue){
 			$$vue.$destroy();
