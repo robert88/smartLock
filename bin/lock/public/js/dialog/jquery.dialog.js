@@ -195,7 +195,7 @@ if(!$.i18n){
 			//关闭样式
 			var titleHasClose;
 			if(opts.title){
-				titleHasClose = "right:0;top:0;color:#fff;font-size:28px;line-height:38px;background-color:#cb0101;width:42px;height:40px;"
+				titleHasClose = "right:-1px;top:0;color:#fff;font-size:28px;line-height:38px;background-color:#cb0101;width:42px;height:40px;"
 			}else{
 
 				 titleHasClose = "background-color:#fff;right: 10px;top: 4px;width: 24px;line-height: 20px;height: 24px;font-size: 24px;"
@@ -268,6 +268,10 @@ if(!$.i18n){
 		}
 
 		$dialog.delegate(".dl-close,.dl-btn","click",close);
+
+		$dialog.on("setcenter",function () {
+			setCenter($dialog,opts);
+		});
 
 		if (opts.draggable) {
 			if(typeof opts.draggableTrigger=="string" && $dialog.find(opts.draggableTrigger).length){
@@ -561,15 +565,20 @@ if(!$.i18n){
 	function setCenter($target,opts) {
 		$target.each(function(){
 			var $this = $(this);
+			opts = opts||$this.data("opts");
 			var center = $.dialog.getCenter($target);
+			if(center.isTop&&opts&& opts.minTop){
+				center.y = center.y+opts.minTop;
+			}
 			if(center.isover && $target.data("setcenter")){
+				if(center.y<parseFloat($this.css("top"),10)){
+					$this.css({top: center.y});
+				}
 				return;
 			}
 			$target.data("setcenter",true);
 			 opts = opts||$target.data("opts");
-			if(center.isTop&&opts&& opts.minTop){
-				center.y = center.y+opts.minTop;
-			}
+
 			$this.css({top: center.y,left: center.x});
 		});
 	}

@@ -289,11 +289,12 @@ $(function () {
 			return;
 		}
 		$.dialog.closeAll();
-		$pageDsync.data("dialog",true);
+
 		var url = $this.data("url");
 		var dialogId = $this.data("id");
 		var dialogClass = $this.data("class");
 		if (url) {
+			$pageDsync.data("dialog",true);
 			$(".loading").show();
 			 $.dialog("url:" + url, {
 				dialogClass: dialogClass,

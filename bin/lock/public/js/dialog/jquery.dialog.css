@@ -63,14 +63,14 @@
     background-clip: padding-box;
     box-shadow: 0px 0px 46px rgba(0, 0, 0, .3);
 }
-.dl-close{
+.dl-dialog>.dl-close{
         border-radius: 0 6px 0 0;
         -moz-transition: all .2s ease-in-out;
         -o-transition: all .2s ease-in-out;
         -webkit-transition: all .2s ease-in-out;
         transition: all .2s ease-in-out;
 }
-.dl-close:hover{transform: translateZ(0) rotate(-180deg);color:#e50000;border-radius: 50%;}
+.dl-dialog>.dl-close:hover{transform: translateZ(0) rotate(-180deg);color:#e50000;border-radius: 50%;}
 
 .dl-alert {
     border: 2px solid #d9d6d6;

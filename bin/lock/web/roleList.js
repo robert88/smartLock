@@ -11,13 +11,12 @@ $(function () {
 		el: "#roleList",
 		data: {
 			list: [],
-			template_list:[],
 			params:{page_number:1,page_size:10,role_name:"",token:token}
 		},
 		watch: {
 			list: {
 				handler: function (newValue, oldValue) {
-					if(this.status){
+					if(this.edit){
 						return;
 					}
 					for (var i = 0; i < newValue.length; i++) {
@@ -50,10 +49,10 @@ $(function () {
 			isAdmin: function (value) {
 				switch (value) {
 					case 11:
-						return "管理员"
+						return true
 						break;
 					default:
-						return "普通人员"
+						return false
 						break;
 				}
 			},
@@ -65,7 +64,6 @@ $(function () {
 				var type = "post";
 				PAGE.ajax({
 					url: url, data: this.params, type: type, success: function (ret) {
-						console.log("ajax success:", url, "data:", ret);
 						if (!ret ) {
 							return;
 						}
@@ -75,26 +73,6 @@ $(function () {
 						PAGE.setpageFooter($moudle.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
 							$$vue.params.page_number = page_number*1
 						});
-					}
-				});
-			},
-			saveAdd:function (index) {
-				var $$vue = this;
-				var url =  "/smart_lock/v1/role/add";
-				var type = "post";
-				this.list[index].name = this.role_name_template;
-				this.list[index].is_admin = this.is_admin_template;
-				if(!this.list[index].name){
-					$.tips("请输入角色名","warn");
-					return;
-				}
-				PAGE.ajax({
-					url: url,
-					type: type,
-					data: {role_name: this.list[index].name, is_admin: this.list[index].is_admin ? 11 : 12, token: token},
-					success: function (ret) {
-						$.tips("保存成功！","success");
-						$$vue.list[index].status="";
 					}
 				});
 			},
@@ -130,29 +108,19 @@ $(function () {
 				})
 			},
 			add:function () {
-				this.role_name_template="";
-				this.is_admin_template="";
-				this.list.push({
-					status: "add",
+				this.list.unshift({
+					edit: "add",
 					role_name: "",
-					is_admin: "",
-					update_time: ""
+					name:"",
+					new_role_name:"",
+					is_admin: 12
 				})
 			},
-			modify:function (index) {
-				this.list[index].status = "modify";
-				this.is_admin_template = this.list[index].is_admin==11?true:false;
-				this.role_name_template = this.list[index].name
-				this.$forceUpdate()
-			},
-			cancelModify:function () {
-				this.list[index].status = "";
-				this.$forceUpdate()
-			},
-			saveModify:function (index) {
+			saveAdd:function (index) {
 				var $$vue = this;
 				var url =  "/smart_lock/v1/role/add";
 				var type = "post";
+				this.list[index].role_name = this.list[index].name = this.list[index].new_role_name;
 				if(!this.list[index].name){
 					$.tips("请输入角色名","warn");
 					return;
@@ -160,17 +128,45 @@ $(function () {
 				PAGE.ajax({
 					url: url,
 					type: type,
-					data: {role_name: this.list[index].name, is_admin: this.list[index].is_admin ? 11 : 12, token: token},
+					data: {role_name: this.list[index].name, is_admin: this.list[index].is_admin, token: token},
 					success: function (ret) {
-						$$vue.list[index].status="";
-						$$vue.list[index].id = ret.id;
-						$$vue.list[index].role_name = ret.role_name;
-						$$vue.list[index].consumer_id = ret.consumer_id;
+						$.tips("保存成功！","success");
+						$$vue.list[index].edit="";
+						$$vue.list[index].id=ret.id;
 					}
 				});
 			},
-			filter:function () {
-				$moudle.find(".search-filter-wrap").toggleClass("open");
+			canselAdd:function (index) {
+				this.del(index);
+			},
+			modify:function (index) {
+				this.list[index].edit = "modify";
+				this.list[index].new_role_name = this.list[index].name;
+				this.$forceUpdate()
+			},
+			cancelModify:function (index) {
+				this.list[index].edit = "";
+				this.$forceUpdate()
+			},
+			saveModify:function (index) {
+				$.tips("wu api");
+				return;
+				var $$vue = this;
+				var url =  "/smart_lock/v1/role/add";
+				var type = "post";
+				this.list[index].role_name = this.list[index].name = this.list[index].new_role_name;
+				if(!this.list[index].name){
+					$.tips("请输入角色名","warn");
+					return;
+				}
+				PAGE.ajax({
+					url: url,
+					type: type,
+					data: {role_name: this.list[index].name, is_admin: this.list[index].is_admin, token: token},
+					success: function (ret) {
+						$$vue.list[index].edit="";
+					}
+				});
 			}
 		},
 		mounted: function () {

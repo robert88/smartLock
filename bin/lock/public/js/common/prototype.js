@@ -36,6 +36,9 @@
 		var arg = arguments;
 		var that = this;
 		for (var i = 0; i < arg.length; i++) {
+			if(typeof arg[i]=="string" && ~arg[i].indexOf("$")){
+				arg[i] = arg[i].replace(/\$/g,"$$$$")
+			}
 			that = that.replace(new RegExp('\\{' + i + '\\}', "g"), arg[i]);
 		}
 		return that;

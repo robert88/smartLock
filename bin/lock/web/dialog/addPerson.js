@@ -31,7 +31,7 @@ $(function () {
 			list:[],
 			loading:false,
 			total_page:0,
-			params:{page_number:1,page_size:6,role_name:"",token:token}
+			params:{page_number:1,page_size:20,role_name:"",token:token}
 		},
 		methods:{
 			mergeArray:function (obj) {

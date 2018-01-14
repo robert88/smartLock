@@ -798,3 +798,7 @@
 [info][2018/01/09 21:19:47][function (callback, hours, name) ]:[intervalByHour]  下一次启动将在 20.7 小时后
 [info][2018/01/10 21:57:28][function (callback, hours, name) ]:[intervalByHour]  下一次启动将在 20 小时后
 [info][2018/01/11 21:59:42][function (callback, hours, name) ]:[intervalByHour]  下一次启动将在 20 小时后
+[info][2018/01/13 08:57:50][function (callback, hours, name) ]:[intervalByHour]  下一次启动将在 3 小时后
+[info][2018/01/13 12:00:00][function (callback, hours, name) ]:[intervalByHour]  下一次启动将在 6 小时后
+[info][2018/01/13 18:00:01][function (callback, hours, name) ]:[intervalByHour]  下一次启动将在 24 小时后
+[info][2018/01/14 00:00:08][function (callback, weeks, name) ]:[intervalByWeek]  下一次启动将在 7 天后
