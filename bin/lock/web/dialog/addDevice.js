@@ -39,12 +39,12 @@ $(function () {
 
 	//添加角色
 	var $$vue = new Vue({
-		el:"#addPerson_roleList",
+		el:"#addDeviceFormVue",
 		data:{
 			list:[],
 			loading:false,
 			total_page:0,
-			params:{page_number:1,page_size:20,role_name:"",token:token}
+			params:{page_number:1,page_size:20,group_name:"",token:token}
 		},
 		methods:{
 			mergeArray:function (obj) {
@@ -75,13 +75,24 @@ $(function () {
 				}
 				if(this.params.page_number<this.total_page){
 					this.params.page_number++;
-					this.getRole();
+					this.refreshList();
 				}
 
 			},
-			getRole:function () {
+			// ### 4.11 查询分组列表
+			// |  POST  |  smart_lock/v1/device_group/find_list  |
+			// | ------------- |:-------------:|
+			//
+			// **请求参数：**
+			//
+			// |  参数名称 | 参数类型 | 是否必填 | 参数描述 | 备注 |
+			// |  -------- | -------- | -------- | -------- | ---- |
+			// | group_name| String | 否 |  分组名称  |  |
+			// | page_size | Interger | 是 | 每页数量 | |
+			// |page_number | Interger |是 | 页数 ||
+			refreshList:function () {
 				var $$vue = this;
-				var url = "/smart_lock/v1/role/find_list";
+				var url = "/smart_lock/v1/device_group/find_list";
 				var type = "post";
 				$$vue.loading = true;
 				PAGE.ajax({url:url,type:type,data:$$vue.params,success:function (ret) {
@@ -89,13 +100,19 @@ $(function () {
 						return;
 					}
 					if(ret.page_number==1&& (!ret.list||ret.list.length==0)){
-						$.tips("请先添加角色","warn",function () {
-							window.location.hash="#/web/roleList.html";
-						});
+						$$vue.list = [{
+							"id": 0,
+							"name": "无分组"
+						}];
+						return;
 					}
 					listMap[$$vue.params.page_number] = ret.list;
 					$$vue.total_page = ret.total_page;
-					$$vue.list = $$vue.mergeArray(listMap);
+					$$vue.list = $$vue.mergeArray(listMap)
+					$$vue.list.unshift({
+						"id": 0,
+						"name": "无分组"
+					});
 				},complete:function () {
 					$$vue.loading = false;
 				}});
@@ -103,7 +120,7 @@ $(function () {
 		},
 		mounted: function () {
 			this.$nextTick(function () {
-				this.getRole();
+				this.refreshList();
 			})
 		}
 	});

@@ -8,7 +8,7 @@ $(function () {
 	}
 	var curAccordEmail = $.cookie("user_email");
 	var moudleId = "deviceGroupMoudle";
-	var moudleVueId = moudleId+"Vue";
+	var moudleVueId = moudleId
 	var $moudle = $("#"+moudleId);
 
 	var $$vue = new Vue({
@@ -94,6 +94,10 @@ $(function () {
 						if (!ret) {
 							return;
 						}
+						ret.list = ret.list||[];
+						for(var i=0;i<ret.list.length;i++){
+							ret.list[i].group_name = ret.list[i].name;
+						}
 						$$vue.list = ret.list;
 
 						PAGE.setpageFooter($moudle.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
@@ -102,20 +106,19 @@ $(function () {
 					}
 				});
 			},
-			// 		### 2.2 删除用户
-			// |  POST  |  smart_lock/v1/user/delete  |
-			// | ------------- |:-------------:|
-			//
-			// **请求参数：**
-			//
-			// |  参数名称 | 参数类型 | 是否必填 | 参数描述 | 备注 |
-			// |  -------- | -------- | -------- | -------- | ---- |
-			// |  token | string | 是 | 用户登录的token |  |
-			// |  user_id | Interger | 是 |  用户id  | 整形 |
+// ### 4.10 删除设备分组
+// 	|  POST  |  smart_lock/v1/device_group/delete  |
+// 	| ------------- |:-------------:|
+//
+// 	**请求参数：**
+//
+// 	|  参数名称 | 参数类型 | 是否必填 | 参数描述 | 备注 |
+// 	|  -------- | -------- | -------- | -------- | ---- |
+// 	| group_id| Interger | 是 |  分组id  |  |
 
 			del:function (index) {
 				var $$vue = this;
-				var url =  "/smart_lock/v1/user/delete";
+				var url =  "/smart_lock/v1/device_group/delete";
 				var type = "post";
 				$.dialog("是否要删除该记录？", {
 					title: "删除记录",
@@ -126,7 +129,7 @@ $(function () {
 								PAGE.ajax({
 									url: url,
 									type: type,
-									data: {user_id: $$vue.list[index].id, token: token},
+									data: {group_id: $$vue.list[index].id, token: token},
 									success: function () {
 										$$vue.list.splice(index,1);
 									}
@@ -166,15 +169,15 @@ $(function () {
 				var $$vue = this;
 				var url =  "/smart_lock/v1/device_group/add";
 				var type = "post";
-				this.list[index].role_name = this.list[index].name = this.list[index].new_role_name;
-				if(!this.list[index].name){
-					$.tips("请输入角色名","warn");
+				this.list[index].group_name = this.list[index].new_group_name;
+				if(!this.list[index].group_name){
+					$.tips("请输入设备组名","warn");
 					return;
 				}
 				PAGE.ajax({
 					url: url,
 					type: type,
-					data: {role_name: this.list[index].name, is_admin: this.list[index].is_admin, token: token},
+					data: {group_name: this.list[index].group_name, token: token},
 					success: function (ret) {
 						$.tips("保存成功！","success");
 						$$vue.list[index].edit="";
@@ -187,28 +190,36 @@ $(function () {
 			},
 			modify:function (index) {
 				this.list[index].edit = "modify";
-				this.list[index].new_role_name = this.list[index].name;
+				this.list[index].new_group_name = this.list[index].group_name;
 				this.$forceUpdate()
 			},
 			cancelModify:function (index) {
 				this.list[index].edit = "";
 				this.$forceUpdate()
 			},
+	// 		### 4.9 修改设备分组
+	// |  POST  |  smart_lock/v1/device_group/modify  |
+	// | ------------- |:-------------:|
+	//
+	// **请求参数：**
+	//
+	// |  参数名称 | 参数类型 | 是否必填 | 参数描述 | 备注 |
+	// |  -------- | -------- | -------- | -------- | ---- |
+	// | group_name | String | 是 |  分组名称  |  |
 			saveModify:function (index) {
-				$.tips("wu api");
-				return;
+
 				var $$vue = this;
-				var url =  "/smart_lock/v1/role/add";
+				var url =  "/smart_lock/v1/device_group/modify";
 				var type = "post";
-				this.list[index].role_name = this.list[index].name = this.list[index].new_role_name;
-				if(!this.list[index].name){
-					$.tips("请输入角色名","warn");
+				this.list[index].group_name = this.list[index].new_group_name;
+				if(!this.list[index].group_name){
+					$.tips("请输入设备组名","warn");
 					return;
 				}
 				PAGE.ajax({
 					url: url,
 					type: type,
-					data: {role_name: this.list[index].name, is_admin: this.list[index].is_admin, token: token},
+					data: {group_name: this.list[index].group_name, token: token},
 					success: function (ret) {
 						$$vue.list[index].edit="";
 					}
