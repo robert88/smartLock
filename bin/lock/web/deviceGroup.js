@@ -25,7 +25,7 @@ $(function () {
 					this.refreshList();
 				}
 			},
-			"params.role_name":function (newValue, oldValue) {
+			"params.group_name":function (newValue, oldValue) {
 				if(newValue!=oldValue){
 					if(this.params.page_number!=1){
 						this.params.page_number =1;

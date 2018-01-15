@@ -16,7 +16,7 @@
 							<div class="mb10">
 								<a class=" btn btn-success J-dialog" data-url="/web/dialog/addDevice.html" data-title="添加设备"><i class="fa-turkish-lira-try mr5"></i>添加设备</a>
 								<a class=" btn btn-info J-filter" ><i class="fa-filter mr5"></i>过滤</a>
-								<a class=" btn btn-danger" ><i class="fa-trash-o mr5"></i>批量删除设备</a>
+								<a class=" btn btn-danger" ><i class="fa-trash-o mr5"></i>批量关闭</a>
 								<!--<a class="search-wrap"><input type="text" class="form-control"  placeholder="请输入人名查询"> <i class="fa-search" v-on:click="seachPerson"></i></a>-->
 							</div>
 							<div id="deviceMoudleVue">
@@ -71,8 +71,8 @@
 										<th><i class="fa-tablet "></i> 设备编号</th>
 										<th><i class="fa-envelope-o"></i> 设备型号</th>
 										<th><i class="fa-credit-card"></i> 所属设备组</th>
-										<!--<th><i class="fa-quote-left "></i> 最近一次操作</th>-->
-										<!--<th><i class="fa-bars"></i> 最近一次操作时间</th>-->
+										<th><i class="fa-credit-card"></i> 状态</th>
+										<th><i class="fa-credit-card"></i> 更新时间</th>
 										<th><i class="fa-wrench"></i> 操作</th>
 									</tr>
 									</thead>
@@ -83,12 +83,12 @@
 										<td>{{$item.device_code}}</td>
 										<td>{{$item.device_model}}</td>
 										<td>{{$item.group_id}}</td>
-										<!--<td>{{$item.user_card}}</td>-->
+										<td></td>
 										<!--<td>{{$item.role_id | role}}</td>-->
-										<!--<td>{{$item.update_time}}</td>-->
+										<td>{{$item.update_time}}</td>
 										<td>
-											<a class="label label-success label-sm ml10" href="#/web/device.html">用户授权</a>
-											<a class="label label-danger label-sm J-delete"><i class="fa-trash-o" title="删除"></i></a>
+											<a class="label label-success label-sm ml10" >用户授权</a>
+											<a class="label label-danger label-sm" v-on:click="close"><i class="fa-trash-o" title="关闭设备"></i></a>
 										</td>
 									</tr>
 
