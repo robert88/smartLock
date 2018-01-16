@@ -624,7 +624,7 @@
 					hasSub:"",
 					active:"",
 					sub:[],
-					href:"#/web/forgetPsw.html",
+					href:"#/web/modifyLoginPwd.html",
 					tips:0,
 					text:"密码管理",
 					icon:"fa-key"
@@ -724,7 +724,7 @@
 	function setBreadcrumb(action) {
 		var setActive = 0
 		for(var i=0;i<$$slider.slideBars.length;i++){
-			if(action&&$$slider.slideBars[i].href.indexOf(action)!=-1){
+			if(action&&$$slider.slideBars[i].href.indexOf(action+".htm")!=-1){
 				if(i!=0){
 					$$Breadcrumb.breadcrumb.push({icon:$$slider.slideBars[i].icon,href:$$slider.slideBars[i].href,"text":$$slider.slideBars[i].text})
 				}

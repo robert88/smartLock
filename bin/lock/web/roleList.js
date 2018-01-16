@@ -172,7 +172,7 @@ $(function () {
 	// | token | String | 是 | 用户Token |示例：06REbYPmid30pL75pfauECjxFuYGx |
 			saveModify:function (index) {
 				var $$vue = this;
-				var url =  "smart_lock/v1/role/modify";
+				var url =  "/smart_lock/v1/role/modify";
 				var type = "post";
 				this.list[index].role_name = this.list[index].name = this.list[index].new_role_name;
 				if(!this.list[index].name){
@@ -185,6 +185,8 @@ $(function () {
 					data: {role_name: this.list[index].name, role_id: this.list[index].id, token: token},
 					success: function (ret) {
 						$$vue.list[index].edit="";
+						$$vue.$forceUpdate();
+						$.tips("修改成功！","success");
 					}
 				});
 			}

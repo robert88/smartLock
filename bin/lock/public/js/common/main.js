@@ -74,7 +74,7 @@ $(function () {
 		}
 	});
 
-
+	var dialogMap={};
 	$(document).on("click",function (e) {
 		var $dropdown;
 		if($(e.target).hasClass("dropdown")){
@@ -89,15 +89,16 @@ $(function () {
     }).off("click.dragbg touchstart.dragbg", ".J-dialog").on("click.dragbg touchstart.dragbg", ".J-dialog", function (evt) {
 		var $this = $(this);
 		var $pageDsync = $("#pageDsync")
-		//防止重复弹出
-		if($pageDsync.data("dialog")){
-			return;
-		}
-		$.dialog.closeAll();
+
 
 		var url = $this.data("url");
 		var dialogId = $this.data("id");
 		var dialogClass = $this.data("class");
+		//防止重复弹出
+		if(dialogMap[url]){
+			return;
+		}
+		dialogMap[url] = true;
 		if (url) {
 			$pageDsync.data("dialog",true);
 			$(".loading").show();
@@ -108,7 +109,7 @@ $(function () {
 				id: (dialogId ? dialogId : ""),
 				maskClose: false,
 				closeAfter: function () {
-					$pageDsync.data("dialog",false);
+					dialogMap[url] =false;
 				},
 				structureReady:function ($dialog) {
 					//跨页面传递传递数据

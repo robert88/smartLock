@@ -87,7 +87,7 @@
 										<!--<td>{{$item.role_id | role}}</td>-->
 										<!--<td>{{$item.update_time}}</td>-->
 										<td>
-											<a class="label label-success label-sm ml10" href="#/web/device.html">用户授权</a>
+											<a class="label label-success label-sm ml10 J-dialog" data-url="/web/dialog/authDeviceToUser.html" :data-device-id="$item.id" :data-title="($item.user_name+'用户')" :data-name="$item.user_name">授权给用户</a>
 											<a class="label label-danger label-sm J-delete"><i class="fa-trash-o" title="删除"></i></a>
 										</td>
 									</tr>

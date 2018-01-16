@@ -88,8 +88,8 @@
 								<!--<td class="t-warning"> {{$item.type|type}}</td>-->
 								<!--<td>{{$item.update_time}}</td>-->
 								<td>
-									<a class="label label-success label-sm ml10 J-dialog" data-url="/web/dialog/modifyPerson.html" :data-id="$item.id" :data-title="('修改'+$item.user_name+'用户信息详情')">修改用户信息</a>
-									<a class="label label-success label-sm ml10 J-dialog" data-url="/web/dialog/authDeviceToUser.html" :data-id="$item.id" :data-title="($item.user_name+'用户')" :data-name="$item.user_name">设备授权</a>
+									<a class="label label-success label-sm ml10 J-dialog" data-url="/web/dialog/modifyPerson.html" :data-user_id="$item.id" :data-title="('修改'+$item.user_name+'用户信息详情')">修改用户信息</a>
+									<a class="label label-success label-sm ml10 J-dialog" data-url="/web/dialog/authUserToDevice.html" :data-user_id="$item.id" :data-title="($item.user_name+'用户')" :data-name="$item.user_name">设备授权</a>
 									<a class="label label-danger label-sm" v-on:click="del($index, $event)" v-show="isSelf($item.user_email)"><i class="fa-trash-o" title="删除"></i></a>
 								</td>
 							</tr>

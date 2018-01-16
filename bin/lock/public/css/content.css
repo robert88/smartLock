@@ -5,6 +5,7 @@
 	margin-left: 250px;
 	padding-bottom: 30px;
 	border-left: 1px solid #cdd2d2;
+	min-width: 479px;
 }
 #main-content .main-content-header {
 	background: none repeat scroll 0 0 #FFFFFF;
