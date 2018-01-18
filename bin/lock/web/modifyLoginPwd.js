@@ -52,8 +52,7 @@ $(function () {
 				url:"/smart_lock/v1/user/modify_pwd",
 				success:function (ret) {
 					$.tips("密码更改成功!","success",function () {
-						$.cookie("token","");
-						window.location.hash="#/web/login.html";
+						PAGE.clearToken();
 					});
 
 				},errorCallBack:function () {

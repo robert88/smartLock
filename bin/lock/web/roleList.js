@@ -88,7 +88,12 @@ $(function () {
 				});
 			},
 			del:function (index) {
+
 				var $$vue = this;
+				if(!$$vue.list[index].id){
+					$$vue.list.splice(index,1);
+					return;
+				}
 				var url =  "/smart_lock/v1/role/delete";
 				var type = "post";
 				$.dialog("是否要删除该记录？", {
@@ -96,18 +101,14 @@ $(function () {
 					width:400,
 					button: [{
 						text: "确认", click: function () {
-						    if($$vue.list[index].id){
-						        PAGE.ajax({
-                                    url: url,
-                                    type: type,
-                                    data: {role_id: $$vue.list[index].id, token: token},
-                                    success: function () {
-                                        $$vue.list.splice(index,1);
-                                    }
-                                });
-						    }else{
-								$$vue.list.splice(index,1);
-							}
+							PAGE.ajax({
+								url: url,
+								type: type,
+								data: {role_id: $$vue.list[index].id, token: token},
+								success: function () {
+									$$vue.list.splice(index,1);
+								}
+							});
 							
 						}
 					}, {
@@ -174,17 +175,17 @@ $(function () {
 				var $$vue = this;
 				var url =  "/smart_lock/v1/role/modify";
 				var type = "post";
-				this.list[index].role_name = this.list[index].name = this.list[index].new_role_name;
-				if(!this.list[index].name){
+				if(!this.list[index].new_role_name){
 					$.tips("请输入角色名","warn");
 					return;
 				}
 				PAGE.ajax({
 					url: url,
 					type: type,
-					data: {role_name: this.list[index].name, role_id: this.list[index].id, token: token},
+					data: {role_name: this.list[index].new_role_name, role_id: this.list[index].id, token: token},
 					success: function (ret) {
 						$$vue.list[index].edit="";
+						this.list[index].role_name = this.list[index].name = this.list[index].new_role_name;
 						$$vue.$forceUpdate();
 						$.tips("修改成功！","success");
 					}

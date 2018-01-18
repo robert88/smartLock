@@ -23,7 +23,7 @@ $(function () {
 		el: "#"+moudleVueId,
 		data: {
 			list: [],
-			params:{page_number:1,page_size:10,user_name:"",token:token}
+			params:{page_number:1,page_size:10,user_id:user_id,token:token}
 		},
 		filters: {
 			role:function (value) {
@@ -58,8 +58,8 @@ $(function () {
 				$moudle.find(".search-filter-wrap").toggleClass("open");
 			},
 			refreshList:function () {
-				// ### 4.5 查询设备列表
-				// |  POST  |  smart_lock/v1/device/find_list  |
+				// ### 4.11 查询某用户未授权设备列表
+				// |  POST  |  smart_lock/v1/device/find_unauth_device  |
 				// | ------------- |:-------------:|
 				//
 				// **请求参数：**
@@ -68,21 +68,29 @@ $(function () {
 				// |  -------- |: -------- | -------- | -------- | ---- |
 				// | page_size | Interger | 是 | 每页数量 | |
 				// |page_number | Interger |是 | 页数 ||
-				// | device_name | String | 否 | 设备名称| |
-				// | device_code | String | 否 | 设备编码 | |
+				// | user_id | Interger | 是 | 用户id| |
+				//
+				// **ps 返回该用户有控制权限的设备 **
+				// **返回**
+
+
 				var $$vue = this;
-				var url = "/smart_lock/v1/device/find_list";
+				var url = "/smart_lock/v1/device/find_unauth_device";
 				var type = "post";
+				$moudle.addClass("loading");
 				PAGE.ajax({
 					url: url, data: this.params, type: type, success: function (ret) {
 						if (!ret) {
 							return;
 						}
 						$$vue.list = ret.list;
-
+						$dialog.trigger("setcenter");
 						PAGE.setpageFooter($moudle.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
 							$$vue.params.page_number = page_number
 						});
+					},
+					complete:function () {
+						$moudle.removeClass("loading");
 					}
 				});
 			},
@@ -101,8 +109,48 @@ $(function () {
 				var url = "/smart_lock/v1/device/device_auth";
 				var type = "post";
 				PAGE.ajax({
-					url: url, data: {device_id:$$vue.list[index].id,user_id:user_id}, type: type, success: function (ret) {
+					url: url, data: {device_ids:$$vue.list[index].id,user_id:user_id}, type: type, success: function (ret) {
 						$.tips("设备授权成功！","success");
+						$$vue.list.splice(index,1);
+					}
+				});
+			},
+			authSelected:function (index) {
+				// ### 4.3 分配设备给某个用户
+				// |  POST  |  smart_lock/v1/device/device_auth |
+				// | ------------- |:-------------:|
+				//
+				// **请求参数：**
+				//
+				// |  参数名称 | 参数类型 | 是否必填 | 参数描述 | 备注 |
+				// |  -------- | -------- | -------- | -------- | ---- |
+				// |  device_id  | Interger   | 是 | 设备id  |  |
+				// | user_id | Interger | 是 | 用户id | |
+
+
+				var $$vue = this;
+				var unSelect = [];
+				var select = [];
+				var ids = [];
+
+				for(var i=0;i<$$vue.list.length;i++){
+					if($$vue.list[i].selected){
+						select.push($$vue.list[i]);
+						ids.push($$vue.list[i].id)
+					}else{
+						unSelect.push($$vue.list[i]);
+					}
+				}
+				if(select.length==0){
+					$.tips("至少选择一台设备！","warn");
+					return ;
+				}
+				var url = "/smart_lock/v1/device/device_auth";
+				var type = "post";
+				PAGE.ajax({
+					url: url, data: {device_ids:ids.join(","),user_id:user_id}, type: type, success: function (ret) {
+						$.tips("设备授权成功！","success");
+						$$vue.refreshList();
 					}
 				});
 			}

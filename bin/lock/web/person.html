@@ -16,7 +16,7 @@
 						<div class="mb10">
 							<a class=" btn btn-success J-dialog" data-url="/web/dialog/addPerson.html" data-title="添加成员"><i class="fa-turkish-lira-try mr5"></i>添加成员</a>
 							<a class=" btn btn-info J-filter" ><i class="fa-filter mr5"></i>过滤</a>
-							<a class=" btn btn-danger" ><i class="fa-trash-o mr5"></i>批量删除成员</a>
+							<!--<a class=" btn btn-danger" ><i class="fa-trash-o mr5"></i>批量删除成员</a>-->
 							<!--<a class="search-wrap"><input type="text" class="form-control"  placeholder="请输入人名查询"> <i class="fa-search" v-on:click="seachPerson"></i></a>-->
 						</div>
 
@@ -72,6 +72,7 @@
 								<th><i class="fa-envelope-o"></i> 邮箱</th>
 								<th><i class="fa-credit-card"></i> 身份证</th>
 								<th><i class="fa-suitcase"></i> 角色</th>
+								<th><i class="fa-suitcase"></i> 已授权的设备</th>
 								<!--<th><i class="fa-quote-left "></i> 最近一次操作</th>-->
 								<!--<th><i class="fa-bars"></i> 最近一次操作时间</th>-->
 								<th width="240"><i class="fa-wrench"></i> 操作</th>
@@ -84,7 +85,10 @@
 								<td>{{$item.user_phone}}</td>
 								<td>{{$item.user_email}}</td>
 								<td>{{$item.user_card}}</td>
-								<td>{{$item.role_id | role}}</td>
+								<td>{{$item.role_id}}</td>
+								<td>
+									<a class="label label-info label-sm J-dialog" data-url="/web/dialog/userToDeviceAuthList.html"  :data-user_id="$item.id"  :data-title="('已授权'+$item.user_name+'用户的设备列表')" v-if="!$item.edit">查看已授权的设备</a>
+								</td>
 								<!--<td class="t-warning"> {{$item.type|type}}</td>-->
 								<!--<td>{{$item.update_time}}</td>-->
 								<td>

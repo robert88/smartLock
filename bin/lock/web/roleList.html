@@ -12,7 +12,7 @@
 					<li class="tab-content-item active" id="roleList">
 						<div class="mb10">
 							<a class=" btn btn-success J-add"  v-on:click="add"><i class="fa-turkish-lira-try mr5"></i>添加角色</a>
-							<a class=" btn btn-danger" ><i class="fa-trash-o mr5"></i>批量删除角色</a>
+							<!--<a class=" btn btn-danger" ><i class="fa-trash-o mr5"></i>批量删除角色</a>-->
 							<a class="search-wrap"><input type="text" class="form-control"  placeholder="请输入角色名查询" v-model.lazy="params.role_name"> <i class="fa-search" v-on:click="refreshList"></i></a>
 						</div>
 
@@ -69,7 +69,7 @@
 							</tr>
 							</thead>
 							<tbody>
-							<tr v-for="($item, $index) in list"  v-if="!$item.edit">
+							<tr v-for="($item, $index) in list"  v-if="!$item.edit" v-cloak>
 								<td><label class="label-checkbox"><input type="checkbox"><i class="fa-check"></i><i class="fa-square-o"></i></label></td>
 								<td>{{$item.role_name}}</td>
 								<td>
@@ -81,7 +81,7 @@
 									<a class="label label-danger label-sm J-delete" v-on:click="del($index, $event)"><i class="fa-trash-o" title="删除"></i></a>
 								</td>
 							</tr>
-							<tr  class="template-tr" v-else>
+							<tr  class="template-tr" v-else v-cloak>
 								<td></td>
 								<td><input type="text" v-model="$item.new_role_name"></td>
 								<td>&nbsp;</td>

@@ -858,3 +858,5 @@
 [info][2018/01/15 22:37:51][function (exports, require, module, __filename, __dirname) ]:静态文件路径为 /senlin D:/git/smartLock/bin/senlin
 [info][2018/01/15 22:37:51][function (exports, require, module, __filename, __dirname) ]:服务器启动在3000端口上,启动消耗 2004 ms
 [info][2018/01/16 19:15:09][function (callback, hours, name) ]:[intervalByHour]  下一次启动将在 22.7 小时后
+[info][2018/01/17 21:46:23][function (callback, hours, name) ]:[intervalByHour]  下一次启动将在 20.2 小时后
+[info][2018/01/18 20:43:40][function (callback, hours, name) ]:[intervalByHour]  下一次启动将在 21.3 小时后

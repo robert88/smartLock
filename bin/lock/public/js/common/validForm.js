@@ -83,7 +83,7 @@
                                 }
                         },
                 required:{ check:function(value) {return ($.trim(value) == '');} ,msg:"该项为必填项！"},
-                mobile:{ check:function(value) {return (!/^\d{11,}$/.test($.trim(value)));}},
+                mobile:{ check:function(value) {return (!/^\d{11,}$/.test($.trim(value)));},msg:"请输入正确的手机号码！"},
                 letter:{check:function(value) { value = $.trim(value);return (!getByteLen(value)==value.length)} },
                 chinese:{check:function(value) {return (!/^[\u4e00-\u9fff]+$/.test($.trim(value)));} },
                 date:{check:function(value){return(/Invalid|NaN/.test(new Date($.trim(value)).toString()));}},
@@ -319,7 +319,7 @@
 						if( !$this.data("blur") ){
 							//不重复绑定
 							$this.data("blur",false);
-							$this.bind("blur", function(){
+							$this.off("blur.validform").on("blur.validform", function(){
 
 								//用于动态取消校验
 								if( $this.hasClass( "noCheck" ) ){
@@ -340,7 +340,7 @@
 
 						if( !$this.data("focus") ){
 							$this.data("focus",false);
-							$this.bind("focus", function(){
+							$this.off("focus.validform").on("focus.validform", function(){
 								if(typeof obj.focusCallback=="function"){
 									obj.focusCallback($this);
 								}
@@ -408,6 +408,10 @@
 
 			//失去焦点就校验对象
 			checkForm( $subFrom, "setBlur", success, successList, error, obj);
+
+			$subFrom.on("setBlur",function () {
+				checkForm( $subFrom, "setBlur", success, successList, error, obj);
+			});
 
             //验证执行函数 //工厂模式
             return	function( opts ){

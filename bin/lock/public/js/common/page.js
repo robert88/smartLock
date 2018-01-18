@@ -652,7 +652,7 @@
 					hasSub:"",
 					active:"",
 					sub:[],
-					href:"#/web/scenery.html",
+					href:"#/web/situation.html",
 					tips:0,
 					text:"情景模式",
 					icon:"fa-crop"

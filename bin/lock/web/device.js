@@ -115,14 +115,26 @@ $(function () {
 
 			del:function (index) {
 				var $$vue = this;
+				if(!$$vue.list[index].id){
+					$$vue.list.splice(index,1);
+					return;
+				}
 				var url =  "/smart_lock/v1/user/delete";
 				var type = "post";
-				$.dialog("是否要删除该记录？", {
+				var str = [
+					'<div class="form-group J-validItem validItem">',
+					'<label ><i class="t-danger fa-asterisk mr5 fs10"></i>手机验证码</label>',
+					'<i class="fa-comment-o"></i>',
+					// '<a class="btn btn-warning btn-send-code J-getMobileCode"><span class="text-gradient">发送验证码</span></a>',
+					'<input type="text" class="form-control" name="sms_code" placeholder="请输入手机验证码!" check-type="required" data-focus="true">',
+					'</div>'
+				].join("");
+				var $dialog = $.dialog(str, {
 					title: "删除记录",
 					width:400,
 					button: [{
 						text: "确认", click: function () {
-							if($$vue.list[index].id){
+
 								PAGE.ajax({
 									url: url,
 									type: type,
@@ -131,9 +143,6 @@ $(function () {
 										$$vue.list.splice(index,1);
 									}
 								});
-							}else{
-								$$vue.list.splice(index,1);
-							}
 
 						}
 					}, {
@@ -142,8 +151,65 @@ $(function () {
 						}
 					}]
 
-				})
+				});
+				// this.initSendCode($dialog)
 			},
+			// initSendCode:function ($form) {
+			//
+			// 	//发送短信验证码
+			// 	$form.find(".J-getMobileCode").click(function () {
+			// 		var $this =$(this);
+			// 		if($this.data("lock") || $this.data("lock-text")){
+			// 			return ;
+			// 		}
+			// 		var mobile = $form.find("input[name='phone']").val();
+			// 		var captcha_code =  $form.find("input[name='captcha_code']").val();
+			// 		if(!/^\d{11,}$/.test($.trim(mobile))){
+			// 			$form.find("input[name='phone']").focus().parents(".J-validItem").removeClass("validSuccess").addClass("validError").find(".J-valid-msg").html("请填写正确的手机号");
+			// 			return ;
+			// 		}
+			// 		if(!captcha_code){
+			// 			$form.find("input[name='captcha_code']").parents(".J-validItem").removeClass("validSuccess").addClass("validError").find(".J-valid-msg").html("请填写正确的图形验证码")
+			// 			return ;
+			// 		}
+			// 		$this.data("lock",true).data("lock-text",true);
+			// 		var $text =$this.find(".text-gradient");
+			//
+			// 		if(!$text.data("origin-text")){
+			// 			$text.data("origin-text",$text.html());
+			// 		}
+			// 		var originText = $text.data("origin-text");
+			// 		$text.data("text",60).html(60);
+			//
+			// 		PAGE.ajax({type:"post",
+			// 			data:{sms_type:"register",phone:mobile,captcha_code:captcha_code},
+			// 			url:"/smart_lock/v1/member/sms",
+			// 			success:function () {
+			// 				$.tips("发送成功","success");
+			// 				timoutCount($text,60,function(){
+			// 					$text.data("text",originText).html(originText);
+			// 					$this.data("lock-text",false);
+			// 				});
+			// 			},complete:function () {
+			// 				$this.data("lock",false);
+			// 			},errorCallBack:function () {
+			// 				$this.data("lock-text",false);
+			// 				$text.data("text",originText).html(originText);
+			// 			}});
+			// 	});
+			//
+			// 	function timoutCount($text,time,callback) {
+			// 		time--;
+			// 		$text.data("text",time).html(time);
+			// 		if(time<=0){
+			// 			if(typeof callback=="function"){
+			// 				callback()
+			// 			}
+			// 		}else{
+			// 			setTimeout(timoutCount,1000,$text,time,callback)
+			// 		}
+			// 	}
+			// },
 			add:function () {
 				this.list.unshift({
 					edit: "add",
@@ -178,30 +244,48 @@ $(function () {
 			},
 			modify:function (index) {
 				this.list[index].edit = "modify";
-				this.list[index].new_role_name = this.list[index].name;
+				this.list[index].new_device_name = this.list[index].name;
+				this.list[index].new_device_model = this.list[index].device_model;
 				this.$forceUpdate()
 			},
 			cancelModify:function (index) {
 				this.list[index].edit = "";
 				this.$forceUpdate()
 			},
+	// 		### 4.6 修改设备信息
+	// |  POST  |  smart_lock/v1/device/modify  |
+	// | ------------- |:-------------:|
+	//
+	// **请求参数：**
+	//
+	// |  参数名称 | 参数类型 | 是否必填 | 参数描述 | 备注 |
+	// |  -------- | -------- | -------- | -------- | ---- |
+	// |  device_id | Interger | 是 |  设备id  |  |
+	// | device_name | String | 否 | 设备名称 | |
+	// | device_model | String | 否|设备型号 | |
 			saveModify:function (index) {
-				$.tips("wu api");
-				return;
 				var $$vue = this;
-				var url =  "/smart_lock/v1/role/add";
+				var url =  "/smart_lock/v1/device/modify";
 				var type = "post";
-				this.list[index].role_name = this.list[index].name = this.list[index].new_role_name;
-				if(!this.list[index].name){
-					$.tips("请输入角色名","warn");
+
+				if(!$$vue.list[index].new_device_name){
+					$.tips("请输入设备名","warn");
+					return;
+				}
+				if(!$$vue.list[index].new_device_model){
+					$.tips("请输入设备型号","warn");
 					return;
 				}
 				PAGE.ajax({
 					url: url,
 					type: type,
-					data: {role_name: this.list[index].name, is_admin: this.list[index].is_admin, token: token},
+					data: {device_name: $$vue.list[index].new_device_name, device_id: $$vue.list[index].id,device_model:$$vue.list[index].new_device_model, token: token},
 					success: function (ret) {
 						$$vue.list[index].edit="";
+						$$vue.list[index].name = $$vue.list[index].new_device_name;
+						$$vue.list[index].device_model = $$vue.list[index].new_device_model;
+						$$vue.$forceUpdate();
+						$.tips("修改成功！","success");
 					}
 				});
 			}

@@ -115,6 +115,10 @@ $(function () {
 
 			del:function (index) {
 				var $$vue = this;
+				if(!$$vue.list[index].id){
+					$$vue.list.splice(index,1);
+					return;
+				}
 				var url =  "/smart_lock/v1/user/delete";
 				var type = "post";
 				$.dialog("是否要删除该记录？", {
@@ -122,7 +126,7 @@ $(function () {
 					width:400,
 					button: [{
 						text: "确认", click: function () {
-							if($$vue.list[index].id){
+
 								PAGE.ajax({
 									url: url,
 									type: type,
@@ -131,9 +135,6 @@ $(function () {
 										$$vue.list.splice(index,1);
 									}
 								});
-							}else{
-								$$vue.list.splice(index,1);
-							}
 
 						}
 					}, {

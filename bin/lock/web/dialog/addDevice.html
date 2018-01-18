@@ -9,8 +9,8 @@
 			<i class="fa-angle-down"></i>
 			<div class="J-select-option J-scroll" id="addDeviceFormVue" >
 				<a v-for="($item, $index) in list"
-				   v-bind="{ 'data-jp':$item.jp, 'data-qp': $item.qp ,'data-name':$item.name, 'data-value':$item.id}"
-				   class="option">{{$item.name}}</a>
+				   v-bind="{ 'data-jp':$item.jp, 'data-qp': $item.qp ,'data-name':$item.group_name, 'data-value':$item.id}"
+				   class="option">{{$item.group_name}}</a>
 				<a v-show="loading">加载更多...</a>
 			</div>
 		</div>

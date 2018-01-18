@@ -4,14 +4,16 @@ $(function () {
 	if(!token){
 		return;
 	}
-	var $form = $("#addDeviceForm");
+	var moudleId = "addDeviceForm";
+	var moudleVueId = moudleId+"Vue";
+	var $moudle = $("#"+moudleId);
 	var $relativeMoudle = $("#deviceMoudle");//关联的模块
 
-	var $dialog = $form.parents(".dl-dialog");
+	var $dialog = $moudle.parents(".dl-dialog");
 	var listMap = [];
 
 	//表单注册
-	$form.validForm({
+	$moudle.validForm({
 		success:function ($btn) {
 			// ### 4.1 添加设备（pc端）
 			// |  POST  |  smart_lock/v1/device/add_by_user  |
@@ -25,7 +27,7 @@ $(function () {
 			// |  device_name | String | 是 | 设备名称 | |
 			// | device_model| String | 是 | 设备型号 | |
 			PAGE.ajax({
-				data:$form.serialize()+"&token="+token,
+				data:$moudle.serialize()+"&token="+token,
 				type:'post',
 				url:"/smart_lock/v1/device/add_by_user",
 				success:function (ret) {
@@ -37,9 +39,9 @@ $(function () {
 		}
 	});
 
-	//添加角色
+	//查询设备组列表
 	var $$vue = new Vue({
-		el:"#addDeviceFormVue",
+		el:"#"+moudleVueId,
 		data:{
 			list:[],
 			loading:false,
@@ -102,7 +104,7 @@ $(function () {
 					if(ret.page_number==1&& (!ret.list||ret.list.length==0)){
 						$$vue.list = [{
 							"id": 0,
-							"name": "无分组"
+							"group_name": "无分组"
 						}];
 						return;
 					}
@@ -111,7 +113,7 @@ $(function () {
 					$$vue.list = $$vue.mergeArray(listMap)
 					$$vue.list.unshift({
 						"id": 0,
-						"name": "无分组"
+						"group_name": "无分组"
 					});
 				},complete:function () {
 					$$vue.loading = false;
@@ -135,7 +137,7 @@ $(function () {
 	$dialog[0].destory = function () {
 		if($$vue){
 			$$vue.$destroy();
-			$form = null;
+			$moudle = null;
 			$$vue = null;
 			listMap = null;
 			$dialog = null;

@@ -24,7 +24,7 @@ $(function () {
 				user_phone:"",
 				role_id:"",
 			},
-			params:{page_number:1,page_size:6,user_id:user_id,token:token}
+			params:{user_id:user_id,token:token}
 		},
 		methods:{
 			// 		### 2.3 查询用户信息

@@ -132,7 +132,12 @@
     border-radius:5px;
     padding-top: 10px;
 }
-.dialogBtns{margin-left: -15px;padding-left: 30px;    padding-top: 20px;}
+.dialogBtns{
+    margin-left: -15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 20px;
+}
 .dl-footer,.dialogBtns{
     text-align: center;
     position: relative;
