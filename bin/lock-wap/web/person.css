@@ -2,7 +2,8 @@
 	position:relative;
 }
 .search-wrap input{
-    padding: 0 30px 0 10px;
+    padding: 2px 30px 2px 10px;
+	width: 100%;
 }
 .search-wrap .fa-search{
 	position:absolute;
@@ -24,4 +25,15 @@
 }
 .hover-link{
 	text-decoration: underline;
+}
+.label-name{
+	display: inline-block;
+	width: 150px;
+	font-size: 16px;
+	color:#999;
+}
+.fixed-bottom{
+	position:fixed;
+	bottom:0;
+	width:100%;
 }

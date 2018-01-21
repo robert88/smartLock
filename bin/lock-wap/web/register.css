@@ -1,9 +1,7 @@
 @import "login.css";
-.login_m{width: 553px;margin:0 auto;padding-top: 12px;}
-.btn-send-code{
-	position:absolute;
-	right: 2px;
-	top: 31px;
+
+.form-group .btn-send-code{
+	top: 0px;
 }
 .label-checkbox{
 	float: left;

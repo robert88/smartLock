@@ -90,18 +90,22 @@ $(function () {
 				var $$vue = this;
 				var url = "/smart_lock/v1/user/find_list";
 				var type = "post";
-				PAGE.ajax({
-					url: url, data: this.params, type: type, success: function (ret) {
-						if (!ret) {
-							return;
-						}
-						$$vue.list = ret.list;
-
-						PAGE.setpageFooter($moudle.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
-							$$vue.params.page_number = page_number
-						});
-					}
-				});
+				$$vue.list = [
+					{id:11,user_name:"yinming",user_phone:"1231231",user_email:"8323@qq.com",user_card:"2323232342",role_id:1},
+					{id:11,user_name:"yinming",user_phone:"1231231",user_email:"8323@qq.com",user_card:"2323232342",role_id:1}
+				];
+				// PAGE.ajax({
+				// 	url: url, data: this.params, type: type, success: function (ret) {
+				// 		if (!ret) {
+				// 			return;
+				// 		}
+				// 		$$vue.list = ret.list;
+				//
+				// 		PAGE.setpageFooter($moudle.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
+				// 			$$vue.params.page_number = page_number
+				// 		});
+				// 	}
+				// });
 			},
 	// 		### 2.2 删除用户
 	// |  POST  |  smart_lock/v1/user/delete  |

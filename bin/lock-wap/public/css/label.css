@@ -229,3 +229,15 @@
 .label-danger[href]:focus {
 	background-color: #c9302c;
 }
+.t-success{color:#92ab59}
+.t-info{color:#70afc4}
+.t-warning{color: #ec971f;}
+.t-muted{color: #999;}
+.t-danger{color: #c9302c;}
+.t-white{color:#fff;}
+.bg-success{background-color:#92ab59}
+.bg-info{background-color:#70afc4}
+.bg-warning{background-color: #ec971f;}
+.bg-muted{background-color: #999;}
+.bg-danger{background-color: #c9302c;}
+.bg-white{background-color:#fff;}

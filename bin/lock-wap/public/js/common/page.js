@@ -459,6 +459,7 @@
 				load(jsFile,"script",function () {
 					if(typeof pageDsync=="string"){
 						$(pageDsync).trigger("pagecontentloaded");
+						setTitle();
 					}else if(typeof pageDsync=="function"){
 						pageDsync();
 					}
@@ -497,8 +498,6 @@
 	 *hashchange事件切换页面
 	 * */
 	function hashChange(hash) {
-
-		clearBreadcrumb();
 
 		var config = PAGE.getHashConfig(hash);
 
@@ -576,17 +575,18 @@
 	});
 
 
-	var $$header = new Vue({
+	var $$title =  new Vue({
 		el:"#pageCommonHeaderVue",
-		data:{
-			user_name:""
+		data:{title:"",nextText:"",nextLink:""},
+		filters:{
+			href:function (url) {
+				if(url){
+					return "href='"+url+"'";
+				}else{
+					return "";
+				}
+			}
 		}
-	});
-	var $$Breadcrumb =  new Vue({
-		el:"#pageCommonBreadcrumbVue",
-		data:{
-			breadcrumb:[]
-		},
 	});
 
 	var $$slider = new Vue({
@@ -658,24 +658,7 @@
 					icon:"fa-crop"
 				},
 
-				// {
-				// 	hasSub:"",
-				// 	active:"",
-				// 	sub:[],
-				// 	href:"",
-				// 	tips:0,
-				// 	text:"我的智控",
-				// 	icon:"fa-cloud"
-				// },
-				// {
-				// 	hasSub:"",
-				// 	active:"",
-				// 	sub:[],
-				// 	href:"",
-				// 	tips:0,
-				// 	text:"勿扰模式",
-				// 	icon:"fa-umbrella"
-				// },
+
 				{
 					hasSub:"",
 					active:"",
@@ -717,16 +700,23 @@
 		}
 	});
 
-	function clearBreadcrumb(){
-		$$Breadcrumb.breadcrumb = [];
-		$$Breadcrumb.breadcrumb.push({icon:"fa-home",href:"#/web/person.html","text":"首页"});
+	function setTitle(){
+		var titleOptions = $pageLoadContain.find(".headerMoudle").data();
+		$$title.nextText = titleOptions.nexttext;
+		$$title.nextLink = titleOptions.nextlink;
+		$$title.noPrev = titleOptions.noprev;
+		$$title.sliderNav = titleOptions.slidernav;
+		$$title.title = titleOptions.title;
+		$body.css("min-height",$pageLoadContain.height()+$pageLoadContain.offset().top+30);
+		$("#sidebar").css("min-height",$(window).height());
+
 	}
 	function setBreadcrumb(action) {
 		var setActive = 0
 		for(var i=0;i<$$slider.slideBars.length;i++){
 			if(action&&$$slider.slideBars[i].href.indexOf(action+".htm")!=-1){
 				if(i!=0){
-					$$Breadcrumb.breadcrumb.push({icon:$$slider.slideBars[i].icon,href:$$slider.slideBars[i].href,"text":$$slider.slideBars[i].text})
+					// $$Breadcrumb.breadcrumb.push({icon:$$slider.slideBars[i].icon,href:$$slider.slideBars[i].href,"text":$$slider.slideBars[i].text})
 				}
 				$$slider.slideBars[i].active = "active";
 				setActive = i;
@@ -755,14 +745,14 @@
 		}
 		if(ret.user_name){
 			$.cookie("user_name",ret.user_name);
-			$$header.user_name = ret.user_name
+			// $$header.user_name = ret.user_name
 		}
 		location.hash = ""
 	}
 	PAGE.getToken = function () {
 		var token =$.cookie("token");
 		if($.cookie("user_name")){
-			$$header.user_name = $.cookie("user_name");
+			// $$header.user_name = $.cookie("user_name");
 		}
 		if(token){
 			return token;
@@ -779,7 +769,7 @@
 		$.cookie("role_id","");
 		$.cookie("user_email","");
 		$.cookie("user_name","");
-		$$header.user_name = "";
+		// $$header.user_name = "";
 		window.location.hash="#/web/login.html?nomenu=1";
 	}
 	/**

@@ -13,10 +13,12 @@ h1, h2, h3, h4, h5, h6, div, ul, li, dl, dt, dd, ol, pre, form, fieldset, input,
 html, body {
 	padding: 0;
 	margin: 0;
-	font-family: 'Microsoft Yahei', "å¾®è½¯é›…é»‘", tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+	font-family: 'Microsoft Yahei', tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
 	color: #666;
-	font-size: 14px;
+	height:100%;
+	font-size: 18px;
 	position: relative;
+	background: #efefef;
 }
 ul,ol{
 	list-style: none
@@ -529,6 +531,7 @@ img {
 .mlr50{margin-right:50px;margin-left:50px;}
 .mtb50{margin-bottom:50px;margin-top:50px;}
 
+
 /*p5*/
 .p5{padding:5px;}
 .pt5{padding-top:5px;}
@@ -615,6 +618,13 @@ img {
 .w45{width: 45px;}
 .w50{width: 50px }
 .w60{width: 60px;}
+.w70{width: 70px;}
+.w80{width: 80px;}
+.w90{width: 90px;}
+.w100{width: 100px;}
+.w110{width: 110px;}
+.w120{width: 120px;}
+.w130{width: 130px;}
 
 .ease{
 	-webkit-transition-delay: .1s;
@@ -674,6 +684,8 @@ a.a-wrap{
 	padding-left: 15px;
 	padding-right: 15px;
 	width: 100%;
+	max-width: 1024px;
+	min-width: 270px;
 }
 .img-responsive {
 	display: block;

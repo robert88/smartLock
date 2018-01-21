@@ -57,10 +57,10 @@ $(function () {
 		return false;
 	});
 	
-	$("#sidebar-collapse").click(function () {
-		$("#sidebar,#main-content").toggleClass("mini-menu");
+	$("#sidebar-collapse,.sidebar-mask").click(function () {
+		$("#sidebar").toggleClass("mini-menu");
+		$(".sidebar-mask").toggleClass("mini-menu");
 	});
-
 	$(document).on("click",".J-loginout",function () {
 		PAGE.clearToken();
 		return false;
