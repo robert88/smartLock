@@ -5,11 +5,11 @@
 
 		<div class="col mt10">
 			<div class="col6 plr10"><a class="search-wrap"><input type="text" class="form-control"  placeholder="请输入人名查询"> <i class="fa-search" v-on:click="seachPerson"></i></a></div>
-			<div class="col6 plr10"><a class=" btn btn-success J-dialog" data-url="/web/dialog/addPerson.html" data-title="添加成员"><i class="fa-turkish-lira-try mr5"></i>添加成员</a></div>
+			<div class="col6 plr10"><a class=" btn btn-success J-dialog fw12" data-url="/web/dialog/addPerson.html" data-title="添加成员"><i class="fa-turkish-lira-try mr5"></i>添加成员</a></div>
 		</div>
 
 		<ul class="col" id="systemPersonVue">
-			<li class="bd mr10 bg-white p20 lh30 bd-radius-5 mt10" v-for="($item, $index) in list"  v-cloak>
+			<li class="bd  bg-white p20 lh30 bd-radius-5 mt10" v-for="($item, $index) in list"  v-cloak>
 				<div><span class="label-name"><i class="fa-user"></i> 姓名</span> <a class="J-dialog t-info hover-link" data-url="/web/dialog/personDetail.html" :data-id="$item.id" :data-title="($item.user_name+'用户信息详情')">{{$item.user_name}}</a></div>
 				<div><span class="label-name"><i class="fa-user"></i> 电话</span> <span>{{$item.user_phone}}</span></div>
 				<div><span class="label-name"><i class="fa-user"></i> 邮箱</span> <span>{{$item.user_email}}</span></div>
@@ -23,8 +23,6 @@
 				</div>
 			</li>
 		</ul>
-
-
 
 		</div>
 	<!--e:systemPerson-->

@@ -1,10 +1,2 @@
-.search-filter-wrap{
-	opacity: 0;
-	height: 0;
-	overflow: hidden;
-}
-.search-filter-wrap.open{
-	opacity: 1;
-	height: auto;
-	overflow: visible;
-}
+@import "personHistory.css";
+@import "person.css";

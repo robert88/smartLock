@@ -24,44 +24,10 @@ $(function () {
 				if(newValue!=oldValue){
 					this.refreshList();
 				}
-			},
-			// "params.role_name":function (newValue, oldValue) {
-			// 	if(newValue!=oldValue){
-			// 		if(this.params.page_number!=1){
-			// 			this.params.page_number =1;
-			// 		}else{
-			// 			this.refreshList();
-			// 		}
-			// 	}
-			// }
+			}
 		},
 		filters: {
-			role:function (value) {
-				switch (value){
-					case 10:
-						return "超级管理员"
-						break;
-					case 11:
-						return "普通管理员"
-						break;
-					default:
-						return "普通人员"
-						break;
-				}
-			},
-			type:function (value) {
-				switch (value){
-					case 1:
-						return "开门"
-						break;
-					case 2:
-						return "关门"
-						break;
-					default:
-						return "更新密码"
-						break;
-				}
-			},
+
 		},
 		methods:{
 			filter:function () {

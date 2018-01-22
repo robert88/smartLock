@@ -8,3 +8,13 @@
 	height: auto;
 	overflow: visible;
 }
+.form-group input, .form-group textarea {
+	 margin-top: 0px;
+}
+.form-group label{
+	display: block;
+	padding-bottom: 10px;
+}
+.form-group textarea {
+	overflow: hidden;
+}

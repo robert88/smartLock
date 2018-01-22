@@ -32,3 +32,7 @@
 	color:#999;
 	font-size: 12px;
 }
+.form-group>i{top:0}
+.form-group .captcha-code-img{
+	top:0
+}
