@@ -4,8 +4,8 @@
 	<div id="roleList">
 
 		<div class="col mt10">
-			<div class="col6 plr10"><a class="search-wrap"><input type="text" class="form-control"  placeholder="请输入角色名查询" v-model.lazy="params.role_name"> <i class="fa-search" v-on:click="refreshList"></i></a></div>
-			<div class="col6 plr10"><a class=" btn btn-success J-add fw12"  v-on:click="add"><i class="fa-turkish-lira-try mr5"></i>添加角色</a></div>
+			<div class="col6 plr10"><a class="search-wrap"><input type="text" class="form-control fw12"  placeholder="请输入角色名查询" v-model.lazy="params.role_name"> <i class="fa-search" v-on:click="refreshList"></i></a></div>
+			<div class="col6 plr10"><a class=" btn btn-success fw12"  v-on:click="add"><i class="fa-turkish-lira-try mr5"></i>添加角色</a></div>
 		</div>
 
 		<ul class="col">
@@ -16,22 +16,22 @@
 				</div>
 				<div>
 					<span class="label-name"><i class="fa-user"></i> 对应权限</span>
-					<a class="label label-info label-sm J-dialog" data-url="/web/dialog/permissions.html" data-status="show" :data-admin="$item.is_admin|isAdmin" :data-role_id="$item.id"   :data-title="('当前角色：'+$item.role_name+'的权限')" v-if="!$item.edit">查看权限</a>
+					<a class="label label-info label-sm J-dialog" data-url="/web/dialog/permissions.html" data-status="show" :data-admin="$item.is_admin" :data-role_id="$item.id"   :data-title="('当前角色：'+$item.role_name+'的权限')" v-if="!$item.edit">查看权限</a>
 				</div>
 				<div class="bd-top bd-dashed mt10 pt10">
-					<a class="label label-success label-sm mr10 J-modify"  v-on:click="modify($index, $event)">修改角色名</a>
-					<a class="label label-success label-sm mr10 J-dialog" data-url="/web/dialog/permissions.html" data-status="modify" :data-admin="$item.is_admin|isAdmin" :data-role_id="$item.id" :data-title="('修改角色：'+$item.role_name+'权限')">修改权限</a>
-					<a class="label label-danger label-sm J-delete" v-on:click="del($index, $event)"><i class="fa-trash-o" title="删除"></i></a>
+					<a class="label label-success label-sm mr10"  v-on:click="modify($index, $event)">修改角色名</a>
+					<a class="label label-success label-sm mr10 J-dialog" data-url="/web/dialog/permissions.html" data-status="modify" :data-admin="$item.is_admin" :data-role_id="$item.id" :data-title="('修改角色：'+$item.role_name+'权限')">修改权限</a>
+					<a class="label label-danger label-sm" v-on:click="del($index, $event)"><i class="fa-trash-o" title="删除"></i></a>
 				</div>
 			</li>
 			<!--编辑状态-->
 			<li class="bd  bg-white p20 lh30 bd-radius-5 mt10" v-else v-cloak>
 				<div><input type="text" v-model="$item.new_role_name"></div>
 				<div>
-					<a class="label label-success label-sm mr10 J-save" v-on:click="saveAdd($index, $event)" v-show="$item.edit=='add'">保存</a>
-					<a class="label label-warning label-sm mr10 J-save" v-on:click="cancelAdd($index, $event)" v-show="$item.edit=='add'">取消</a>
-					<a class="label label-success label-sm mr10 J-update" v-on:click="saveModify($index, $event)" v-show="$item.edit=='modify'">保存</a>
-					<a class="label label-warning label-sm  J-update" v-on:click="cancelModify($index, $event)" v-show="$item.edit=='modify'">取消</a>
+					<a class="label label-success label-sm mr10" v-on:click="saveAdd($index, $event)" v-show="$item.edit=='add'">保存</a>
+					<a class="label label-warning label-sm mr10" v-on:click="cancelAdd($index, $event)" v-show="$item.edit=='add'">取消</a>
+					<a class="label label-success label-sm mr10" v-on:click="saveModify($index, $event)" v-show="$item.edit=='modify'">保存</a>
+					<a class="label label-warning label-sm" v-on:click="cancelModify($index, $event)" v-show="$item.edit=='modify'">取消</a>
 				</div>
 			</li>
 		</ul>
