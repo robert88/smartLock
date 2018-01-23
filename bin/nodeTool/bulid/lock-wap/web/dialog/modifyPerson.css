@@ -1,0 +1,9 @@
+@media (min-width:10.24rem) {
+	#addPerson{
+		width: 9.6rem;
+	}
+}
+#addPerson .J-scroll{
+	max-height: 1.76rem;
+	overflow: auto;
+}

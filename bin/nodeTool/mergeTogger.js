@@ -96,13 +96,18 @@ function handleOneInclude(file,outPath,indexData){
 			var jsData = handleJs(subFilesArr);
 		
 				
-		var lastData = indexData.replace('<div id="pageCss"></div>',cssData||"").replace(/@charset\s+"UTF-8";/g,"")
-			.replace('<div id="page"></div>',htmlData.replace(/#\/web\//g,""))
-			.replace('<div id="pageJs"></div>',jsData||"");
+		//var lastData = indexData.replace('<div id="pageCss"></div>',cssData||"").replace(/@charset\s+"UTF-8";/g,"")
+		//	.replace('<div id="page"></div>',htmlData.replace(/#\/web\//g,""))
+		//	.replace('<div id="pageJs"></div>',jsData||"");
 		//将简写替换加上.html
-		lastData = lastData.replace(/href\s*=\s*"?#([^"]+)"?/gm,function(m,m1){var t=m1.split("?");return ('href="'+(t[0].indexOf(".html")!=-1?t[0]:t[0]+".html")+'"')})
+		//lastData = lastData.replace(/href\s*=\s*"?#([^"]+)"?/gm,function(m,m1){var t=m1.split("?");return ('href="'+(t[0].indexOf(".html")!=-1?t[0]:t[0]+".html")+'"')})
 
-		lastData = lastData.replace(/"\/index\.html#!\/web/gm,"\"/web").replace(/"\/admin\.html#!\/admin/gm,"\"/admin").replace(/"\/index\.html#/gm,"\"/web/person.html#").replace(/"\/index\.html"/gm,"\"/web/person.html\"").replace(/"\/admin\.html"/gm,"\"/admin/index.html\"")
+		//lastData = lastData.replace(/"\/index\.html#!\/web/gm,"\"/web").replace(/"\/admin\.html#!\/admin/gm,"\"/admin").replace(/"\/index\.html#/gm,"\"/web/person.html#").replace(/"\/index\.html"/gm,"\"/web/person.html\"").replace(/"\/admin\.html"/gm,"\"/admin/index.html\"")
+		
+		var lastData = indexData.replace('<div id="pageCss"></div>',cssData||"").replace(/@charset\s+"UTF-8";/g,"")
+		.replace('<div id="page"></div>',htmlData)
+		.replace('<div id="pageJs"></div>',jsData||"");
+		
 		wake.writeData(outFile,lastData)
 }
 /**
@@ -194,15 +199,15 @@ var bulidPath = "./bulid"
 
 
 /*所有文件路径*/
-var allHtmlPath = "../julive/web"
+var allHtmlPath = "../lock-wap/web"
 
 /*整体公用文件*/
-var parseFile = "../julive/indexStatic.html";
+var parseFile = "../lock-wap/index.html";
 
 
 
-merge(parseFile,bulidPath,allHtmlPath);
+//merge(parseFile,bulidPath,allHtmlPath);
 
-copyPublic("../julive/public",bulidPath);
+copyPublic("../lock-wap",bulidPath);
 
 

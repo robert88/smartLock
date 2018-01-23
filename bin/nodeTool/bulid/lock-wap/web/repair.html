@@ -1,0 +1,28 @@
+
+<div class="wrap headerMoudle" data-title="维修申报" data-nextText="维修申报记录" data-nextLink="#/web/repairLog.html" data-noPrev="true" data-sliderNav="true">
+
+	<form id="repairMoudle">
+		<div class="form-group J-validItem validItem mt30">
+			<label ><i class="t-danger fa-asterisk mr5 fs10"></i>需要申报的设备：</label>
+			<i class="fa-microphone-slash"></i>
+			<input class="form-control J-select-text" type="text" placeholder="请选择设备名称">
+			<input class="J-select-value" name="role_id" type="hidden" check-type="required">
+			<i class="fa-angle-down"></i>
+			<div class="J-select-option J-scroll" id="addPerson_roleList" >
+				<a v-for="($item, $index) in list"
+				   v-bind="{ 'data-jp':$item.jp, 'data-qp': $item.qp ,'data-name':$item.name, 'data-value':$item.id}"
+				   class="option">{{$item.name}}</a>
+				<a v-show="loading">加载更多...</a>
+			</div>
+		</div>
+
+		<div class="form-group J-validItem validItem">
+			<label><i class="t-danger fa-asterisk mr5 fs10"></i>申报原因：</label>
+			<i class="fa-microphone-slash"></i>
+			<textarea name="" class="form-control" rows="5" placeholder="请输入设备申报的原因"></textarea>
+		</div>
+		<div class="tc ptb10">
+			<a class="btn btn-danger J-submitBtn fw12" >提交</a>
+		</div>
+	</form>
+</div>

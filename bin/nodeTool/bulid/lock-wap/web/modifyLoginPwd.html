@@ -1,0 +1,39 @@
+
+<div class="wrap headerMoudle" data-title="更改登录密码" data-nextText="更改微密码" data-nextLink="#/web/modifyWechatPwd.html" data-noPrev="true" data-sliderNav="true">
+	<!--s:modifyLoginPwd-->
+	<form role="form" id="modifyLoginPwd" class="wrap pb50">
+		<div class="form-group J-validItem validItem">
+			<i class="fa fa-lock"></i>
+			<input type="password" class="form-control" name="old_pwd"  placeholder="请输入旧登录密码!"
+				   check-type="required"
+				   data-focus="true">
+		</div>
+		<div class="form-group J-validItem validItem">
+			<i class="fa fa-lock"></i>
+			<input type="password" class="form-control" name="new_pwd" id="J-password" placeholder="请输入新密码!"
+				   check-type="required,password"
+				   data-password-msg="密码必须包含字母和数字，且至少8个字符！"
+				   data-focus="true">
+		</div>
+		<div class="form-group J-validItem validItem">
+			<i class="fa fa-check-square-o"></i>
+			<input type="password" class="form-control" name="re_pwd"
+				   placeholder="请确认新密码!"
+				   data-pswagain="#J-password"
+				   check-type="required,pswagain"
+				   data-pswagain-msg="密码不一致!">
+		</div>
+		<div class="form-group J-validItem validItem">
+			<i class="fa-picture-o"></i>
+			<img class="captcha-code-img J-captcha" >
+			<input type="text" class="form-control" name="captcha_code" placeholder="请输入图片验证码!"
+				   check-type="required"
+				   data-focus="true">
+		</div>
+		<div class="form-group tc mt20">
+			<a class="btn btn-info J-submitBtn fw12" >提交</a>
+		</div>
+	</form>
+	<!--e:modifyLoginPwd-->
+</div>
+
