@@ -55,7 +55,7 @@ $(function () {
                 }
                 return arr;
             },
-            getNextPageRole:function () {
+            getNextPage:function () {
                 if(!this.total_page){
                     return;
                 }
@@ -78,6 +78,10 @@ $(function () {
 				var $$vue = this;
 				var url = "/smart_lock/v1/role/find_list";
 				var type = "post";
+				if($$vue.loading){
+					return;
+				}
+                $$vue.loading = true;
 				PAGE.ajax({
 					url: url, data: this.params, type: type, success: function (ret) {
 						if (!ret ) {
@@ -86,6 +90,8 @@ $(function () {
                         listMap[$$vue.params.page_number] = ret.list;
                         $$vue.total_page = ret.total_page;
                         $$vue.list = $$vue.mergeArray(listMap);
+					},complete:function(){
+                        $$vue.loading = false;
 					}
 				});
 			},
@@ -104,8 +110,13 @@ $(function () {
                     data: {role_name: this.list[index].name, is_admin: this.list[index].is_admin, token: token},
                     success: function (ret) {
                         $.tips("保存成功！","success");
+
                         $$vue.list[index].edit="";
-                        $$vue.list[index].id=ret.id;
+                        if(ret&&ret.id){
+                            $$vue.list[index].id=ret.id;
+						}else{
+                            $.tips("丢失id！","warn");
+						}
                     }
                 });
             },
@@ -182,7 +193,7 @@ $(function () {
 					is_admin: 12
 				})
 			},
-			canselAdd:function (index) {
+            cancelAdd:function (index) {
 				this.del(index);
 			},
 			modify:function (index) {
@@ -204,9 +215,14 @@ $(function () {
 		}
 	});
 
-
+    $("body").on("scrollDown."+moudleId,function () {
+        if(!$$vue.loading){
+            $$vue.getNextPage();
+        }
+    });
 	PAGE.destroy.push(function () {
 		if($$vue){
+            $("body").off("scrollDown."+moudleId);
 			$$vue.$destroy();
             listMap = null;
 			$$vue = null;
