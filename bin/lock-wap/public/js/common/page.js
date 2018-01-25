@@ -577,7 +577,7 @@
 
 	var $$title =  new Vue({
 		el:"#pageCommonHeaderVue",
-		data:{title:"",nextText:"",nextLink:""},
+		data:{title:"",nextText:"",nextLink:"",noPrev:false,sliderNav:false},
 		filters:{
 			href:function (url) {
 				if(url){

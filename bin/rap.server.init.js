@@ -172,7 +172,7 @@ if(process.env.DEBUG*1){
 
 
 }
-childProcess.exec('start C:\\"Program Files (x86)"\\Google\\Chrome\\Application\\chrome.exe http://localhost:3000',function (err,stdout) {
+childProcess.exec('start C:\\"Program Files (x86)"\\Google\\Chrome\\Application\\chrome.exe http://192.168.43.227:3000',function (err,stdout) {
 	if(err){
 		rap.error(err);
 	}else {
