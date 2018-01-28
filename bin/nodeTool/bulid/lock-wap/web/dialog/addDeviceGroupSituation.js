@@ -7,10 +7,10 @@ $(function () {
 		return;
 	}
 
-	var moudleId = "authUserMoudle";
-	var moudleVueId = moudleId+"Vue";
-	var $moudle = $("#"+moudleId);
-	var $dialog = $moudle.parents(".dl-dialog");
+	var moduleId = "authUserModule";
+	var moduleVueId = moduleId+"Vue";
+	var $module = $("#"+moduleId);
+	var $dialog = $module.parents(".dl-dialog");
 
 	//触发的按钮把数据带过来
 	var $triggerBtn = $dialog.data("trigger");
@@ -20,7 +20,7 @@ $(function () {
 	}
 
 	var $$vue = new Vue({
-		el: "#"+moudleVueId,
+		el: "#"+moduleVueId,
 		data: {
 			list: [],
 			params:{page_number:1,page_size:10,situational_id:situational_id,token:token}
@@ -55,7 +55,7 @@ $(function () {
 		},
 		methods:{
 			filter:function () {
-				$moudle.find(".search-filter-wrap").toggleClass("open");
+				$module.find(".search-filter-wrap").toggleClass("open");
 			},
 			refreshList:function () {
 				// ### 4.11 查询某用户未授权设备列表
@@ -77,7 +77,7 @@ $(function () {
 				var $$vue = this;
 				var url = "/smart_lock/v1/device/find_unauth_device";
 				var type = "post";
-				$moudle.addClass("loading");
+				$module.addClass("loading");
 				PAGE.ajax({
 					url: url, data: this.params, type: type, success: function (ret) {
 						if (!ret) {
@@ -85,12 +85,12 @@ $(function () {
 						}
 						$$vue.list = ret.list;
 						$dialog.trigger("setcenter");
-						PAGE.setpageFooter($moudle.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
+						PAGE.setpageFooter($module.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
 							$$vue.params.page_number = page_number
 						});
 					},
 					complete:function () {
-						$moudle.removeClass("loading");
+						$module.removeClass("loading");
 					}
 				});
 			},
@@ -265,15 +265,15 @@ $(function () {
 		}
 	});
 
-	// $moudle.parents(".tab-content-item").on("updateContent",function () {
+	// $module.parents(".tab-content-item").on("updateContent",function () {
 	// 	$$vue.refreshList();
 	// });
 	//
-	// $moudle.on("update",function () {
+	// $module.on("update",function () {
 	// 	$$vue.refreshList();
 	// });
 	//
-	// $moudle.on("click",".J-filter",function () {
+	// $module.on("click",".J-filter",function () {
 	// 	$$vue.filter();
 	// })
 
@@ -282,7 +282,7 @@ $(function () {
 		if($$vue){
 			$$vue.$destroy();
 			$$vue = null;
-			$moudle=null
+			$module=null
 		}
 	})
 });

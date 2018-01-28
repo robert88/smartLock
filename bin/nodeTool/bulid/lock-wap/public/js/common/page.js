@@ -490,14 +490,15 @@
 			$pageLoadContain.html('<section style="text-align: center"><div> 404 sorry can find page! </section>');
 			$pageJs.html("");
 		}else{
-			hashChange(window.PAGE.ERROR404);
+			PAGE.hashChange(window.PAGE.ERROR404);
 		}
 	}
 
 	/**
 	 *hashchange事件切换页面
 	 * */
-	function hashChange(hash) {
+	PAGE.hashChange = function (hash) {
+		var params = $.getParam(window.location.href)
 
 		var config = PAGE.getHashConfig(hash);
 
@@ -507,6 +508,10 @@
                 $body.addClass("nomenu");
         }else{
             $body.removeClass("nomenu");
+		}
+		if((!hash&&params&&params.notHashPage) || PAGE.notSpa){
+			setTitle()
+			return;
 		}
 		//显示加载ui
 		PAGE.loading();
@@ -566,18 +571,11 @@
 		})
 	};
 
-	/**
-	 *监听hashchange事件切换页面，监听事件load事件
-	 * */
-	$(window).on("hashchange", function() {
-		hashChange();
-		// window.location.reload();
-	});
 
 
 	var $$title =  new Vue({
 		el:"#pageCommonHeaderVue",
-		data:{title:"",nextText:"",nextLink:""},
+		data:{title:"",nextText:"",nextLink:"",noPrev:false,sliderNav:false},
 		filters:{
 			href:function (url) {
 				if(url){
@@ -701,7 +699,7 @@
 	});
 
 	function setTitle(){
-		var titleOptions = $pageLoadContain.find(".headerMoudle").data();
+		var titleOptions = $pageLoadContain.find(".headerModule").data();
 		$$title.nextText = titleOptions.nexttext;
 		$$title.nextLink = titleOptions.nextlink;
 		$$title.noPrev = titleOptions.noprev;
@@ -709,6 +707,7 @@
 		$$title.title = titleOptions.title;
 		$body.css("min-height",$pageLoadContain.height()+$pageLoadContain.offset().top+30);
 		$("#sidebar").css("min-height",$(window).height());
+		$(".headerModule").css("min-height",$(window).height());
 
 	}
 	function setBreadcrumb(action) {
@@ -773,8 +772,15 @@
 		window.location.hash="#/web/login.html?nomenu=1";
 	}
 	/**
+	 *监听hashchange事件切换页面，监听事件load事件
+	 * */
+	$(window).on("hashchange", function() {
+		PAGE.hashChange();
+		// window.location.reload();
+	});
+	/**
 	 *启动页面
 	 * */
-	hashChange();
+	PAGE.hashChange();
 }());
 

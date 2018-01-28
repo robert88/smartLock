@@ -204,6 +204,71 @@ $(function () {
 						$$vue.list[index].edit="";
 					}
 				});
+			},
+			openDevice:function (index) {
+				// |  POST  |  smart_lock/v1/device_control/singal_open  |
+				// | ------------- |:-------------:|
+				//
+				// **请求参数：**
+				//
+				// |  参数名称 | 参数类型 | 是否必填 | 参数描述 | 备注 |
+				// |  -------- | -------- | -------- | -------- | ---- |
+				// |  device_id | Interger  | 是 | 设备id |   |
+				var $$vue = this;
+				var url = "/smart_lock/v1/device_control/singal_open";
+				var type = "post";
+				if ($$vue.loading) {
+					return;
+				}
+				$$vue.loading = true;
+				PAGE.ajax({
+					url: url,
+					data: {device_id:$$vue.list[index].id,token: token},
+					type: type,
+					success: function (ret) {
+						if (!ret) {
+							return;
+						}
+						$.tips("操作成功！","success");
+						$$vue.list[index].openStatus="已打开";
+					},
+					complete: function () {
+						$$vue.loading = false;
+					}
+				});
+			},
+			closeDevice:function (index) {
+				// ### 3.4 关闭单个设备
+				// |  POST  |  smart_lock/v1/device_control/singal_close  |
+				// | ------------- |:-------------:|
+				//
+				// **请求参数：**
+				//
+				// |  参数名称 | 参数类型 | 是否必填 | 参数描述 | 备注 |
+				// |  -------- | -------- | -------- | -------- | ---- |
+				// |  device_id | Interger   | 是 | 设备id |      |
+				var $$vue = this;
+				var url = "/smart_lock/v1/device_control/singal_close";
+				var type = "post";
+				if ($$vue.loading) {
+					return;
+				}
+				$$vue.loading = true;
+				PAGE.ajax({
+					url: url,
+					data: {device_id:$$vue.list[index].id,token: token},
+					type: type,
+					success: function (ret) {
+						if (!ret) {
+							return;
+						}
+						$.tips("操作成功！","success");
+						$$vue.list[index].openStatus="已关闭";
+					},
+					complete: function () {
+						$$vue.loading = false;
+					}
+				});
 			}
 		},
 		mounted: function () {

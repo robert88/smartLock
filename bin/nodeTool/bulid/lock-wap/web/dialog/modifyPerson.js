@@ -4,10 +4,10 @@ $(function () {
 	if(!token){
 		return;
 	}
-	var moudleId = "modifyPerson";
-	var moudleVueId = moudleId+"Vue";
-	var $moudle = $("#"+moudleId);
-	var $dialog = $moudle.parents(".dl-dialog");
+	var moduleId = "modifyPerson";
+	var moduleVueId = moduleId+"Vue";
+	var $module = $("#"+moduleId);
+	var $dialog = $module.parents(".dl-dialog");
 	var listMap = [];
 
 	//触发的按钮把数据带过来
@@ -17,7 +17,7 @@ $(function () {
 		user_id = $triggerBtn.data("user_id");
 	}
 	//表单注册
-	$moudle.validForm({
+	$module.validForm({
 		success:function ($btn) {
 			// ### 2.4 修改用户信息
 			// |  POST  |  smart_lock/v1/user/modify  |
@@ -33,7 +33,7 @@ $(function () {
 			// |  user_phone | String | 否 | 账户用户手机号 | 必须是纯数字，长度最少11位，小于20位 |
 			// |  role_id | Integer | 否 | 角色ID | 如果账户类型是超级管理员，该值默认填-1,切不可更改 |
 			PAGE.ajax({
-				data:$moudle.serialize()+"&user_id="+user_id+"&token="+token,
+				data:$module.serialize()+"&user_id="+user_id+"&token="+token,
 				type:'post',
 				url:"/smart_lock/v1/user/modify",
 				success:function (ret) {
@@ -47,7 +47,7 @@ $(function () {
 
 	//添加角色
 	var $$vue = new Vue({
-		el:"#"+moudleVueId,
+		el:"#"+moduleVueId,
 		data:{
 			list:[],
 			loading:false,
@@ -89,7 +89,7 @@ $(function () {
 
 			},
 			getDetail:function () {
-				$moudle.addClass("loading");
+				$module.addClass("loading");
 				var $$vue = this;
 				var url = "/smart_lock/v1/user/find";
 				var type = "post";
@@ -106,7 +106,7 @@ $(function () {
 					$("input[name='user_phone']").val(ret.user_phone);
 
 				},complete:function () {
-					$moudle.removeClass("loading");
+					$module.removeClass("loading");
 				}});
 			},
 			getRole:function () {
@@ -152,7 +152,7 @@ $(function () {
 	$dialog[0].destory = function () {
 		if($$vue){
 			$$vue.$destroy();
-			$moudle = null;
+			$module = null;
 			$$vue = null;
 			listMap = null;
 			$dialog = null;

@@ -79,16 +79,16 @@
 									<tbody>
 									<tr v-for="($item, $index) in list" v-cloak>
 										<td><label class="label-checkbox"><input type="checkbox"><i class="fa-check"></i><i class="fa-square-o"></i></label></td>
-										<td><a class="J-dialog" data-dialog-url="#/web/personDetail.html" :data-id="$item.id">{{$item.name}}</a></td>
+										<td><a class="J-dialog" data-dialog-url="#/web/personDetail.html" :data-id="$item.id">{{$item.device_name}}</a></td>
 										<td>{{$item.device_code}}</td>
-										<td>{{$item.device_model}}</td>
+										<td>{{$item.device_mode}}</td>
 										<td>{{$item.group_id}}</td>
 										<td></td>
 										<!--<td>{{$item.role_id | role}}</td>-->
 										<td>{{$item.update_time}}</td>
 										<td>
-											<a class="label label-success label-sm ml10" >用户授权</a>
-											<a class="label label-danger label-sm" v-on:click="close"><i class="fa-trash-o" title="关闭设备"></i></a>
+											<a class="label label-success label-sm mr10 J-modify"  v-on:click="openDevice($index, $event)" v-show="(!$item.openStatus||$item.openStatus.indexOf('关闭')==-1)">开锁</a>
+											<a class="label label-success label-sm mr10 J-modify"  v-on:click="closeDevice($index, $event)" v-show="($item.openStatus&&$item.openStatus.indexOf('关闭')!=-1)">关闭</a>
 										</td>
 									</tr>
 

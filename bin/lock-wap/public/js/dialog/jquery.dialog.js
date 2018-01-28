@@ -540,8 +540,10 @@ if(!$.i18n){
 			return {
 				x: x,
 				y: y,
-				isover:dh==0?true:false,
-				isTop:y==scrollTop?true:false
+				isoverY:dh==0?true:false,
+				isoverX:dw==0?true:false,
+				isTop:y==scrollTop?true:false,
+				isLeft:x==scrollLeft?true:false
 			};
 		},
 		fadeTop:function($target){
@@ -570,16 +572,20 @@ if(!$.i18n){
 			if(center.isTop&&opts&& opts.minTop){
 				center.y = center.y+opts.minTop;
 			}
-			if(center.isover && $target.data("setcenter")){
+			if((center.isoverY||center.isoverX) && $target.data("setcenter")){
 				if(center.y<parseFloat($this.css("top"),10)){
 					$this.css({top: center.y});
 				}
-				return;
+				if(center.x<parseFloat($this.css("left"),10)){
+					$this.css({top: center.x});
+				}
+			}else{
+				$this.css({top: center.y,left: center.x});
 			}
-			$target.data("setcenter",true);
-			 opts = opts||$target.data("opts");
 
-			$this.css({top: center.y,left: center.x});
+			$target.data("setcenter",true);
+
+
 		});
 	}
 

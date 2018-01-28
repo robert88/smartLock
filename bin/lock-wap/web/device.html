@@ -1,18 +1,18 @@
 
-<div class="wrap headerMoudle" data-title="设备列表" data-nextText="设备组列表" data-nextLink="#/web/deviceGroup.html" data-noPrev="true" data-sliderNav="true">
+<div class="wrap headerModule" data-title="设备列表" data-nextText="设备组列表" data-nextLink="#/web/deviceGroup.html" data-noPrev="true" data-sliderNav="true">
 	<!--s:systemPerson-->
-	<div id="deviceMoudle">
+	<div id="deviceModule">
 
 		<div class="col mt10">
-			<div class="col6 plr10"><a class="search-wrap"><input type="text" class="form-control fw12"  placeholder="请输入设备名称查询"> <i class="fa-search" ></i></a></div>
-			<div class="col6 plr10"><a class=" btn btn-success J-dialog fw12" data-url="/web/dialog/addDevice.html" data-title="添加设备"><i class="fa-turkish-lira-try mr5"></i>添加设备</a></div>
+			<div class="col6 pr10"><a class="search-wrap"><input type="text" class="form-control fw12"  placeholder="请输入设备名称查询" v-model.lazy="params.device_name"> <i class="fa-search" v-on:click="refreshList"></i></a></div>
+			<div class="col6 pl10"><a class=" btn btn-success fw12 J-dialog" data-url="/web/dialog/addDevice.html" data-title="添加设备" ><i class="fa-turkish-lira-try mr5"></i>添加设备</a></div>
 		</div>
 
-		<ul class="col" id="deviceMoudleVue">
+		<ul class="col" id="deviceModuleVue">
 			<li class="bd  bg-white p20 lh30 bd-radius-5 mt10" v-for="($item, $index) in list" v-if="!$item.edit" v-cloak>
 				<div>
 					<span class="label-name"><i class="fa-user"></i> 设备名称</span>
-					<a class="J-dialog" data-dialog-url="#/web/deviceDetail.html" :data-id="$item.id">{{$item.name}}</a>
+					<span>{{$item.device_name}}</span>
 				</div>
 				<div>
 					<span class="label-name"><i class="fa-tablet"></i> 设备编号</span>
@@ -20,10 +20,10 @@
 				</div>
 				<div>
 					<span class="label-name"><i class="fa-envelope-o"></i> 设备型号</span>
-					<span>{{$item.device_model}}</span>
+					<span>{{$item.device_mode}}</span>
 				</div>
 				<div><span class="label-name"><i class="fa-credit-card"></i> 所属设备组</span>
-					<span>{{$item.group_id}}</span>
+					<span>{{$item.group_name}}</span>
 				</div>
 				<div class="bd-top bd-dashed mt10 pt10">
 					<a class="label label-success label-sm mr10 J-modify"  v-on:click="modify($index, $event)">修改设备信息</a>
@@ -35,10 +35,10 @@
 				<div><input type="text" v-model="$item.new_device_name"></div>
 				<div><input type="text" v-model="$item.new_device_model"></div>
 				<div>
-					<a class="label label-success label-sm mr10 J-save" v-on:click="saveAdd($index, $event)" v-show="$item.edit=='add'">保存</a>
-					<a class="label label-warning label-sm mr10 J-save" v-on:click="cancelAdd($index, $event)" v-show="$item.edit=='add'">取消</a>
-					<a class="label label-success label-sm mr10 J-update" v-on:click="saveModify($index, $event)" v-show="$item.edit=='modify'">保存</a>
-					<a class="label label-warning label-sm  J-update" v-on:click="cancelModify($index, $event)" v-show="$item.edit=='modify'">取消</a>
+					<a class="label label-success label-sm mr10" v-on:click="saveAdd($index, $event)" v-show="$item.edit=='add'">保存</a>
+					<a class="label label-warning label-sm mr10 " v-on:click="cancelAdd($index, $event)" v-show="$item.edit=='add'">取消</a>
+					<a class="label label-success label-sm mr10" v-on:click="saveModify($index, $event)" v-show="$item.edit=='modify'">保存</a>
+					<a class="label label-warning label-sm " v-on:click="cancelModify($index, $event)" v-show="$item.edit=='modify'">取消</a>
 				</div>
 			</li>
 		</ul>

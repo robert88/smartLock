@@ -1,15 +1,15 @@
 
-<div class="wrap headerMoudle" data-title="情景模式列表"  data-nextText="策略列表" data-nextLink="#/web/strategy.html" data-noPrev="true" data-sliderNav="true">
+<div class="wrap headerModule" data-title="情景模式列表"  data-nextText="策略列表" data-nextLink="#/web/strategy.html" data-noPrev="true" data-sliderNav="true">
 
 	<!--s:systemPerson-->
-	<div id="deviceMoudle">
+	<div id="deviceModule">
 
 		<div class="col mt10">
 			<div class="col6 plr10"><a class="search-wrap"><input type="text" class="form-control fw12"  placeholder="请输入情景名查询" v-model.lazy="params.situational_name"> <i class="fa-search" v-on:click="refreshList"></i></a></div>
 			<div class="col6 plr10"><a class=" btn btn-success J-add fw12"  v-on:click="add"><i class="fa-turkish-lira-try mr5"></i>添加情景</a></div>
 		</div>
 
-		<ul class="col" id="deviceMoudleVue">
+		<ul class="col" id="deviceModuleVue">
 			<li class="bd  bg-white p20 lh30 bd-radius-5 mt10" v-for="($item, $index) in list" v-if="!$item.edit" v-cloak>
 				<div>
 					<span class="label-name"><i class="fa-user"></i> 情景名</span>

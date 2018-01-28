@@ -79,9 +79,9 @@
 									<tbody>
 									<tr v-for="($item, $index) in list"  v-if="!$item.edit" v-cloak>
 										<td><label class="label-checkbox"><input type="checkbox"><i class="fa-check"></i><i class="fa-square-o"></i></label></td>
-										<td><a class="J-dialog" data-dialog-url="#/web/deviceDetail.html" :data-id="$item.id">{{$item.name}}</a></td>
+										<td><a class="J-dialog" data-dialog-url="#/web/deviceDetail.html" :data-id="$item.id">{{$item.device_name}}</a></td>
 										<td>{{$item.device_code}}</td>
-										<td>{{$item.device_model}}</td>
+										<td>{{$item.device_mode}}</td>
 										<td>{{$item.group_id}}</td>
 										<td>
 											<a class="label label-success label-sm mr10 J-modify"  v-on:click="modify($index, $event)">修改设备信息</a>

@@ -7,12 +7,12 @@ $(function () {
 		return;
 	}
 	var curAccordEmail = $.cookie("user_email");
-	var moudleId = "deviceMoudle";
-	var moudleVueId = moudleId+"Vue";
-	var $moudle = $("#"+moudleId);
+	var moduleId = "deviceModule";
+	var moduleVueId = moduleId+"Vue";
+	var $module = $("#"+moduleId);
 
 	var $$vue = new Vue({
-		el: "#"+moudleVueId,
+		el: "#"+moduleVueId,
 		data: {
 			list: [],
 			params:{page_number:1,page_size:10,device_name:"",device_code:"",token:token}
@@ -65,7 +65,7 @@ $(function () {
 		},
 		methods:{
 			filter:function () {
-				$moudle.find(".search-filter-wrap").toggleClass("open");
+				$module.find(".search-filter-wrap").toggleClass("open");
 			},
 			isSelf:function (email) {
 				if(email&&(email==curAccordEmail)){
@@ -96,7 +96,7 @@ $(function () {
 						}
 						$$vue.list = ret.list;
 
-						PAGE.setpageFooter($moudle.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
+						PAGE.setpageFooter($module.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
 							$$vue.params.page_number = page_number
 						});
 					}
@@ -210,20 +210,20 @@ $(function () {
 		mounted: function () {
 			this.$nextTick(function () {
 				this.refreshList();
-				$moudle = $("#"+moudleId)
+				$module = $("#"+moduleId)
 			})
 		}
 	});
 
-	$moudle.parents(".tab-content-item").on("updateContent",function () {
+	$module.parents(".tab-content-item").on("updateContent",function () {
 		$$vue.refreshList();
 	});
 
-	$moudle.on("update",function () {
+	$module.on("update",function () {
 		$$vue.refreshList();
 	});
 
-	$moudle.on("click",".J-filter",function () {
+	$module.on("click",".J-filter",function () {
 		$$vue.filter();
 	})
 
@@ -232,7 +232,7 @@ $(function () {
 		if($$vue){
 			$$vue.$destroy();
 			$$vue = null;
-			$moudle=null
+			$module=null
 		}
 	})
 });

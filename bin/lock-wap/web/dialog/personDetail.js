@@ -3,8 +3,8 @@ $(function () {
 	if (!token) {
 		return;
 	}
-	var $moudle = $("#personDetail");
-	var $dialog = $moudle.parents(".dl-dialog");
+	var $module = $("#personDetail");
+	var $dialog = $module.parents(".dl-dialog");
 	//触发的按钮把数据带过来
 	var $triggerBtn = $dialog.data("trigger");
 	var user_id;
@@ -38,7 +38,7 @@ $(function () {
 			// |  token | string | 是 | 用户登录的token |  |
 			// |  user_id| INterger |是 | 用户id | |
 			getDetail:function () {
-				$moudle.addClass("loading");
+				$module.addClass("loading");
 				var $$vue = this;
 				var url = "/smart_lock/v1/user/find";
 				var type = "post";
@@ -48,7 +48,7 @@ $(function () {
 					}
 					$$vue.userInfo = ret;
 				},complete:function () {
-					$moudle.removeClass("loading");
+					$module.removeClass("loading");
 				}});
 			}
 		},

@@ -1,5 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>首页</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8">
+		<meta name="apple-mobile-web-app-capable" content="no">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta content="telephone=no" name="format-detection">
 
-<div class="wrap headerMoudle" data-title="服务热线" data-noPrev="true" data-sliderNav="true">
+		<!--start mergeCss:main.min-->
+		<link rel="stylesheet" type="text/css" href="/public/css/base.css" >
+		<link rel="stylesheet" type="text/css" href="/public/css/iconmoon/style.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/form.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/btn.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/header.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/content.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/nav-slider.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/label.css">
+		<link rel="stylesheet" type="text/css" href="/public/js/dialog/jquery.dialog.css">
+		<!--end mergeCss-->
+
+		<!--start mergeCss:lib.min-->
+		<link rel="stylesheet" type="text/css" href="/public/css/animate.min.css" />
+		<!--<link rel="stylesheet" type="text/css" href="/public/css/fullcalendar.min.css" />-->
+		<!--<link rel="stylesheet" type="text/css" href="/public/css/jquery.gritter.css" />-->
+		<!--end mergeCss-->
+
+		<!--start mergeJs:lib.min-->
+		<script src="/public/js/lib/jquery-1.12.4.min.js"></script>
+		<script type="text/javascript" src="/public/js/common/jquery.cookie.min.js"></script>
+		<script src="/public/js/lib/vue.js"></script>
+		<script src="/public/js/common/prototype.js"></script>
+		<script src="/public/js/common/base.js"></script>
+		<script src="/public/js/common/require.js"></script>
+		<script src="/public/js/dialog/jquery.dialog.js"></script>
+		<script src="/public/js/common/validForm.js"></script>
+		<!--end mergeJs-->
+
+	</head>
+	
+	<body class="nomenu J-body-scroll">
+
+    <div id="pageLoad">
+        <div class="loader">
+            <div class="loader-inner line-scale-pulse-out">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+	<!--s:头部-->
+	<header class="header-wrap wrap" id="pageCommonHeaderVue">
+		<i class="fa-chevron-left back fs16" onclick="history.back(-1)" v-show="!noPrev" v-cloak></i>
+		<i class="fa-bars slideNavBar back fs16" id="sidebar-collapse" v-show="sliderNav" v-cloak></i>
+		<div class="tc" v-cloak>{{title}}</div>
+		<span class="header-right fs16" v-cloak><a :href="nextLink" v-show="nextText">{{nextText}}</a></span>
+	</header>
+	<!--e:头部-->
+	<!-- SIDEBAR -->
+	<div class="sidebar-mask ease"></div>
+	<div id="sidebar" class="sidebar ease">
+		<div class="sidebar-menu nav-collapse">
+			<div class="pt20 tc sidebar-menu-title" >
+				欢迎来到欧美嘉！
+			</div>
+			<!-- SIDEBAR MENU -->
+			<ul id="pageCommonSlideVue" class="slide-nav-list">
+				<li  v-for="($item, $index) in slideBars"  :class="($item.active +' '+$item.hasSub)" v-cloak>
+					<a :href="$item.href|href" class="ease">
+						<i :class="$item.icon"></i> <span class="menu-text ease">{{$item.text}}<span class="badge pull-right" v-show="$item.tips">{{$item.tips}}</span></span>
+						<span  :class="setSubClass($item.hasSub,'sidebarStatus')"></span>
+					</a>
+
+					<ul class="sub" v-if="$item.hasSub">
+						<li  v-for="($subItem, $subIndex) in $item.sub"><a class="" :href="$subItem.href|href"><span class="sub-menu-text">{{subItem.text}}</span></a></li>
+					</ul>
+				</li>
+			</ul>
+			<div class="sidebar-menu-footer tc ptb10">
+				<div class="J-loginout"><a><i class="fa fa-power-off"></i> 退出</a></div>
+			</div>
+			<!-- /SIDEBAR MENU -->
+		</div>
+	</div>
+	<!-- /SIDEBAR -->
+
+	
+	<div id="main-content-page">
+<div class="wrap headerModule" data-title="服务热线" data-noPrev="true" data-sliderNav="true">
 	<div class="tc pt20"><img src="/public/images/icon-contact-us-2.png" alt=""></div>
 		<div class="tc">
 			<p class="pt20"><span class="w100 inline-block">服务热线：</span><span>400-822-9999</span></p>
@@ -7,4 +99,36 @@
 			<p class="pt20"><span class="w100 inline-block">联系地址：</span><span>深圳市</span></p>
 		</div>
 	</div>
-</div>
+</div></div>
+	
+
+
+
+	<script type="text/javascript" src="/public/js/common/main.js"></script>
+
+	</body>
+
+	<script type="text/javascript">
+		;(function() {
+			window.PAGE = {};
+			window.PAGE.HOME = "person.html";
+			window.PAGE.ERROR404 = "#/html/web404";
+			window.PAGE.version="20180110";
+			window.PAGE.destroy = [];
+			window.PAGE.loading = null;
+			window.PAGE.closeLoading = null;
+			window.PAGE.load = null;//相对于widow.onload
+			window.PAGE.STATICDEBUG = true;//JSdebug
+			window.PAGE.DEBUG = true;//ajax debug
+			window.PAGE.language = {en:{}};
+			window.PAGE.languagePath = "/lang_";
+			window.PAGE.curLanguage = "en";
+			window.PAGE.reload = null;
+			window.PAGE.data = {};
+		})()
+	</script>
+	<script src="/public/js/common/ajax.js"></script>
+	<script src="/public/js/common/page.js"></script>
+	<script src="/public/js/common/pagination.js"></script>
+
+</html>

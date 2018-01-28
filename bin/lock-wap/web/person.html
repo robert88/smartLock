@@ -1,11 +1,11 @@
 
-<div class="wrap headerMoudle" data-title="系统成员" data-nextText="已减成员" data-nextLink="#/web/personHistory.html" data-noPrev="true" data-sliderNav="true">
+<div class="wrap headerModule" data-title="系统成员" data-nextText="已减成员" data-nextLink="#/web/personHistory.html" data-noPrev="true" data-sliderNav="true">
 	<!--s:systemPerson-->
 	<div id="systemPerson">
 
 		<div class="col mt10">
-			<div class="col6 plr10"><a class="search-wrap"><input type="text" class="form-control"  placeholder="请输入人名查询"> <i class="fa-search" v-on:click="seachPerson"></i></a></div>
-			<div class="col6 plr10"><a class=" btn btn-success J-dialog fw12" data-url="/web/dialog/addPerson.html" data-title="添加成员"><i class="fa-turkish-lira-try mr5"></i>添加成员</a></div>
+			<div class="col6 pr10"><a class="search-wrap"><input type="text" class="form-control fw12"  placeholder="请输入成员名查询" v-model.lazy="params.user_name"> <i class="fa-search" v-on:click="refreshList"></i></a></div>
+			<div class="col6 pl10"><a class=" btn btn-success fw12 J-dialog" data-url="/web/dialog/addPerson.html" data-title="添加成员" ><i class="fa-turkish-lira-try mr5"></i>添加成员</a></div>
 		</div>
 
 		<ul class="col" id="systemPersonVue">
