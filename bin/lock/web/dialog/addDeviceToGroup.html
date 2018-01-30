@@ -1,0 +1,20 @@
+<!--用户授权给设备，用户入口-->
+<div id="addDeviceToGroup">
+
+	<ul class="col J-scroll">
+		<li class="bd  bg-white p20 lh30 bd-radius-5 mt10" v-for="($item, $index) in list" v-if="!$item.edit" v-cloak>
+			<div>
+				<span class="label-name"><i class="fa-user"></i> 设备名称</span>
+				<span>{{$item.name}}</span>
+			</div>
+			<div>
+				<span class="label-name"><i class="fa-tablet"></i> 设备编号</span>
+				<span>{{$item.device_code}}</span>
+			</div>
+			<div class="bd-top bd-dashed mt10 pt10">
+				<a class="btn btn-success fw12"  v-on:click="addToGroup($index)"><i class="fa-turkish-lira-try mr5" title="添加"></i>添加</a>
+			</div>
+		</li>
+	</ul>
+
+</div>

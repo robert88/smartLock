@@ -5,7 +5,7 @@ $(function () {
 		return;
 	}
 	var $form = $("#addSceneryForm");
-	var $relativeMoudle = $("#sceneryMoudle");//关联的模块
+	var $relativeModule = $("#sceneryModule");//关联的模块
 
 	var $dialog = $form.parents(".dl-dialog");
 	var listMap = [];
@@ -29,7 +29,7 @@ $(function () {
 				success:function (ret) {
 					$.dialog.closeAll();
 					$.tips("添加成功！","success");
-					$relativeMoudle.trigger("update");
+					$relativeModule.trigger("update");
 				}
 			})
 		}

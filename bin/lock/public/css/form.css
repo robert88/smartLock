@@ -167,4 +167,7 @@ fieldset {
 .form-group-inline .form-control,.form-group-inline .form-control-select{padding: 0 5px 0 5px;width: 60%;display: inline-block;}
 .form-group-inline .form-control-select .form-control{width:100%;}
 .form-group-inline .form-control-select{padding:0}
-.template-tr td{background: #f5ecdf !important;}
+.template-tr td{background: #f5ecdf !important;vertical-align: middle!important;padding: 0px 8px 8px!important;}
+.template-tr .form-control {
+	padding: 0 5px 0 10px;
+}

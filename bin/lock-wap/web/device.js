@@ -14,7 +14,12 @@ $(function () {
 		el: "#" + moduleVueId,
 		data: {
 			list: [],
-			params: {page_number: 1, page_size: 10, device_name: "", device_code: "", token: token}
+			params: {page_number: 1, page_size: 10, device_name: "", device_code: "", token: token},
+
+			list2:[],
+			loading2:false,
+			total_page2:0,
+			params2:{page_number:1,page_size:20,group_name:"",token:token}
 		},
 		watch: {
 
@@ -128,52 +133,93 @@ $(function () {
 					$.tips("请输入设备名", "warn");
 					return;
 				}
-				if (!$$vue.list[index].new_device_model) {
+				if (!$$vue.list[index].new_device_mode) {
 					$.tips("请输入设备型号", "warn");
 					return;
 				}
+
+				var new_group_id = $module.find(".J-select .opiton[data-name='"+$$vue.list[index].new_group_name+"']").data("value");
+
 				PAGE.ajax({
 					url: url,
 					type: type,
 					data: {
 						device_name: $$vue.list[index].new_device_name,
 						device_id: $$vue.list[index].id,
-						device_model: $$vue.list[index].new_device_model,
+						group_id:new_group_id||"",
+						device_model: $$vue.list[index].new_device_mode,
 						token: token
 					},
 					success: function (ret) {
 						$$vue.list[index].edit = "";
-						$$vue.list[index].name = $$vue.list[index].new_device_name;
-						$$vue.list[index].device_model = $$vue.list[index].new_device_model;
+						$$vue.list[index].device_name = $$vue.list[index].new_device_name;
+						$$vue.list[index].device_mode = $$vue.list[index].new_device_mode;
+
 						$$vue.$forceUpdate();
 						$.tips("修改成功！", "success");
 					}
 				});
 			},
-			// 		### 2.2 删除用户
-			// |  POST  |  smart_lock/v1/user/delete  |
-			// | ------------- |:-------------:|
-			//
-			// **请求参数：**
-			//
-			// |  参数名称 | 参数类型 | 是否必填 | 参数描述 | 备注 |
-			// |  -------- | -------- | -------- | -------- | ---- |
-			// |  token | string | 是 | 用户登录的token |  |
-			// |  user_id | Interger | 是 |  用户id  | 整形 |
 
 			del: function (index) {
+				// ### 4.7 删除设备
+				// |  POST  |  smart_lock/v1/device/delete  |
+				// | ------------- |:-------------:|
+				//
+				// **请求参数：**
+				//
+				// |  参数名称 | 参数类型 | 是否必填 | 参数描述 | 备注 |
+				// |  -------- | -------- | -------- | -------- | ---- |
+				// |  device_id | Interger | 是 |  设备id  | 会走手机验证流程 |
+				// |  code | string | 是 |  短信验证码  |  |
+				// |  token | string | 是 |  用户登录的token  |  |
+				// |  phone | string | 是 |  上一步获得的加密手机号  |  |
 				var $$vue = this;
 				if (!$$vue.list[index].id) {
 					$$vue.list.splice(index, 1);
 					return;
 				}
-				var url = "/smart_lock/v1/user/delete";
+
+				function changeImage(){
+					PAGE.ajax({
+						url:"/smart_lock/v1/member/captcha",
+						type:"get",
+						success:function (data) {
+							if(data){
+								$captcha[0].src = data.src;
+							}
+						}
+					})
+				}
+				function timoutCount($text,time,callback) {
+					time--;
+					$text.data("text",time).html(time);
+					if(time<=0){
+						if(typeof callback=="function"){
+							callback()
+						}
+					}else{
+						setTimeout(timoutCount,1000,$text,time,callback)
+					}
+				}
+
+
+				var url = "/smart_lock/v1/device/delete";
 				var type = "post";
 				var str = [
 					'<div class="form-group J-validItem validItem">',
+					'<label ><i class="t-danger fa-asterisk mr5 fs10"></i>图形验证码</label>',
+					'<i class="fa-picture-o"></i>',
+					'<img class="captcha-code-img J-captcha">',
+					'<input type="text"  class="form-control" name="captcha_code" placeholder="请输入图片验证码!"',
+					'check-type="required"',
+					'data-focus="true">',
+					'</div>',
+					'<p class="ptb10 J-sendMsg fs12" style="display: none">短信已发送到<span class="t-warning">'+$$vue.showPhone+'</span> </p>',
+					'<div class="form-group J-validItem validItem">',
 					'<label ><i class="t-danger fa-asterisk mr5 fs10"></i>手机验证码</label>',
-					'<i class="fa-comment-o"></i>',
-					// '<a class="btn btn-warning btn-send-code J-getMobileCode"><span class="text-gradient">发送验证码</span></a>',
+					'<i class="fa-comment-o" ></i>',
+					'<a class="btn btn-warning btn-send-code J-getMobileCode"><span class="text-gradient">发送验证码</span></a>',
 					'<input type="text" class="form-control" name="sms_code" placeholder="请输入手机验证码!" check-type="required" data-focus="true">',
 					'</div>'
 				].join("");
@@ -182,16 +228,18 @@ $(function () {
 					width: 400,
 					button: [{
 						text: "确认", click: function () {
-
+							var sms_code =  $dialog.find("input[name='sms_code']").val();
 							PAGE.ajax({
 								url: url,
 								type: type,
-								data: {user_id: $$vue.list[index].id, token: token},
+								data: {device_id: $$vue.list[index].id,phone:$$vue.authPhone,code:sms_code, token: token},
 								success: function () {
 									$$vue.list.splice(index, 1);
+									$.dialog.close($dialog);
+									$.tips("删除成功！")
 								}
 							});
-
+						return false;
 						}
 					}, {
 						text: "取消", click: function () {
@@ -199,7 +247,53 @@ $(function () {
 						}
 					}]
 
-				})
+				});
+				var $captcha = $dialog.find(".J-captcha");
+
+
+				$captcha.click(changeImage);
+
+				changeImage();
+
+				//发送短信验证码
+				$dialog.find(".J-getMobileCode").click(function () {
+					$dialog.find(".J-sendMsg").hide();
+					var $this =$(this);
+					if($this.data("lock") || $this.data("lock-text")){
+						return ;
+					}
+					var captcha_code =  $dialog.find("input[name='captcha_code']").val();
+
+					if(!captcha_code){
+						$dialog.find("input[name='captcha_code']").parents(".J-validItem").removeClass("validSuccess").addClass("validError").find(".J-valid-msg").html("请填写正确的图形验证码")
+						return ;
+					}
+					$this.data("lock",true).data("lock-text",true);
+					var $text =$this.find(".text-gradient");
+
+					if(!$text.data("origin-text")){
+						$text.data("origin-text",$text.html());
+					}
+					var originText = $text.data("origin-text");
+					$text.data("text",60).html(60);
+
+					PAGE.ajax({type:"post",
+						data:{sms_type:"check",phone:$$vue.authPhone,captcha_code:captcha_code},
+						url:"/smart_lock/v1/member/sms",
+						success:function () {
+							$dialog.find(".J-sendMsg").show();
+							timoutCount($text,60,function(){
+								$text.data("text",originText).html(originText);
+								$this.data("lock-text",false);
+							});
+						},complete:function () {
+							$this.data("lock",false);
+						},errorCallBack:function () {
+							$this.data("lock-text",false);
+							$text.data("text",originText).html(originText);
+						}});
+				});
+
 			},
 			add: function () {
 
@@ -209,17 +303,89 @@ $(function () {
 
 			},
 			modify: function (index) {
+				var $$vue = this;
+				$$vue.list[index].edit = "modify";
+				$$vue.list[index].new_device_name = $$vue.list[index].device_name;
+				$$vue.list[index].new_device_mode = $$vue.list[index].device_mode;
+				$$vue.list[index].new_group_name = $$vue.list[index].group_name;
 
+				this.$forceUpdate()
 			},
 			cancelModify: function (index) {
 				this.list[index].edit = "";
+				this.list[index].new_group_name = ""
 				this.$forceUpdate()
 			},
+			getPhone:function () {
+				var $$vue = this;
+				var url = "/smart_lock/v1/user/get_mobile";
+				var type = "post";
 
+				PAGE.ajax({
+					asnyc:false,
+					url: url,
+					type: type,
+					data: { token: token},
+					success: function (ret) {
+						$$vue.authPhone = ret.mobile;// 加密的手机号
+						$$vue.showPhone = ret.phone;//带掩码的手机号，用于展示
+					}
+				});
+			},
+			getNextPage2:function () {
+				if(!this.total_page2){
+					return;
+				}
+				if(this.params2.page_number<this.total_page2){
+					this.params2.page_number++;
+					this.refreshList2();
+				}
+
+			},
+			// ### 4.11 查询分组列表
+			// |  POST  |  smart_lock/v1/device_group/find_list  |
+			// | ------------- |:-------------:|
+			//
+			// **请求参数：**
+			//
+			// |  参数名称 | 参数类型 | 是否必填 | 参数描述 | 备注 |
+			// |  -------- | -------- | -------- | -------- | ---- |
+			// | group_name| String | 否 |  分组名称  |  |
+			// | page_size | Interger | 是 | 每页数量 | |
+			// |page_number | Interger |是 | 页数 ||
+			refreshList2:function () {
+				var $$vue = this;
+				var url = "/smart_lock/v1/device_group/find_list";
+				var type = "post";
+				$$vue.loading2 = true;
+				PAGE.ajax({url:url,type:type,data:$$vue.params2,success:function (ret) {
+					if( !ret ){
+						return;
+					}
+					if(ret.page_number==1&& (!ret.list||ret.list.length==0)){
+						$$vue.list = [{
+							"id": 0,
+							"group_name": "无分组"
+						}];
+						return;
+					}
+					listMap[$$vue.params2.page_number] = ret.list;
+					$$vue.total_page2 = ret.total_page;
+					$$vue.list2 = $$vue.mergeArray(listMap)
+					$$vue.list2.unshift({
+						"id": 0,
+						"group_name": "无分组"
+					});
+				},complete:function () {
+					$$vue.loading2 = false;
+				}});
+			}
 		},
 		mounted: function () {
 			this.$nextTick(function () {
 				this.refreshList();
+				this.getPhone();
+				this.refreshList2();
 				$module = $("#" + moduleId)
 			})
 		}
@@ -234,6 +400,12 @@ $(function () {
 		$$vue.refreshList();
 	})
 
+	$module.find(".J-scroll").on("scrollDown",function () {
+		if(!$$vue.loading2){
+			$$vue.getNextPage2();
+		}
+	});
+	
 	PAGE.destroy.push(function () {
 		if ($$vue) {
 			$("body").off("scrollDown." + moduleId);

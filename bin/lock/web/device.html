@@ -11,53 +11,31 @@
 				</ul>
 				<ul class="tab-content">
 					<li class="tab-content-item active">
-						<!--s:deviceMoudle-->
-						<div id="deviceMoudle">
+						<!--s:deviceModule-->
+						<div id="deviceModule">
 							<div class="mb10">
 								<a class=" btn btn-success J-dialog" data-url="/web/dialog/addDevice.html" data-title="添加设备"><i class="fa-turkish-lira-try mr5"></i>添加设备</a>
 								<a class=" btn btn-info J-filter" ><i class="fa-filter mr5"></i>过滤</a>
-								<!--<a class=" btn btn-danger" ><i class="fa-trash-o mr5"></i>批量删除设备</a>-->
-								<!--<a class="search-wrap"><input type="text" class="form-control"  placeholder="请输入人名查询"> <i class="fa-search" v-on:click="seachPerson"></i></a>-->
 							</div>
-							<div id="deviceMoudleVue">
+							<div id="deviceModuleVue">
 								<div class="search-filter-wrap ease">
 									<form class="search-filter plr10 pt20 pb10 m10">
 										<ul class="col">
 											<li class="col6 plr10">
 												<div class="form-group-inline">
 													<label>设备名称</label>
-													<input type="text" class="form-control" placeholder="请输入手机或者邮箱" v-model.lazy="params.device_name">
+													<input type="text" class="form-control" placeholder="请输入设备名称" v-model.lazy="params.device_name">
 												</div>
 											</li>
 											<li class="col6 plr10">
 												<div class="form-group-inline">
 													<label >设备编号</label>
-													<input type="text" class="form-control" v-model.lazy="params.device_code">
+													<input type="text" class="form-control" placeholder="请输入设备编号" v-model.lazy="params.device_code">
 												</div>
 											</li>
-											<!--<li class="col3 plr10">-->
-												<!--<div class="form-group-inline">-->
-													<!--<label >设备型号</label>-->
-													<!--<input type="text" class="form-control" name="user_card" >-->
-												<!--</div>-->
-											<!--</li>-->
 
-											<!--<li class="col3 plr10">-->
-												<!--<div class="form-group-inline">-->
-													<!--<label>所属设备组</label>-->
-													<!--<div class="J-select  J-select-search form-control-select">-->
-														<!--<input class="form-control J-select-text" type="text" placeholder="请选择类型">-->
-														<!--<input class="J-select-value" name="Country" type="hidden" check-type="required">-->
-														<!--<i class="fa-angle-down"></i>-->
-														<!--<div class="J-select-option">-->
-															<!--<a class="option" data-jp="gly" data-qp="guanliyuan" data-value="1" data-name="管理员">管理员</a>-->
-															<!--<a class="option" data-jp="gly" data-qp="guanliyuan" data-value="1" data-name="管理员">管理员</a>-->
-														<!--</div>-->
-													<!--</div>-->
-												<!--</div>-->
-											<!--</li>-->
 										</ul>
-										<div class="tc bd-top mt10 pt10">
+										<div class="tc bd-top bd-dashed mt10 pt10">
 											<a class="btn btn-warning" style="min-width: 100px" v-on:click="refreshList"><i class="fa-search mr5"></i>查询</a>
 										</div>
 									</form>
@@ -71,8 +49,6 @@
 										<th><i class="fa-tablet "></i> 设备编号</th>
 										<th><i class="fa-envelope-o"></i> 设备型号</th>
 										<th><i class="fa-credit-card"></i> 所属设备组</th>
-										<!--<th><i class="fa-quote-left "></i> 最近一次操作</th>-->
-										<!--<th><i class="fa-bars"></i> 最近一次操作时间</th>-->
 										<th width="240"><i class="fa-wrench"></i> 操作</th>
 									</tr>
 									</thead>
@@ -82,19 +58,41 @@
 										<td><a class="J-dialog" data-dialog-url="#/web/deviceDetail.html" :data-id="$item.id">{{$item.device_name}}</a></td>
 										<td>{{$item.device_code}}</td>
 										<td>{{$item.device_mode}}</td>
-										<td>{{$item.group_id}}</td>
+										<td>{{$item.group_name}}</td>
 										<td>
-											<a class="label label-success label-sm mr10 J-modify"  v-on:click="modify($index, $event)">修改设备信息</a>
-											<a class="label label-success label-sm mr10 J-dialog" data-url="/web/dialog/setDeviceAlarmTel.html" data-status="modify"  :data-device_id="$item.id" :data-title="('设置'+$item.name+'设备告警电话')">设置告警电话</a>
-											<a class="label label-danger label-sm J-delete" v-on:click="del($index, $event)"><i class="fa-trash-o" title="删除"></i></a>
+										<a class="label label-success label-sm mr10"  v-on:click="modify($index, $event)">修改设备信息</a>
+										<a class="label label-success label-sm mr10 J-dialog" data-url="/web/dialog/setDeviceAlarmTel.html"  :data-device_id="$item.id" :data-title="('设置'+$item.device_name+'设备告警电话')">设置告警电话</a>
+										<a class="label label-danger label-sm" v-on:click="del($index, $event)"><i class="fa-trash-o" title="删除"></i></a>
 										</td>
 									</tr>
 									<tr  class="template-tr" v-else v-cloak>
 										<td></td>
-										<td><input type="text" v-model="$item.new_device_name"></td>
+										<td>
+											<div class="form-group">
+												<input type="text" class="form-control" v-model="$item.new_device_name">
+											</div>
+										</td>
 										<td></td>
-										<td><input type="text" v-model="$item.new_device_model"></td>
-										<td></td>
+										<td>
+											<div class="form-group">
+												<input type="text" class="form-control" v-model="$item.new_device_mode">
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<div class="J-select  J-select-search">
+													<input class="form-control J-select-text" v-model="$item.new_group_name"  type="text" placeholder="请选择设备组">
+													<input class="J-select-value" type="hidden" check-type="required">
+													<i class="fa-angle-down"></i>
+													<div class="J-select-option J-scroll" >
+														<a v-for="($item2, $index2) in list2"
+														   v-bind="{ 'data-jp':$item2.jp, 'data-qp': $item2.qp ,'data-name':$item2.group_name, 'data-value':$item2.id}"
+														   class="option">{{$item2.group_name}}</a>
+														<a v-show="loading">加载更多...</a>
+													</div>
+												</div>
+											</div>
+										</td>
 										<td>
 											<a class="label label-success label-sm mr10 J-save" v-on:click="saveAdd($index, $event)" v-show="$item.edit=='add'">保存</a>
 											<a class="label label-warning label-sm mr10 J-save" v-on:click="cancelAdd($index, $event)" v-show="$item.edit=='add'">取消</a>
@@ -108,7 +106,7 @@
 								<ul class="pagination"></ul>
 							</div>
 						</div>
-						<!--e:deviceMoudle-->
+						<!--e:deviceModule-->
 					</li>
 				</ul>
 			</div>

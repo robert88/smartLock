@@ -9,3 +9,6 @@
 	height: auto;
 	overflow: visible;
 }
+.form-group>i {
+	top: 39px;
+}

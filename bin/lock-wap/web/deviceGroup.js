@@ -155,7 +155,7 @@ $(function () {
 				PAGE.ajax({
 					url: url,
 					type: type,
-					data: {device_name: $$vue.list[index].new_group_name, group_id: $$vue.list[index].id, token: token},
+					data: {group_name: $$vue.list[index].new_group_name, group_id: $$vue.list[index].id, token: token},
 					success: function (ret) {
 						$$vue.list[index].edit = "";
 						$$vue.list[index].group_name = $$vue.list[index].new_group_name;
@@ -164,6 +164,7 @@ $(function () {
 					}
 				});
 			},
+
 			del: function (index) {
 				// ### 4.10 删除设备分组
 				// 	|  POST  |  smart_lock/v1/device_group/delete  |
@@ -179,6 +180,8 @@ $(function () {
 					$$vue.list.splice(index, 1);
 					return;
 				}
+
+
 				var url = "/smart_lock/v1/device_group/delete";
 				var type = "post";
 				$.dialog("是否要删除该记录？", {

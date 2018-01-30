@@ -573,11 +573,12 @@ if(!$.i18n){
 				center.y = center.y+opts.minTop;
 			}
 			if((center.isoverY||center.isoverX) && $target.data("setcenter")){
+				$target.stop(true,true);
 				if(center.y<parseFloat($this.css("top"),10)){
 					$this.css({top: center.y});
 				}
 				if(center.x<parseFloat($this.css("left"),10)){
-					$this.css({top: center.x});
+					$this.css({left: center.x});
 				}
 			}else{
 				$this.css({top: center.y,left: center.x});

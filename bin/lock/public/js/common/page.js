@@ -489,16 +489,15 @@
 			$pageLoadContain.html('<section style="text-align: center"><div> 404 sorry can find page! </section>');
 			$pageJs.html("");
 		}else{
-			hashChange(window.PAGE.ERROR404);
+			PAGE.hashChange(window.PAGE.ERROR404);
 		}
 	}
 
 	/**
 	 *hashchange事件切换页面
 	 * */
-	function hashChange(hash) {
-
-		clearBreadcrumb();
+	PAGE.hashChange = function (hash) {
+		var params = $.getParam(window.location.href)
 
 		var config = PAGE.getHashConfig(hash);
 
@@ -508,6 +507,11 @@
                 $body.addClass("nomenu");
         }else{
             $body.removeClass("nomenu");
+		}
+		//url指明notHashPage或者notspa
+		if((!hash&&params&&params.notHashPage) || PAGE.notSpa ||(!hash&&(window.location.pathname!="/"||!window.location.pathname))){
+			setTitle();
+			return;
 		}
 		//显示加载ui
 		PAGE.loading();
@@ -567,13 +571,6 @@
 		})
 	};
 
-	/**
-	 *监听hashchange事件切换页面，监听事件load事件
-	 * */
-	$(window).on("hashchange", function() {
-		hashChange();
-		// window.location.reload();
-	});
 
 
 	var $$header = new Vue({
@@ -658,24 +655,7 @@
 					icon:"fa-crop"
 				},
 
-				// {
-				// 	hasSub:"",
-				// 	active:"",
-				// 	sub:[],
-				// 	href:"",
-				// 	tips:0,
-				// 	text:"我的智控",
-				// 	icon:"fa-cloud"
-				// },
-				// {
-				// 	hasSub:"",
-				// 	active:"",
-				// 	sub:[],
-				// 	href:"",
-				// 	tips:0,
-				// 	text:"勿扰模式",
-				// 	icon:"fa-umbrella"
-				// },
+
 				{
 					hasSub:"",
 					active:"",
@@ -783,8 +763,15 @@
 		window.location.hash="#/web/login.html?nomenu=1";
 	}
 	/**
+	 *监听hashchange事件切换页面，监听事件load事件
+	 * */
+	$(window).on("hashchange", function() {
+		PAGE.hashChange();
+		// window.location.reload();
+	});
+	/**
 	 *启动页面
 	 * */
-	hashChange();
+	PAGE.hashChange();
 }());
 

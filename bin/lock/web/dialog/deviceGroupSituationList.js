@@ -7,10 +7,10 @@ $(function () {
 		return;
 	}
 
-	var moudleId = "addDeviceToGroup";
-	var moudleVueId = moudleId+"Vue";
-	var $moudle = $("#"+moudleId);
-	var $dialog = $moudle.parents(".dl-dialog");
+	var moduleId = "addDeviceToGroup";
+	var moduleVueId = moduleId+"Vue";
+	var $module = $("#"+moduleId);
+	var $dialog = $module.parents(".dl-dialog");
 
 	//触发的按钮把数据带过来
 	var $triggerBtn = $dialog.data("trigger");
@@ -21,7 +21,7 @@ $(function () {
 	}
 
 	var $$vue = new Vue({
-		el: "#"+moudleVueId,
+		el: "#"+moduleVueId,
 		data: {
 			list: [],
 			params:{page_number:1,page_size:10,token:token}
@@ -56,7 +56,7 @@ $(function () {
 		},
 		methods:{
 			filter:function () {
-				$moudle.find(".search-filter-wrap").toggleClass("open");
+				$module.find(".search-filter-wrap").toggleClass("open");
 			},
 			refreshList:function () {
 				// ### 4.19 查询分组下设备列表
@@ -79,7 +79,7 @@ $(function () {
 						}
 						$$vue.list = ret.list;
 						$dialog.trigger("setcenter");
-						PAGE.setpageFooter($moudle.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
+						PAGE.setpageFooter($module.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
 							$$vue.params.page_number = page_number
 						});
 					}
@@ -257,15 +257,15 @@ $(function () {
 		}
 	});
 
-	// $moudle.parents(".tab-content-item").on("updateContent",function () {
+	// $module.parents(".tab-content-item").on("updateContent",function () {
 	// 	$$vue.refreshList();
 	// });
 	//
-	// $moudle.on("update",function () {
+	// $module.on("update",function () {
 	// 	$$vue.refreshList();
 	// });
 	//
-	// $moudle.on("click",".J-filter",function () {
+	// $module.on("click",".J-filter",function () {
 	// 	$$vue.filter();
 	// })
 
@@ -274,7 +274,7 @@ $(function () {
 		if($$vue){
 			$$vue.$destroy();
 			$$vue = null;
-			$moudle=null
+			$module=null
 		}
 	})
 });

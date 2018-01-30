@@ -19,16 +19,15 @@ input:focus, textarea:focus, button:focus, select:focus {
 	border: 1px solid #acadc8;
 }
 select {
-	/*Ã¥Â¾Ë†Ã¥â€¦Â³Ã©â€Â®Ã¯Â¼Å¡Ã¥Â°â€ Ã©Â»ËœÃ¨Â®Â¤Ã§Å¡â€žselectÃ©â‚¬â€°Ã¦â€¹Â©Ã¦Â¡â€ Ã¦Â Â·Ã¥Â¼ÂÃ¦Â¸â€¦Ã©â„¢Â¤*/
 	appearance:none;
 	-moz-appearance:none;
 	-webkit-appearance:none;
 }
-/*Ã¦Â¸â€¦Ã©â„¢Â¤ieÃ§Å¡â€žÃ©Â»ËœÃ¨Â®Â¤Ã©â‚¬â€°Ã¦â€¹Â©Ã¦Â¡â€ Ã¦Â Â·Ã¥Â¼ÂÃ¦Â¸â€¦Ã©â„¢Â¤Ã¯Â¼Å’Ã©Å¡ÂÃ¨â€”ÂÃ¤Â¸â€¹Ã¦â€¹â€°Ã§Â®Â­Ã¥Â¤Â´*/
+
 select::-ms-expand { display: none; }
 ::-webkit-input-placeholder{	font-weight: inherit;
 	color: #bbb;
-	font-size: inherit;}    /* Ã¤Â½Â¿Ã§â€Â¨webkitÃ¥â€ â€¦Ã¦Â Â¸Ã§Å¡â€žÃ¦ÂµÂÃ¨Â§Ë†Ã¥â„¢Â¨ */
+	font-size: inherit;}
 :-moz-placeholder{	font-weight: inherit;
 	color: #bbb;
 	font-size: inherit;}                  /* FirefoxÃ§â€°Ë†Ã¦Å“Â¬4-18 */
@@ -114,7 +113,7 @@ fieldset {
 	display: block !important;
 	font-size: 16px;
 	height: 16px;
-	top: 29px;
+	top: 34px;
 	margin: 9px 2px 4px 10px;
 	position: absolute !important;
 	text-align: center;
@@ -169,3 +168,18 @@ fieldset {
 .form-group-inline .form-control-select .form-control{width:100%;}
 .form-group-inline .form-control-select{padding:0}
 .template-tr td{background: #f5ecdf !important;}
+.form-group-block{
+	position:relative;
+}
+.form-group-block>i{
+	color: #CCCCCC;
+	display: block !important;
+	font-size: 16px;
+	height: 16px;
+	top: 3px;
+	margin: 9px 2px 4px 10px;
+	position: absolute !important;
+	text-align: center;
+	width: 16px;
+	z-index: 1;
+}

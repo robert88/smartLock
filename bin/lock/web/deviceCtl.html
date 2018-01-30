@@ -1,25 +1,25 @@
 <div class="wrap">
 	<div class="box border blue">
 		<div class="box-title">
-			<h4><i class="fa fa-bars"></i> <span class="box-title-text">设备列表</span></h4>
+			<h4><i class="fa fa-bars"></i> <span class="box-title-text">设备门况信息</span></h4>
 		</div>
 		<div class="box-body">
 			<div class="tabbable header-tabs">
 				<ul class="nav nav-tabs">
-					<li class="active" href="#/web/device.html" data-title="设备列表"><a data-toggle="tab"><i class="fa fa-search-plus"></i> <span>设备列表</span></a></li>
-					<li href="#/web/deviceGroup.html" data-title="设备组列表"><a data-toggle="tab"><i class="fa fa-bar-chart-o"></i> <span>设备组列表</span></a></li>
+					<li class="active" href="#/web/deviceGroupCtl.html" data-title="设备组门况信息"><a data-toggle="tab"><i class="fa fa-search-plus"></i> <span>设备列表</span></a></li>
+					<li href="#/web/deviceGroup.html" data-title="设备门况信息"><a data-toggle="tab"><i class="fa fa-bar-chart-o"></i> <span>设备组列表</span></a></li>
 				</ul>
 				<ul class="tab-content">
 					<li class="tab-content-item active">
-						<!--s:deviceMoudle-->
-						<div id="deviceMoudle">
+						<!--s:deviceModule-->
+						<div id="deviceModule">
 							<div class="mb10">
 								<a class=" btn btn-success J-dialog" data-url="/web/dialog/addDevice.html" data-title="添加设备"><i class="fa-turkish-lira-try mr5"></i>添加设备</a>
 								<a class=" btn btn-info J-filter" ><i class="fa-filter mr5"></i>过滤</a>
 								<a class=" btn btn-danger" ><i class="fa-trash-o mr5"></i>批量关闭</a>
 								<!--<a class="search-wrap"><input type="text" class="form-control"  placeholder="请输入人名查询"> <i class="fa-search" v-on:click="seachPerson"></i></a>-->
 							</div>
-							<div id="deviceMoudleVue">
+							<div id="deviceModuleVue">
 								<div class="search-filter-wrap ease">
 									<form class="search-filter plr10 pt20 pb10 m10">
 										<ul class="col">
@@ -35,27 +35,6 @@
 													<input type="text" class="form-control" v-model.lazy="params.device_code">
 												</div>
 											</li>
-											<!--<li class="col3 plr10">-->
-												<!--<div class="form-group-inline">-->
-													<!--<label >设备型号</label>-->
-													<!--<input type="text" class="form-control" name="user_card" >-->
-												<!--</div>-->
-											<!--</li>-->
-
-											<!--<li class="col3 plr10">-->
-												<!--<div class="form-group-inline">-->
-													<!--<label>所属设备组</label>-->
-													<!--<div class="J-select  J-select-search form-control-select">-->
-														<!--<input class="form-control J-select-text" type="text" placeholder="请选择类型">-->
-														<!--<input class="J-select-value" name="Country" type="hidden" check-type="required">-->
-														<!--<i class="fa-angle-down"></i>-->
-														<!--<div class="J-select-option">-->
-															<!--<a class="option" data-jp="gly" data-qp="guanliyuan" data-value="1" data-name="管理员">管理员</a>-->
-															<!--<a class="option" data-jp="gly" data-qp="guanliyuan" data-value="1" data-name="管理员">管理员</a>-->
-														<!--</div>-->
-													<!--</div>-->
-												<!--</div>-->
-											<!--</li>-->
 										</ul>
 										<div class="tc bd-top mt10 pt10">
 											<a class="btn btn-warning" style="min-width: 100px" v-on:click="refreshList"><i class="fa-search mr5"></i>查询</a>
@@ -97,7 +76,7 @@
 								<ul class="pagination"></ul>
 							</div>
 						</div>
-						<!--e:deviceMoudle-->
+						<!--e:deviceModule-->
 					</li>
 				</ul>
 			</div>
