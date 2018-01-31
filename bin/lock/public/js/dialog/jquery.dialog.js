@@ -572,8 +572,9 @@ if(!$.i18n){
 			if(center.isTop&&opts&& opts.minTop){
 				center.y = center.y+opts.minTop;
 			}
+			$target.stop(true,true);
 			if((center.isoverY||center.isoverX) && $target.data("setcenter")){
-				$target.stop(true,true);
+
 				if(center.y<parseFloat($this.css("top"),10)){
 					$this.css({top: center.y});
 				}

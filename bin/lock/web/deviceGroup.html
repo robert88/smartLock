@@ -15,7 +15,7 @@
 			<th><i class="fa-user"></i> id</th>
 			<th><i class="fa-user"></i> 设备组名称</th>
 			<th><i class="fa-tablet "></i> 情景</th>
-			<th><i class="fa-envelope-o"></i> 设备</th>
+			<th><i class="fa-envelope-o"></i> 组内设备</th>
 			<th width="280"><i class="fa-wrench"></i> 操作</th>
 		</tr>
 		</thead>
@@ -29,7 +29,7 @@
 			<!--<td>{{$item.update_time}}</td>-->
 			<td>
 				<a class="label label-success label-sm ml10" v-on:click="modify($index, $event)">修改设备组名称</a>
-				<!--<a class="label label-success label-sm ml10" v-on:click="modify($index, $event)">切换情景</a>-->
+				<a class="label label-success label-sm ml10 J-dialog" data-url="/web/dialog/addDeviceToGroup.html"  :data-group_id="$item.id" :data-title="(''+$item.group_name+'设备组-设备列表')">添加设备</a>
 				<a class="label label-danger label-sm J-delete" v-on:click="del($index, $event)"><i class="fa-trash-o" title="删除"></i></a>
 			</td>
 		</tr>
@@ -41,7 +41,7 @@
 			<td></td>
 			<td>
 				<a class="label label-success label-sm mr10 " v-on:click="saveAdd($index, $event)" v-show="$item.edit=='add'">保存</a>
-				<a class="label label-warning label-sm mr10 " v-on:click="canselAdd($index, $event)" v-show="$item.edit=='add'">取消</a>
+				<a class="label label-warning label-sm mr10 " v-on:click="cancelAdd($index, $event)" v-show="$item.edit=='add'">取消</a>
 				<a class="label label-success label-sm mr10 " v-on:click="saveModify($index, $event)" v-show="$item.edit=='modify'">保存</a>
 				<a class="label label-warning label-sm  " v-on:click="cancelModify($index, $event)" v-show="$item.edit=='modify'">取消</a>
 			</td>

@@ -86,9 +86,11 @@ $(function () {
 						if (!ret) {
 							return;
 						}
-						listMap[$$vue.params.page_number] = ret.list;
-						$$vue.total_page = ret.total_page;
-						$$vue.list = $$vue.mergeArray(listMap);
+						$$vue.list = ret.list;
+
+						PAGE.setpageFooter($module.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
+							$$vue.params.page_number = page_number
+						});
 						$$vue.$nextTick(function () {
 							$dialog.trigger("setcenter");
 						})

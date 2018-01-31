@@ -16,7 +16,7 @@
 							<div class="mb10">
 								<a class=" btn btn-success J-dialog" data-url="/web/dialog/addDevice.html" data-title="添加设备"><i class="fa-turkish-lira-try mr5"></i>添加设备</a>
 								<a class=" btn btn-info J-filter" ><i class="fa-filter mr5"></i>过滤</a>
-								<a class=" btn btn-danger" ><i class="fa-trash-o mr5"></i>批量关闭</a>
+								<!--<a class=" btn btn-danger" ><i class="fa-trash-o mr5"></i>批量关闭</a>-->
 								<!--<a class="search-wrap"><input type="text" class="form-control"  placeholder="请输入人名查询"> <i class="fa-search" v-on:click="seachPerson"></i></a>-->
 							</div>
 							<div id="deviceModuleVue">
@@ -61,7 +61,7 @@
 										<td><a class="J-dialog" data-dialog-url="#/web/personDetail.html" :data-id="$item.id">{{$item.device_name}}</a></td>
 										<td>{{$item.device_code}}</td>
 										<td>{{$item.device_mode}}</td>
-										<td>{{$item.group_id}}</td>
+										<td>{{$item.group_name}}</td>
 										<td></td>
 										<!--<td>{{$item.role_id | role}}</td>-->
 										<td>{{$item.update_time}}</td>

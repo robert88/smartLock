@@ -61,8 +61,8 @@ $(function () {
 			filter: function () {
 				$module.find(".search-filter-wrap").toggleClass("open");
 			},
-			isSelf: function (email) {
-				if (email && (email == curAccordEmail)) {
+			isSelf:function (email) {
+				if(email&&(email==curAccordEmail)){
 					return false;
 				}
 				return true;

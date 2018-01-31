@@ -174,7 +174,7 @@ $(function () {
 					}
 				});
 			},
-			canselAdd:function (index) {
+			cancelAdd:function (index) {
 				this.del(index);
 			},
 			modify:function (index) {
