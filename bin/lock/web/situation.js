@@ -136,32 +136,25 @@ $(function () {
 				});
 			},
 			// ### 6.2 更新角色
-			// |  POST  |  smart_lock/v1/role/modify  |
+			// |  POST  |  /smart_lock/v1/situational_mode/modify  |
 			// | ------------- |:-------------:|
-			//
-			// **请求参数：**
-			//
-			// |  参数名称 | 参数类型 | 是否必填 | 参数描述 | 备注 |
-			// |  -------- | -------- | -------- | -------- | ---- |
-			// |  situation_name | String | 是 |  角色名称  | |
-			// | role_id |  Interger | 是 | 角色ID | |
-			// | token | String | 是 | 用户Token |示例：06REbYPmid30pL75pfauECjxFuYGx |
+
 			saveModify:function (index) {
-				$.tips("无接口","warn")
-				return
+
 				var $$vue = this;
-				var url =  "";
+				var url =  "/smart_lock/v1/situational_mode/modify";
 				var type = "post";
-				this.list[index].situation_name = this.list[index].name = this.list[index].new_situation_name;
-				if(!this.list[index].name){
+
+				if(!$$vue.list[index].new_situation_name){
 					$.tips("请输入角色名","warn");
 					return;
 				}
 				PAGE.ajax({
 					url: url,
 					type: type,
-					data: {situation_name: this.list[index].name, role_id: this.list[index].id, token: token},
+					data: {situational_id: this.list[index].id,situational_name: this.list[index].new_situation_name, token: token},
 					success: function (ret) {
+						$$vue.list[index].situation_name = $$vue.list[index].new_situation_name;
 						$$vue.list[index].edit="";
 						$$vue.$forceUpdate();
 						$.tips("修改成功！","success");
@@ -176,7 +169,7 @@ $(function () {
 					$$vue.list.splice(index, 1);
 					return;
 				}
-				var url = "/smart_lock/v1/role/delete";
+				var url = "/smart_lock/v1/situational_mode/delete";
 				var type = "post";
 				$.dialog("是否要删除该记录？", {
 					title: "删除记录",
@@ -186,7 +179,7 @@ $(function () {
 							PAGE.ajax({
 								url: url,
 								type: type,
-								data: {role_id: $$vue.list[index].id, token: token},
+								data: {situational_id: $$vue.list[index].id, token: token},
 								success: function () {
 									$.tips("操作成功！", "success");
 									$$vue.list.splice(index, 1);

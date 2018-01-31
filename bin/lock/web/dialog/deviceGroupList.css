@@ -1,9 +1,9 @@
 @media (min-width:1024px) {
-	#addDeviceForm{
+	#removeDeviceFromGroup{
 		width: 960px;
 	}
 }
-#addDeviceForm .J-scroll{
+#removeDeviceFromGroup .J-scroll{
 	max-height: 176px;
 	overflow: auto;
 }
