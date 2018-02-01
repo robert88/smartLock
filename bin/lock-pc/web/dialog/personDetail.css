@@ -1,0 +1,8 @@
+@media (min-width:1024px) {
+	#personDetail{
+		width: 960px;
+	}
+}
+#personDetail .col{
+	height:60px;
+}

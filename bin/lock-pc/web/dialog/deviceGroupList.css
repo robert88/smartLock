@@ -1,0 +1,9 @@
+@media (min-width:1024px) {
+	#removeDeviceFromGroup{
+		width: 960px;
+	}
+}
+#removeDeviceFromGroup .J-scroll{
+	max-height: 176px;
+	overflow: auto;
+}

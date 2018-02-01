@@ -1,0 +1,137 @@
+
+<form role="form" id="addStrategyForm">
+		<ul class="col">
+			<li class="col6 plr10">
+				<div class="form-group J-validItem validItem">
+					<label ><i class="t-danger fa-asterisk mr5 fs10"></i>策略名称</label>
+					<i class="fa fa-font"></i>
+					<input type="text" class="form-control" placeholder="请输入策略名称！"  name="strategy_name" check-type="required" data-focus="true">
+				</div>
+			</li>
+			<li class="col6 plr10">
+				<div class="form-group J-validItem validItem">
+					<label><i class="t-danger fa-asterisk mr5 fs10"></i>角色</label>
+					<i class="fa-microphone-slash"></i>
+					<div class="J-select  J-select-search">
+						<input class="form-control J-select-text" type="text" placeholder="请选择类型">
+						<input class="J-select-value" name="role_id" type="hidden" check-type="required">
+						<i class="fa-angle-down"></i>
+						<div class="J-select-option J-scroll role" >
+							<a v-for="($item, $index) in role_list"
+							   v-bind="{ 'data-jp':$item.jp, 'data-qp': $item.qp ,'data-name':$item.name, 'data-value':$item.id}"
+							   class="option">{{$item.name}}</a>
+							<a v-show="roleLoading">加载更多...</a>
+						</div>
+					</div>
+				</div>
+			</li>
+			</ul>
+		<ul class="col">
+			<li class="col6 plr10">
+				<div class="form-group J-validItem validItem">
+					<label>用户</label>
+					<i class="fa-microphone-slash"></i>
+					<div class="J-select  J-select-search">
+						<input class="form-control J-select-text" type="text" placeholder="请选择类型">
+						<input class="J-select-value" name="user_id" type="hidden">
+						<i class="fa-angle-down"></i>
+						<div class="J-select-option J-scroll person"  >
+							<a v-for="($item, $index) in person_list"
+							   v-bind="{ 'data-jp':$item.jp, 'data-qp': $item.qp ,'data-name':$item.user_name, 'data-value':$item.id}"
+							   class="option">{{$item.user_name}}</a>
+							<a v-show="personLoading">加载更多...</a>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="col6 plr10">
+				<div class="form-group J-validItem validItem allow_start_time_wrap">
+					<label><i class="t-danger fa-asterisk mr5 fs10"></i>允许操作时间段</label>
+					<i class="fa-microphone-slash"></i>
+					<div class="col">
+						<div class="col6 pr10">
+							<div class="J-select  J-select-search">
+								<input class="form-control J-select-text" type="text" placeholder="请选择类型">
+								<input class="J-select-value" v-model="start_time" type="hidden" >
+								<i class="fa-angle-down"></i>
+								<div class="J-select-option J-scroll"  >
+									<a v-for="($item, $index) in allow_start_time_list"
+									   v-bind="{ 'data-jp':$item.jp, 'data-qp': $item.qp ,'data-name':$item.name, 'data-value':$item.id}"
+									   class="option">{{$item.name}}</a>
+									<!--<a v-show="loading">加载更多...</a>-->
+								</div>
+							</div>
+						</div>
+						<div class="col6 pl10">
+							<div class="J-select  J-select-search">
+								<input class="form-control J-select-text" type="text" placeholder="请选择类型">
+								<input class="J-select-value" v-model="end_time" type="hidden" >
+								<i class="fa-angle-down"></i>
+								<div class="J-select-option J-scroll"  >
+									<a v-for="($item, $index) in allow_end_time_list"
+									   v-bind="{ 'data-jp':$item.jp, 'data-qp': $item.qp ,'data-name':$item.name, 'data-value':$item.id}"
+									   class="option">{{$item.name}}</a>
+									<!--<a v-show="loading">加载更多...</a>-->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<ul class="col">
+			<li class="col6 plr10">
+				<div class="form-group J-validItem validItem">
+					<label><i class="t-danger fa-asterisk mr5 fs10"></i>允许开锁方式</label>
+					<i class="fa-microphone-slash"></i>
+					<div class="J-select  J-mutil-select">
+						<input class="form-control J-select-text" type="text" placeholder="请选择类型">
+						<input class="J-select-value" name="allow_openmode" type="hidden" check-type="required">
+						<i class="fa-angle-down"></i>
+						<ul class="J-select-option J-scroll" >
+							<li class="option" data-name="全部">
+								<span class="label-checkbox">
+									<input type="checkbox" class="J-select-all-ipt">
+									<i class="fa-check"></i>
+									<i class="fa-square-o"></i>
+								</span>
+								全部
+							</li>
+							<li class="option" v-for="($item, $index) in allow_openmode_list"
+								v-bind="{ 'data-jp':$item.jp, 'data-qp': $item.qp ,'data-name':$item.name, 'data-value':$item.id}">
+								<span class="label-checkbox"><input type="checkbox" ><i class="fa-check"></i><i class="fa-square-o"></i></span>
+								{{$item.name}}
+							</li>
+							<!--<li class="option-loading" v-show="loading">加载更多...</li>-->
+						</ul>
+					</div>
+				</div>
+			</li>
+			<li class="col6 plr10">
+				<div class="form-group J-validItem validItem">
+					<label><i class="t-danger fa-asterisk mr5 fs10"></i>允许的操作</label>
+					<i class="fa-microphone-slash"></i>
+					<div class="J-select  J-mutil-select">
+						<input class="form-control J-select-text" type="text" placeholder="请选择类型">
+						<input class="J-select-value" name="allow_operation" type="hidden" check-type="required">
+						<i class="fa-angle-down"></i>
+						<ul class="J-select-option J-scroll " >
+							<li class="option" data-name="全部">
+								<span class="label-checkbox"><input type="checkbox" class="J-select-all-ipt"><i class="fa-check"></i><i class="fa-square-o"></i></span>
+								全部
+							</li>
+							<li class="option" v-for="($item, $index) in allow_operation_list"
+								v-bind="{ 'data-jp':$item.jp, 'data-qp': $item.qp ,'data-name':$item.name, 'data-value':$item.id}">
+								<span class="label-checkbox"><input type="checkbox" ><i class="fa-check"></i><i class="fa-square-o"></i></span>
+								{{$item.name}}
+							</li>
+							<!--<li class="option-loading" v-show="loading">加载更多...</li>-->
+						</ul>
+					</div>
+				</div>
+			</li>
+		</ul>
+	<div class="dialogBtns">
+		<a class="btn btn-danger J-submitBtn" >提交</a>
+	</div>
+</form>

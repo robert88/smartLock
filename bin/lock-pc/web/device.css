@@ -1,0 +1,14 @@
+.search-filter-wrap{
+	opacity: 0;
+	height: 0;
+	overflow: hidden;
+}
+.search-filter-wrap.open{
+	opacity: 1;
+	height: auto;
+	overflow: visible;
+}
+.template-tr .form-group,
+.template-tr .J-select{
+	height:34px;
+}

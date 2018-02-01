@@ -182,20 +182,83 @@ $(function () {
 	/**
 	 * 下拉菜单
 	 * */
-	$(document).off("click", ".J-select").on("click", ".J-select", function () {
+	/**
+	 * 下拉菜单
+	 * */
+	$(document).off("click", ".J-select").on("click", ".J-select", function (e) {
+		if($(this).hasClass("J-mutil-select")&& ($(e.target).hasClass(".J-select-option")||$(e.target).parents(".J-select-option").length)){
+			return false;
+		}
 		$(".J-select").not($(this)).removeClass("current");
 		$(this).toggleClass("current");
 	}).off("click", ".J-select-option .option").on("click", ".J-select-option .option", function () {
-		var value = $(this).data("value");
-		var $select = $(this).parents(".J-select");
+		var $option = $(this);
+		var value = $option.data("value");
+		var $select = $option.parents(".J-select");
+		var $selectText = $select.find(".J-select-text");
+		var $selectValue = $select.find(".J-select-value");
 		if (value != "") {
-			$select.find(".J-select-text").addClass("ipt-not-empty");
+			$selectText.addClass("ipt-not-empty");
 		} else {
-			$select.find(".J-select-text").removeClass("ipt-not-empty");
+			$selectText.removeClass("ipt-not-empty");
 		}
-		$select.find(".J-select-text").val($(this).html().replace(/^\s+|\s+$/, "")).change();
-		$select.find(".J-select-value").val(value).data("option",$(this).data()).change();
-		$(".J-select").removeClass("current");
+		function getMutilOptionData($select){
+			var names = [];
+			var values = [];
+			var allSelect = true;
+			$select.find(".option input").each(function () {
+				var $input = $(this);
+				var $curOption = $input.parents(".option");
+				if(!$input.hasClass("J-select-all-ipt")){
+					if($input.prop("checked")){
+						names.push( $curOption.data("name"));
+						values.push($curOption.data("value"));
+					}else{
+						allSelect = false;
+					}
+
+				}
+			});
+			return {names:names,values:values,allSelect:allSelect}
+		}
+		//多选下拉
+		if($select.hasClass("J-mutil-select")){
+			var $curInput = $option.find("input");
+			if($curInput.prop("checked")){
+				$curInput.prop("checked",false);
+			}else{
+				$curInput.prop("checked",true);
+			}
+			//全选
+			if( $curInput.hasClass("J-select-all-ipt")){
+				if($curInput.prop("checked")){
+					$select.find("input").prop("checked",true);
+					var selectData = getMutilOptionData($select);
+					$selectText.val($option.data("name")).change();
+					$selectValue.val(selectData.values.join(",")).change();
+				}else{
+					$select.find("input").prop("checked",false);
+					$selectText.val("").change();
+					$selectValue.val("").change();
+				}
+			}else{
+				var selectData = getMutilOptionData($select);
+				//已经全部选中需要把all-option的input的点亮
+				if(selectData.allSelect){
+					$select.find(".J-select-all-ipt").prop("checked",true);
+					$selectText.val($select.find(".J-select-all-ipt").data("name")).change();
+				}else{
+					$select.find(".J-select-all-ipt").prop("checked",false);
+					$selectText.val(selectData.names.join(",")).change();
+				}
+				$selectValue.val(selectData.values.join(",")).change();
+			}
+		}else{
+			$selectText.val($(this).data("name").replace(/^\s+|\s+$/, "")).change();
+			$select.find(".J-select-value").val(value).data("option",$(this).data()).change();
+			$(".J-select").removeClass("current");
+		}
+
 		return false;
 	}).on("focus.select",".J-select-text",function () {
 		$(this).parents(".J-validItem").removeClass("validError").removeClass("validSuccess");
@@ -208,7 +271,7 @@ $(function () {
 		var key = $.trim($(this).val())
 		if($(this).parents(".J-select-search").length){
 			$(this).parents(".J-select-search").find('.J-select-option .option').each(function () {
-				var searchStr = [( $(this).data("jp")||"") ,($(this).data("qp")||"")  , ($(this).data("name")||"" )].join(",")
+				var searchStr = [( $(this).data("jp")||"") ,($(this).data("jp")||"")  , ($(this).data("jp")||"" )].join(",")
 				if( searchStr.toLowerCase().indexOf(key.toLowerCase())==-1){
 					$(this).hide()
 				}else{

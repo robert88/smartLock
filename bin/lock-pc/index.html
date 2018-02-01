@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>首页</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8">
+		<meta name="apple-mobile-web-app-capable" content="no">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta content="telephone=no" name="format-detection">
+
+		<!--start mergeCss:main.min-->
+		<link rel="stylesheet" type="text/css" href="/public/css/base.css" >
+		<link rel="stylesheet" type="text/css" href="/public/css/iconmoon/style.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/btn.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/header.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/nav-slider.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/content.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/dropdown.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/panel.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/table.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/tab.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/label.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/form.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/pager.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/nomenu.css">
+		<link rel="stylesheet" type="text/css" href="/public/js/dialog/jquery.dialog.css">
+		<!--end mergeCss-->
+
+		<!--start mergeCss:lib.min-->
+		<link rel="stylesheet" type="text/css" href="/public/css/animate.min.css" />
+		<!--<link rel="stylesheet" type="text/css" href="/public/css/fullcalendar.min.css" />-->
+		<!--<link rel="stylesheet" type="text/css" href="/public/css/jquery.gritter.css" />-->
+		<!--end mergeCss-->
+
+		<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+		<![endif]-->
+
+		<!--start mergeJs:lib.min-->
+		<script src="/public/js/lib/jquery-1.12.4.min.js"></script>
+		<script type="text/javascript" src="/public/js/common/jquery.cookie.min.js"></script>
+		<script src="/public/js/lib/vue.js"></script>
+		<script src="/public/js/common/prototype.js"></script>
+		<script src="/public/js/common/base.js"></script>
+		<script src="/public/js/common/require.js"></script>
+		<script src="/public/js/dialog/jquery.dialog.js"></script>
+		<script src="/public/js/common/validForm.js"></script>
+		<!--end mergeJs-->
+
+	</head>
+	
+	<body class="nomenu">
+
+    <div id="pageLoad">
+        <div class="loader">
+            <div class="loader-inner line-scale-pulse-out">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+	<!-- HEADER -->
+	<header>
+		<div class="wrap navbar">
+			<div class="navbar-brand">
+				<!-- COMPANY LOGO -->
+				<a href="#/web/home.html">
+					<img src="/public/images/logo.png" alt="GUROMEGA Logo" class="img-responsive" height="30" width="120">
+				</a>
+				<!-- /COMPANY LOGO -->
+
+				<!-- SIDEBAR COLLAPSE -->
+				<div id="sidebar-collapse" class="sidebar-collapse btn">
+					<i class="fa fa-bars" ></i>
+				</div>
+				<!-- /SIDEBAR COLLAPSE -->
+			</div>
+
+			<!-- BEGIN TOP NAVIGATION MENU -->
+			<ul class="navbar-nav fr">
+				<!-- BEGIN NOTIFICATION DROPDOWN -->
+				<!--<li class="dropdown" id="header-notification">-->
+					<!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">-->
+						<!--<i class="fa fa-bell"></i>-->
+						<!--<span class="badge">7</span>-->
+					<!--</a>-->
+					<!--<ul class="dropdown-menu notification">-->
+						<!--<li class="dropdown-title">-->
+							<!--<span><i class="fa fa-bell"></i> 7 Notifications</span>-->
+						<!--</li>-->
+						<!--<li>-->
+							<!--<a href="#">-->
+								<!--<span class="label label-success"><i class="fa fa-user"></i></span>-->
+									<!--<span class="body">-->
+										<!--<span class="message">5 users online. </span>-->
+										<!--<span class="time">-->
+											<!--<i class="fa fa-clock-o"></i>-->
+											<!--<span>Just now</span>-->
+										<!--</span>-->
+									<!--</span>-->
+							<!--</a>-->
+						<!--</li>-->
+						<!--<li>-->
+							<!--<a href="#">-->
+								<!--<span class="label label-primary"><i class="fa fa-comment"></i></span>-->
+									<!--<span class="body">-->
+										<!--<span class="message">Martin commented.</span>-->
+										<!--<span class="time">-->
+											<!--<i class="fa fa-clock-o"></i>-->
+											<!--<span>19 mins</span>-->
+										<!--</span>-->
+									<!--</span>-->
+							<!--</a>-->
+						<!--</li>-->
+						<!--<li>-->
+							<!--<a href="#">-->
+								<!--<span class="label label-warning"><i class="fa fa-lock"></i></span>-->
+									<!--<span class="body">-->
+										<!--<span class="message">DW1 server locked.</span>-->
+										<!--<span class="time">-->
+											<!--<i class="fa fa-clock-o"></i>-->
+											<!--<span>32 mins</span>-->
+										<!--</span>-->
+									<!--</span>-->
+							<!--</a>-->
+						<!--</li>-->
+						<!--<li>-->
+							<!--<a href="#">-->
+								<!--<span class="label label-info"><i class="fa fa-twitter"></i></span>-->
+									<!--<span class="body">-->
+										<!--<span class="message">Twitter connected.</span>-->
+										<!--<span class="time">-->
+											<!--<i class="fa fa-clock-o"></i>-->
+											<!--<span>55 mins</span>-->
+										<!--</span>-->
+									<!--</span>-->
+							<!--</a>-->
+						<!--</li>-->
+						<!--<li>-->
+							<!--<a href="#">-->
+								<!--<span class="label label-danger"><i class="fa fa-heart"></i></span>-->
+									<!--<span class="body">-->
+										<!--<span class="message">Jane liked. </span>-->
+										<!--<span class="time">-->
+											<!--<i class="fa fa-clock-o"></i>-->
+											<!--<span>2 hrs</span>-->
+										<!--</span>-->
+									<!--</span>-->
+							<!--</a>-->
+						<!--</li>-->
+						<!--<li>-->
+							<!--<a href="#">-->
+								<!--<span class="label label-warning"><i class="fa fa-exclamation-triangle"></i></span>-->
+									<!--<span class="body">-->
+										<!--<span class="message">Database overload.</span>-->
+										<!--<span class="time">-->
+											<!--<i class="fa fa-clock-o"></i>-->
+											<!--<span>6 hrs</span>-->
+										<!--</span>-->
+									<!--</span>-->
+							<!--</a>-->
+						<!--</li>-->
+						<!--<li class="footer">-->
+							<!--<a href="#">See all notifications <i class="fa fa-arrow-circle-right"></i></a>-->
+						<!--</li>-->
+					<!--</ul>-->
+				<!--</li>-->
+				<!-- END NOTIFICATION DROPDOWN -->
+				<!-- BEGIN USER LOGIN DROPDOWN -->
+				<li class="dropdown user" id="pageCommonHeaderVue">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<span class="username">{{user_name}}</span>
+						<i class="fa fa-angle-down"></i>
+					</a>
+					<ul class="dropdown-menu">
+						<li class="J-loginout"><a><i class="fa fa-power-off"></i> 退出</a></li>
+					</ul>
+				</li>
+				<!-- END USER LOGIN DROPDOWN -->
+			</ul>
+			<!-- END TOP NAVIGATION MENU -->
+		</div>
+
+	</header>
+	<!--/HEADER -->
+
+	<!-- PAGE -->
+	<section>
+		<!-- SIDEBAR -->
+		<div id="sidebar" class="sidebar">
+			<div class="sidebar-menu nav-collapse">
+				<div id="search-bar" class="pt20">
+					欢迎来到欧美嘉！
+				</div>
+				<!-- SIDEBAR MENU -->
+				<ul id="pageCommonSlideVue">
+					<li  v-for="($item, $index) in slideBars"  :class="($item.active +' '+$item.hasSub)" v-cloak>
+						<a :href="$item.href|href" class="ease">
+							<i :class="$item.icon"></i> <span class="menu-text ease">{{$item.text}}<span class="badge pull-right" v-show="$item.tips">{{$item.tips}}</span></span>
+							<span  :class="setSubClass($item.hasSub,'sidebarStatus')"></span>
+						</a>
+
+						<ul class="sub" v-if="$item.hasSub">
+							<li  v-for="($subItem, $subIndex) in $item.sub"><a class="" :href="$subItem.href|href"><span class="sub-menu-text">{{subItem.text}}</span></a></li>
+						</ul>
+					</li>
+				</ul>
+				<!-- /SIDEBAR MENU -->
+			</div>
+		</div>
+		<!-- /SIDEBAR -->
+		<div id="main-content" class="ease">
+			<div class="main-content-header" id="pageCommonBreadcrumbVue" style="min-height: 50px">
+				<ul class="breadcrumb">
+					<li  v-for="($item, $index) in breadcrumb">
+						<i :class="$item.icon"></i>
+						<a :href="$item.href">{{$item.text}}</a>
+					</li>
+				</ul>
+				<h3 class="title">{{breadcrumb[breadcrumb.length-1]&&breadcrumb[breadcrumb.length-1].text}}</h3>
+			</div>
+			<div id="main-content-css"></div>
+			<div id="main-content-page"></div>
+			<div id="main-content-js"></div>
+		</div>
+	</section>
+
+	<div class="copyrights tc fs14">Copyright © 殴美嘉</div>
+
+	<!-- SLIMSCROLL -->
+	<!--<script type="text/javascript" src="/public/js/jQuery-slimScroll/jquery.slimscroll.min.js"></script>-->
+	<!--<script type="text/javascript" src="/public/js/jQuery-slimScroll/slimScrollHorizontal.min.js"></script>-->
+	<!--<script type="text/javascript" src="/public/js/common/fullcalendar.min.js"></script>-->
+
+	<script type="text/javascript" src="/public/js/common/main.js"></script>
+
+	</body>
+
+	<script type="text/javascript">
+		;(function() {
+			window.PAGE = {};
+			window.PAGE.HOME = "#/web/person.html";
+			window.PAGE.ERROR404 = "#/html/web404";
+			window.PAGE.version="20180110";
+			window.PAGE.destroy = [];
+			window.PAGE.loading = null;
+			window.PAGE.closeLoading = null;
+			window.PAGE.load = null;//相对于widow.onload
+			window.PAGE.STATICDEBUG = true;//JSdebug
+			window.PAGE.DEBUG = true;//ajax debug
+			window.PAGE.language = {en:{}};
+			window.PAGE.languagePath = "/lang_";
+			window.PAGE.curLanguage = "en";
+			window.PAGE.reload = null;
+			window.PAGE.data = {};
+		})()
+	</script>
+	<script src="/public/js/common/ajax.js"></script>
+	<script src="/public/js/common/page.js"></script>
+	<script src="/public/js/common/pagination.js"></script>
+
+</html>
