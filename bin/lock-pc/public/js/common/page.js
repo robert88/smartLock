@@ -667,15 +667,15 @@
 					text:"服务热线",
 					icon:"fa-phone-square"
 				},
-				{
-					hasSub:"",
-					active:"",
-					sub:[],
-					href:"#/web/repair.html",
-					tips:0,
-					text:"维修申报",
-					icon:"fa-truck"
-				}
+				// {
+				// 	hasSub:"",
+				// 	active:"",
+				// 	sub:[],
+				// 	href:"#/web/repair.html",
+				// 	tips:0,
+				// 	text:"维修申报",
+				// 	icon:"fa-truck"
+				// }
 			]
 		},
 		filters:{

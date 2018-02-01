@@ -20,7 +20,11 @@ $(function () {
 			//对象不应该用handler方式，应该值改变了但是引用没有改变
 			"params.page_number": function (newValue, oldValue) {
 				if (newValue != oldValue) {
-					this.refreshList();
+					if (this.params.page_number != 1) {
+						this.params.page_number = 1;
+					} else {
+						this.refreshList();
+					}
 				}
 			},
 			"params.user_name":function (newValue, oldValue) {

@@ -133,12 +133,10 @@ $(function () {
 					$.tips("请输入设备名", "warn");
 					return;
 				}
-				if (!$$vue.list[index].new_device_mode) {
-					$.tips("请输入设备型号", "warn");
-					return;
-				}
 
-				var new_group_id = $module.find(".J-select .opiton[data-name='"+$$vue.list[index].new_group_name+"']").data("value");
+
+				var new_group_id = $module.find(".J-select-value"+index).val();
+				var new_group_name = $module.find(".J-select-text"+index).val();
 
 				PAGE.ajax({
 					url: url,
@@ -146,7 +144,7 @@ $(function () {
 					data: {
 						device_name: $$vue.list[index].new_device_name,
 						device_id: $$vue.list[index].id,
-						group_id:new_group_id||"",
+						group_id:new_group_id||0,
 						device_model: $$vue.list[index].new_device_mode,
 						token: token
 					},
@@ -154,6 +152,7 @@ $(function () {
 						$$vue.list[index].edit = "";
 						$$vue.list[index].device_name = $$vue.list[index].new_device_name;
 						$$vue.list[index].device_mode = $$vue.list[index].new_device_mode;
+						$$vue.list[index].group_name = new_group_name;
 
 						$$vue.$forceUpdate();
 						$.tips("修改成功！", "success");

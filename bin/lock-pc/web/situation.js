@@ -216,26 +216,61 @@ $(function () {
 				this.list[index].edit = "";
 				this.$forceUpdate()
 			},
+			delStrategy:function (index) {
+				var $$vue = this;
+				if($$vue.list[index].strategy_id){
+					var url = "/smart_lock/v1/situational_mode/delete_strategy";
+					var type = "post";
+					$.dialog("是否要解除当前策略？", {
+						title: "解除策略",
+						width: 400,
+						button: [{
+							text: "确认", click: function () {
+								PAGE.ajax({
+									url: url,
+									type: type,
+									data: {situational_id: $$vue.list[index].id,strategy_id: $$vue.list[index].strategy_id,token: token},
+									success: function () {
+										$.tips("操作成功！", "success");
+										$$vue.list[index].strategy_id=""
+										$$vue.list[index].strategy_name=""
 
+									}
+								});
+
+							}
+						}, {
+							text: "取消", click: function () {
+
+							}
+						}]
+
+					})
+				}
+			},
+			initEvent:function () {
+				$module.parents(".tab-content-item").on("updateContent",function () {
+					$$vue.refreshList();
+				});
+
+				$module.on("update",function () {
+					$$vue.refreshList();
+				});
+				$module.on("click",".J-filter",function () {
+					$$vue.filter();
+				})
+			}
 		},
 		mounted: function () {
 			this.$nextTick(function () {
 				this.refreshList();
-				$module = $("#"+moduleId)
+				$module = $("#"+moduleId);
+				this.initEvent()
 			})
 		}
 	});
 
-	$module.parents(".tab-content-item").on("updateContent",function () {
-		$$vue.refreshList();
-	});
 
-	$module.on("update",function () {
-		$$vue.refreshList();
-	});
-	$module.on("click",".J-filter",function () {
-		$$vue.filter();
-	})
 	PAGE.destroy.push(function () {
 		if($$vue){
 			$$vue.$destroy();

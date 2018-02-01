@@ -26,6 +26,7 @@
 										<th> id</th>
 										<th><i class="fa-user"></i> 情景名</th>
 										<th><i class="fa-bars"></i> 对应策略</th>
+										<th><i class="fa-bars"></i> 对应设备组</th>
 										<th width="280"><i class="fa-wrench"></i> 操作</th>
 									</tr>
 									</thead>
@@ -34,8 +35,8 @@
 										<td><label class="label-checkbox"><input type="checkbox"><i class="fa-check"></i><i class="fa-square-o"></i></label></td>
 										<td>{{$item.id}}</td>
 										<td>{{$item.situation_name}}</td>
+										<td>{{$item.strategy_name}}	<a class="label label-info label-sm" v-show="$item.strategy_id" v-on:click="delStrategy($index, $event)">删除策略</a></td>
 										<td>
-											<a class="label label-info label-sm J-dialog" data-url="/web/dialog/permissions.html" data-status="show" :data-admin="$item.is_admin" :data-role_id="$item.id"   :data-title="('当前情景：'+$item.situation_name+'的策略')" v-if="!$item.edit">查看策略</a>
 											<a class="label label-info label-sm J-dialog" data-url="/web/dialog/deviceGroupSituationList.html"  :data-situation_name="$item.situation_name" :data-situational_id="$item.id"  :data-title="(''+$item.situation_name+'情景的已设置的设备组列表')" v-if="!$item.edit">查看已设置的设备组</a>
 										</td>
 										<td>
@@ -49,6 +50,7 @@
 										<td></td>
 										<td>{{$item.id}}</td>
 										<td><input type="text" v-model="$item.new_situation_name"></td>
+										<td>&nbsp;</td>
 										<td>&nbsp;</td>
 										<td>
 											<a class="label label-success label-sm mr10 J-save" v-on:click="saveAdd($index, $event)" v-show="$item.edit=='add'">保存</a>

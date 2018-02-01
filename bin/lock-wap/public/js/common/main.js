@@ -182,9 +182,6 @@ $(function () {
 	/**
 	 * 下拉菜单
 	 * */
-	/**
-	 * 下拉菜单
-	 * */
 	$(document).off("click", ".J-select").on("click", ".J-select", function (e) {
 		if($(this).hasClass("J-mutil-select")&& ($(e.target).hasClass(".J-select-option")||$(e.target).parents(".J-select-option").length)){
 			return false;
@@ -246,7 +243,7 @@ $(function () {
 				//已经全部选中需要把all-option的input的点亮
 				if(selectData.allSelect){
 					$select.find(".J-select-all-ipt").prop("checked",true);
-					$selectText.val($select.find(".J-select-all-ipt").data("name")).change();
+					$selectText.val($select.find(".J-select-all-ipt").parents(".option").data("name")).change();
 				}else{
 					$select.find(".J-select-all-ipt").prop("checked",false);
 					$selectText.val(selectData.names.join(",")).change();
@@ -254,11 +251,11 @@ $(function () {
 				$selectValue.val(selectData.values.join(",")).change();
 			}
 		}else{
-			$selectText.val($(this).data("name").replace(/^\s+|\s+$/, "")).change();
+			$selectText.val($(this).data("name")).change();
 			$select.find(".J-select-value").val(value).data("option",$(this).data()).change();
 			$(".J-select").removeClass("current");
 		}
-
+		$selectValue[0]&&$selectValue[0].dispatchEvent&&$selectValue[0].dispatchEvent(new Event('input'));
 		return false;
 	}).on("focus.select",".J-select-text",function () {
 		$(this).parents(".J-validItem").removeClass("validError").removeClass("validSuccess");

@@ -72,6 +72,11 @@ $(function () {
 		if($(this).scrollTop()+$(this).height()+2>childrenHeight){
 			$(this).trigger("scrollDown");
 		}
+	}).on("mousewheel",".J-body-scroll",function () {
+
+		if($(window).scrollTop()+$(window).height()+2>$(this).height()){
+			$(this).trigger("scrollDown");
+		}
 	});
 
 	var dialogMap={};

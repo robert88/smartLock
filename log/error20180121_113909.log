@@ -362,3 +362,29 @@
     at Error (native)
 [error][2018/02/01 21:29:07][function handlerErr(err,response,name)]:domainErrorEvent : Error: EISDIR: illegal operation on a directory, read
     at Error (native)
+[error][2018/02/01 23:48:59][function handlerErr(err,response,name)]:domainErrorEvent : Error: ENOENT: no such file or directory, open 'D:\git\smartLock\bin\lock'
+    at Error (native)
+[error][2018/02/01 23:48:59][function handlerErr(err,response,name)]:domainErrorEvent : Error: ENOENT: no such file or directory, open 'D:\git\smartLock\bin\lock'
+    at Error (native)
+[error][2018/02/02 00:03:25][function handlerErr(err,response,name)]:domainErrorEvent : Error: EISDIR: illegal operation on a directory, read
+    at Error (native)
+[error][2018/02/02 00:03:25][function handlerErr(err,response,name)]:domainErrorEvent : Error: EISDIR: illegal operation on a directory, read
+    at Error (native)
+[error][2018/02/02 00:03:26][function handlerErr(err,response,name)]:domainErrorEvent : Error: EISDIR: illegal operation on a directory, read
+    at Error (native)
+[error][2018/02/02 00:04:26][function handlerErr(err,response,name)]:domainErrorEvent : Error: EISDIR: illegal operation on a directory, read
+    at Error (native)
+[error][2018/02/02 00:04:26][function handlerErr(err,response,name)]:domainErrorEvent : Error: EISDIR: illegal operation on a directory, read
+    at Error (native)
+[error][2018/02/02 00:04:26][function handlerErr(err,response,name)]:domainErrorEvent : Error: EISDIR: illegal operation on a directory, read
+    at Error (native)
+[error][2018/02/02 00:23:04][function handlerErr(err,response,name)]:domainErrorEvent : Error: EISDIR: illegal operation on a directory, read
+    at Error (native)
+[error][2018/02/02 00:47:40][function handlerErr(err,response,name)]:domainErrorEvent : Error: EISDIR: illegal operation on a directory, read
+    at Error (native)
+[error][2018/02/02 00:47:40][function handlerErr(err,response,name)]:domainErrorEvent : Error: EISDIR: illegal operation on a directory, read
+    at Error (native)
+[error][2018/02/02 00:47:40][function handlerErr(err,response,name)]:domainErrorEvent : Error: EISDIR: illegal operation on a directory, read
+    at Error (native)
+[error][2018/02/02 00:48:31][function handlerErr(err,response,name)]:domainErrorEvent : Error: EISDIR: illegal operation on a directory, read
+    at Error (native)
