@@ -381,6 +381,18 @@ $(function () {
 				},complete:function () {
 					$$vue.loading2 = false;
 				}});
+			},	
+			initEvent:function () {
+				$module.on("update",function () {
+					$$vue.refreshList();
+				})
+				$module.on("click",".J-filter",function () {
+					$$vue.filter();
+				});
+				$module.parents(".tab-content-item").on("updateContent",function () {
+					$$vue.refreshList();
+				});
+
 			}
 		},
 		mounted: function () {
@@ -389,20 +401,14 @@ $(function () {
 				this.getPhone();
 				this.refreshList2();
 				$module = $("#" + moduleId)
+				this.initEvent();
 			})
 		}
 	});
 
-	$module.parents(".tab-content-item").on("updateContent",function () {
-		$$vue.refreshList();
-	});
-	$module.on("update",function () {
-		$$vue.refreshList();
-	})
 
-	$module.on("click",".J-filter",function () {
-		$$vue.filter();
-	});
+
+
 	$module.find(".J-scroll").on("scrollDown",function () {
 		if(!$$vue.loading2){
 			$$vue.getNextPage2();

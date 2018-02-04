@@ -35,7 +35,9 @@
 				</div>
 				<div>
 					<span class="label-name"><i class="fa-user"></i> 对应设备组</span>
-					<span>{{$item.situation_name}}</span>
+					<a class="label label-info label-sm J-dialog" data-url="/web/dialog/deviceGroupSituationList.html"
+					   :data-situation_name="$item.situation_name" :data-situational_id="$item.id"
+					   :data-title="(''+$item.situation_name+'情景的已设置的设备组列表')" v-if="!$item.edit">查看已设置的设备组</a>
 				</div>
 
 				<div class="bd-top bd-dashed mt10 pt10">
@@ -54,7 +56,8 @@
 			<li class="bd  bg-white p20 lh30 bd-radius-5 mt10" v-else v-cloak>
 				<div class="form-group-block">
 					<i class="fa-user"></i>
-					<input type="text" v-model="$item.new_situation_name" class="form-control fw12" placeholder="请输入情景名">
+					<input type="text" v-model="$item.new_situation_name" class="form-control fw12"
+						   placeholder="请输入情景名">
 				</div>
 				<div>
 					<a class="label label-success label-sm mr10 J-save" v-on:click="saveAdd($index, $event)"

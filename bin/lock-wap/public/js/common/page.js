@@ -879,7 +879,7 @@
 	PAGE.getToken = function () {
 		var token =$.cookie("token");
 
-		if(isWeiXin()){
+		if(false&&isWeiXin()){
 			//没有openid就直接跳转
 			if(!$.cookie("openid")){
 				window.location.href="https://smart-api.kitcloud.cn/smart_lock/v1/member/openid?uri="+encodeURIComponent(window.location.href);

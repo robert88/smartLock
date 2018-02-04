@@ -159,26 +159,30 @@ $(function () {
 				this.list[index].edit = "";
 				this.$forceUpdate()
 			},
+			initEvent:function () {
+				$module.parents(".tab-content-item").off("updateContent").on("updateContent",function () {
+					$$vue.refreshList();
+				});
+
+				$module.off("update").on("update",function () {
+					$$vue.refreshList();
+				});
+				$module.off("click",".J-filter").on("click",".J-filter",function () {
+					$$vue.filter();
+				})
+			}
 
 		},
 		mounted: function () {
 			this.$nextTick(function () {
 				this.refreshList();
 				$module = $("#"+moduleId)
+				this.initEvent();
 			})
 		}
 	});
 
-	$module.parents(".tab-content-item").on("updateContent",function () {
-		$$vue.refreshList();
-	});
 
-	$module.on("update",function () {
-		$$vue.refreshList();
-	});
-	$module.on("click",".J-filter",function () {
-		$$vue.filter();
-	})
 	PAGE.destroy.push(function () {
 		if($$vue){
 			$$vue.$destroy();

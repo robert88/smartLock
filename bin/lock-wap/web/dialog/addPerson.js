@@ -18,7 +18,6 @@ $(function () {
 				success:function (ret) {
 					$.dialog.closeAll();
 					$.tips("添加成功！","success");
-					$("#systemPerson").trigger("update");
 				}
 			})
 		}
@@ -104,6 +103,7 @@ $(function () {
 	//窗口关闭时调用
 	$dialog[0].destroy = function () {
 		if($$vue){
+			$("#systemPerson").trigger("update");
 			$$vue.$destroy();
 			$form = null;
 			$$vue = null;
