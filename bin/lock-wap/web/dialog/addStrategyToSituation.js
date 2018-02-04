@@ -79,9 +79,10 @@ $(function () {
 						}
 						$$vue.list = ret.list;
 
-						PAGE.setpageFooter($module.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
-							$$vue.params.page_number = page_number
-						});
+						listMap[$$vue.params.page_number] = ret.list;
+						$$vue.total_page = ret.total_page;
+						$$vue.list = $$vue.mergeArray(listMap);
+
 						$$vue.$nextTick(function () {
 							$dialog.trigger("setcenter");
 						})
@@ -105,7 +106,22 @@ $(function () {
 				});
 			},
 			initEvent:function () {
+				$module.on("scrollDown." + moduleId, ".J-scroll",function () {
+					if (!$$vue.loading) {
+						$$vue.getNextPage();
+					}
+				});
 
+				$dialog[0].destroy  = function () {
+					if($$vue){
+						$relativeModule.trigger("update");
+						$("body").off("scrollDown." + moduleId);
+						$$vue.$destroy();
+						listMap = null;
+						$$vue = null;
+						$module=null;
+					}
+				}
 			}
 
 		},
@@ -113,26 +129,13 @@ $(function () {
 			this.$nextTick(function () {
 				this.refreshList();
 				$module = $("#" + moduleId);
+				$dialog =$module.parents(".dl-dialog");
+				this.initEvent();
+
 			})
 		}
 	});
 
-	$module.on("scrollDown." + moduleId, ".J-scroll",function () {
-		if (!$$vue.loading) {
-			$$vue.getNextPage();
-		}
-	});
 
-	$dialog[0].destory  = function () {
-		if($$vue){
-			$relativeModule.trigger("update");
-			$("body").off("scrollDown." + moduleId);
-			$$vue.$destroy();
-			listMap = null;
-			$$vue = null;
-			$module=null;
-		}
-
-	}
 
 });

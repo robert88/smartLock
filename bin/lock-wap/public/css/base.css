@@ -675,6 +675,9 @@ img {
 [v-cloak]{
 	display:none;
 }
+.hasPermission{
+	display: none;
+}
 a.a-wrap{
 	display: block;
 }

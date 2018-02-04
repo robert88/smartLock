@@ -431,17 +431,17 @@
 			//优先加载css
 			var cssFile=[],jsFile=[];
 			if(config.params.css) {
-				cssFile.push("{0}.css".tpl(config.action,PAGE.version));
+				cssFile.push("{0}.css?ver={1}".tpl(config.action,PAGE.version));
 			}
 			if(config.params.js) {
-				jsFile.push("{0}.js".tpl(config.action, PAGE.version));
+				jsFile.push("{0}.js?ver={1}".tpl(config.action, PAGE.version));
 			}
 			$.each(subConfigs,function (idx,val) {
 				if(val.params.css) {
-					cssFile.push("{0}.css".tpl(val.action, PAGE.version));
+					cssFile.push("{0}.css?ver={1}".tpl(val.action, PAGE.version));
 				}
 				if(val.params.js) {
-					jsFile.push("{0}.js".tpl(val.action, PAGE.version));
+					jsFile.push("{0}.js?ver={1}".tpl(val.action, PAGE.version));
 				}
 			});
 
@@ -463,6 +463,20 @@
 					}else if(typeof pageDsync=="function"){
 						pageDsync();
 					}
+					$(".hasPermission").each(function () {
+						var $this = $(this);
+						if(!$this.data("initPermission")){
+							if(Vue.prototype.hasPermission($(this).data("haspermission"))){
+								$(this).show();
+							}else{
+								$(this).hide();
+							}
+							$this.data("initPermission",true);
+						}
+
+					});
+					$("#sidebar").removeClass("mini-menu");
+					$(".sidebar-mask").removeClass("mini-menu");
 				});
 
 			});
@@ -572,7 +586,88 @@
 		})
 	};
 
+	
+	//全局方法
+	Vue.prototype.isSelf =function (email) {
+		var curAccordEmail = $.cookie("user_email");
+		if(email&&(email==curAccordEmail)){
+			return false;
+		}
+		return true;
+	}
+	Vue.prototype.hasPermission =function (access_id) {
+		if(!access_id){
+			return true;
+		}
+		var access_ids = access_id.toString().split(",");
+		var access_list = $.cookie("access_list");
+		for(var i=0;i<access_ids.length;i++){
+			access_id = $.trim(access_ids[i]);
+			if(new RegExp("\\b"+access_id+"\\b").test(access_list)){
+				return true;
+			}
+		}
+		return false;
+	}
+	Vue.prototype.mergeArray = function (obj) {
+		if (typeof obj !== "object") {
+			return [];
+		}
 
+		var arr = [];
+		for (var no in obj) {
+			if ($.type(obj[no]) != "array") {
+				continue;
+			}
+			arr = arr.concat(obj[no]);
+		}
+		return arr;
+	}
+
+	/**
+	 *设置表单数据
+	 * */
+	Vue.prototype.setInputValue=function (name, value,$module) {
+		if (value != null && $module.find("input[name='" + name + "']").length) {
+			$module.find("input[name='" + name + "']").val(value).addClass("ipt-not-empty");
+		}
+	}
+	/**
+	 *设置下拉菜单数据
+	 * */
+	Vue.prototype.setSelectValueByName=function (name, value,$module) {
+		var $input = $module.find("input[name='" + name + "']")
+		if (value != null && $input.length) {
+			if($input.parents(".J-mutil-select").length){
+				$.each(value.split(","),function (index,val) {
+					if(val){
+						$input.parents(".J-select").find(".option[data-name='" + val + "']").click();
+					}
+				})
+			}else{
+				$input.parents(".J-select").find(".option[data-name='" + value + "']").click();
+			}
+
+		}
+	}
+	/**
+	 *设置下拉菜单数据
+	 * */
+	Vue.prototype.setSelectValue=function (name, value,$module) {
+		var $input = $module.find("input[name='" + name + "']")
+		if (value != null && $input.length) {
+			if($input.parents(".J-mutil-select").length){
+				$.each(value.split(","),function (index,val) {
+					if(val){
+						$input.parents(".J-select").find(".option[data-value='" + val + "']").click();
+					}
+				})
+			}else{
+				$input.parents(".J-select").find(".option[data-value='" + value + "']").click();
+			}
+
+		}
+	}
 
 	var $$title =  new Vue({
 		el:"#pageCommonHeaderVue",
@@ -594,6 +689,7 @@
 			slideBars:[
 				{
 					hasSub:"",
+					access_id:"12000",
 					active:"",
 					sub:[],
 					href:"#/web/person.html",
@@ -602,6 +698,7 @@
 					icon:"fa-group-users"
 				},
 				{
+					access_id:"13000",
 					hasSub:"",
 					active:"",
 					sub:[],
@@ -611,6 +708,7 @@
 					icon:"fa-hdd-o"
 				},
 				{
+					access_id:"15000",
 					hasSub:"",
 					active:"",
 					sub:[],
@@ -630,6 +728,7 @@
 				}
 				,
 				{
+					access_id:"14000",
 					hasSub:"",
 					active:"",
 					sub:[],
@@ -638,16 +737,17 @@
 					text:"门况信息",
 					icon:"fa-beer"
 				},
-				// {
-				// 	hasSub:"",
-				// 	active:"",
-				// 	sub:[],
-				// 	href:"",
-				// 	tips:0,
-				// 	text:"紧急预警",
-				// 	icon:"fa-bell"
-				// },
 				{
+					hasSub:"",
+					active:"",
+					sub:[],
+					href:"#/web/wechatBindLogin.html",
+					tips:0,
+					text:"绑定微信登录",
+					icon:"fa-bell"
+				},
+				{
+					access_id:"18000",
 					hasSub:"",
 					active:"",
 					sub:[],
@@ -667,13 +767,23 @@
 					text:"服务热线",
 					icon:"fa-phone-square"
 				},
+				// {
+				// 	hasSub:"",
+				// 	active:"",
+				// 	sub:[],
+				// 	href:"#/web/repair.html",
+				// 	tips:0,
+				// 	text:"维修申报",
+				// 	icon:"fa-truck"
+				// },
 				{
+					access_id:"17000",
 					hasSub:"",
 					active:"",
 					sub:[],
-					href:"#/web/repair.html",
+					href:"#/web/sysLog.html",
 					tips:0,
-					text:"维修申报",
+					text:"系统日志",
 					icon:"fa-truck"
 				}
 			]
@@ -730,7 +840,7 @@
 		}
 
 	}
-	PAGE.setToken = function (ret) {
+	PAGE.setToken = function (ret,notRediret) {
 		if(!ret){
 			return
 		}
@@ -747,12 +857,40 @@
 			$.cookie("user_name",ret.user_name);
 			// $$header.user_name = ret.user_name
 		}
-		location.hash = ""
+		if(ret.access_list){
+			$.cookie("access_list",ret.access_list);
+			$$slider.$forceUpdate();
+		}
+		if(!notRediret){
+			location.hash = ""
+		}
+
 	}
+
+	function isWeiXin(){
+		var ua = window.navigator.userAgent.toLowerCase();
+		if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 	PAGE.getToken = function () {
 		var token =$.cookie("token");
-		if($.cookie("user_name")){
-			// $$header.user_name = $.cookie("user_name");
+
+		if(isWeiXin()){
+			//没有openid就直接跳转
+			if(!$.cookie("openid")){
+				window.location.href="https://smart-api.kitcloud.cn/smart_lock/v1/member/openid?uri="+encodeURIComponent(window.location.href);
+				return;
+			}else{
+				var params = $.getParam(window.location.href);
+				//当前的token是服务器设置
+				PAGE.setToken(params);
+				$.cookie("openid",params.openid);
+			}
+
 		}
 		if(token){
 			return token;
@@ -769,8 +907,14 @@
 		$.cookie("role_id","");
 		$.cookie("user_email","");
 		$.cookie("user_name","");
+		$.cookie("access_list","");
 		// $$header.user_name = "";
-		window.location.hash="#/web/login.html?nomenu=1";
+		if($.cookie("openid")){
+			$.dialog("url:(#/dialog/wechatLogin.html)")
+		}else{
+			window.location.hash="#/web/login.html?nomenu=1";
+		}
+		
 	}
 	/**
 	 *监听hashchange事件切换页面，监听事件load事件

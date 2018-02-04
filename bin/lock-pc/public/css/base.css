@@ -615,6 +615,13 @@ img {
 .w45{width: 45px;}
 .w50{width: 50px }
 .w60{width: 60px;}
+.w70{width: 70px;}
+.w80{width: 80px;}
+.w90{width: 90px;}
+.w100{width: 100px;}
+.w110{width: 110px;}
+.w120{width: 120px;}
+.w130{width: 130px;}
 
 .ease{
 	-webkit-transition-delay: .1s;

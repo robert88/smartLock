@@ -232,7 +232,8 @@ $(function () {
 									data: {situational_id: $$vue.list[index].id,strategy_id: $$vue.list[index].strategy_id,token: token},
 									success: function () {
 										$.tips("操作成功！", "success");
-										$$vue.list.splice(index, 1);
+										$$vue.list[index].strategy_id=""
+										$$vue.list[index].strategy_name=""
 							
 									}
 								});

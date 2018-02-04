@@ -76,10 +76,7 @@ fieldset {
 	display: block;
 }
 
-.label-checkbox input,
-.label-checkbox  .fa-check{
-	display: none;
-}
+
 .label-checkbox input:checked + .fa-check{
  display: block;
  /*font-size: 14px;*/
@@ -142,18 +139,23 @@ fieldset {
 	right: 1px;
 	top: 30px;
 }
+
+.label-checkbox input,
+.label-checkbox  .fa-check{
+	display: none;
+}
 .J-select{position:relative;}
 .J-select .fa-angle-down{position:absolute;right: 9px;font-size: 23px;top: 7px;}
 .J-select.current .J-select-option{display:block;border: 1px solid #dbe0e6;margin-top: -11px;padding: 10px;margin: -11px 0px 0;box-shadow: 0 3px 3px rgba(0,0,0,0.1);position: absolute;width: 100%;background-color: #fff;z-index: 10;border-radius: 5px;}
 .J-select-option{display:none;}
-.J-select-option a{
+.J-select-option .option{
 	display:block;
 	border-bottom: 1px solid #e7e7e7;
 	color: #555555;
 	padding: 10px;
 	}
 
-.J-select-option a:hover{background:#fff;border-color: #70afc4;color:#70afc4;}
+.J-select-option .option:hover{background:#fff;border-color: #70afc4;color:#70afc4;}
 .form-group-inline{
     position:relative;
 }

@@ -4,8 +4,8 @@
 	<div id="deviceGroupModule">
 
 		<div class="col mt10">
-			<div class="col6 pr10"><a class="search-wrap"><input type="text" class="form-control fw12"  placeholder="请输入设备组名称查询" v-model.lazy="params.group_name"> <i class="fa-search" v-on:click="refreshList"></i></a></div>
-			<div class="col6 pl10"><a class=" btn btn-success fw12" v-on:click="add" ><i class="fa-turkish-lira-try mr5"></i>添加设备组</a></div>
+			<div class="col6 pr10"><a class="search-wrap"><input type="text" class="form-control fw12"  placeholder="请输入设备组名称查询" v-model.lazy="params.group_name"  v-show="hasPermission(14004)"> <i class="fa-search" v-on:click="refreshList"></i></a></div>
+			<div class="col6 pl10"><a class=" btn btn-success fw12" v-on:click="add" v-show="hasPermission(14001)"><i class="fa-turkish-lira-try mr5"></i>添加设备组</a></div>
 	</div>
 
 		<ul class="col">
@@ -22,12 +22,12 @@
 					<span class="label-name"><i class="fa-envelope-o"></i> 情景</span>
 					<span>{{$item.situation_name}}</span>
 				</div>
-				<div><span class="label-name"><i class="fa-credit-card"></i> 设备</span>
-					<a class="label label-info label-sm mr10 J-dialog" data-url="/web/dialog/deviceGroupList.html"  :data-group_id="$item.id" :data-title="(''+$item.group_name+'设备组-设备列表')">查看设备</a>
+				<div><span class="label-name"><i class="fa-credit-card"></i> 组内设备</span>
+					<a class="label label-info label-sm mr10 J-dialog" data-url="/web/dialog/deviceGroupList.html"  :data-group_id="$item.id" :data-title="(''+$item.group_name+'设备组-设备列表')"  v-show="hasPermission(14005)">查看设备</a>
 				</div>
 				<div class="bd-top bd-dashed mt10 pt10">
 					<a class="label label-success label-sm ml10" v-on:click="modify($index, $event)">修改设备组名称</a>
-					<a class="label label-success label-sm ml10 J-dialog" data-url="/web/dialog/addDeviceToGroup.html"  :data-group_id="$item.id" :data-title="(''+$item.group_name+'设备组-设备列表')">添加设备</a>
+					<a class="label label-success label-sm ml10 J-dialog" data-url="/web/dialog/addDeviceToGroup.html"  :data-group_id="$item.id" :data-title="(''+$item.group_name+'设备组-设备列表')"  v-show="hasPermission(14006)">添加设备</a>
 					<!--<a class="label label-success label-sm ml10" v-on:click="modify($index, $event)">切换情景</a>-->
 					<a class="label label-danger label-sm J-delete" v-on:click="del($index, $event)"><i class="fa-trash-o" title="删除"></i></a>
 				</div>

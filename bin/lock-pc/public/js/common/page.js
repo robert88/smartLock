@@ -622,7 +622,50 @@
 		return arr;
 	}
 
+	/**
+	 *设置表单数据
+	 * */
+	Vue.prototype.setInputValue=function (name, value,$module) {
+		if (value != null && $module.find("input[name='" + name + "']").length) {
+			$module.find("input[name='" + name + "']").val(value).addClass("ipt-not-empty");
+		}
+	}
+	/**
+	 *设置下拉菜单数据
+	 * */
+	Vue.prototype.setSelectValueByName=function (name, value,$module) {
+		var $input = $module.find("input[name='" + name + "']")
+		if (value != null && $input.length) {
+			if($input.parents(".J-mutil-select").length){
+				$.each(value.split(","),function (index,val) {
+					if(val){
+						$input.parents(".J-select").find(".option[data-name='" + val + "']").click();
+					}
+				})
+			}else{
+				$input.parents(".J-select").find(".option[data-name='" + value + "']").click();
+			}
 
+		}
+	}
+	/**
+	 *设置下拉菜单数据
+	 * */
+	Vue.prototype.setSelectValue=function (name, value,$module) {
+		var $input = $module.find("input[name='" + name + "']")
+		if (value != null && $input.length) {
+			if($input.parents(".J-mutil-select").length){
+				$.each(value.split(","),function (index,val) {
+					if(val){
+						$input.parents(".J-select").find(".option[data-value='" + val + "']").click();
+					}
+				})
+			}else{
+				$input.parents(".J-select").find(".option[data-value='" + value + "']").click();
+			}
+
+		}
+	}
 
 	var $$header = new Vue({
 		el:"#pageCommonHeaderVue",
@@ -806,6 +849,7 @@
 		}
 		if(ret.access_list){
 			$.cookie("access_list",ret.access_list);
+			$$slider.$forceUpdate();
 		}
 		location.hash = ""
 	}

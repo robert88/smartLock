@@ -101,9 +101,10 @@ $(function () {
 						"id": ret.role_id,
 						"name": "维持当前角色"
 					};
-					$$vue.list.push($$vue.userInfo)
-					$("input[name='user_name']").val(ret.user_name);
-					$("input[name='user_phone']").val(ret.user_phone);
+					$$vue.list.push($$vue.userInfo);
+					$$vue.setInputValue("user_name",ret.user_name,$module);
+					$$vue.setInputValue("user_phone",ret.user_phone,$module);
+					$$vue.setSelectValue("role_id",ret.role_id,$module);
 
 				},complete:function () {
 					$module.removeClass("loading");
@@ -114,7 +115,11 @@ $(function () {
 				var url = "/smart_lock/v1/role/find_list";
 				var type = "post";
 				$$vue.loading = true;
-				PAGE.ajax({url:url,type:type,data:$$vue.params,success:function (ret) {
+				PAGE.ajax({
+					async:false,
+					url:url,
+					type:type,
+					data:$$vue.params,success:function (ret) {
 					if( !ret ){
 						return;
 					}
@@ -149,7 +154,7 @@ $(function () {
 		}
 	});
 	//窗口关闭时调用
-	$dialog[0].destory = function () {
+	$dialog[0].destroy = function () {
 		if($$vue){
 			$$vue.$destroy();
 			$module = null;

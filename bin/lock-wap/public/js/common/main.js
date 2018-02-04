@@ -95,6 +95,13 @@ $(function () {
 		$("#sidebar").toggleClass("mini-menu");
 		$(".sidebar-mask").toggleClass("mini-menu");
 	});
+
+	$("#sidebar").on("click","#pageCommonSlideVue>li",function () {
+		$("#sidebar").removeClass("mini-menu");
+		$(".sidebar-mask").removeClass("mini-menu");
+	});
+
+
 	$(document).on("click",".J-loginout",function () {
 		PAGE.clearToken();
 		return false;

@@ -134,7 +134,7 @@ $(function () {
 	});
 
 	//窗口关闭时调用
-	$dialog[0].destory = function () {
+	$dialog[0].destroy = function () {
 		if($$vue){
 			$$vue.$destroy();
 			$module = null;
