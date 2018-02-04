@@ -1,6 +1,6 @@
 <div id="strategyModule">
 	<div class="mb10">
-		<a class=" btn btn-success J-dialog"   data-url="/web/dialog/addStrategy.html"><i class="fa-turkish-lira-try mr5"></i>添加策略</a>
+		<a class=" btn btn-success J-dialog" v-show="hasPermission(16001)"  data-url="/web/dialog/addStrategy.html"><i class="fa-turkish-lira-try mr5"></i>添加策略</a>
 		<!--<a class=" btn btn-danger" ><i class="fa-trash-o mr5"></i>批量删除策略</a>-->
 		<a class="search-wrap"><input type="text" class="form-control"  placeholder="请输入策略名查询" v-model.lazy="params.strategy_name"> <i class="fa-search" v-on:click="refreshList"></i></a>
 	</div>
@@ -19,7 +19,7 @@
 		</tr>
 		</thead>
 		<tbody>
-		<tr v-for="($item, $index) in list"  v-if="!$item.edit" v-cloak>
+		<tr v-for="($item, $index) in list"  v-if="!$item.edit" v-show="hasPermission(16004)"  v-cloak>
 			<td><label class="label-checkbox"><input type="checkbox"><i class="fa-check"></i><i class="fa-square-o"></i></label></td>
 			<td>{{$item.name}}</td>
 			<td>{{$item.role_name}}</td>
@@ -31,11 +31,11 @@
 				{{$item.allow_operation}}
 			</td>
 			<td>
-				{{$item.allow_time}}
+				{{formatAllowTime($item.allow_time)}}
 			</td>
 			<td>
-				<a class="label label-success label-sm mr10  J-dialog"   data-url="/web/dialog/modifyStrategy.html" :data-strategy_id="$item.id"  :data-title="('修改当前策略：'+$item.name+'的策略')">修改策略</a>
-				<a class="label label-danger label-sm J-delete" v-on:click="del($index, $event)"><i class="fa-trash-o" title="删除"></i></a>
+				<a class="label label-success label-sm mr10  J-dialog"  v-show="hasPermission(16003)"  data-url="/web/dialog/modifyStrategy.html" :data-strategy_id="$item.id"  :data-title="('修改当前策略：'+$item.name+'的策略')">修改策略</a>
+				<a class="label label-danger label-sm J-delete" v-on:click="del($index, $event)" v-show="hasPermission(16002)" ><i class="fa-trash-o" title="删除"></i></a>
 			</td>
 		</tr>
 		<tr  class="template-tr" v-else v-cloak>

@@ -7,13 +7,13 @@
 			<div class="tabbable header-tabs">
 				<ul class="nav nav-tabs">
 					<li class="active" href="#/web/situation.html" data-title="情景模式列表"><a data-toggle="tab"><i class="fa fa-search-plus"></i> <span>情景模式列表</span></a></li>
-					<li href="#/web/strategy.html" data-title="策略列表"><a data-toggle="tab"><i class="fa fa-bar-chart-o"></i> <span>策略列表</span></a></li>
+					<li href="#/web/strategy.html" data-title="策略列表" class="hasPermission" data-hasPermission="16000"><a data-toggle="tab"><i class="fa fa-bar-chart-o"></i> <span>策略列表</span></a></li>
 				</ul>
 				<ul class="tab-content">
 					<li class="tab-content-item active">
 						<div id="situationModule">
 								<div class="mb10">
-									<a class=" btn btn-success"  v-on:click="add"><i class="fa-turkish-lira-try mr5"></i>添加情景</a>
+									<a class=" btn btn-success"  v-on:click="add"  v-show="hasPermission(18001)" ><i class="fa-turkish-lira-try mr5"></i>添加情景</a>
 									<!--<a class=" btn btn-danger" ><i class="fa-trash-o mr5"></i>批量删除情景</a>-->
 									<a class="search-wrap"><input type="text" class="form-control"  placeholder="请输入情景名查询" v-model.lazy="params.situation_name"> <i class="fa-search" v-on:click="refreshList"></i></a>
 								</div>
@@ -31,19 +31,19 @@
 									</tr>
 									</thead>
 									<tbody>
-									<tr v-for="($item, $index) in list"  v-if="!$item.edit" v-cloak>
+									<tr v-for="($item, $index) in list"  v-if="!$item.edit" v-cloak v-show="hasPermission(18004)" >
 										<td><label class="label-checkbox"><input type="checkbox"><i class="fa-check"></i><i class="fa-square-o"></i></label></td>
 										<td>{{$item.id}}</td>
 										<td>{{$item.situation_name}}</td>
-										<td>{{$item.strategy_name}}	<a class="label label-info label-sm" v-show="$item.strategy_id" v-on:click="delStrategy($index, $event)">删除策略</a></td>
+										<td>{{$item.strategy_name}}	<a class="label label-info label-sm" v-show="$item.strategy_id" v-on:click="delStrategy($index, $event)" v-show="hasPermission(18006)" >删除策略</a></td>
 										<td>
 											<a class="label label-info label-sm J-dialog" data-url="/web/dialog/deviceGroupSituationList.html"  :data-situation_name="$item.situation_name" :data-situational_id="$item.id"  :data-title="(''+$item.situation_name+'情景的已设置的设备组列表')" v-if="!$item.edit">查看已设置的设备组</a>
 										</td>
 										<td>
-											<a class="label label-success label-sm mr10 J-modify"  v-on:click="modify($index, $event)">修改情景名</a>
+											<a class="label label-success label-sm mr10 J-modify"  v-on:click="modify($index, $event)" v-show="hasPermission(18003)" >修改情景名</a>
 											<a class="label label-success label-sm mr10 J-dialog"  data-url="/web/dialog/addDeviceGroupSituation.html"  :data-situational_id="$item.id"  :data-title="(''+$item.situation_name+'情景添加设备组')">添加设备组</a>
-											<a class="label label-success label-sm mr10 J-dialog" data-url="/web/dialog/addStrategyToSituation.html"  :data-situational_id="$item.id"  :data-title="(''+$item.situation_name+'情景绑定策略')">绑定策略</a>
-											<a class="label label-danger label-sm J-delete" v-on:click="del($index, $event)"><i class="fa-trash-o" title="删除"></i></a>
+											<a class="label label-success label-sm mr10 J-dialog" data-url="/web/dialog/addStrategyToSituation.html"  :data-situational_id="$item.id"  :data-title="(''+$item.situation_name+'情景绑定策略')" v-show="hasPermission(18005)" >绑定策略</a>
+											<a class="label label-danger label-sm J-delete" v-on:click="del($index, $event)" v-show="hasPermission(18002)" ><i class="fa-trash-o" title="删除"></i></a>
 										</td>
 									</tr>
 									<tr  class="template-tr" v-else v-cloak>

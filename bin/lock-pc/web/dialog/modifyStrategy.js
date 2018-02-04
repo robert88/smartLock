@@ -64,9 +64,11 @@ $(function () {
 			"start_time": function (newValue, oldValue) {
 				if (newValue != oldValue) {
 					this.allow_end_time_list =[];
+					var curTime = new Date("2018/02/04").getTime();
+
 					for(var i=0;i<=48;i++){
 						if((i/2)>newValue){
-							this.allow_end_time_list.push({name:i/2,id:i/2});
+							this.allow_end_time_list.push({name:(curTime+i/2*60*60*1000).toString().toDate().format("hh:mm"),id:i/2});
 						}
 
 					}
@@ -116,9 +118,10 @@ $(function () {
 				return true;
 			},
 			initAllowTime:function () {
+				var curTime = new Date("2018/02/04").getTime();
 				for(var i=0;i<=48;i++){
-					this.allow_start_time_list[i] = {name:i/2,id:i/2}
-					this.allow_end_time_list[i] = {name:i/2,id:i/2}
+					this.allow_start_time_list[i] = {name:(curTime+i/2*60*60*1000).toString().toDate().format("hh:mm"),id:i/2}
+					this.allow_end_time_list[i] = {name:(curTime+i/2*60*60*1000).toString().toDate().format("hh:mm"),id:i/2}
 				}
 			},
 			refreshRoleList:function () {

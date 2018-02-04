@@ -12,14 +12,14 @@
 		</tr>
 		</thead>
 		<tbody>
-		<tr v-for="($item, $index) in list">
+		<tr v-for="($item, $index) in list"  v-show="hasPermission(14008)">
 			<!--<td><label class="label-checkbox"><input type="checkbox"><i class="fa-check"></i><i class="fa-square-o"></i></label></td>-->
 			<td><a class="J-dialog" data-dialog-url="#/web/personDetail.html" :data-id="$item.id">{{$item.name}}</a></td>
 			<td>{{$item.device_code}}</td>
 			<td>{{$item.device_model}}</td>
 			<td>{{$item.group_name}}</td>
 			<td>
-				<a class="label label-success label-sm ml10" v-on:click="remove($index)">移出组</a>
+				<a class="label label-success label-sm ml10" v-on:click="remove($index)"  v-show="hasPermission(14007)">移出组</a>
 			</td>
 		</tr>
 

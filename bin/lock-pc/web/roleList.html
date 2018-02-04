@@ -11,7 +11,7 @@
 				<ul class="tab-content">
 					<li class="tab-content-item active" id="roleList">
 						<div class="mb10">
-							<a class=" btn btn-success J-add"  v-on:click="add"><i class="fa-turkish-lira-try mr5"></i>添加角色</a>
+							<a class=" btn btn-success J-add"  v-on:click="add" v-show="hasPermission(15001)"><i class="fa-turkish-lira-try mr5"></i>添加角色</a>
 							<!--<a class=" btn btn-danger" ><i class="fa-trash-o mr5"></i>批量删除角色</a>-->
 							<a class="search-wrap"><input type="text" class="form-control"  placeholder="请输入角色名查询" v-model.lazy="params.role_name"> <i class="fa-search" v-on:click="refreshList"></i></a>
 						</div>
@@ -28,16 +28,16 @@
 							</tr>
 							</thead>
 							<tbody>
-							<tr v-for="($item, $index) in list"  v-if="!$item.edit" v-cloak>
+							<tr v-for="($item, $index) in list"  v-if="!$item.edit" v-cloak v-show="hasPermission(15003)">
 								<td><label class="label-checkbox"><input type="checkbox"><i class="fa-check"></i><i class="fa-square-o"></i></label></td>
 								<td>{{$item.name}}</td>
 								<td>
 									<a class="label label-info label-sm J-dialog" data-url="/web/dialog/permissions.html" data-status="show" :data-admin="$item.is_admin" :data-role_id="$item.id"   :data-title="('角色：'+$item.name+'')" v-if="!$item.edit">查看权限</a>
 								</td>
 								<td>
-									<a class="label label-success label-sm mr10 "  v-on:click="modify($index, $event)">修改角色名</a>
-									<a class="label label-success label-sm mr10 J-dialog" data-url="/web/dialog/permissions.html" data-status="modify" :data-admin="$item.is_admin" :data-role_id="$item.id" :data-title="('修改角色：'+$item.name+'')">修改权限</a>
-									<a class="label label-danger label-sm " v-on:click="del($index, $event)"><i class="fa-trash-o" title="删除"></i></a>
+									<a class="label label-success label-sm mr10 "  v-on:click="modify($index, $event)" v-show="hasPermission(15002)">修改角色名</a>
+									<a class="label label-success label-sm mr10 J-dialog" v-show="hasPermission(15005)" data-url="/web/dialog/permissions.html" data-status="modify" :data-admin="$item.is_admin" :data-role_id="$item.id" :data-title="('修改角色：'+$item.name+'')">修改权限</a>
+									<a class="label label-danger label-sm " v-on:click="del($index, $event)" v-show="hasPermission(15004)"><i class="fa-trash-o" title="删除"></i></a>
 								</td>
 							</tr>
 							<tr  class="template-tr" v-else v-cloak>

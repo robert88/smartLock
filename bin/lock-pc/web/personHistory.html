@@ -62,7 +62,7 @@
 		</tr>
 		</thead>
 		<tbody>
-		<tr v-for="($item, $index) in list" v-cloak>
+		<tr v-for="($item, $index) in list" v-cloak v-show="hasPermission(12005)">
 			<td><label class="label-checkbox"><input type="checkbox"><i class="fa-check"></i><i class="fa-square-o"></i></label></td>
 			<td><a class="J-dialog t-info hover-link" data-url="/web/dialog/personDetail.html" :data-id="$item.id" :data-title="($item.user_name+'用户信息详情')">{{$item.user_name}}</a></td>
 			<td>{{$item.user_phone}}</td>
@@ -72,7 +72,7 @@
 			<!--<td class="t-warning"> {{$item.type|type}}</td>-->
 			<!--<td>{{$item.update_time}}</td>-->
 			<td>
-				<a class="label label-success label-sm" v-on:click="revert($index, $event)">恢复</a>
+				<a class="label label-success label-sm" v-on:click="revert($index, $event)"  v-show="hasPermission(12006)">恢复</a>
 			</td>
 		</tr>
 

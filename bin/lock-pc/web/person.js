@@ -6,7 +6,7 @@ $(function () {
 	}
 	var curAccordEmail = $.cookie("user_email");
 	var moduleId = "systemPerson";
-	var moduleVueId = moduleId+"Vue";
+	var moduleVueId = moduleId;
 	var $module = $("#" + moduleId);
 	var listMap = [];
 

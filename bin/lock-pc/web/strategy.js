@@ -10,10 +10,12 @@ $(function () {
 	var $module = $("#"+moduleId);
 	var listMap = [];
 
+
 	var $$vue = new Vue({
 		el: "#"+moduleVueId,
 		data: {
 			list: [],
+			curTime:new Date("2018/02/04").getTime(),
 			loading:false,
 			params:{page_number:1,page_size:10,strategy_name:"",token:token}
 		},
@@ -36,6 +38,18 @@ $(function () {
 			}
 		},
 		methods: {
+			formatDate:function (url) {
+				return (url+this.curTime).toString().toDate().format("hh:mm");
+			},
+			formatAllowTime:function (val) {
+				var allow_time = val.split("_")||[];
+				if(allow_time.length==2){
+					var start = this.formatDate( ($.trim(allow_time[0])||0)*60*1000 );
+					var end = this.formatDate( ($.trim(allow_time[1])||0)*60*1000 );
+					return start +" - "+end;
+				}
+				return "";
+			},
 			mergeArray: function (obj) {
 				if (typeof obj !== "object") {
 					return [];
