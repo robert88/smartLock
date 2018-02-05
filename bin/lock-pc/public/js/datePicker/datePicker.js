@@ -26,6 +26,16 @@
                     '</thead>',
                     '<tbody></tbody>',
                 '</table>',
+            '<ul class="col">' +
+            '<li class="col4"> ' +
+            '<select class="form-control" placeholder="请选择小时"><option value="1"></option></select>' +
+            '</li>' +
+            '<li class="col4">' +
+            '<select class="form-control" placeholder="请选择分钟"><option value="1"></option></select>' +
+                '</li>' +
+            '<li class="col4"></li>' +
+            '<select class="form-control" placeholder="请选择秒"><option value="1"></option></select>' +
+            '</ul>',
             '</div>'
         ].join("");
 

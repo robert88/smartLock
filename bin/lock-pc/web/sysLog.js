@@ -8,7 +8,7 @@ $(function () {
 	var moduleId = "sysLog";
 	var moduleVueId = moduleId;
 	var $module = $("#" + moduleId);
-	var listMap = [];
+	var listMap = {};
 
 	var $$vue = new Vue({
 		el: "#" + moduleVueId,
@@ -67,44 +67,7 @@ $(function () {
 					}
 				}
 			},
-			getPersonNextPage: function () {
-				if (!this.personTotalPage) {
-					return;
-				}
-				if (this.person_list_params.page_number < this.personTotalPage) {
-					this.person_list_params.page_number++;
-					this.refreshPersonList();
-				}
-			},
-			refreshPersonList:function () {
-				var $$vue = this;
-				var url = "/smart_lock/v1/user/find_list";
-				var type = "post";
-				if ($$vue.personLoading) {
-					return;
-				}
-				$$vue.personLoading = true;
-				PAGE.ajax({
-					async:false,
-					url: url,
-					data: this.person_list_params,
-					type: type,
-					success: function (ret) {
-						if (!ret) {
-							return;
-						}
-						$$vue.person_list = ret.list||[];
-						listMap["person"]  = listMap["person"] || [];
-						listMap["person"] [$$vue.person_list_params.page_number] = ret.list;
-						$$vue.personTotalPage = ret.total_page;
-						$$vue.list = $$vue.mergeArray(listMap["role"] );
 
-					},
-					complete: function () {
-						$$vue.personLoading = false;
-					}
-				});
-			},
 		},
 		methods: {
 			mergeArray: function (obj) {
@@ -280,7 +243,45 @@ $(function () {
 			cancelModify: function (index) {
 				this.list[index].edit = "";
 				this.$forceUpdate()
-			}
+			},
+			getPersonNextPage: function () {
+				if (!this.personTotalPage) {
+					return;
+				}
+				if (this.person_list_params.page_number < this.personTotalPage) {
+					this.person_list_params.page_number++;
+					this.refreshPersonList();
+				}
+			},
+			refreshPersonList:function () {
+				var $$vue = this;
+				var url = "/smart_lock/v1/user/find_list";
+				var type = "post";
+				if ($$vue.personLoading) {
+					return;
+				}
+				$$vue.personLoading = true;
+				PAGE.ajax({
+					async:false,
+					url: url,
+					data: this.person_list_params,
+					type: type,
+					success: function (ret) {
+						if (!ret) {
+							return;
+						}
+						$$vue.person_list = ret.list||[];
+						listMap["person"]  = listMap["person"] || [];
+						listMap["person"] [$$vue.person_list_params.page_number] = ret.list;
+						$$vue.personTotalPage = ret.total_page;
+						$$vue.list = $$vue.mergeArray(listMap["person"] );
+
+					},
+					complete: function () {
+						$$vue.personLoading = false;
+					}
+				});
+			},
 
 		},
 		mounted: function () {
@@ -294,12 +295,21 @@ $(function () {
 						$$vue.getPersonNextPage();
 					}
 				});
+				laydate.render({
+					elem: '#test1'
+					,type: 'datetime'
+				});
+				laydate.render({
+					elem: '#test2'
+					,type: 'datetime'
+				});
 			})
 		}
 	});
 	PAGE.destroy.push(function () {
 		if($$vue){
 			$$vue.$destroy();
+			laydate = null;
 			listMap = null;
 			$$vue = null;
 			$module=null

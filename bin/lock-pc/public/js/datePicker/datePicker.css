@@ -1,7 +1,8 @@
 .datePicker{
     background-color: #fff;
     border: 1px solid #ccc;
-    width: 250px;
+    width: 325px;
+    padding: 10px;
 	z-index: 1;
 }
 .datePicker thead, .datePicker caption {
@@ -42,3 +43,9 @@
     background-color: #fff !important;
     cursor: auto
 }
+ .datePicker table{
+     width: 100%;
+ }
+ .datePicker select{
+
+ }

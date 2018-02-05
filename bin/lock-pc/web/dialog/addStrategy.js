@@ -136,7 +136,7 @@ $(function () {
 					listMap["role"]  = listMap["role"] || [];
 					listMap["role"] [$$vue.role_params.page_number] = ret.list;
 					$$vue.roleTotalPage = ret.total_page;
-					$$vue.list = $$vue.mergeArray(listMap["person"] );
+					$$vue.list = $$vue.mergeArray(listMap["role"] );
 				},complete:function () {
 					$$vue.loading = false;
 				}});
@@ -162,7 +162,7 @@ $(function () {
 						listMap["person"]  = listMap["person"] || [];
 						listMap["person"] [$$vue.person_list_params.page_number] = ret.list;
 						$$vue.personTotalPage = ret.total_page;
-						$$vue.list = $$vue.mergeArray(listMap["role"] );
+						$$vue.list = $$vue.mergeArray(listMap["person"] );
 
 					},
 					complete: function () {
@@ -218,7 +218,7 @@ $(function () {
 		}
 	});
 
-	
+
 
 	PAGE.destroy.push(function () {
 		if ($$vue) {

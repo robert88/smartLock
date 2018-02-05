@@ -8,13 +8,18 @@ $(function () {
 	var moduleId = "systemPerson";
 	var moduleVueId = moduleId;
 	var $module = $("#" + moduleId);
-	var listMap = [];
+	var listMap = {};
 
 	var $$vue = new Vue({
 		el: "#" + moduleVueId,
 		data: {
 			list: [],
-			params:{page_number:1,page_size:10,user_name:"",token:token}
+			params:{page_number:1,page_size:10,user_name:"",email:"",phone:"",role_id:"",token:token},
+
+			role_list: [],
+			roleLoading:false,
+			roleTotalPage:0,
+			role_params: {page_number: 1, page_size: 10, role_name: "",  token: token},
 		},
 		watch: {
 			//对象不应该用handler方式，应该值改变了但是引用没有改变
@@ -23,16 +28,57 @@ $(function () {
 					this.refreshList();
 				}
 			},
-			"params.user_name":function (newValue, oldValue) {
-				if(newValue!=oldValue){
-					//当值改变了且当前页不是第一页设置第一页
-					if (this.params.page_number != 1) {
-						this.params.page_number = 1;
+
+			// "params.user_name":function (newValue, oldValue) {
+			// 	if(newValue!=oldValue){
+			// 		//当值改变了且当前页不是第一页设置第一页
+			// 		if (this.params.page_number != 1) {
+			// 			this.params.page_number = 1;
+			// 		} else {
+			// 			this.refreshList();
+			// 		}
+			// 	}
+			// },
+			// "params.role_id":function (newValue, oldValue) {
+			// 	if(newValue!=oldValue){
+			// 		//当值改变了且当前页不是第一页设置第一页
+			// 		if (this.params.page_number != 1) {
+			// 			this.params.page_number = 1;
+			// 		} else {
+			// 			this.refreshList();
+			// 		}
+			// 	}
+			// },
+			// "params.phone":function (newValue, oldValue) {
+			// 	if(newValue!=oldValue){
+			// 		//当值改变了且当前页不是第一页设置第一页
+			// 		if (this.params.page_number != 1) {
+			// 			this.params.page_number = 1;
+			// 		} else {
+			// 			this.refreshList();
+			// 		}
+			// 	}
+			// },
+			// "params.email":function (newValue, oldValue) {
+			// 	if(newValue!=oldValue){
+			// 		//当值改变了且当前页不是第一页设置第一页
+			// 		if (this.params.page_number != 1) {
+			// 			this.params.page_number = 1;
+			// 		} else {
+			// 			this.refreshList();
+			// 		}
+			// 	}
+			// },
+			//对象不应该用handler方式，应该值改变了但是引用没有改变
+			"role_params.page_number": function (newValue, oldValue) {
+				if (newValue != oldValue) {
+					if (this.role_params.page_number != 1) {
+						this.role_params.page_number = 1;
 					} else {
 						this.refreshList();
 					}
 				}
-			}
+			},
 		},
 		methods: {
 			mergeArray: function (obj) {
@@ -68,6 +114,7 @@ $(function () {
 				}
 				return true;
 			},
+
 			refreshList:function () {
 				var $$vue = this;
 				var url = "/smart_lock/v1/user/find_list";
@@ -159,14 +206,56 @@ $(function () {
 			cancelModify: function (index) {
 				this.list[index].edit = "";
 				this.$forceUpdate()
-			}
+			},
+			refreshRoleList:function () {
+				var $$vue = this;
+				var url = "/smart_lock/v1/role/find_list";
+				var type = "post";
+				$$vue.loading = true;
+				PAGE.ajax({url:url,
+					async:false,
+					type:type,
+					data:$$vue.role_params,
+					success:function (ret) {
+						if( !ret ){
+							return;
+						}
+						if(ret.page_number==1&& (!ret.list||ret.list.length==0)){
+							$.tips("请先添加角色","warn",function () {
+								window.location.hash="#/web/roleList.html";
+							});
+						}
+						$$vue.role_list = ret.list||[];
+						listMap["role"]  = listMap["role"] || [];
+						listMap["role"] [$$vue.role_params.page_number] = ret.list;
+						$$vue.roleTotalPage = ret.total_page;
+						$$vue.list = $$vue.mergeArray(listMap["role"] );
+					},complete:function () {
+						$$vue.loading = false;
+					}});
+			},			
+			getRoleNextPage: function () {
+				if (!this.roleTotalPage) {
+					return;
+				}
+				if (this.role_params.page_number < this.roleTotalPage) {
+					this.role_params.page_number++;
+					this.refreshRoleList();
+				}
+			},
 
 		},
 		mounted: function () {
 			this.$nextTick(function () {
 				this.refreshList();
+				this.refreshRoleList();
 				$module = $("#"+moduleId)
 				this.initEvent($module);
+				$module.find(".J-scroll.role").on("scrollDown",function () {
+					if(!$$vue.roleLoading){
+						$$vue.getRoleNextPage();
+					}
+				});
 			})
 		}
 	});

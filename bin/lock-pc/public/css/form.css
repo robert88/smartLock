@@ -190,3 +190,17 @@ fieldset {
 .template-tr .form-group, .template-tr .J-select {
 	height: 34px;
 }
+.search-filter {
+	background: #f2f2f2;
+	border-radius: 5px;
+}
+.search-filter-wrap {
+	opacity: 0;
+	height: 0;
+	overflow: hidden;
+}
+.search-filter-wrap.open {
+	opacity: 1;
+	height: auto;
+	overflow: visible;
+}

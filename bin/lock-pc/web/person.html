@@ -25,40 +25,42 @@
 								<ul class="col">
 									<li class="col3 plr10">
 										<div class="form-group-inline">
-											<label>账号</label>
-											<input type="text" class="form-control" placeholder="请输入手机或者邮箱">
+											<label>名称</label>
+											<input type="text" class="form-control" v-model="params.user_name" placeholder="请输入用户名">
 										</div>
 									</li>
 									<li class="col3 plr10">
 										<div class="form-group-inline">
-											<label >昵称</label>
-											<input type="text" class="form-control" >
+											<label >手机</label>
+											<input type="text" class="form-control" v-model="params.phone" placeholder="请输入用户手机">
 										</div>
 									</li>
 									<li class="col3 plr10">
 										<div class="form-group-inline">
-											<label >身份证</label>
-											<input type="text" class="form-control" name="user_card" >
+											<label >邮箱</label>
+											<input type="text" class="form-control" v-model="params.email" placeholder="请输入邮箱">
 										</div>
 									</li>
 
 									<li class="col3 plr10">
 										<div class="form-group-inline">
 											<label>角色</label>
-											<div class="J-select  J-select-search form-control-select">
-												<input class="form-control J-select-text" type="text" placeholder="请选择类型">
-												<input class="J-select-value" name="Country" type="hidden" check-type="required">
-												<i class="fa-angle-down"></i>
-												<div class="J-select-option">
-													<a class="option" data-jp="gly" data-qp="guanliyuan" data-value="1" data-name="管理员">管理员</a>
-													<a class="option" data-jp="gly" data-qp="guanliyuan" data-value="1" data-name="管理员">管理员</a>
+												<div class="J-select  J-select-search form-control-select">
+													<input class="form-control J-select-text" type="text" placeholder="请选择角色">
+													<input class="J-select-value" name="role_id" v-model="params.role_id" type="hidden" check-type="required">
+													<i class="fa-angle-down"></i>
+													<div class="J-select-option J-scroll role" >
+														<a v-for="($item, $index) in role_list"
+														   v-bind="{ 'data-jp':$item.jp, 'data-qp': $item.qp ,'data-name':$item.name, 'data-value':$item.id}"
+														   class="option">{{$item.name}}</a>
+														<a v-show="roleLoading">加载更多...</a>
+													</div>
 												</div>
-											</div>
 										</div>
 									</li>
 								</ul>
 								<div class="tc bd-top mt10 pt10">
-									<a class="btn btn-warning" style="min-width: 100px"><i class="fa-search mr5"></i>查询</a>
+									<a class="btn btn-warning" style="min-width: 100px" v-on:click="refreshList()"><i class="fa-search mr5"></i>查询</a>
 								</div>
 							</form>
 						</div>

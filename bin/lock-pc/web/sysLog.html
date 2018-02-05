@@ -1,3 +1,4 @@
+<script src="/public/js/laydate/laydate.js"></script> <!-- 改成你的路径 -->
 <div class="wrap">
 	<div class="box border blue">
 		<div class="box-title">
@@ -16,11 +17,10 @@
 						<div class="search-filter-wrap ease">
 							<form class="search-filter plr10 pt20 pb10 m10">
 								<ul class="col">
-									<li class="col3 plr10">
+									<li class="col4 plr10">
 										<div class="form-group-inline">
 												<label>用户</label>
-												<i class="fa-microphone-slash"></i>
-												<div class="J-select  J-select-search">
+												<div class="J-select  J-select-search form-control-select">
 													<input class="form-control J-select-text" type="text" placeholder="请选择用户">
 													<input class="J-select-value" name="user_id" type="hidden">
 													<i class="fa-angle-down"></i>
@@ -33,36 +33,31 @@
 												</div>
 										</div>
 									</li>
-									<li class="col3 plr10">
+									<li class="col4 plr10">
 										<div class="form-group-inline">
-											<label >昵称</label>
-											<input type="text" class="form-control" >
-										</div>
-									</li>
-									<li class="col3 plr10">
-										<div class="form-group-inline">
-											<label >身份证</label>
-											<input type="text" class="form-control" name="user_card" >
-										</div>
-									</li>
-
-									<li class="col3 plr10">
-										<div class="form-group-inline">
-											<label>角色</label>
-											<div class="J-select  J-select-search form-control-select">
-												<input class="form-control J-select-text" type="text" placeholder="请选择类型">
-												<input class="J-select-value" name="Country" type="hidden" check-type="required">
-												<i class="fa-angle-down"></i>
-												<div class="J-select-option">
-													<a class="option" data-jp="gly" data-qp="guanliyuan" data-value="1" data-name="管理员">管理员</a>
-													<a class="option" data-jp="gly" data-qp="guanliyuan" data-value="1" data-name="管理员">管理员</a>
+											<div class="layui-inline">
+												<label class="layui-form-label">开始时间</label>
+												<div class="layui-input-inline">
+													<input type="text" class="layui-input" id="test1" placeholder="yyyy-MM-dd HH:mm:ss" lay-key="6">
 												</div>
 											</div>
 										</div>
 									</li>
+									<li class="col4 plr10">
+										<div class="form-group-inline">
+
+											<div class="layui-inline">
+												<label >结束时间</label>
+												<div class="layui-input-inline">
+													<input type="text" class="layui-input" id="test2" placeholder="yyyy-MM-dd HH:mm:ss" lay-key="6">
+												</div>
+											</div>
+										</div>
+									</li>
+
 								</ul>
 								<div class="tc bd-top mt10 pt10">
-									<a class="btn btn-warning" style="min-width: 100px"><i class="fa-search mr5"></i>查询</a>
+									<a class="btn btn-warning" style="min-width: 100px"  v-on:click="refreshList()"><i class="fa-search mr5"></i>查询</a>
 								</div>
 							</form>
 						</div>
