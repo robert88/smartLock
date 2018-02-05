@@ -670,6 +670,7 @@
 	 *初始化事件
 	 * */
 	Vue.prototype.initEvent=function ($module) {
+		var $$vue = this;
 		$module.on("update",function () {
 			$$vue.refreshList();
 		})
