@@ -94,11 +94,11 @@ $(function () {
 							return;
 						}
 
-						$$vue.list = ret.list||[];
+                        $$vue.list = ret.list||[];
 
-						PAGE.setpageFooter($module.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
-							$$vue.params.page_number = page_number*1
-						});
+                        listMap[$$vue.params.page_number] = ret.list;
+                        $$vue.total_page = ret.total_page;
+                        $$vue.list = $$vue.mergeArray(listMap);
 
 					},
 					complete: function () {
@@ -270,6 +270,11 @@ $(function () {
 		}
 	});
 
+    $("body").on("scrollDown." + moduleId, function () {
+        if (!$$vue.loading) {
+            $$vue.getNextPage();
+        }
+    });
 
 	PAGE.destroy.push(function () {
 		if($$vue){

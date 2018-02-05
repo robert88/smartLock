@@ -32,6 +32,7 @@ $(function () {
 			},
 			"params.device_name": function (newValue, oldValue) {
 				if (newValue != oldValue) {
+					listMap = [];
 					if (this.params.page_number != 1) {
 						this.params.page_number = 1;
 					} else {
@@ -310,12 +311,14 @@ $(function () {
 				$$vue.list[index].new_device_name = $$vue.list[index].device_name;
 				$$vue.list[index].new_device_mode = $$vue.list[index].device_mode;
 				$$vue.list[index].new_group_name = $$vue.list[index].group_name;
+				$$vue.list[index].new_group_id = $$vue.list[index].group_id;
 
 				this.$forceUpdate()
 			},
 			cancelModify: function (index) {
 				this.list[index].edit = "";
 				this.list[index].new_group_name = ""
+				this.list[index].new_group_id = ""
 				this.$forceUpdate()
 			},
 			getPhone:function () {
@@ -381,27 +384,21 @@ $(function () {
 				},complete:function () {
 					$$vue.loading2 = false;
 				}});
-			},	
-			initEvent:function () {
-				$module.on("update",function () {
-					$$vue.refreshList();
-				})
-				$module.on("click",".J-filter",function () {
-					$$vue.filter();
-				});
-				$module.parents(".tab-content-item").on("updateContent",function () {
-					$$vue.refreshList();
-				});
-
 			}
 		},
 		mounted: function () {
 			this.$nextTick(function () {
+				var $$vue = this;
 				this.refreshList();
 				this.getPhone();
 				this.refreshList2();
-				$module = $("#" + moduleId)
-				this.initEvent();
+				$module = $("#" + moduleId);
+				this.initEvent($module);
+				$module.find(".J-scroll").on("scrollDown",function () {
+					if(!$$vue.loading2){
+						$$vue.getNextPage2();
+					}
+				});
 			})
 		}
 	});
@@ -409,11 +406,7 @@ $(function () {
 
 
 
-	$module.find(".J-scroll").on("scrollDown",function () {
-		if(!$$vue.loading2){
-			$$vue.getNextPage2();
-		}
-	});
+
 	
 	PAGE.destroy.push(function () {
 		if ($$vue) {

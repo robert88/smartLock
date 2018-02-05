@@ -666,6 +666,21 @@
 
 		}
 	}
+	/**
+	 *初始化事件
+	 * */
+	Vue.prototype.initEvent=function ($module) {
+		$module.on("update",function () {
+			$$vue.refreshList();
+		})
+		$module.on("click",".J-filter",function () {
+			$$vue.filter();
+		});
+		$module.parents(".tab-content-item").on("updateContent",function () {
+			$$vue.refreshList();
+		});
+
+	}
 
 	var $$header = new Vue({
 		el:"#pageCommonHeaderVue",

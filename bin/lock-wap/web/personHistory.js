@@ -9,6 +9,7 @@ $(function () {
 	var moduleId = "personHistory";
 	var moduleVueId = moduleId+"Vue";
 	var $module = $("#"+moduleId);
+	var listMap = [];
 
 	var $$vue = new Vue({
 		el: "#"+moduleVueId,
@@ -17,67 +18,50 @@ $(function () {
 			params:{page_number:1,page_size:10,user_name:"",token:token}
 		},
 		watch: {
-		//	list: {
-		//		handler: function (newValue, oldValue) {
-		//			if(this.edit){
-		//				return;
-		//			}
-		//			for (var i = 0; i < newValue.length; i++) {
-//
-		//				//将请求字段统一使用role_name
-		//				if (newValue[i].role_name !=  newValue[i].name) {
-		//					newValue[i].role_name = newValue[i].name
-		//				}
-	//				}
-		//		},
-		//		deep: true
-		//	},
+
 			//对象不应该用handler方式，应该值改变了但是引用没有改变
 			"params.page_number":function (newValue, oldValue) {
 				if(newValue!=oldValue){
 					this.refreshList();
 				}
 			},
-			"params.role_name":function (newValue, oldValue) {
+			"params.user_name":function (newValue, oldValue) {
 				if(newValue!=oldValue){
-					if(this.params.page_number!=1){
-						this.params.page_number =1;
-					}else{
+					listMap = [];
+					if (this.params.page_number != 1) {
+						this.params.page_number = 1;
+					} else {
 						this.refreshList();
 					}
 				}
 			}
 		},
-		filters: {
-			role:function (value) {
-				switch (value){
-					case 10:
-						return "超级管理员"
-						break;
-					case 11:
-						return "普通管理员"
-						break;
-					default:
-						return "普通人员"
-						break;
+		methods: {
+			mergeArray: function (obj) {
+				if (typeof obj !== "object") {
+					return [];
 				}
-			},
-			type:function (value) {
-				switch (value){
-					case 1:
-						return "开门"
-						break;
-					case 2:
-						return "关门"
-						break;
-					default:
-						return "更新密码"
-						break;
+				;
+				var arr = [];
+				for (var no in obj) {
+					if ($.type(obj[no]) != "array") {
+						continue;
+					}
+					arr = arr.concat(obj[no]);
 				}
+				return arr;
 			},
-		},
-		methods:{
-			filter:function () {
+			getNextPage: function () {
+				if (!this.total_page) {
+					return;
+				}
+				if (this.params.page_number < this.total_page) {
+					this.params.page_number++;
+					this.refreshList();
+				}
+
+			},
+			filter: function () {
 				$module.find(".search-filter-wrap").toggleClass("open");
 			},
 			isSelf:function (email) {
@@ -86,33 +70,36 @@ $(function () {
 				}
 				return true;
 			},
-			refreshList:function () {
-				// ### 2.13 查询删除用户列表
-				// |  POST  |  smart_lock/v1/user/find_delete_list  |
-				// | ------------- |:-------------:|
-				//
-				// **请求参数：**
-				//
-				// |  参数名称 | 参数类型 | 是否必填 | 参数描述 | 备注 |
-				// |  -------- | -------- | -------- | -------- | ---- |
-				// |  userId_name | string | 否 |  客户名称  |  |
-				// | page_size | Interger | 是 | 每页数量 | |
-				// | page_number | Interger |是 | 页数 ||
+			refreshList: function () {
 				var $$vue = this;
-				var url = "/smart_lock/v1/user/find_delete_list";
+				var url = "/smart_lock/v1/user/find_list";
 				var type = "post";
+				if ($$vue.loading) {
+					return;
+				}
+				$$vue.loading = true;
 				PAGE.ajax({
-					url: url, data: this.params, type: type, success: function (ret) {
+					url: url,
+					data: this.params,
+					type: type,
+					success: function (ret) {
 						if (!ret) {
 							return;
 						}
-						$$vue.list = ret.list;
-
-						PAGE.setpageFooter($module.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
-							$$vue.params.page_number = page_number
-						});
+						listMap[$$vue.params.page_number] = ret.list;
+						$$vue.total_page = ret.total_page;
+						$$vue.list = $$vue.mergeArray(listMap);
+					},
+					complete: function () {
+						$$vue.loading = false;
 					}
 				});
+			},
+			saveAdd: function (index) {
+
+			},
+			saveModify: function (index) {
+
 			},
 			// 		### 2.2 删除用户
 			// |  POST  |  smart_lock/v1/user/delete  |
@@ -125,32 +112,31 @@ $(function () {
 			// |  token | string | 是 | 用户登录的token |  |
 			// |  user_id | Interger | 是 |  用户id  | 整形 |
 
-			revert:function (index) {
+			del: function (index) {
+
 				var $$vue = this;
-				var url =  "/smart_lock/v1/user/recover_user";
+				//新增的数据直接删除
+				if (!$$vue.list[index].id) {
+					$$vue.list.splice(index, 1);
+					return;
+				}
+				var url = "/smart_lock/v1/user/delete";
 				var type = "post";
-				$.dialog("是否要恢复用户？", {
-					title: "恢复用户",
-					width:400,
+				$.dialog("是否要删除该记录？", {
+					title: "删除记录",
+					width: 400,
 					button: [{
 						text: "确认", click: function () {
-							if($$vue.list[index].id){
-								PAGE.ajax({
-									url: url,
-									type: type,
-									data: {user_id: $$vue.list[index].id, token: token},
-									success: function () {
-										$$vue.list.splice(index,1);
-										//本地删除最后一个，兼容分页情况
-										if($$vue.list.length==0){
-											$$vue.refreshList();
-										}
-									}
-								});
-							}else{
-								$$vue.list.splice(index,1);
-							}
 
+							PAGE.ajax({
+								url: url,
+								type: type,
+								data: {user_id: $$vue.list[index].id, token: token},
+								success: function () {
+									$.tips("操作成功！", "success");
+									$$vue.list.splice(index, 1);
+								}
+							});
 						}
 					}, {
 						text: "取消", click: function () {
@@ -159,31 +145,55 @@ $(function () {
 					}]
 
 				})
+			},
+			add: function () {
+
+			},
+
+			cancelAdd: function (index) {
+
+			},
+			modify: function (index) {
+
+			},
+			cancelModify: function (index) {
+
+			},
+			initEvent:function () {
+				$module.parents(".tab-content-item").off("updateContent").on("updateContent",function () {
+					$$vue.refreshList();
+				});
+
+				$module.off("update").on("update",function () {
+					$$vue.refreshList();
+				});
+				$module.off("click",".J-filter").on("click",".J-filter",function () {
+					$$vue.filter();
+				})
 			}
+
 		},
 		mounted: function () {
 			this.$nextTick(function () {
 				this.refreshList();
 				$module = $("#"+moduleId)
+				this.initEvent();
 			})
 		}
 	});
 
-	$module.parents(".tab-content-item").on("updateContent",function () {
-		$$vue.refreshList();
+	$("body").on("scrollDown." + moduleId, function () {
+		if (!$$vue.loading) {
+			$$vue.getNextPage();
+		}
 	});
-
-	$module.on("update",function () {
-		$$vue.refreshList();
-	});
-	$module.on("click",".J-filter",function () {
-		$$vue.filter();
-	})
 	PAGE.destroy.push(function () {
-		if($$vue){
+		if ($$vue) {
+			$("body").off("scrollDown." + moduleId);
 			$$vue.$destroy();
+			listMap = null;
 			$$vue = null;
-			$module=null
+			$module = null
 		}
 	})
 });

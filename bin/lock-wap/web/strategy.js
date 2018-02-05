@@ -16,6 +16,7 @@ $(function () {
 		el: "#"+moduleVueId,
 		data: {
 			list: [],
+			curTime:new Date("2018/02/04").getTime(),
 			loading:false,
 			params:{page_number:1,page_size:10,strategy_name:"",token:token}
 		},
@@ -23,21 +24,35 @@ $(function () {
 			//对象不应该用handler方式，应该值改变了但是引用没有改变
 			"params.page_number":function (newValue, oldValue) {
 				if(newValue!=oldValue){
+					this.refreshList();
+
+				}
+			},
+			"params.strategy_name":function (newValue, oldValue) {
+					
+				if(newValue!=oldValue){
+				listMap = [];
 					if(this.params.page_number!=1){
 						this.params.page_number =1;
 					}else{
 						this.refreshList();
 					}
-
-				}
-			},
-			"params.strategy_name":function (newValue, oldValue) {
-				if(newValue!=oldValue){
-					this.refreshList();
 				}
 			}
 		},
 		methods: {
+			formatDate:function (url) {
+				return (url+this.curTime).toString().toDate().format("hh:mm");
+			},
+			formatAllowTime:function (val) {
+				var allow_time = val.split("_")||[];
+				if(allow_time.length==2){
+					var start = this.formatDate( ($.trim(allow_time[0])||0)*60*1000 );
+					var end = this.formatDate( ($.trim(allow_time[1])||0)*60*1000 );
+					return start +" - "+end;
+				}
+				return "";
+			},
 			mergeArray: function (obj) {
 				if (typeof obj !== "object") {
 					return [];
@@ -102,9 +117,9 @@ $(function () {
 
 						$$vue.list = ret.list||[];
 
-						PAGE.setpageFooter($module.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
-							$$vue.params.page_number = page_number*1
-						});
+                        listMap[$$vue.params.page_number] = ret.list;
+                        $$vue.total_page = ret.total_page;
+                        $$vue.list = $$vue.mergeArray(listMap);
 
 					},
 					complete: function () {

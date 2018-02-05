@@ -161,6 +161,13 @@ $(function () {
 
 					}
 				});
+			},
+			initEvent:function ($module) {
+				$module.on("scrollDown." + moduleId, ".J-scroll",function () {
+					if (!$$vue.loading) {
+						$$vue.getNextPage();
+					}
+				});
 			}
 
 		},
@@ -168,15 +175,12 @@ $(function () {
 			this.$nextTick(function () {
 				this.refreshList();
 				$module = $("#" + moduleId);
+				this.initEvent($module);
 			})
 		}
 	});
 
-	$module.on("scrollDown." + moduleId, ".J-scroll",function () {
-		if (!$$vue.loading) {
-			$$vue.getNextPage();
-		}
-	});
+
 
 	PAGE.destroy.push(function () {
 		if($$vue){

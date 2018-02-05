@@ -26,6 +26,7 @@ $(function () {
 			},
 			"params.group_name": function (newValue, oldValue) {
 				if (newValue != oldValue) {
+					listMap = [];
 					if (this.params.page_number != 1) {
 						this.params.page_number = 1;
 					} else {
@@ -233,22 +234,13 @@ $(function () {
 		mounted: function () {
 			this.$nextTick(function () {
 				this.refreshList();
-				$module = $("#"+moduleId)
+				$module = $("#"+moduleId);
+				this.initEvent($module);
 			})
 		}
 	});
 
-	$module.parents(".tab-content-item").on("updateContent",function () {
-		$$vue.refreshList();
-	});
 
-	$module.on("update",function () {
-		$$vue.refreshList();
-	});
-
-	$module.on("click",".J-filter",function () {
-		$$vue.filter();
-	})
 
 
 	PAGE.destroy.push(function () {

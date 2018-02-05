@@ -85,20 +85,26 @@ $(function () {
 				},complete:function () {
 					$$vue.loading = false;
 				}});
+			},
+			initEvent:function () {
+				$dialog.find(".J-scroll").on("scrollDown",function () {
+					if(!$$vue.loading){
+						$$vue.getNextPageRole();
+					}
+				});
 			}
 		},
 		mounted: function () {
 			this.$nextTick(function () {
 				this.getRole();
+				var $form = $("#addPerson")
+				var $dialog = $form.parents(".dl-dialog");
+				this.initEvent()
 			})
 		}
 	});
 	
-	$dialog.find(".J-scroll").on("scrollDown",function () {
-		if(!$$vue.loading){
-			$$vue.getNextPageRole();
-		}
-	});
+
 
 	//窗口关闭时调用
 	$dialog[0].destroy = function () {

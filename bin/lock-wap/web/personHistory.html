@@ -14,7 +14,7 @@
 				<div><span class="label-name"><i class="fa-user"></i> 邮箱</span> <span>{{$item.user_email}}</span></div>
 				<div><span class="label-name"><i class="fa-user"></i> 身份证</span> <span>{{$item.user_card}}</span></div>
 				<div><span class="label-name"><i class="fa-user"></i> 角色</span> <span>{{$item.role_id}}</span></div>
-				<div><span class="label-name"><i class="fa-user"></i> 已授权的设备</span> <a class="label label-info label-sm J-dialog" data-url="/web/dialog/userToDeviceAuthList.html"  :data-user_id="$item.id"  :data-title="('已授权'+$item.user_name+'用户的设备列表')" v-if="!$item.edit">查看</a></div>
+				<!--<div><span class="label-name"><i class="fa-user"></i> 已授权的设备</span> <a class="label label-info label-sm J-dialog" data-url="/web/dialog/userToDeviceAuthList.html"  :data-user_id="$item.id"  :data-title="('已授权'+$item.user_name+'用户的设备列表')" v-if="!$item.edit">查看</a></div>-->
 				<div class="bd-top bd-dashed mt10 pt10">
 					<a class="label label-success label-sm" v-on:click="revert($index, $event)">恢复</a>
 				</div>

@@ -82,7 +82,7 @@
 											<div class="form-group">
 												<div class="J-select ">
 													<input :class="('form-control J-select-text J-select-text'+$index)" v-model="$item.new_group_name"  type="text" placeholder="请选择设备组">
-													<input :class="('J-select-value J-select-value'+$index)" type="hidden" check-type="required">
+													<input :class="('J-select-value J-select-value'+$index)" v-model="$item.new_group_id"  type="hidden" check-type="required">
 													<i class="fa-angle-down"></i>
 													<div class="J-select-option J-scroll" >
 														<a v-for="($item2, $index2) in list2"

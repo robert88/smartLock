@@ -54,9 +54,11 @@ $(function () {
 			"start_time": function (newValue, oldValue) {
 				if (newValue != oldValue) {
 					this.allow_end_time_list =[];
+					var curTime = new Date("2018/02/04").getTime();
+
 					for(var i=0;i<=48;i++){
 						if((i/2)>newValue){
-							this.allow_end_time_list.push({name:i/2,id:i/2});
+							this.allow_end_time_list.push({name:(curTime+i/2*60*60*1000).toString().toDate().format("hh:mm"),id:i/2});
 						}
 
 					}
@@ -106,9 +108,10 @@ $(function () {
 				return true;
 			},
 			initAllowTime:function () {
+				var curTime = new Date("2018/02/04").getTime();
 				for(var i=0;i<=48;i++){
-					this.allow_start_time_list[i] = {name:i/2,id:i/2}
-					this.allow_end_time_list[i] = {name:i/2,id:i/2}
+					this.allow_start_time_list[i] = {name:(curTime+i/2*60*60*1000).toString().toDate().format("hh:mm"),id:i/2}
+					this.allow_end_time_list[i] = {name:(curTime+i/2*60*60*1000).toString().toDate().format("hh:mm"),id:i/2}
 				}
 			},
 			refreshRoleList:function () {
@@ -117,6 +120,7 @@ $(function () {
 				var type = "post";
 				$$vue.loading = true;
 				PAGE.ajax({url:url,
+					async:false,
 					type:type,
 					data:$$vue.role_params,
 					success:function (ret) {
@@ -146,6 +150,7 @@ $(function () {
 				}
 				$$vue.personLoading = true;
 				PAGE.ajax({
+					async:false,
 					url: url,
 					data: this.person_list_params,
 					type: type,
@@ -188,6 +193,19 @@ $(function () {
 					}
 				});
 
+			},
+			initEvent:function () {
+
+				$module.find(".J-scroll.role").on("scrollDown",function () {
+					if(!$$vue.roleLoading){
+						$$vue.getRoleNextPage();
+					}
+				});
+				$module.find(".J-scroll.person").on("scrollDown",function () {
+					if(!$$vue.personLoading){
+						$$vue.getPersonNextPage();
+					}
+				});
 			}
 
 		},
@@ -198,22 +216,13 @@ $(function () {
 				this.initAllowTime();
 				$module = $("#" + moduleId);
 				this.initSubmit();
+				this.initEvent();
 			})
 		}
 	});
 
 
 
-	$module.find(".J-scroll.role").on("scrollDown",function () {
-		if(!$$vue.roleLoading){
-			$$vue.getRoleNextPage();
-		}
-	});
-	$module.find(".J-scroll.person").on("scrollDown",function () {
-		if(!$$vue.personLoading){
-			$$vue.getPersonNextPage();
-		}
-	});
 
 	PAGE.destroy.push(function () {
 		if ($$vue) {

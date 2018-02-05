@@ -62,7 +62,7 @@
 				<div>
 					<a class="label label-success label-sm mr10 J-save" v-on:click="saveAdd($index, $event)"
 					   v-show="$item.edit=='add'">保存</a>
-					<a class="label label-warning label-sm mr10 J-save" v-on:click="canselAdd($index, $event)"
+					<a class="label label-warning label-sm mr10 J-save" v-on:click="cancelAdd($index, $event)"
 					   v-show="$item.edit=='add'">取消</a>
 					<a class="label label-success label-sm mr10 J-update" v-on:click="saveModify($index, $event)"
 					   v-show="$item.edit=='modify'">保存</a>

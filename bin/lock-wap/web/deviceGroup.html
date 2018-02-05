@@ -9,11 +9,7 @@
 	</div>
 
 		<ul class="col">
-			<li class="bd  bg-white p20 lh30 bd-radius-5 mt10" v-for="($item, $index) in list" v-if="!$item.edit" v-cloak>
-				<div>
-					<span class="label-name"><i class="fa-user"></i> id</span>
-					<a class="J-dialog" data-dialog-url="#/web/deviceDetail.html" :data-id="$item.id">{{$item.id}}</a>
-				</div>
+			<li class="bd  bg-white p20 lh30 bd-radius-5 mt10" v-for="($item, $index) in list" v-if="!$item.edit" v-show="hasPermission(14004)" v-cloak>
 				<div>
 					<span class="label-name"><i class="fa-tablet"></i> 设备组名称</span>
 					<span>{{$item.group_name}}</span>
@@ -26,10 +22,10 @@
 					<a class="label label-info label-sm mr10 J-dialog" data-url="/web/dialog/deviceGroupList.html"  :data-group_id="$item.id" :data-title="(''+$item.group_name+'设备组-设备列表')"  v-show="hasPermission(14005)">查看设备</a>
 				</div>
 				<div class="bd-top bd-dashed mt10 pt10">
-					<a class="label label-success label-sm ml10" v-on:click="modify($index, $event)">修改设备组名称</a>
+					<a class="label label-success label-sm ml10" v-on:click="modify($index, $event)"  v-show="hasPermission(14003)">修改设备组名称</a>
 					<a class="label label-success label-sm ml10 J-dialog" data-url="/web/dialog/addDeviceToGroup.html"  :data-group_id="$item.id" :data-title="(''+$item.group_name+'设备组-设备列表')"  v-show="hasPermission(14006)">添加设备</a>
 					<!--<a class="label label-success label-sm ml10" v-on:click="modify($index, $event)">切换情景</a>-->
-					<a class="label label-danger label-sm J-delete" v-on:click="del($index, $event)"><i class="fa-trash-o" title="删除"></i></a>
+					<a class="label label-danger label-sm J-delete" v-on:click="del($index, $event)" v-show="hasPermission(14002)"><i class="fa-trash-o" title="删除"></i></a>
 				</div>
 			</li>
 			<li class="bd  bg-white p20 lh30 bd-radius-5 mt10"  v-else v-cloak>

@@ -20,16 +20,17 @@ $(function () {
 			//对象不应该用handler方式，应该值改变了但是引用没有改变
 			"params.page_number": function (newValue, oldValue) {
 				if (newValue != oldValue) {
+					this.refreshList();
+				}
+			},
+			"params.user_name":function (newValue, oldValue) {
+				if(newValue!=oldValue){
+					//当值改变了且当前页不是第一页设置第一页
 					if (this.params.page_number != 1) {
 						this.params.page_number = 1;
 					} else {
 						this.refreshList();
 					}
-				}
-			},
-			"params.user_name":function (newValue, oldValue) {
-				if(newValue!=oldValue){
-					this.refreshList();
 				}
 			}
 		},
@@ -158,18 +159,6 @@ $(function () {
 			cancelModify: function (index) {
 				this.list[index].edit = "";
 				this.$forceUpdate()
-			},
-			initEvent:function () {
-				$module.parents(".tab-content-item").off("updateContent").on("updateContent",function () {
-					$$vue.refreshList();
-				});
-
-				$module.off("update").on("update",function () {
-					$$vue.refreshList();
-				});
-				$module.off("click",".J-filter").on("click",".J-filter",function () {
-					$$vue.filter();
-				})
 			}
 
 		},
@@ -177,7 +166,7 @@ $(function () {
 			this.$nextTick(function () {
 				this.refreshList();
 				$module = $("#"+moduleId)
-				this.initEvent();
+				this.initEvent($module);
 			})
 		}
 	});

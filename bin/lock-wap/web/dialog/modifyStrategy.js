@@ -64,9 +64,11 @@ $(function () {
 			"start_time": function (newValue, oldValue) {
 				if (newValue != oldValue) {
 					this.allow_end_time_list =[];
+					var curTime = new Date("2018/02/04").getTime();
+
 					for(var i=0;i<=48;i++){
 						if((i/2)>newValue){
-							this.allow_end_time_list.push({name:i/2,id:i/2});
+							this.allow_end_time_list.push({name:(curTime+i/2*60*60*1000).toString().toDate().format("hh:mm"),id:i/2});
 						}
 
 					}
@@ -116,9 +118,10 @@ $(function () {
 				return true;
 			},
 			initAllowTime:function () {
+				var curTime = new Date("2018/02/04").getTime();
 				for(var i=0;i<=48;i++){
-					this.allow_start_time_list[i] = {name:i/2,id:i/2}
-					this.allow_end_time_list[i] = {name:i/2,id:i/2}
+					this.allow_start_time_list[i] = {name:(curTime+i/2*60*60*1000).toString().toDate().format("hh:mm"),id:i/2}
+					this.allow_end_time_list[i] = {name:(curTime+i/2*60*60*1000).toString().toDate().format("hh:mm"),id:i/2}
 				}
 			},
 			refreshRoleList:function () {
@@ -228,62 +231,18 @@ $(function () {
 							return;
 						}
 						var allow_time = ret.allow_time.split("_")||[];
-						$$vue.setInputValue("strategy_name",ret.name);
-						$$vue.setSelectValueByName("role_name",ret.role_name);
-						$$vue.setSelectValueByName("user_name",ret.user_name);
-						$$vue.setSelectValue("start_time",Math.floor(allow_time[0]*10/60)/10);
-						$$vue.setSelectValue("end_time",Math.floor(allow_time[1]*10/60)/10);
-						$$vue.setSelectValue("allow_openmode",ret.allow_openmode);
-						$$vue.setSelectValue("allow_operation",ret.allow_operation);
+						$$vue.setInputValue("strategy_name",ret.name,$module);
+						$$vue.setSelectValueByName("role_name",ret.role_name,$module);
+						$$vue.setSelectValueByName("user_name",ret.user_name,$module);
+						$$vue.setSelectValue("start_time",Math.floor(allow_time[0]*10/60)/10,$module);
+						$$vue.setSelectValue("end_time",Math.floor(allow_time[1]*10/60)/10,$module);
+						$$vue.setSelectValue("allow_openmode",ret.allow_openmode,$module);
+						$$vue.setSelectValue("allow_operation",ret.allow_operation,$module);
 					},
 					complete: function () {
 						$module.removeClass("loading");
 					}
 				});
-			},
-			/**
-			 *设置表单数据
-			 * */
-			setInputValue:function (name, value) {
-				if (value != null && $module.find("input[name='" + name + "']").length) {
-					$module.find("input[name='" + name + "']").val(value).addClass("ipt-not-empty");
-				}
-			},
-			/**
-			 *设置下拉菜单数据
-			 * */
-			setSelectValueByName:function (name, value) {
-				var $input = $module.find("input[name='" + name + "']")
-				if (value != null && $input.length) {
-					if($input.parents(".J-mutil-select").length){
-						$.each(value.split(","),function (index,val) {
-							if(val){
-								$input.parents(".J-select").find(".option[data-name='" + val + "']").click();
-							}
-						})
-					}else{
-						$input.parents(".J-select").find(".option[data-name='" + value + "']").click();
-					}
-
-				}
-			},
-			/**
-			 *设置下拉菜单数据
-			 * */
-			setSelectValue:function (name, value) {
-				var $input = $module.find("input[name='" + name + "']")
-				if (value != null && $input.length) {
-					if($input.parents(".J-mutil-select").length){
-						$.each(value.split(","),function (index,val) {
-							if(val){
-								$input.parents(".J-select").find(".option[data-value='" + val + "']").click();
-							}
-						})
-					}else{
-						$input.parents(".J-select").find(".option[data-value='" + value + "']").click();
-					}
-
-				}
 			}
 
 

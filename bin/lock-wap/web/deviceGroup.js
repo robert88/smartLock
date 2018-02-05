@@ -26,6 +26,7 @@ $(function () {
 			},
 			"params.group_name": function (newValue, oldValue) {
 				if (newValue != oldValue) {
+                    listMap = [];
 					if (this.params.page_number != 1) {
 						this.params.page_number = 1;
 					} else {
@@ -225,12 +226,19 @@ $(function () {
 			cancelModify: function (index) {
 				this.list[index].edit = "";
 				this.$forceUpdate()
-			}
+			},
+			initEvent:function () {
+				var $$vue = this;
+                $module.off("update").on("update", function () {
+                    $$vue.refreshList();
+                })
+            }
 		},
 		mounted: function () {
 			this.$nextTick(function () {
 				this.refreshList();
-				$module = $("#" + moduleId)
+				$module = $("#" + moduleId);
+				this.initEvent()
 			})
 		}
 	});
@@ -240,9 +248,7 @@ $(function () {
 			$$vue.getNextPage();
 		}
 	});
-	$module.on("update", function () {
-		$$vue.refreshList();
-	})
+
 
 
 	PAGE.destroy.push(function () {

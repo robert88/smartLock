@@ -30,7 +30,9 @@ $(function () {
 				}
 			},
 			"params.device_name": function (newValue, oldValue) {
+
 				if (newValue != oldValue) {
+					listMap = [];
 					if (this.params.page_number != 1) {
 						this.params.page_number = 1;
 					} else {
@@ -307,12 +309,14 @@ $(function () {
 				$$vue.list[index].new_device_name = $$vue.list[index].device_name;
 				$$vue.list[index].new_device_mode = $$vue.list[index].device_mode;
 				$$vue.list[index].new_group_name = $$vue.list[index].group_name;
+				$$vue.list[index].new_group_id = $$vue.list[index].group_id;
 
 				this.$forceUpdate()
 			},
 			cancelModify: function (index) {
 				this.list[index].edit = "";
 				this.list[index].new_group_name = ""
+				this.list[index].new_group_id = ""
 				this.$forceUpdate()
 			},
 			getPhone:function () {

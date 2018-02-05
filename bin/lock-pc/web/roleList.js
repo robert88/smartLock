@@ -207,27 +207,19 @@ $(function () {
 			cancelModify: function (index) {
 				this.list[index].edit = "";
 				this.$forceUpdate()
-			},
+			}
 
 		},
 		mounted: function () {
 			this.$nextTick(function () {
 				this.refreshList();
 				$module = $("#"+moduleId)
+				this.initEvent($module);
 			})
 		}
 	});
 
-	$module.parents(".tab-content-item").on("updateContent",function () {
-		$$vue.refreshList();
-	});
 
-	$module.on("update",function () {
-		$$vue.refreshList();
-	});
-	$module.on("click",".J-filter",function () {
-		$$vue.filter();
-	})
 	PAGE.destroy.push(function () {
 		if($$vue){
 			$$vue.$destroy();

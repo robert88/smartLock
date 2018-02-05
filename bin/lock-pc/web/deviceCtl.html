@@ -66,8 +66,8 @@
 										<!--<td>{{$item.role_id | role}}</td>-->
 										<td>{{$item.update_time}}</td>
 										<td>
-											<a class="label label-success label-sm mr10 J-modify"  v-on:click="openDevice($index, $event)" v-show="(!$item.openStatus||$item.openStatus.indexOf('关闭')==-1)">开锁</a>
-											<a class="label label-success label-sm mr10 J-modify"  v-on:click="closeDevice($index, $event)" v-show="($item.openStatus&&$item.openStatus.indexOf('关闭')!=-1)">关闭</a>
+											<a class="label label-success label-sm mr10 J-modify"  v-on:click="openDevice($index, $event)" v-show="(!$item.status||$item.status.indexOf('关闭')==-1)">开锁</a>
+											<a class="label label-success label-sm mr10 J-modify"  v-on:click="closeDevice($index, $event)" v-show="($item.status&&$item.status.indexOf('关闭')!=-1)">关闭</a>
 										</td>
 									</tr>
 

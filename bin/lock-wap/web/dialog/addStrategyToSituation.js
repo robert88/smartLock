@@ -112,16 +112,7 @@ $(function () {
 					}
 				});
 
-				$dialog[0].destroy  = function () {
-					if($$vue){
-						$relativeModule.trigger("update");
-						$("body").off("scrollDown." + moduleId);
-						$$vue.$destroy();
-						listMap = null;
-						$$vue = null;
-						$module=null;
-					}
-				}
+
 			}
 
 		},
@@ -136,6 +127,15 @@ $(function () {
 		}
 	});
 
-
+	$dialog[0].destroy  = function () {
+		if($$vue){
+			$relativeModule.trigger("update");
+			$("body").off("scrollDown." + moduleId);
+			$$vue.$destroy();
+			listMap = null;
+			$$vue = null;
+			$module=null;
+		}
+	}
 
 });

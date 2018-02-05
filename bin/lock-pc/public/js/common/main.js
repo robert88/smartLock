@@ -139,9 +139,13 @@ $(function () {
 		var $this = $(this);
 		var $table = $this.parents(".J-table");
 		if($this.prop("checked")){
-			$table.find("input[type='checkbox']").not($this).prop("checked",true);
+			$table.find("input[type='checkbox']").not($this).prop("checked",true).change().each(function(){
+			this.dispatchEvent&&this.dispatchEvent(new Event('change'));
+			});
 		}else{
-			$table.find("input[type='checkbox']").not($this).prop("checked",false);
+			$table.find("input[type='checkbox']").not($this).prop("checked",false).change().each(function(){
+				this.dispatchEvent&&this.dispatchEvent(new Event('change'));
+			});
 		}
 	})
 
