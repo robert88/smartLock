@@ -84,7 +84,7 @@ $(function () {
 						if (!ret) {
 							return;
 						}
-						listMap[$$vue.params.page_number] = ret.list;
+						listMap[$$vue.params.page_number] = ret.list||[];
 						$$vue.total_page = ret.total_page;
 						$$vue.list = $$vue.mergeArray(listMap);
 					},
@@ -156,18 +156,6 @@ $(function () {
 			},
 			cancelModify: function (index) {
 
-			},
-			initEvent:function () {
-				$module.parents(".tab-content-item").off("updateContent").on("updateContent",function () {
-					$$vue.refreshList();
-				});
-
-				$module.off("update").on("update",function () {
-					$$vue.refreshList();
-				});
-				$module.off("click",".J-filter").on("click",".J-filter",function () {
-					$$vue.filter();
-				})
 			}
 
 		},
@@ -175,7 +163,7 @@ $(function () {
 			this.$nextTick(function () {
 				this.refreshList();
 				$module = $("#"+moduleId)
-				this.initEvent();
+				this.initEvent($module);
 			})
 		}
 	});

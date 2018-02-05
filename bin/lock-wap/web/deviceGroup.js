@@ -226,19 +226,13 @@ $(function () {
 			cancelModify: function (index) {
 				this.list[index].edit = "";
 				this.$forceUpdate()
-			},
-			initEvent:function () {
-				var $$vue = this;
-                $module.off("update").on("update", function () {
-                    $$vue.refreshList();
-                })
-            }
+			}
 		},
 		mounted: function () {
 			this.$nextTick(function () {
 				this.refreshList();
 				$module = $("#" + moduleId);
-				this.initEvent()
+				this.initEvent($module);
 			})
 		}
 	});

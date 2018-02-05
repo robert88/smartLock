@@ -187,3 +187,6 @@ fieldset {
 	width: 16px;
 	z-index: 1;
 }
+.template-tr .form-group, .template-tr .J-select {
+	height: 34px;
+}

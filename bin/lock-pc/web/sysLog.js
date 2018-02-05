@@ -14,7 +14,12 @@ $(function () {
 		el: "#" + moduleVueId,
 		data: {
 			list: [],
-			params: {page_number: 1, page_size: 10, token: token}
+			params: {page_number: 1, page_size: 10, token: token},
+
+			person_list:[],
+			personLoading:false,
+			personTotalPage:0,
+			person_list_params:{page_number:1,page_size:10,user_name:"",token:token},
 		},
 		watch: {
 			//对象不应该用handler方式，应该值改变了但是引用没有改变
@@ -22,7 +27,84 @@ $(function () {
 				if (newValue != oldValue) {
 					this.refreshList();
 				}
-			}
+			},
+			"params.user_id": function (newValue, oldValue) {
+				if (newValue != oldValue) {
+					listMap = [];
+					if (this.params.page_number != 1) {
+						this.params.page_number = 1;
+					} else {
+						this.refreshList();
+					}
+				}
+			},
+			"params.start_time": function (newValue, oldValue) {
+				if (newValue != oldValue) {
+					listMap = [];
+					if (this.params.page_number != 1) {
+						this.params.page_number = 1;
+					} else {
+						this.refreshList();
+					}
+				}
+			},
+			"params.end_time": function (newValue, oldValue) {
+				if (newValue != oldValue) {
+					listMap = [];
+					if (this.params.page_number != 1) {
+						this.params.page_number = 1;
+					} else {
+						this.refreshList();
+					}
+				}
+			},
+			"person_list_params.page_number": function (newValue, oldValue) {
+				if (newValue != oldValue) {
+					if (this.person_list_params.page_number != 1) {
+						this.person_list_params.page_number = 1;
+					} else {
+						this.refreshList();
+					}
+				}
+			},
+			getPersonNextPage: function () {
+				if (!this.personTotalPage) {
+					return;
+				}
+				if (this.person_list_params.page_number < this.personTotalPage) {
+					this.person_list_params.page_number++;
+					this.refreshPersonList();
+				}
+			},
+			refreshPersonList:function () {
+				var $$vue = this;
+				var url = "/smart_lock/v1/user/find_list";
+				var type = "post";
+				if ($$vue.personLoading) {
+					return;
+				}
+				$$vue.personLoading = true;
+				PAGE.ajax({
+					async:false,
+					url: url,
+					data: this.person_list_params,
+					type: type,
+					success: function (ret) {
+						if (!ret) {
+							return;
+						}
+						$$vue.person_list = ret.list||[];
+						listMap["person"]  = listMap["person"] || [];
+						listMap["person"] [$$vue.person_list_params.page_number] = ret.list;
+						$$vue.personTotalPage = ret.total_page;
+						$$vue.list = $$vue.mergeArray(listMap["role"] );
+
+					},
+					complete: function () {
+						$$vue.personLoading = false;
+					}
+				});
+			},
 		},
 		methods: {
 			mergeArray: function (obj) {
@@ -204,8 +286,14 @@ $(function () {
 		mounted: function () {
 			this.$nextTick(function () {
 				this.refreshList();
-				$module = $("#"+moduleId)
+				this.refreshPersonList();
+				$module = $("#"+moduleId);
 				this.initEvent($module);
+				$module.find(".J-scroll.person").on("scrollDown",function () {
+					if(!$$vue.personLoading){
+						$$vue.getPersonNextPage();
+					}
+				});
 			})
 		}
 	});

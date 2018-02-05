@@ -20,11 +20,7 @@ $(function () {
 			//对象不应该用handler方式，应该值改变了但是引用没有改变
 			"params.page_number": function (newValue, oldValue) {
 				if (newValue != oldValue) {
-					if (this.params.page_number != 1) {
-						this.params.page_number = 1;
-					} else {
-						this.refreshList();
-					}
+					this.refreshList();
 				}
 			},
 			//"params.role_name": function (newValue, oldValue) {
@@ -207,19 +203,7 @@ $(function () {
 			cancelModify: function (index) {
 				this.list[index].edit = "";
 				this.$forceUpdate()
-			},
-			initEvent:function ($module) {
-                $module.parents(".tab-content-item").on("updateContent",function () {
-                    $$vue.refreshList();
-                });
-
-                $module.on("update",function () {
-                    $$vue.refreshList();
-                });
-                $module.on("click",".J-filter",function () {
-                    $$vue.filter();
-                })
-            }
+			}
 
 		},
 		mounted: function () {

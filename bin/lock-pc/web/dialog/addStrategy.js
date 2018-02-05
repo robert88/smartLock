@@ -203,22 +203,22 @@ $(function () {
 				this.initAllowTime();
 				$module = $("#" + moduleId);
 				this.initSubmit();
+
+				$module.find(".J-scroll.role").on("scrollDown",function () {
+					if(!$$vue.roleLoading){
+						$$vue.getRoleNextPage();
+					}
+				});
+				$module.find(".J-scroll.person").on("scrollDown",function () {
+					if(!$$vue.personLoading){
+						$$vue.getPersonNextPage();
+					}
+				});
 			})
 		}
 	});
 
-
-
-	$module.find(".J-scroll.role").on("scrollDown",function () {
-		if(!$$vue.roleLoading){
-			$$vue.getRoleNextPage();
-		}
-	});
-	$module.find(".J-scroll.person").on("scrollDown",function () {
-		if(!$$vue.personLoading){
-			$$vue.getPersonNextPage();
-		}
-	});
+	
 
 	PAGE.destroy.push(function () {
 		if ($$vue) {

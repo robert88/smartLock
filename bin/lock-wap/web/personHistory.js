@@ -72,7 +72,7 @@ $(function () {
 			},
 			refreshList: function () {
 				var $$vue = this;
-				var url = "/smart_lock/v1/user/find_list";
+				var url = "/smart_lock/v1/user/find_delete_list";
 				var type = "post";
 				if ($$vue.loading) {
 					return;
@@ -86,7 +86,7 @@ $(function () {
 						if (!ret) {
 							return;
 						}
-						listMap[$$vue.params.page_number] = ret.list;
+						listMap[$$vue.params.page_number] = ret.list||[];
 						$$vue.total_page = ret.total_page;
 						$$vue.list = $$vue.mergeArray(listMap);
 					},
@@ -112,31 +112,32 @@ $(function () {
 			// |  token | string | 是 | 用户登录的token |  |
 			// |  user_id | Interger | 是 |  用户id  | 整形 |
 
-			del: function (index) {
-
+			revert:function (index) {
 				var $$vue = this;
-				//新增的数据直接删除
-				if (!$$vue.list[index].id) {
-					$$vue.list.splice(index, 1);
-					return;
-				}
-				var url = "/smart_lock/v1/user/delete";
+				var url =  "/smart_lock/v1/user/recover_user";
 				var type = "post";
-				$.dialog("是否要删除该记录？", {
-					title: "删除记录",
-					width: 400,
+				$.dialog("是否要恢复用户？", {
+					title: "恢复用户",
+					width:400,
 					button: [{
 						text: "确认", click: function () {
+							if($$vue.list[index].id){
+								PAGE.ajax({
+									url: url,
+									type: type,
+									data: {user_id: $$vue.list[index].id, token: token},
+									success: function () {
+										$$vue.list.splice(index,1);
+										//本地删除最后一个，兼容分页情况
+										if($$vue.list.length==0){
+											$$vue.refreshList();
+										}
+									}
+								});
+							}else{
+								$$vue.list.splice(index,1);
+							}
 
-							PAGE.ajax({
-								url: url,
-								type: type,
-								data: {user_id: $$vue.list[index].id, token: token},
-								success: function () {
-									$.tips("操作成功！", "success");
-									$$vue.list.splice(index, 1);
-								}
-							});
 						}
 					}, {
 						text: "取消", click: function () {
@@ -158,42 +159,24 @@ $(function () {
 			},
 			cancelModify: function (index) {
 
-			},
-			initEvent:function () {
-				$module.parents(".tab-content-item").off("updateContent").on("updateContent",function () {
-					$$vue.refreshList();
-				});
-
-				$module.off("update").on("update",function () {
-					$$vue.refreshList();
-				});
-				$module.off("click",".J-filter").on("click",".J-filter",function () {
-					$$vue.filter();
-				})
 			}
-
 		},
 		mounted: function () {
 			this.$nextTick(function () {
 				this.refreshList();
 				$module = $("#"+moduleId)
-				this.initEvent();
+				this.initEvent($module);
 			})
 		}
 	});
 
-	$("body").on("scrollDown." + moduleId, function () {
-		if (!$$vue.loading) {
-			$$vue.getNextPage();
-		}
-	});
+
 	PAGE.destroy.push(function () {
-		if ($$vue) {
-			$("body").off("scrollDown." + moduleId);
+		if($$vue){
 			$$vue.$destroy();
 			listMap = null;
 			$$vue = null;
-			$module = null
+			$module=null
 		}
 	})
 });

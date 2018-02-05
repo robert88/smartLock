@@ -42,7 +42,11 @@
 							</tr>
 							<tr  class="template-tr" v-else v-cloak>
 								<td></td>
-								<td><input type="text" v-model="$item.new_role_name" class="fw12 form-control"></td>
+								<td>
+									<div class="form-group">
+										<input type="text" v-model="$item.new_role_name" class="fw12 form-control">
+									</div>
+								</td>
 								<td>&nbsp;</td>
 								<td>
 									<a class="label label-success label-sm mr10 " v-on:click="saveAdd($index, $event)" v-show="$item.edit=='add'">保存</a>
