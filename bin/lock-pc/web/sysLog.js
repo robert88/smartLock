@@ -19,7 +19,7 @@ $(function () {
 			person_list:[],
 			personLoading:false,
 			personTotalPage:0,
-			person_list_params:{page_number:1,page_size:10,user_name:"",token:token},
+			person_list_params:{page_number:1,page_size:10,user_id:"",start_time:"",end_time:"",token:token},
 		},
 		watch: {
 			//对象不应该用handler方式，应该值改变了但是引用没有改变
@@ -28,36 +28,36 @@ $(function () {
 					this.refreshList();
 				}
 			},
-			"params.user_id": function (newValue, oldValue) {
-				if (newValue != oldValue) {
-					listMap = [];
-					if (this.params.page_number != 1) {
-						this.params.page_number = 1;
-					} else {
-						this.refreshList();
-					}
-				}
-			},
-			"params.start_time": function (newValue, oldValue) {
-				if (newValue != oldValue) {
-					listMap = [];
-					if (this.params.page_number != 1) {
-						this.params.page_number = 1;
-					} else {
-						this.refreshList();
-					}
-				}
-			},
-			"params.end_time": function (newValue, oldValue) {
-				if (newValue != oldValue) {
-					listMap = [];
-					if (this.params.page_number != 1) {
-						this.params.page_number = 1;
-					} else {
-						this.refreshList();
-					}
-				}
-			},
+			// "params.user_id": function (newValue, oldValue) {
+			// 	if (newValue != oldValue) {
+			// 		listMap = [];
+			// 		if (this.params.page_number != 1) {
+			// 			this.params.page_number = 1;
+			// 		} else {
+			// 			this.refreshList();
+			// 		}
+			// 	}
+			// },
+			// "params.start_time": function (newValue, oldValue) {
+			// 	if (newValue != oldValue) {
+			// 		listMap = [];
+			// 		if (this.params.page_number != 1) {
+			// 			this.params.page_number = 1;
+			// 		} else {
+			// 			this.refreshList();
+			// 		}
+			// 	}
+			// },
+			// "params.end_time": function (newValue, oldValue) {
+			// 	if (newValue != oldValue) {
+			// 		listMap = [];
+			// 		if (this.params.page_number != 1) {
+			// 			this.params.page_number = 1;
+			// 		} else {
+			// 			this.refreshList();
+			// 		}
+			// 	}
+			// },
 			"person_list_params.page_number": function (newValue, oldValue) {
 				if (newValue != oldValue) {
 					if (this.person_list_params.page_number != 1) {
@@ -282,6 +282,10 @@ $(function () {
 					}
 				});
 			},
+			search:function () {
+                $(".layui-input").each(function(){this.dispatchEvent(new Event('input'))})
+				this.refreshList();
+            }
 
 		},
 		mounted: function () {
@@ -296,11 +300,7 @@ $(function () {
 					}
 				});
 				laydate.render({
-					elem: '#test1'
-					,type: 'datetime'
-				});
-				laydate.render({
-					elem: '#test2'
+					elem: '.layui-input'
 					,type: 'datetime'
 				});
 			})

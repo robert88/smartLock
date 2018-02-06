@@ -895,17 +895,31 @@
 	PAGE.getToken = function () {
 		var token =$.cookie("token");
 
-		if(false&&isWeiXin()){
-			//没有openid就直接跳转
-			if(!$.cookie("openid")){
-				window.location.href="https://smart-api.kitcloud.cn/smart_lock/v1/member/openid?uri="+encodeURIComponent(window.location.href);
-				return;
-			}else{
-				var params = $.getParam(window.location.href);
-				//当前的token是服务器设置
-				PAGE.setToken(params);
-				$.cookie("openid",params.openid);
+		if(isWeiXin()){
+			var params = $.getParam(window.location.href);
+			//没有登陆才需要请求openid
+			if(!token){
+				//没有openid就直接跳转
+				if(!$.cookie("openid")&&!params.openid&&$.cookie("askOpenId")){
+					//防止死循环
+					$.cookie("askOpenId",true);
+					window.location.href="https://smart-api.kitcloud.cn/smart_lock/v1/member/openid?uri="+encodeURIComponent(window.location.href);
+					return;
+				}else{
+
+					if(params.openid){
+						$.cookie("openid",params.openid);
+					}else{
+						$.dialog("url:/web/dialog/wechatLogin.html",{title:"微密码登陆"});
+						return;
+					}
+					if(params.token){
+						PAGE.setToken(params);
+						return params.token;
+					}
+				}
 			}
+
 
 		}
 		if(token){
@@ -926,7 +940,7 @@
 		$.cookie("access_list","");
 		// $$header.user_name = "";
 		if($.cookie("openid")){
-			$.dialog("url:(#/dialog/wechatLogin.html)")
+			$.dialog("url:/web/dialog/wechatLogin.html",{title:"微密码登陆"});
 		}else{
 			window.location.hash="#/web/login.html?nomenu=1";
 		}

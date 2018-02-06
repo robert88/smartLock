@@ -21,7 +21,7 @@
 				var value = map[1];
 				if(key){
 					if(obj[key]){
-						obj[key] = toArray(obj[key]).push(value)
+						obj[key] = $.toArray(obj[key]).push(value)
 					}else{
 						obj[key] = value
 					}
