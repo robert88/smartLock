@@ -9,7 +9,7 @@ $(function () {
 
 		$(".J-bind-wechat").click(function () {
 			// ### 用户绑定openid
-			// |  GET  |  smart_lock/v1/user/bind_weixin  |
+			// |  post  |  smart_lock/v1/user/bind_weixin  |
 			// | ------------- |:-------------:|
 			//
 			// **请求参数：**
@@ -18,17 +18,8 @@ $(function () {
 			// |  -------- | -------- | -------- | -------- | ---- |
 			// | token | string | 是 | 用户登录的token |
 			// |  uri | string | 是 | 授权成功后，跳转地址链接，需要进行urlencode |  |
-			PAGE.ajax({
-				url:"/smart_lock/v1/user/bind_weixin",
-				data:{
-					uri:encodeURIComponent(window.location.href),
-					token:token
-				},
-				type:"get",
-				success:function () {
-					$.tips("绑定成功！")
-				}
-			})
+			window.location.href="/smart_lock/v1/user/bind_weixin?uri="+encodeURIComponent(window.location.href)+"&token="+token
+
 		})
 	}
 
@@ -38,7 +29,7 @@ $(function () {
 			uri:encodeURIComponent(window.location.href),
 			token:token
 		},
-		type:"get",
+		type:"post",
 		success:function (ret) {
 			if(ret.status==1){
 				$(".J-bind-wechat").html("已绑定微密码登录").addClass("disable").show()

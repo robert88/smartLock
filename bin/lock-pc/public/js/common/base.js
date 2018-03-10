@@ -13,7 +13,9 @@
 			var obj = {};
 			hash = hash||"";
 			//？param還有param
-			var params = hash.split("?")[1]||hash.split("?")[0];
+			var params = hash.split("?")[1]||"";
+			params= params.split("#")[0]||"";
+
 			params = params?params.split("&"):"";
 			for(var i=0;i<params.length;i++){
 				var map = params[i].split("=");
@@ -21,7 +23,8 @@
 				var value = map[1];
 				if(key){
 					if(obj[key]){
-						obj[key] = toArray(obj[key]).push(value)
+						obj[key] = $.toArray(obj[key]);
+						obj[key].push(value);
 					}else{
 						obj[key] = value
 					}

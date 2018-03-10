@@ -159,7 +159,7 @@
 				errorHander(ret, "dataError", error, errorCallBack,ajaxOption.msg);
 				//session失效了
 				if(ret.code==140026){
-					PAGE.clearToken();
+					PAGE.clearToken(true);
 				}
 			}
 

@@ -908,15 +908,16 @@
 				}else{
 
 					if(params.openid){
+						if($.type(params.openid)=="array"){
+							params.openid = params.openid[0];
+						}
 						$.cookie("openid",params.openid);
-					}else{
-						$.dialog("url:/web/dialog/wechatLogin.html",{title:"微密码登陆"});
-						return;
+						// return;
 					}
-					if(params.token){
-						PAGE.setToken(params);
-						return params.token;
-					}
+					// if(params.token){
+					// 	PAGE.setToken(params);
+					// 	return params.token;
+					// }
 				}
 			}
 
@@ -932,14 +933,14 @@
 	/**
 	 *启动页面
 	 * */
-	PAGE.clearToken = function () {
+	PAGE.clearToken = function (checkOpenId) {
 		$.cookie("token","");
 		$.cookie("role_id","");
-		$.cookie("user_email","");
+		$.cookie("user_email","")
 		$.cookie("user_name","");
 		$.cookie("access_list","");
 		// $$header.user_name = "";
-		if($.cookie("openid")){
+		if($.cookie("openid")&&checkOpenId){
 			$.dialog("url:/web/dialog/wechatLogin.html",{title:"微密码登陆"});
 		}else{
 			window.location.hash="#/web/login.html?nomenu=1";
