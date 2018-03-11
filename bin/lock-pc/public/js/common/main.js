@@ -47,6 +47,8 @@ $(function () {
 
 		if( !$.trim($curBodyItem.html()) && $this.attr("href") && !$curBodyItem.hasClass("loading")){
 			$curBodyItem.addClass("loading");
+			$.cookie("tabActive",curIndex);
+			$.cookie("tabHash",window.location.hash);
 			PAGE.insertByUrl($curBodyItem,$this.attr("href"),function () {
 				$curBodyItem.removeClass("loading");
 			})

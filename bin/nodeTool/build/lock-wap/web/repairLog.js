@@ -15,6 +15,7 @@ $(function () {
 		data: {
 			list: [],
 			params: {page_number: 1, page_size: 10, device_name: "", device_code: "", user_name:"",status:"",token: token}
+			loading:false
 		},
 		watch: {
 
@@ -63,18 +64,6 @@ $(function () {
 				$module.find(".search-filter-wrap").toggleClass("open");
 			},
 			refreshList: function () {
-				// ### 4.5 查询设备列表
-				// |  POST  |  smart_lock/v1/device/find_list  |
-				// | ------------- |:-------------:|
-				//
-				// **请求参数：**
-				//
-				// |  参数名称 | 参数类型 | 是否必填 | 参数描述 | 备注 |
-				// |  -------- |: -------- | -------- | -------- | ---- |
-				// | page_size | Interger | 是 | 每页数量 | |
-				// |page_number | Interger |是 | 页数 ||
-				// | device_name | String | 否 | 设备名称| |
-				// | device_code | String | 否 | 设备编码 | |
 				var $$vue = this;
 				var url = "/smart_lock/v1/admin/get_report";
 				var type = "get";

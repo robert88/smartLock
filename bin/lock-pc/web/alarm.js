@@ -5,7 +5,7 @@ $(function () {
 		return;
 	}
 	var curAccordEmail = $.cookie("user_email");
-	var moduleId = "repairLog";
+	var moduleId = "alarmModule";
 	var moduleVueId = moduleId;
 	var $module = $("#" + moduleId);
 	var listMap = [];
@@ -14,17 +14,27 @@ $(function () {
 		el: "#" + moduleVueId,
 		data: {
 			list: [],
-			params: {page_number: 1, page_size: 10, device_name: "", device_code: "", user_name:"",status:"",token: token}
-			loading:false
+			params: {page_number: 1, page_size: 10, device_name: "", device_code: "", token: token},
 		},
 		watch: {
-
 			//对象不应该用handler方式，应该值改变了但是引用没有改变
 			"params.page_number": function (newValue, oldValue) {
-				this.refreshList();
+				if (newValue != oldValue) {
+					this.refreshList();
+
+				}
 			},
 			"params.device_name": function (newValue, oldValue) {
-
+				if (newValue != oldValue) {
+					listMap = [];
+					if (this.params.page_number != 1) {
+						this.params.page_number = 1;
+					} else {
+						this.refreshList();
+					}
+				}
+			},
+			"params.device_code": function (newValue, oldValue) {
 				if (newValue != oldValue) {
 					listMap = [];
 					if (this.params.page_number != 1) {
@@ -63,25 +73,34 @@ $(function () {
 			filter: function () {
 				$module.find(".search-filter-wrap").toggleClass("open");
 			},
+			isSelf:function (email) {
+				if(email&&(email==curAccordEmail)){
+					return false;
+				}
+				return true;
+			},
 			refreshList: function () {
 				var $$vue = this;
-				var url = "/smart_lock/v1/admin/get_report";
-				var type = "get";
+				var url = "/smart_lock/v1/device/find_list";
+				var type = "post";
 				if ($$vue.loading) {
 					return;
 				}
 				$$vue.loading = true;
 				PAGE.ajax({
 					url: url,
-					data: $$vue.params,
+					data: this.params,
 					type: type,
 					success: function (ret) {
 						if (!ret) {
 							return;
 						}
-						listMap[$$vue.params.page_number] = ret.list;
-						$$vue.total_page = ret.total_page;
-						$$vue.list = $$vue.mergeArray(listMap);
+						$$vue.list = ret.list||[];
+
+						PAGE.setpageFooter($module.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
+							$$vue.params.page_number = page_number*1
+						});
+
 					},
 					complete: function () {
 						$$vue.loading = false;
@@ -102,43 +121,56 @@ $(function () {
 			},
 			cancelModify: function (index) {
 			},
-			handleStatus:function (status) {
-				if(status=="10"){
-					return '<a class="bd bd-warning p10 t-warning bd-radius-5">报修中</a>'
+			handleDeviceStatus:function (device_status) {
+				if(device_status=="10"){
+					return '<a class="fs14  t-success ">开启</a>'
 				}else{
-					return '<a class="bd bd-success p10 t-success bd-radius-5">已处理</a>'
+					return '<a class="fs14  t-muted ">关闭</a>'
 				}
+			},
+			authSelected:function () {
+				var $$vue = this;
+				var unSelect = [];
+				var select = [];
+				var ids = [];
+
+				for(var i=0;i<$$vue.list.length;i++){
+					if($$vue.list[i].selected){
+						select.push($$vue.list[i]);
+						ids.push($$vue.list[i].id)
+					}else{
+						unSelect.push($$vue.list[i]);
+					}
+				}
+				if(select.length==0){
+					$.tips("至少选择一台设备！","warn");
+					return ;
+				}
+				var url = "/smart_lock/v1/device_control/emergency_mode";
+				var type = "post";
+				PAGE.ajax({
+					url: url, data: {device_ids:ids.join(","),token:token}, type: type, success: function (ret) {
+						$.tips("操作成功！","success");
+					}
+				});
 			}
 		},
 		mounted: function () {
 			this.$nextTick(function () {
 				this.refreshList();
-				$module = $("#" + moduleId);
+				$module = $("#"+moduleId)
 				this.initEvent($module);
 			})
 		}
 	});
 
-	$("body").on("scrollDown." + moduleId, function () {
-		if (!$$vue.loading) {
-			$$vue.getNextPage();
-		}
-	});
-
-	$module.find(".J-scroll").on("scrollDown",function () {
-		if(!$$vue.loading2){
-			$$vue.getNextPage2();
-		}
-	});
 
 	PAGE.destroy.push(function () {
-		if ($$vue) {
-			$("body").off("scrollDown." + moduleId);
+		if($$vue){
 			$$vue.$destroy();
 			listMap = null;
 			$$vue = null;
-			$module = null
+			$module=null
 		}
 	})
-})
-;
+});

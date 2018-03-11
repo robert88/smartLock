@@ -32,4 +32,10 @@ wake.copyDir("../lock-wap/", "./build/lock-wap/",function(){
 		wake.copyDir("D:/git/smartLock/bin/nodeTool/build/lock-wap", "D:/git/lock/lock-wap",function(){
 			console.log("copy complete".green,"D:/git/smartLock/bin/nodeTool/build/lock-wap","to","D:/git/lock/lock-wap")
 		})
+		wake.copyDir("D:/git/smartLock/bin/lock-pc", "D:/git/lock/lock-pc",function(){
+			console.log("copy complete".green,"D:/git/smartLock/bin/nodeTool/build/lock-pc","to","D:/git/lock/lock-pc")
+		})
 });
+
+		
+

@@ -462,6 +462,11 @@
 					}else if(typeof pageDsync=="function"){
 						pageDsync();
 					}
+					if(PAGE.hashChangeFlag && ($.cookie("tabActive")||$.cookie("tabActive")===0)){
+						PAGE.hashChangeFlag = false;
+						$body.find(".header-tabs").find(".nav-tabs>li").eq($.cookie("tabActive")).click();
+					}
+					PAGE.hashChangeFlag = false;
 					$(".hasPermission").each(function () {
 						var $this = $(this);
 						if(!$this.data("initPermission")){
@@ -508,8 +513,18 @@
 	/**
 	 *hashchange事件切换页面
 	 * */
+	PAGE.hashChangeFlag =false;
 	PAGE.hashChange = function (hash) {
-		var params = $.getParam(window.location.href)
+
+		//区分是加载tab还是页面hash变化
+
+		PAGE.hashChangeFlag =true;
+		//tab刷新
+		if($.cookie("tabHash")&&$.cookie("tabHash")!=window.location.hash){
+			$.cookie("tabHash","");
+			$.cookie("tabActive","");
+		}
+		var params = $.getParam(window.location.href);
 
 		var config = PAGE.getHashConfig(hash);
 
@@ -681,6 +696,7 @@
 			$$vue.refreshList();
 		});
 
+
 	}
 
 	var $$header = new Vue({
@@ -750,16 +766,16 @@
 					text:"门况信息",
 					icon:"fa-beer"
 				},
-				// {
-				// access_id:"14000",
-				// 	hasSub:"",
-				// 	active:"",
-				// 	sub:[],
-				// 	href:"",
-				// 	tips:0,
-				// 	text:"紧急预警",
-				// 	icon:"fa-bell"
-				// },
+				{
+				access_id:"14000",
+					hasSub:"",
+					active:"",
+					sub:[],
+					href:"#/web/alarm.html",
+					tips:0,
+					text:"紧急预警",
+					icon:"fa-bell"
+				},
 				{
 					access_id:"18000",
 					hasSub:"",
