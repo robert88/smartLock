@@ -68,7 +68,11 @@ $(function () {
 
 					for(var i=0;i<=48;i++){
 						if((i/2)>newValue){
-							this.allow_end_time_list.push({name:(curTime+i/2*60*60*1000).toString().toDate().format("hh:mm"),id:i/2});
+							if(i==48){
+								this.allow_end_time_list.push({name:"24:00",id:i/2});
+							}else{
+								this.allow_end_time_list.push({name:(curTime+i/2*60*60*1000).toString().toDate().format("hh:mm"),id:i/2});
+							}
 						}
 
 					}
@@ -120,8 +124,13 @@ $(function () {
 			initAllowTime:function () {
 				var curTime = new Date("2018/02/04").getTime();
 				for(var i=0;i<=48;i++){
-					this.allow_start_time_list[i] = {name:(curTime+i/2*60*60*1000).toString().toDate().format("hh:mm"),id:i/2}
-					this.allow_end_time_list[i] = {name:(curTime+i/2*60*60*1000).toString().toDate().format("hh:mm"),id:i/2}
+					if(i==48){
+						this.allow_start_time_list[i] = {name:"24:00",id:i/2}
+						this.allow_end_time_list[i] = {name:"24:00",id:i/2}
+					}else{
+						this.allow_start_time_list[i] = {name:(curTime+i/2*60*60*1000-turnTime).toString().toDate().format("hh:mm"),id:i/2}
+						this.allow_end_time_list[i] = {name:(curTime+i/2*60*60*1000-turnTime).toString().toDate().format("hh:mm"),id:i/2}
+					}
 				}
 			},
 			refreshRoleList:function () {
@@ -199,7 +208,7 @@ $(function () {
 				$module.validForm({
 					success:function ($btn) {
 
-						if($$vue.end_time<=$$vue.start_time){
+						if(($$vue.end_time*1)<=($$vue.start_time*1)){
 							$.tips("允许操作结束时间必须大于开始时间！","error");
 							return
 						}

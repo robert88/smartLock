@@ -848,16 +848,6 @@
 					icon:"fa-bell"
 				},
 				{
-					access_id:"18000",
-					hasSub:"",
-					active:"",
-					sub:[],
-					href:"#/web/situation.html",
-					tips:0,
-					text:"情景模式",
-					icon:"fa-crop"
-				},
-				{
 					access_id:"17000",
 					hasSub:"",
 					active:"",
@@ -896,6 +886,16 @@
 					tips:0,
 					text:"绑定微信",
 					icon:"fa-bell"
+				},
+				{
+					access_id:"18000",
+					hasSub:"",
+					active:"",
+					sub:[],
+					href:"#/web/situation.html",
+					tips:0,
+					text:"情景模式",
+					icon:"fa-crop"
 				},
 				{
 					hasSub:"",

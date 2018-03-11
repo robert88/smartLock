@@ -14,7 +14,7 @@
 		<tr v-for="($item, $index) in list"  v-if="!$item.edit" v-cloak>
 			<td><label class="label-checkbox"><input type="checkbox" v-model="$item.selected"><i class="fa-check"></i><i class="fa-square-o"></i></label></td>
 			<td>{{$item.id}}</td>
-			<td>{{$item.name}}</td>
+			<td>{{$item.group_name}}</td>
 			<td>
 				<a class="label label-success label-sm mr10"   v-on:click="auth($index)"><i class="fa-turkish-lira-try mr5" title="添加"></i>添加</a>
 			</td>

@@ -14,7 +14,7 @@ $(function () {
 		el: "#" + moduleVueId,
 		data: {
 			list: [],
-			params: {page_number: 1, page_size: 10, device_name: "", device_code: "", user_name:"",status:"",token: token}
+			params: {page_number: 1, page_size: 10, device_name: "", device_code: "", user_name:"",status:"",token: token},
 			loading:false
 		},
 		watch: {

@@ -25,6 +25,13 @@ function pxToRem(files){
 			console.log("px to rem:".red,file)
 		}
 }
+	//改版本号
+	var ver = Math.floor(new Date().getTime()/1000)
+
+	var indexpcFile = "D:/git/smartLock/bin/lock-pc/index.html"
+	var indexwapFile = "D:/git/smartLock/bin/lock-wap/index.html"
+	wake.writeData(indexpcFile,wake.readData(indexpcFile).replace(/ver=(\d+)/gm,"ver="+ver))
+	wake.writeData(indexwapFile,wake.readData(indexwapFile).replace(/ver=(\d+)/gm,"ver="+ver))
 
 wake.copyDir("../lock-wap/", "./build/lock-wap/",function(){
 		var files =wake.findFile(__dirname+"/build/lock-wap/","css",true);

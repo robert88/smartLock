@@ -807,6 +807,10 @@ a.a-wrap{
 	max-width: 25%;
 	height: 2rem;
 }
+.J-scroll{
+	margin-right: -0.15rem;
+	padding-right: 0.17rem;
+}
 
 @-webkit-keyframes line-scale-pulse-out {
 	0% {

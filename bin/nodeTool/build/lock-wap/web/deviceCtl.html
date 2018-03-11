@@ -16,12 +16,15 @@
 					<span class="label-name"><i class="fa-tablet"></i> 设备编号</span>
 					<span>{{$item.device_code}}</span>
 				</div>
-				<div><span class="label-name"><i class="fa-credit-card"></i> 设备状态</span>
+				<div><span class="label-name"><i class="fa-credit-card"></i> 联网状态</span>
 					<span>{{$item.status}}</span>
 				</div>
+				<div><span class="label-name"><i class="fa-credit-card"></i> 设备状态</span>
+					<span v-html="handleDeviceStatus($item.device_status)"></span>
+				</div>
 				<div class="bd-top bd-dashed mt10 pt10">
-											<a class="label label-success label-sm mr10 J-modify"  v-on:click="openDevice($index, $event)" v-show="(!$item.status||$item.status.indexOf('关闭')==-1)">开锁</a>
-											<a class="label label-success label-sm mr10 J-modify"  v-on:click="closeDevice($index, $event)" v-show="($item.status&&$item.status.indexOf('关闭')!=-1)">关闭</a>
+											<a class="label label-success label-sm mr10 J-modify"  v-on:click="openDevice($index, $event)" v-show="(!$item.device_status||$item.device_status==11)">开锁</a>
+											<a class="label label-success label-sm mr10 J-modify"  v-on:click="closeDevice($index, $event)" v-show="($item.device_status&&$item.device_status==10)">关闭</a>
 				</div>
 			</li>
 		</ul>

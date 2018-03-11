@@ -25,10 +25,10 @@
 			<td>{{$item.role_name}}</td>
 			<td>{{$item.user_name}}</td>
 			<td>
-				{{$item.allow_openmode}}
+				{{allow_openmodeText($item.allow_openmode)}}
 			</td>
 			<td>
-				{{$item.allow_operation}}
+				{{allow_operationText($item.allow_operation)}}
 			</td>
 			<td>
 				{{formatAllowTime($item.allow_time)}}

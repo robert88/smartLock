@@ -46,9 +46,11 @@
 									<tr>
 										<th><label class="label-checkbox "><input type="checkbox" class="J-all-checkBox"><i class="fa-check"></i><i class="fa-square-o"></i></label></th>
 										<th><i class="fa-user"></i> 设备名称</th>
-										<th><i class="fa-tablet "></i> 设备编号</th>
 										<th><i class="fa-envelope-o"></i> 设备型号</th>
 										<th><i class="fa-credit-card"></i> 所属设备组</th>
+										<th><i class="fa-tablet "></i> 设备编号</th>
+										<th><i class="fa-envelope-o"></i> 信号</th>
+										<th><i class="fa-envelope-o"></i> 电量</th>
 										<th width="240"><i class="fa-wrench"></i> 操作</th>
 									</tr>
 									</thead>
@@ -56,9 +58,11 @@
 									<tr v-for="($item, $index) in list"  v-if="!$item.edit" v-cloak v-show="hasPermission(13005)">
 										<td><label class="label-checkbox"><input type="checkbox"><i class="fa-check"></i><i class="fa-square-o"></i></label></td>
 										<td><a class="J-dialog" data-dialog-url="#/web/deviceDetail.html" :data-id="$item.id">{{$item.device_name}}</a></td>
-										<td>{{$item.device_code}}</td>
 										<td>{{$item.device_model}}</td>
 										<td>{{$item.group_name}}</td>
+										<td>{{$item.device_code}}</td>
+										<td>{{$item.device_signal}}</td>
+										<td>{{$item.energy}}</td>
 										<td>
 										<a class="label label-success label-sm mr10"  v-on:click="modify($index, $event)"  v-show="hasPermission(13003)">修改设备信息</a>
 										<a class="label label-success label-sm mr10 J-dialog" data-url="/web/dialog/setDeviceAlarmTel.html"  :data-device_id="$item.id" :data-title="('设置'+$item.device_name+'设备告警电话')">设置告警电话</a>
@@ -72,7 +76,6 @@
 												<input type="text" class="form-control" v-model="$item.new_device_name">
 											</div>
 										</td>
-										<td></td>
 										<td>
 											<div class="form-group">
 												<input type="text" class="form-control" v-model="$item.new_device_model">
@@ -93,6 +96,9 @@
 												</div>
 											</div>
 										</td>
+										<td></td>
+										<td></td>
+										<td></td>
 										<td>
 											<a class="label label-success label-sm mr10 J-save" v-on:click="saveAdd($index, $event)" v-show="$item.edit=='add'">保存</a>
 											<a class="label label-warning label-sm mr10 J-save" v-on:click="cancelAdd($index, $event)" v-show="$item.edit=='add'">取消</a>

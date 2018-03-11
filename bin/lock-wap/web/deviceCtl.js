@@ -189,6 +189,13 @@ $(function () {
 						$$vue.loading = false;
 					}
 				});
+			},
+			handleDeviceStatus:function (device_status) {
+				if(device_status=="10"){
+					return '<a class="fs14 bd bd-success plr10 ptb5 t-success bd-radius-5">开启</a>'
+				}else{
+					return '<a class="fs14 bd plr10 ptb5 t-muted bd-radius-5">关闭</a>'
+				}
 			}
 
 		},

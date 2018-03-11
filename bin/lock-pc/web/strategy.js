@@ -41,6 +41,9 @@ $(function () {
 		},
 		methods: {
 			formatDate:function (url) {
+				if(url==24*60*60*1000){
+					return "24:00"
+				}
 				return (url+this.curTime).toString().toDate().format("hh:mm");
 			},
 			formatAllowTime:function (val) {
@@ -204,6 +207,32 @@ $(function () {
 			cancelModify:function (index) {
 				this.list[index].edit = "";
 				this.$forceUpdate()
+			},
+			allow_openmodeText:function (value) {
+				value = value.split(",");
+				var item;
+				var map = {"11":"远程控制","12":"密码"}
+				var ret=[]
+				for(var i=0;i<value.length;i++){
+					item = $.trim(value[i]);
+					if(item){
+						ret.push(map[item]);
+					}
+				}
+				return ret.join(",")
+			},
+			allow_operationText:function (value) {
+				value = value.split(",");
+				var item;
+				var map = {"11":"开门","12":"关门"}
+				var ret=[]
+				for(var i=0;i<value.length;i++){
+					item = $.trim(value[i]);
+					if(item){
+						ret.push(map[item]);
+					}
+				}
+				return ret.join(",")
 			}
 		},
 		mounted: function () {
