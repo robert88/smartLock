@@ -1,0 +1,12 @@
+
+.form-group>i{
+	top: 0px;
+}
+.form-group .captcha-code-img{
+	top:0
+}
+.logo img{
+	width:60%;
+	max-width:3.04rem;
+}
+.pt100{padding-top:1rem;}

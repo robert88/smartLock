@@ -1,0 +1,26 @@
+<!--用户授权给设备，用户入口-->
+<div id="authUserModule">
+
+	<div class="J-table" id="authUserModuleVue">
+		<div class="ptb10 bd-bottom" v-for="($item, $index) in list">
+			<ul class="col">
+				<li class="col6 fs16">设备名称</li>
+				<li class="col6">{{$item.name}}</li>
+			</ul>
+			<ul class="col">
+				<li class="col6 fs16">设备编号</li>
+				<li class="col6">{{$item.device_code}}</li>
+			</ul>
+			<ul class="col">
+				<li class="col6 fs16">设备型号</li>
+				<li class="col6">{{$item.device_model}}</li>
+			</ul>
+			<ul class="col">
+				<li class="col6 fs16">所属设备组</li>
+				<li class="col6">{{$item.group_id}}</li>
+			</ul>
+			<p><a class="label label-success label-sm ml10" v-on:click="cancelAuth($index)">取消授权</a></p>
+		</div>
+	</div>
+
+</div>

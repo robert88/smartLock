@@ -1,0 +1,22 @@
+<div class="wrap headerModule" data-title="操作日志" data-noPrev="true" data-sliderNav="true">
+
+	<div id="sysLog">
+
+		<ul>
+			<li class="bd  bg-white p20 lh30 bd-radius-5 mt10" v-for="($item, $index) in list" v-if="!$item.edit" v-cloak >
+				<div class="col">
+					<div class="col4"><span class="label-name fs16"><i class="fa-user"></i> 操作人</span></div>
+					<div class="col8"><span class="t-info">{{$item.user_name}}</span></div>
+				</div>
+				<div class="col">
+					<div class="col4"><span class="label-name fs16"><i class="fa-user"></i> 操作内容</span></div>
+					<div class="col8"><span class="t-info">{{$item.operation}}</span></div>
+				</div>
+				<div class="col">
+					<div class="col4"><span class="label-name fs16"><i class="fa-user"></i> 操作时间</span></div>
+					<div class="col8"><span class="t-info">{{$item.create_time}}</span></div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>

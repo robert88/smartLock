@@ -1,0 +1,5 @@
+@import "/public/js/ztree/bootstrapStyle.css";
+.permissionsDialog{
+	min-width:3rem;
+	min-height:1rem;
+}

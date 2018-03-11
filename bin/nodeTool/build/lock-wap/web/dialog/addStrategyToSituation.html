@@ -1,0 +1,16 @@
+<!--设备授权给用户，设备入口-->
+<div id="addStrategyToSituation">
+	<ul class="col ptb10 bd-dashed bd-bottom" v-for="($item, $index) in list"  v-cloak>
+		<li class="col8 plr10">
+			<div class="form-group J-validItem validItem">
+				<label>策略:</label>
+				{{$item.name}}
+			</div>
+		</li>
+		<li class="col4 plr10 tr">
+			<div class="form-group J-validItem validItem">
+				<a class="label label-success label-sm ml10 tc" v-on:click="addStrategy($index)">添加</a>
+			</div>
+		</li>
+	</ul>
+</div>

@@ -6,22 +6,27 @@ process.argv[2]="-debug"
 require("./rap.util.prototype.js")
 var wake = require("./rap.filesystem.js")
 var mergeParseJs = require("../../toolLib/mergeParseJs.js")
-
-function handleREM(files){
+var rootPath = __dirname;
+ 	
+function pxToRem(files){
 		for(var i=0;i<files.length;i++){
-			var file = files[i]
+			var file = files[i];
 			var fileData = wake.readData(file);
-			var lastData = fileData.replace(/\d+(\.\d+)?rem/g,function(m){ var a= parseFloat(m)||0;return (a*16+"px")})
-			wake.writeData(file,lastData)
+			var lastData = fileData.replace(/\d+(\.\d+)?px/gm,
+				function(m){
+					var a= parseFloat(m)||0;
+					if(a>2){
+						return (a/100+"rem")
+					}else{
+						return m
+					}
+				}).replace(/@media\s+\(min-width:\s+(\d+(\.\d+)?rem)\)/gm,function(m,m1){return m.replace(m1,parseFloat(m1)*100 + "px")});
+			wake.writeData(file,lastData);
+			console.log("px to rem:".red,file)
 		}
 }
-/*所有文件路径*/
-var allHtmlPath = "../julive/web"
-var publicFile = "../julive/public"
 
-wake.copyDir("../lock-wap/julive/", workdir)
-
-	handleREM(wake.findFile(publicFile,"html",true))
-	handleREM(wake.findFile(allHtmlPath,"html",true))
-	handleREM(wake.findFile(publicFile,"css",true))
-	handleREM(wake.findFile(allHtmlPath,"css",true))
+wake.copyDir("../lock-wap/", "./build/lock-wap/",function(){
+		var files =wake.findFile(__dirname+"/build/lock-wap/","css",true);
+		pxToRem(files)
+});

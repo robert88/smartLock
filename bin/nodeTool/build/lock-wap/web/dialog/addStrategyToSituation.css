@@ -1,0 +1,9 @@
+@media (min-width:10.24rem) {
+	#addStrategyToSituation{
+		width: 9.6rem;
+	}
+}
+#addStrategyToSituation .J-scroll{
+	max-height: 1.76rem;
+	overflow: auto;
+}

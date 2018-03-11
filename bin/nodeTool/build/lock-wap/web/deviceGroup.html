@@ -1,0 +1,47 @@
+
+<div class="wrap headerModule" data-title="设备组列表" data-nextText="设备列表" data-nextLink="#/web/device.html" >
+	<!--s:systemPerson-->
+	<div id="deviceGroupModule">
+
+		<div class="col mt10">
+			<div class="col6 pr10"><a class="search-wrap"><input type="text" class="form-control fw12"  placeholder="请输入设备组名称查询" v-model.lazy="params.group_name"  v-show="hasPermission(14004)"> <i class="fa-search" v-on:click="refreshList"></i></a></div>
+			<div class="col6 pl10"><a class=" btn btn-success fw12" v-on:click="add" v-show="hasPermission(14001)"><i class="fa-turkish-lira-try mr5"></i>添加设备组</a></div>
+	</div>
+
+		<ul class="col">
+			<li class="bd  bg-white p20 lh30 bd-radius-5 mt10" v-for="($item, $index) in list" v-if="!$item.edit" v-show="hasPermission(14004)" v-cloak>
+				<div>
+					<span class="label-name"><i class="fa-tablet"></i> 设备组名称</span>
+					<span>{{$item.group_name}}</span>
+				</div>
+				<div>
+					<span class="label-name"><i class="fa-envelope-o"></i> 情景</span>
+					<span>{{$item.situation_name}}</span>
+				</div>
+				<div><span class="label-name"><i class="fa-credit-card"></i> 组内设备</span>
+					<a class="label label-info label-sm mr10 J-dialog" data-url="/web/dialog/deviceGroupList.html"  :data-group_id="$item.id" :data-title="(''+$item.group_name+'设备组-设备列表')"  v-show="hasPermission(14005)">查看设备</a>
+				</div>
+				<div class="bd-top bd-dashed mt10 pt10">
+					<a class="label label-success label-sm ml10" v-on:click="modify($index, $event)"  v-show="hasPermission(14003)">修改设备组名称</a>
+					<a class="label label-success label-sm ml10 J-dialog" data-url="/web/dialog/addDeviceToGroup.html"  :data-group_id="$item.id" :data-title="(''+$item.group_name+'设备组-设备列表')"  v-show="hasPermission(14006)">添加设备</a>
+					<!--<a class="label label-success label-sm ml10" v-on:click="modify($index, $event)">切换情景</a>-->
+					<a class="label label-danger label-sm J-delete" v-on:click="del($index, $event)" v-show="hasPermission(14002)"><i class="fa-trash-o" title="删除"></i></a>
+				</div>
+			</li>
+			<li class="bd  bg-white p20 lh30 bd-radius-5 mt10"  v-else v-cloak>
+				<div class="form-group">
+					<label><i class="t-danger fa-asterisk mr5 fs10"></i>设备组名称</label>
+					<i class="fa-user"></i><input type="text" v-model="$item.new_group_name" placeholder="请输入设备组名称" class="fw12 form-control">
+				</div>
+				<div class="tr">
+					<a class="label label-success label-sm mr10 " v-on:click="saveAdd($index, $event)" v-show="$item.edit=='add'">保存</a>
+					<a class="label label-warning label-sm mr10 " v-on:click="cancelAdd($index, $event)" v-show="$item.edit=='add'">取消</a>
+					<a class="label label-success label-sm mr10 " v-on:click="saveModify($index, $event)" v-show="$item.edit=='modify'">保存</a>
+					<a class="label label-warning label-sm  " v-on:click="cancelModify($index, $event)" v-show="$item.edit=='modify'">取消</a>
+				</div>
+			</li>
+		</ul>
+
+	</div>
+	<!--e:systemPerson-->
+</div>

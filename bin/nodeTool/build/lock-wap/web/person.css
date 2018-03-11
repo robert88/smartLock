@@ -1,0 +1,39 @@
+.search-wrap{
+	position:relative;
+}
+.search-wrap input{
+    padding: 2px 0.3rem 2px 0.1rem;
+	width: 100%;
+}
+.search-wrap .fa-search{
+	position:absolute;
+	right: 0.08rem;
+	top: 0.09rem;
+	font-size: 0.18rem;
+}
+.search-filter{
+	background: #f2f2f2;
+	border-radius: 0.05rem;
+}
+.search-filter-wrap{
+	height:0;
+	overflow: hidden;
+}
+.search-filter-wrap.open{
+	height: auto;
+	overflow: visible;
+}
+.hover-link{
+	text-decoration: underline;
+}
+.label-name{
+	display: inline-block;
+	width: 1.5rem;
+	font-size: 0.16rem;
+	color:#999;
+}
+.fixed-bottom{
+	position:fixed;
+	bottom:0;
+	width:100%;
+}

@@ -1,0 +1,18 @@
+<!--用户授权给设备，用户入口-->
+<div id="removeGroupFromSituation">
+	<div class="J-table" id="addDeviceToGroupVue">
+		<div class="bd-bottom ptb10" v-for="($item, $index) in list" v-cloak>
+			<ul class="col">
+				<li class="col6 fs16">设备组id</li>
+				<li class="col6">{{$item.id}}</li>
+			</ul>
+			<ul class="col">
+				<li class="col6 fs16">设备组名称</li>
+				<li class="col6">{{$item.group_name}}</li>
+			</ul>
+			<p>
+				<a class="label label-success label-sm" v-on:click="remove($index)">移出情景</a>
+			</p>
+		</div>
+	</div>
+</div>

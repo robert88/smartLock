@@ -759,7 +759,7 @@
 					sub:[],
 					href:"#/web/wechatBindLogin.html",
 					tips:0,
-					text:"绑定微信登录",
+					text:"绑定微信",
 					icon:"fa-bell"
 				},
 				{
@@ -894,7 +894,7 @@
 					sub:[],
 					href:"#/web/wechatBindLogin.html",
 					tips:0,
-					text:"绑定微信登录",
+					text:"绑定微信",
 					icon:"fa-bell"
 				},
 				{

@@ -1,0 +1,31 @@
+
+<div class="wrap headerModule" data-title="设备门况信息"  data-noPrev="true" data-sliderNav="true" >
+	<!--s:systemPerson-->
+	<div id="deviceModule">
+
+		<div class="col mt10">
+			<div class=""><a class="search-wrap"><input type="text" class="form-control fw12"  placeholder="请输入设备名称查询" v-model.lazy="params.device_name"> <i class="fa-search" v-on:click="refreshList"></i></a></div>
+		</div>
+		<ul class="col" id="deviceModuleVue">
+			<li class="bd  bg-white p20 lh30 bd-radius-5 mt10" v-for="($item, $index) in list" v-if="!$item.edit" v-cloak>
+				<div>
+					<span class="label-name"><i class="fa-user"></i> 设备名称</span>
+					<span>{{$item.device_name}}</span>
+				</div>
+				<div>
+					<span class="label-name"><i class="fa-tablet"></i> 设备编号</span>
+					<span>{{$item.device_code}}</span>
+				</div>
+				<div><span class="label-name"><i class="fa-credit-card"></i> 设备状态</span>
+					<span>{{$item.status}}</span>
+				</div>
+				<div class="bd-top bd-dashed mt10 pt10">
+											<a class="label label-success label-sm mr10 J-modify"  v-on:click="openDevice($index, $event)" v-show="(!$item.status||$item.status.indexOf('关闭')==-1)">开锁</a>
+											<a class="label label-success label-sm mr10 J-modify"  v-on:click="closeDevice($index, $event)" v-show="($item.status&&$item.status.indexOf('关闭')!=-1)">关闭</a>
+				</div>
+			</li>
+		</ul>
+
+	</div>
+	<!--e:systemPerson-->
+</div>

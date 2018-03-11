@@ -1,0 +1,38 @@
+.search-wrap{
+	position:relative;
+}
+.search-wrap input{
+	padding: 0 0.3rem 0 0.1rem;
+}
+.search-wrap .fa-search{
+	position:absolute;
+	right: 0.08rem;
+	top: 0.09rem;
+	font-size: 0.18rem;
+}
+.search-filter{
+	background: #f2f2f2;
+	border-radius: 0.05rem;
+}
+.search-filter-wrap{
+	height:0;
+	overflow: hidden;
+}
+.search-filter-wrap.open{
+	height: auto;
+	overflow: visible;
+}
+.hover-link{
+	text-decoration: underline;
+}
+#modifyLoginPwd.wrap{
+	max-width: 10.24rem;
+}
+#modifyLoginPwd .tips{
+	color:#999;
+	font-size: 0.12rem;
+}
+.form-group>i{top:0}
+.form-group .captcha-code-img{
+	top:0
+}

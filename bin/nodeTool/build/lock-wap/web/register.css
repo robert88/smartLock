@@ -1,0 +1,14 @@
+@import "login.css";
+
+.form-group .btn-send-code{
+	top: 0px;
+}
+.label-checkbox{
+	float: left;
+	padding: 0.15rem;
+	height: 100%;
+	width: 0.1rem;
+}
+.checkbox{
+	display: block;
+}

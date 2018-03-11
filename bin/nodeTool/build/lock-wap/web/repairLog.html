@@ -1,0 +1,25 @@
+
+<div class="wrap headerModule" data-title="维修申报记录" data-nextText="维修申报" data-nextLink="#/web/repair.html">
+
+	<!--s:systemPerson-->
+	<div id="personHistory">
+
+		<div class=" mt10">
+			<a class="search-wrap"><input type="text" class="form-control fw12"  placeholder="请输入人名查询"> <i class="fa-search" ></i></a>
+		</div>
+
+		<ul class="col" id="personHistoryVue">
+			<li class="bd  bg-white p20 lh30 bd-radius-5 mt10" v-for="($item, $index) in list"  v-cloak>
+				<div><span class="label-name"><i class="fa-user"></i> 设备名称</span> <a class="J-dialog t-info hover-link" data-url="/web/dialog/personDetail.html" :data-id="$item.id" :data-title="($item.user_name+'用户信息详情')">{{$item.user_name}}</a></div>
+				<div><span class="label-name"><i class="fa-user"></i> 设备编号</span> <span>{{$item.user_phone}}</span></div>
+				<div><span class="label-name"><i class="fa-user"></i> 申报原因</span> <span>{{$item.user_email}}</span></div>
+				<div><span class="label-name"><i class="fa-user"></i> 申报状态</span> <span>{{$item.user_card}}</span></div>
+				<div class="bd-top bd-dashed mt10 pt10">
+					<a class="label label-success label-sm" v-on:click="revert($index, $event)">撤回</a>
+				</div>
+			</li>
+		</ul>
+
+	</div>
+	<!--e:systemPerson-->
+</div>

@@ -1,0 +1,86 @@
+<div class="wrap headerModule" data-title="设备列表" data-nextText="设备组列表" data-nextLink="#/web/deviceGroup.html"
+	 data-noPrev="true" data-sliderNav="true" data-nextText-permission="14000">
+	<!--s:systemPerson-->
+	<div id="deviceModule">
+
+		<div class="col mt10">
+			<div class="col6 pr10"><a class="search-wrap"><input type="text" class="form-control fw12"
+																 placeholder="请输入设备名称查询"
+																 v-model.lazy="params.device_name"> <i class="fa-search"
+																									   v-on:click="refreshList"
+																									   v-show="hasPermission(13005)"></i></a>
+			</div>
+			<div class="col6 pl10"><a class=" btn btn-success fw12 J-dialog" data-url="/web/dialog/addDevice.html"
+									  data-title="添加设备" v-show="hasPermission(13001)"><i
+					class="fa-turkish-lira-try mr5"></i>添加设备</a></div>
+		</div>
+
+		<ul class="col" id="deviceModuleVue">
+			<li class="bd  bg-white p20 lh30 bd-radius-5 mt10" v-for="($item, $index) in list" v-if="!$item.edit"
+				v-show="hasPermission(13005)" v-cloak>
+				<div>
+					<span class="label-name"><i class="fa-user"></i> 设备名称</span>
+					<span>{{$item.device_name}}</span>
+				</div>
+				<div>
+					<span class="label-name"><i class="fa-tablet"></i> 设备编号</span>
+					<span>{{$item.device_code}}</span>
+				</div>
+				<div>
+					<span class="label-name"><i class="fa-envelope-o"></i> 设备型号</span>
+					<span>{{$item.device_mode}}</span>
+				</div>
+				<div><span class="label-name"><i class="fa-credit-card"></i> 所属设备组</span>
+					<span>{{$item.group_name}}</span>
+				</div>
+				<div class="bd-top bd-dashed mt10 pt10">
+					<a class="label label-success label-sm mr10" v-on:click="modify($index, $event)"
+					   v-show="hasPermission(13003)">修改设备信息</a>
+					<a class="label label-success label-sm mr10 J-dialog" data-url="/web/dialog/setDeviceAlarmTel.html"
+					   :data-device_id="$item.id" :data-title="('设置'+$item.device_name+'设备告警电话')">设置告警电话</a>
+					<a class="label label-danger label-sm" v-on:click="del($index, $event)"
+					   v-show="hasPermission(13002)"><i class="fa-trash-o" title="删除"></i></a>
+				</div>
+			</li>
+			<li class="bd  bg-white p20 lh30 bd-radius-5 mt10" v-else v-cloak>
+				<div class="form-group">
+					<label><i class="t-danger fa-asterisk mr5 fs10"></i>设备名称</label>
+					<i class="fa-user"></i><input type="text" v-model="$item.new_device_name" placeholder="请输入设备名称"
+												  class="fw12 form-control">
+				</div>
+				<div class="form-group">
+					<label><i class="t-danger fa-asterisk mr5 fs10"></i>设备型号</label>
+					<i class="fa-envelope-o"></i><input type="text" v-model="$item.new_device_mode"
+														placeholder="请输入设备型号" class="fw12 form-control">
+				</div>
+				<div class="form-group">
+					<label><i class="t-danger fa-asterisk mr5 fs10"></i>设备组</label>
+					<div class="J-select  J-select-search">
+						<input :class="('form-control J-select-text J-select-text'+$index)"
+							   v-model="$item.new_group_name" type="text" placeholder="请选择设备组">
+						<input :class="('J-select-value J-select-value'+$index)" v-model="$item.new_group_id" type="hidden" check-type="required">
+						<i class="fa-angle-down"></i>
+						<div class="J-select-option J-scroll">
+							<a v-for="($item2, $index2) in list2"
+							   v-bind="{ 'data-jp':$item2.jp, 'data-qp': $item2.qp ,'data-name':$item2.group_name, 'data-value':$item2.id}"
+							   class="option">{{$item2.group_name}}</a>
+							<a v-show="loading">加载更多...</a>
+						</div>
+					</div>
+				</div>
+				<div>
+					<a class="label label-success label-sm mr10" v-on:click="saveAdd($index, $event)"
+					   v-show="$item.edit=='add'">保存</a>
+					<a class="label label-warning label-sm mr10 " v-on:click="cancelAdd($index, $event)"
+					   v-show="$item.edit=='add'">取消</a>
+					<a class="label label-success label-sm mr10" v-on:click="saveModify($index, $event)"
+					   v-show="$item.edit=='modify'">保存</a>
+					<a class="label label-warning label-sm " v-on:click="cancelModify($index, $event)"
+					   v-show="$item.edit=='modify'">取消</a>
+				</div>
+			</li>
+		</ul>
+
+	</div>
+	<!--e:systemPerson-->
+</div>

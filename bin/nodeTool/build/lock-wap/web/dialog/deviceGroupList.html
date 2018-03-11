@@ -1,0 +1,27 @@
+
+<div id="removeDeviceFromGroup">
+
+	<ul class="col J-scroll">
+		<li class="bd  bg-white p20 lh30 bd-radius-5 mt10" v-for="($item, $index) in list" v-if="!$item.edit" v-cloak>
+			<div>
+				<span class="label-name"><i class="fa-user"></i> 设备名称</span>
+				<span>{{$item.name}}</span>
+			</div>
+			<div>
+				<span class="label-name"><i class="fa-tablet"></i> 设备编号</span>
+				<span>{{$item.device_code}}</span>
+			</div>
+			<div>
+				<span class="label-name"><i class="fa-envelope-o"></i> 设备型号</span>
+				<span>{{$item.device_model}}</span>
+			</div>
+			<div><span class="label-name"><i class="fa-credit-card"></i> 所属设备组</span>
+				<span>{{$item.group_name}}</span>
+			</div>
+			<div class="bd-top bd-dashed mt10 pt10">
+				<a class="label label-success label-sm mr10"  v-on:click="remove($index)"><i class="fa-trash-o" title="移出组"></i>移出组</a>
+			</div>
+		</li>
+	</ul>
+
+</div>

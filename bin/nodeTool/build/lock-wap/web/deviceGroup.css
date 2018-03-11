@@ -1,0 +1,14 @@
+@import "person.css";
+.search-filter-wrap{
+	opacity: 0;
+	height: 0;
+	overflow: hidden;
+}
+.search-filter-wrap.open{
+	opacity: 1;
+	height: auto;
+	overflow: visible;
+}
+.form-group>i {
+	top: 0.39rem;
+}

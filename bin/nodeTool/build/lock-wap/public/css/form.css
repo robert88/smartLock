@@ -1,0 +1,188 @@
+select, input {
+	font-weight: inherit;
+	color: inherit;
+	font-size: inherit;
+	outline: 0;
+	outline-offset:0;
+	border: 1px solid #e1e1e1;
+}
+select{
+	box-sizing: content-box;
+}
+
+input[type=radio], input[type=checkbox] {
+	vertical-align: middle;
+}
+
+input:focus, textarea:focus, button:focus, select:focus {
+	outline: 0;
+	border: 1px solid #acadc8;
+}
+select {
+	appearance:none;
+	-moz-appearance:none;
+	-webkit-appearance:none;
+}
+
+select::-ms-expand { display: none; }
+::-webkit-input-placeholder{	font-weight: inherit;
+	color: #bbb;
+	font-size: inherit;}
+:-moz-placeholder{	font-weight: inherit;
+	color: #bbb;
+	font-size: inherit;}                  /* FirefoxÃ§â€°Ë†Ã¦Å“Â¬4-18 */
+::-moz-placeholder{	font-weight: inherit;
+	color: #bbb;
+	font-size: inherit;}                  /* FirefoxÃ§â€°Ë†Ã¦Å“Â¬19+ */
+:-ms-input-placeholder{	font-weight: inherit;
+	color: #bbb;
+	font-size: inherit;}           /* IEÃ¦ÂµÂÃ¨Â§Ë†Ã¥â„¢Â¨ */
+fieldset {
+	border: 0
+}
+
+.label-radio-group input{
+	display: none;
+}
+.label-radio-group i{
+	display:inline-block;
+}
+.validError input,.validError select{
+	border:1px solid #da0e0e;
+}
+.validItem{
+	position:relative;
+}
+.validErrMsg{
+	display: none;
+	padding-bottom: 0.1rem;
+	margin-top: -0.1rem;
+	top:100%;
+	line-height: 0.23rem;
+}
+.validError .validErrMsg{
+	color:#da0e0e;
+	display: block;
+}
+.validIcon{
+	display: none;
+	position: absolute;
+	top: 50%;
+	margin-top: -0.13rem;
+	right: -0.3rem;
+}
+.validError .validIcon{
+	color:#da0e0e;
+	display: block;
+}
+
+
+.label-checkbox input:checked + .fa-check{
+ display: block;
+ font-size: 0.14rem;
+ top: 0.06rem;
+ left: 2px;
+}
+.label-checkbox{
+	position:relative;
+	width: 0.2rem;
+	display: block;
+	min-height: 0.2rem;
+	padding-left:0.3rem;
+}
+.label-checkbox .fa-check,.label-checkbox .fa-square-o{
+	position:absolute;
+	left:0;
+	font-size: 0.23rem;
+	top: 0.03rem;
+}
+
+.form-group{position:relative;}
+.form-group input,
+.form-group textarea
+{
+	display: block;
+	width:100%;
+	margin-top:0.1rem;
+	font-size: inherit;
+}
+.form-group>i{
+	color: #CCCCCC;
+	display: block !important;
+	font-size: 0.16rem;
+	height: 0.16rem;
+	top: 0.34rem;
+	margin: 0.09rem 2px 0.04rem 0.1rem;
+	position: absolute !important;
+	text-align: center;
+	width: 0.16rem;
+	z-index: 1;
+}
+.form-control {
+	border: 1px solid #cad2db;
+	padding: 0 0.05rem 0 0.3rem;
+	-moz-border-radius: 0.05rem;
+	-webkit-border-radius: 0.05rem;
+	border-radius: 0.05rem;
+	line-height: 0.36rem;
+	margin-bottom: 0.1rem;
+	/*font-size: 0.14rem;*/
+	color: #717171;
+	font-family: Arial;
+}
+.form-group .captcha-code-img {
+	position: absolute;
+	right: 0;
+	top: 0.32rem;
+}
+.form-group .btn-send-code {
+	position: absolute;
+	right: 1px;
+	top: 0.3rem;
+}
+
+.label-checkbox input,
+.label-checkbox  .fa-check{
+	display: none;
+}
+.J-select{position:relative;}
+.J-select .fa-angle-down{position:absolute;right: 0.09rem;font-size: 0.23rem;top: 0.07rem;}
+.J-select.current .J-select-option{display:block;border: 1px solid #dbe0e6;margin-top: -0.11rem;padding: 0.1rem;margin: -0.11rem 0px 0;box-shadow: 0 0.03rem 0.03rem rgba(0,0,0,0.1);position: absolute;width: 100%;background-color: #fff;z-index: 10;border-radius: 0.05rem;}
+.J-select-option{display:none;}
+.J-select-option .option{
+	display:block;
+	border-bottom: 1px solid #e7e7e7;
+	color: #555555;
+	padding: 0.1rem;
+	}
+
+.J-select-option .option:hover{background:#fff;border-color: #70afc4;color:#70afc4;}
+.form-group-inline{
+    position:relative;
+}
+.form-group-inline label{
+    line-height: 0.33rem;
+    width: 30%;
+    display: inline-block;
+    text-align: right;
+    padding-right:0.1rem;
+}
+.form-group-inline .form-control,.form-group-inline .form-control-select{padding: 0 0.05rem 0 0.05rem;width: 60%;display: inline-block;}
+.form-group-inline .form-control-select .form-control{width:100%;}
+.form-group-inline .form-control-select{padding:0}
+.template-tr td{background: #f5ecdf !important;}
+.form-group-block{
+	position:relative;
+}
+.form-group-block>i{
+	color: #CCCCCC;
+	display: block !important;
+	font-size: 0.16rem;
+	height: 0.16rem;
+	top: 0.03rem;
+	margin: 0.09rem 2px 0.04rem 0.1rem;
+	position: absolute !important;
+	text-align: center;
+	width: 0.16rem;
+	z-index: 1;
+}
