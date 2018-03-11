@@ -10,6 +10,7 @@
 
 #sidebar-collapse{display: none;}
 .nomenu .bottomSubMenu{display: none;}
+.bottomSubMenu-fix{height: 0.5rem;}
 .bottomSubMenu{
 	height:0.5rem;
 	bottom:0;

@@ -1,0 +1,39 @@
+<div class="wrap headerModule" data-title="紧急预警" data-noPrev="true" data-sliderNav="true">
+	<!--s:systemPerson-->
+	<div id="alarmModule">
+		<div  class="J-table">
+
+			<div class="p20 bg-white bd-radius-5 mt20">
+				<ul class="col pb20 fs16 hideScroll">
+					<li class="col5">设备名</li>
+					<li class="col4 tc">信号/电量</li>
+					<li class="col3 tr">门况</li>
+				</ul>
+				<div class="J-scroll J-alarmModule-resizeHeight hideScroll">
+					<div v-for="($item, $index) in list" class="ptb10 bd-dashed bd-bottom alarmModuleList ptb10 fs14">
+						<label class="label-checkbox">
+							<input type="checkbox" v-model="$item.selected">
+							<i class="fa-check"></i>
+							<i  class="fa-square-o"></i></label>
+						<ul class="col t-muted">
+							<li class="col5 t-overflow">{{$item.device_name}}</li>
+							<li class="col4 tc">{{$item.device_signal}}/{{$item.energy}}</li>
+							<li class="col3 tr" v-html="handleDeviceStatus($item.device_status)"></li>
+						</ul>
+					</div>
+				</div>
+				<div class="tc mt20 J-resize-item selectAllContent">
+					<label class="label-checkbox " style="">
+						<input type="checkbox" class="J-all-checkBox">
+						<i class="fa-check"></i>
+						<i  class="fa-square-o"></i>
+						<span class="fs14 inline-block vm">（全选）</span>
+					</label>
+					<a class=" btn btn-danger ml60" v-on:click="authSelected()">启动防火预警(全开)</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!--e:systemPerson-->
+</div>

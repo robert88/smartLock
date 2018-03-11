@@ -842,7 +842,7 @@
 					hasSub:"",
 					active:"",
 					sub:[],
-					href:"",
+					href:"#/web/alarm.html",
 					tips:0,
 					text:"紧急预警",
 					icon:"fa-bell"
@@ -1042,6 +1042,7 @@
 		if(ret.access_list){
 			$.cookie("access_list",ret.access_list);
 			$$slider.$forceUpdate();
+			$$bottomSlider.$forceUpdate();
 		}
 		if(!notRediret){
 			location.hash = ""

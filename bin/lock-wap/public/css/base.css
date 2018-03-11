@@ -405,6 +405,9 @@ img {
 .inline-block{
 	display: inline-block;
 }
+.vm{
+	vertical-align: middle;
+}
 .relative {
 	position: relative;
 }

@@ -147,13 +147,13 @@ $(function () {
 						device_name: $$vue.list[index].new_device_name,
 						device_id: $$vue.list[index].id,
 						group_id:new_group_id||0,
-						device_model: $$vue.list[index].new_device_mode,
+						device_model: $$vue.list[index].new_device_model,
 						token: token
 					},
 					success: function (ret) {
 						$$vue.list[index].edit = "";
 						$$vue.list[index].device_name = $$vue.list[index].new_device_name;
-						$$vue.list[index].device_mode = $$vue.list[index].new_device_mode;
+						$$vue.list[index].device_model = $$vue.list[index].new_device_model;
 						$$vue.list[index].group_name = new_group_name;
 
 						$$vue.$forceUpdate();
@@ -307,7 +307,7 @@ $(function () {
 				var $$vue = this;
 				$$vue.list[index].edit = "modify";
 				$$vue.list[index].new_device_name = $$vue.list[index].device_name;
-				$$vue.list[index].new_device_mode = $$vue.list[index].device_mode;
+				$$vue.list[index].new_device_model = $$vue.list[index].device_model;
 				$$vue.list[index].new_group_name = $$vue.list[index].group_name;
 				$$vue.list[index].new_group_id = $$vue.list[index].group_id;
 

@@ -279,7 +279,7 @@ $(function () {
 		var key = $.trim($(this).val())
 		if($(this).parents(".J-select-search").length){
 			$(this).parents(".J-select-search").find('.J-select-option .option').each(function () {
-				var searchStr = [( $(this).data("jp")||"") ,($(this).data("jp")||"")  , ($(this).data("jp")||"" )].join(",")
+				var searchStr = [( $(this).data("qp")||"") ,($(this).data("jp")||"")  , ($(this).data("name")||"" )].join(",")
 				if( searchStr.toLowerCase().indexOf(key.toLowerCase())==-1){
 					$(this).hide()
 				}else{

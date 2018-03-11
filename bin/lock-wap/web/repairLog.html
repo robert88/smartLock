@@ -18,43 +18,6 @@
 					<div class="col6"><i class="fa-tablet t-info mr5"></i>{{$item.device_name}}</div>
 					<div class="col6 tr fs14" v-html="handleStatus($item.status)"> </div>
 				</li>
-				<li class="bd  bg-white p20 lh30 bd-radius-5 mt10" v-else v-cloak>
-					<div class="form-group">
-						<label><i class="t-danger fa-asterisk mr5 fs10"></i>设备名称</label>
-						<i class="fa-user"></i><input type="text" v-model="$item.new_device_name" placeholder="请输入设备名称"
-													  class="fw12 form-control">
-					</div>
-					<div class="form-group">
-						<label><i class="t-danger fa-asterisk mr5 fs10"></i>设备型号</label>
-						<i class="fa-envelope-o"></i><input type="text" v-model="$item.new_device_mode"
-															placeholder="请输入设备型号" class="fw12 form-control">
-					</div>
-					<div class="form-group">
-						<label><i class="t-danger fa-asterisk mr5 fs10"></i>设备组</label>
-						<div class="J-select  J-select-search">
-							<input :class="('form-control J-select-text J-select-text'+$index)"
-								   v-model="$item.new_group_name" type="text" placeholder="请选择设备组">
-							<input :class="('J-select-value J-select-value'+$index)" v-model="$item.new_group_id" type="hidden" check-type="required">
-							<i class="fa-angle-down"></i>
-							<div class="J-select-option J-scroll">
-								<a v-for="($item2, $index2) in list2"
-								   v-bind="{ 'data-jp':$item2.jp, 'data-qp': $item2.qp ,'data-name':$item2.group_name, 'data-value':$item2.id}"
-								   class="option">{{$item2.group_name}}</a>
-								<a v-show="loading">加载更多...</a>
-							</div>
-						</div>
-					</div>
-					<div>
-						<a class="label label-success label-sm mr10" v-on:click="saveAdd($index, $event)"
-						   v-show="$item.edit=='add'">保存</a>
-						<a class="label label-warning label-sm mr10 " v-on:click="cancelAdd($index, $event)"
-						   v-show="$item.edit=='add'">取消</a>
-						<a class="label label-success label-sm mr10" v-on:click="saveModify($index, $event)"
-						   v-show="$item.edit=='modify'">保存</a>
-						<a class="label label-warning label-sm " v-on:click="cancelModify($index, $event)"
-						   v-show="$item.edit=='modify'">取消</a>
-					</div>
-				</li>
 			</ul>
 
 		</div>
