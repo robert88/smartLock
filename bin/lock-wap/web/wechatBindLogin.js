@@ -18,7 +18,7 @@ $(function () {
 			// |  -------- | -------- | -------- | -------- | ---- |
 			// | token | string | 是 | 用户登录的token |
 			// |  uri | string | 是 | 授权成功后，跳转地址链接，需要进行urlencode |  |
-			window.location.href="/smart_lock/v1/user/bind_weixin?uri="+encodeURIComponent(window.location.href)+"&token="+token
+			window.location.href="https://smart-api.kitcloud.cn/smart_lock/v1/user/bind_weixin?uri="+encodeURIComponent(window.location.href)+"&token="+token
 
 		})
 	}

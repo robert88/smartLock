@@ -389,7 +389,7 @@ $(function () {
 				this.refreshList();
 				this.getPhone();
 				this.refreshList2();
-				$module = $("#" + moduleId)
+				$module = $("#" + moduleId);
 				this.initEvent($module);
 			})
 		}

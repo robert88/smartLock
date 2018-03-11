@@ -783,15 +783,15 @@
 					text:"服务热线",
 					icon:"fa-phone-square"
 				},
-				// {
-				// 	hasSub:"",
-				// 	active:"",
-				// 	sub:[],
-				// 	href:"#/web/repair.html",
-				// 	tips:0,
-				// 	text:"维修申报",
-				// 	icon:"fa-truck"
-				// },
+				{
+					hasSub:"",
+					active:"",
+					sub:[],
+					href:"#/web/repair.html",
+					tips:0,
+					text:"维修申报",
+					icon:"fa-truck"
+				},
 				{
 					access_id:"17000",
 					hasSub:"",
@@ -822,6 +822,172 @@
 		ready:function () {
 
 
+		}
+	});
+	var $$bottomSlider = new Vue({
+		el:"#statusMenuListVue",
+		data:{
+			slideBars1:[
+				{
+					hasSub:"",
+					active:"",
+					sub:[],
+					href:"#/web/modifyLoginPwd.html",
+					tips:0,
+					text:"密码管理",
+					icon:"fa-key"
+				},
+				{
+				access_id:"14000",
+					hasSub:"",
+					active:"",
+					sub:[],
+					href:"",
+					tips:0,
+					text:"紧急预警",
+					icon:"fa-bell"
+				},
+				{
+					access_id:"18000",
+					hasSub:"",
+					active:"",
+					sub:[],
+					href:"#/web/situation.html",
+					tips:0,
+					text:"情景模式",
+					icon:"fa-crop"
+				},
+				{
+					access_id:"17000",
+					hasSub:"",
+					active:"",
+					sub:[],
+					href:"#/web/sysLog.html",
+					tips:0,
+					text:"系统日志",
+					icon:"fa-truck"
+				}],
+			slideBars2:[
+				{
+					access_id:"15000",
+					hasSub:"",
+					active:"",
+					sub:[],
+					href:"#/web/roleList.html",
+					tips:0,
+					text:"权限管理",
+					icon:"fa-legal"
+				},
+				{
+					hasSub:"",
+					access_id:"12000",
+					active:"",
+					sub:[],
+					href:"#/web/wechatBindLogin.html",
+					tips:0,
+					text:"临时密码",
+					icon:"fa-group-users"
+				},
+				{
+					hasSub:"",
+					active:"",
+					sub:[],
+					href:"#/web/wechatBindLogin.html",
+					tips:0,
+					text:"绑定微信登录",
+					icon:"fa-bell"
+				},
+				{
+					hasSub:"",
+					access_id:"12000",
+					active:"",
+					sub:[],
+					href:"#/web/person.html",
+					tips:0,
+					text:"增加人员",
+					icon:"fa-group-users"
+				},
+				{
+					access_id:"13000",
+					hasSub:"",
+					active:"",
+					sub:[],
+					href:"#/web/device.html",
+					tips:0,
+					text:"门况信息",
+					icon:"fa-hdd-o"
+				},
+
+
+				{
+					access_id:"14000",
+					hasSub:"",
+					active:"",
+					sub:[],
+					href:"#/web/deviceCtl.html",
+					tips:0,
+					text:"智控",
+					icon:"fa-beer"
+				}],
+			slideBars3:[
+				{
+					hasSub:"",
+					active:"",
+					sub:[],
+					href:"#/web/companyInfo.html",
+					tips:0,
+					text:"服务热线",
+					icon:"fa-phone-square"
+				},
+				{
+					hasSub:"",
+					active:"",
+					sub:[],
+					href:"#/web/repair.html",
+					tips:0,
+					text:"维修申报",
+					icon:"fa-truck"
+				}
+			]
+		},
+		filters:{
+			href:function (href) {
+				if(href){
+					return href;
+				}else{
+					return "javascript:void(0);";
+				}
+			},
+
+		},
+		methods:{
+			setSubClass:function (flag,oldClass) {
+				return flag?("hasSub " +oldClass):oldClass;
+			}
+		},
+		mounted:function () {
+			this.$nextTick(function () {
+				$("#statusMenuListVue").on("click",".col4>a",function () {
+					$("#statusMenuListVue").find("dl").removeClass("active");
+					$(this).siblings("dl").addClass("active");
+				}).on("click",".col4>dl>dd a",function () {
+					var href = $.trim($(this).attr("href"))
+					if((href=="")||(href=="javascript:void(0);")){
+						$.tips("暂未开放！");
+					}else{
+						$(this).parents("dl").removeClass("active");
+					}
+				});
+
+				$(document).on("click.menu",function (e) {
+					if($(e.target).hasClass("bottomSubMenu")||$(e.target).parents(".bottomSubMenu").length){
+
+					}else{
+						$("#statusMenuListVue").find("dl").removeClass("active");
+					}
+				})
+
+			});
 		}
 	});
 
