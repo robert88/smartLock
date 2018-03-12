@@ -18,7 +18,12 @@
     -o-transition: all .2s ease-in-out;
     -webkit-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
-    min-width: 300px;
+}
+@media (min-width:1300px) {
+    .dl-dialog{min-width: 1024px}
+}
+@media (min-width:1024px) {
+    .dl-dialog{min-width: 600px}
 }
 .dl-body {
     width: auto;
@@ -71,7 +76,7 @@
         -webkit-transition: all .2s ease-in-out;
         transition: all .2s ease-in-out;
 }
-.dl-dialog>.dl-close:hover{transform: translateZ(0) rotate(-180deg);color:#e50000;border-radius: 50%;}
+.dl-dialog>.dl-close:hover{transform: translateZ(0) rotate(-180deg);color: #e50000!important;border-radius: 50%;}
 
 .dl-alert {
     border: 2px solid #d9d6d6;

@@ -18,6 +18,10 @@
 	width: 100%;
 	left:0;
 }
+.bottomSubMenu .wrap{
+	padding-left:0 ;
+	padding-right:0 ;
+}
 .bottomSubMenu .wrap>.col{
 	height: 50px;
 	line-height: 50px;

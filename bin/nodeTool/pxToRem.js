@@ -35,6 +35,10 @@ function pxToRem(files){
 
 wake.copyDir("../lock-wap/", "./build/lock-wap/",function(){
 		var files =wake.findFile(__dirname+"/build/lock-wap/","css",true);
+
+		var buildwifi="D:/git/smartLock/bin/nodeTool/build/lock-wap/web/wechatwifi.html"
+		wake.writeData(buildwifi,wake.readData(indexwapFile).replace('<div id="main-content-page"></div>','<div id="main-content-page">'+wake.readData(buildwifi)+"</div>"))
+
 		pxToRem(files)
 		wake.copyDir("D:/git/smartLock/bin/nodeTool/build/lock-wap", "D:/git/lock/lock-wap",function(){
 			console.log("copy complete".green,"D:/git/smartLock/bin/nodeTool/build/lock-wap","to","D:/git/lock/lock-wap")
