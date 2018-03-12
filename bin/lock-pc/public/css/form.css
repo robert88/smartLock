@@ -117,7 +117,7 @@ fieldset {
 	z-index: 1;
 }
 .form-control {
-	width: 100%;
+	/*width: 100%;*/
 	border: 1px solid #cad2db;
 	padding: 0 5px 0 30px;
 	-moz-border-radius: 5px;

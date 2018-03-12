@@ -200,8 +200,8 @@ $(function () {
 			setDeviceModel:function (index) {
 				$.dialog.closeAll();
 				var html ='<div class="J-select">' +
-					'<input type="text" placeholder="请选择设备名称" class="form-control J-select-text"> ' +
-					'<input name="device_id" type="hidden" check-type="required" class="J-select-value device_id"> ' +
+					'<input type="text" placeholder="请选择模式" class="form-control J-select-text" style="width: 100%"> ' +
+					'<input name="device_id" type="hidden" check-type="required" class="J-select-value device_id" > ' +
 					'<i class="fa-angle-down"></i> ' +
 					'<div class="J-select-option J-scroll">' +
 					'<a data-name="全锁模式" data-value="1" class="option">全锁模式</a>' +

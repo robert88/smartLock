@@ -24,10 +24,23 @@ $(function () {
 			personTotalPage:0,
 			person_list_params:{page_number:1,page_size:10,user_name:"",token:token},
 
-			allow_start_time_list:[],
-			allow_end_time_list:[],
-			start_time:0,
-			end_time:0,
+
+			device_list:[],
+			deviceLoading:false,
+			deviceTotalPage:0,
+			device_list_params:{page_number:1,page_size:10,user_name:"",token:token},
+			open:{
+				allow_start_time_list:[],
+				allow_end_time_list:[],
+				start_time:0,
+				end_time:0
+			},
+			close:{
+				allow_start_time_list:[],
+				allow_end_time_list:[],
+				start_time:0,
+				end_time:0
+			},
 			allow_openmode_list:[{id:"11",name:"远程控制"},{id:"12",name:"密码"}],
 			allow_operation_list:[{id:"11",name:"开门"},{id:"12",name:"关门"}]
 		},
@@ -51,25 +64,35 @@ $(function () {
 					}
 				}
 			},
-			"start_time": function (newValue, oldValue) {
+			"open.start_time": function (newValue, oldValue) {
+
 				if (newValue != oldValue) {
-					this.allow_end_time_list =[];
-					var curTime = new Date("2018/02/04").getTime();
+					this.refreshEndList("open",newValue )
+				}
+			},
+			"close.start_time": function (newValue, oldValue) {
 
-					for(var i=0;i<=48;i++){
-						if((i/2)>newValue){
-							if(i==48){
-								this.allow_end_time_list.push({name:"24:00",id:i/2});
-							}else{
-								this.allow_end_time_list.push({name:(curTime+i/2*60*60*1000).toString().toDate().format("hh:mm"),id:i/2});
-							}
-						}
-
-					}
+				if (newValue != oldValue) {
+					this.refreshEndList("close",newValue )
 				}
 			}
 		},
 		methods: {
+			refreshEndList:function (type,newValue ) {
+					this[type].allow_end_time_list =[];
+					var curTime = new Date("2018/02/04").getTime();
+					for(var i=0;i<=48;i++){
+						if((i/2)>newValue){
+							if(i==48){
+								this[type].allow_end_time_list.push({name:"24:00",id:i/2});
+							}else{
+								this[type].allow_end_time_list.push({name:(curTime+i/2*60*60*1000).toString().toDate().format("hh:mm"),id:i/2});
+							}
+						}
+
+					}
+
+			},
 			mergeArray: function (obj) {
 				if (typeof obj !== "object") {
 					return [];
@@ -102,6 +125,15 @@ $(function () {
 					this.refreshPersonList();
 				}
 			},
+			getDeviceNextPage:function () {
+				if (!this.deviceTotalPage) {
+					return;
+				}
+				if (this.device_list_params.page_number < this.deviceTotalPage) {
+					this.device_list_params.page_number++;
+					this.refreshDeviceList();
+				}
+			},
 			filter: function () {
 				$module.find(".search-filter-wrap").toggleClass("open");
 			},
@@ -112,14 +144,18 @@ $(function () {
 				return true;
 			},
 			initAllowTime:function () {
+				this.initAllowTimeByType("close")
+				this.initAllowTimeByType("open")
+			},
+			initAllowTimeByType:function (type) {
 				var curTime = new Date("2018/02/04").getTime();
 				for(var i=0;i<=48;i++){
 					if(i==48){
-						this.allow_start_time_list[i] = {name:"24:00",id:i/2}
-						this.allow_end_time_list[i] = {name:"24:00",id:i/2}
+						this[type].allow_start_time_list[i] = {name:"24:00",id:i/2}
+						this[type].allow_end_time_list[i] = {name:"24:00",id:i/2}
 					}else{
-						this.allow_start_time_list[i] = {name:(curTime+i/2*60*60*1000-turnTime).toString().toDate().format("hh:mm"),id:i/2}
-						this.allow_end_time_list[i] = {name:(curTime+i/2*60*60*1000-turnTime).toString().toDate().format("hh:mm"),id:i/2}
+						this[type].allow_start_time_list[i] = {name:(curTime+i/2*60*60*1000).toString().toDate().format("hh:mm"),id:i/2}
+						this[type].allow_end_time_list[i] = {name:(curTime+i/2*60*60*1000).toString().toDate().format("hh:mm"),id:i/2}
 					}
 				}
 			},
@@ -179,18 +215,54 @@ $(function () {
 					}
 				});
 			},
+			refreshDeviceList:function () {
+				var $$vue = this;
+				var url = "/smart_lock/v1/device/find_list";
+				var type = "post";
+				if ($$vue.deviceLoading) {
+					return;
+				}
+				$$vue.deviceLoading = true;
+				PAGE.ajax({
+					async:false,
+					url: url,
+					data: this.device_list_params,
+					type: type,
+					success: function (ret) {
+						if (!ret) {
+							return;
+						}
+						$$vue.device_list = ret.list||[];
+						listMap["device"]  = listMap["device"] || [];
+						listMap["device"] [$$vue.device_list_params.page_number] = ret.list;
+						$$vue.deviceTotalPage = ret.total_page;
+						$$vue.list = $$vue.mergeArray(listMap["device"] );
+
+					},
+					complete: function () {
+						$$vue.deviceLoading = false;
+					}
+				});
+			},
 			initSubmit:function () {
 				//表单注册
 				var $$vue = this;
 				$module.validForm({
 					success:function ($btn) {
 
-						if(($$vue.end_time*1)<=($$vue.start_time*1)){
-							$.tips("允许操作结束时间必须大于开始时间！","error");
+						if(($$vue.open.end_time*1)<=($$vue.open.start_time*1)){
+							$.tips("开锁结束时间必须大于开始时间！","error");
 							return
 						}
+						if(($$vue.close.end_time*1)<=($$vue.close.start_time*1)){
+							$.tips("关锁结束时间必须大于开始时间！","error");
+							return
+						}
+						var openParam = "&open_time="+$$vue.open.start_time*60+"_"+$$vue.open.end_time*60;
+						var closeParam = "&close_time="+$$vue.close.start_time*60+"_"+$$vue.close.end_time*60;
+
 						PAGE.ajax({
-							data:$module.serialize()+"&allow_time="+$$vue.start_time*60+"_"+$$vue.end_time*60+"&token="+token,
+							data:$module.serialize()+openParam+closeParam+"&token="+token,
 							type:'post',
 							url:"/smart_lock/v1/strategy/add",
 							success:function (ret) {
@@ -202,8 +274,17 @@ $(function () {
 					}
 				});
 
-			},
-			initEvent:function () {
+			}
+
+		},
+		mounted: function () {
+			this.$nextTick(function () {
+				this.refreshRoleList();
+				this.refreshPersonList();
+				this.refreshDeviceList();
+				this.initAllowTime();
+				$module = $("#" + moduleId);
+				this.initSubmit();
 
 				$module.find(".J-scroll.role").on("scrollDown",function () {
 					if(!$$vue.roleLoading){
@@ -215,17 +296,11 @@ $(function () {
 						$$vue.getPersonNextPage();
 					}
 				});
-			}
-
-		},
-		mounted: function () {
-			this.$nextTick(function () {
-				this.refreshRoleList();
-				this.refreshPersonList();
-				this.initAllowTime();
-				$module = $("#" + moduleId);
-				this.initSubmit();
-				this.initEvent();
+				$module.find(".J-scroll.device").on("scrollDown",function () {
+					if(!$$vue.deviceLoading){
+						$$vue.getDeviceNextPage();
+					}
+				});
 			})
 		}
 	});
