@@ -65,8 +65,11 @@
 										<td v-html="handleDeviceStatus($item.device_status)"></td>
 										<td>{{$item.update_time}}</td>
 										<td>
-											<a class="label label-success label-sm mr10 J-modify"  v-on:click="openDevice($index, $event)" v-show="(!$item.device_status||$item.device_status==11)">开锁</a>
-											<a class="label label-success label-sm mr10 J-modify"  v-on:click="closeDevice($index, $event)" v-show="($item.device_status&&$item.device_status==10)">关闭</a>
+											<a class="label label-success label-sm mr10 J-modify"  v-on:click="openDevice($index, $event)">开锁</a>
+											<!--<a class="label label-success label-sm mr10"  v-on:click="closeDevice($index, $event)" v-show="($item.device_status&&$item.device_status==10)">关闭</a>-->
+											<a class="label label-success label-sm mr10"  v-on:click="closeDevice($index, $event)" >关闭</a>
+											<a class="label label-info label-sm mr10"  v-on:click="setDeviceModel($index, $event)" >设置设备模式</a>
+
 										</td>
 									</tr>
 

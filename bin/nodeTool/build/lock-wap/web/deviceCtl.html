@@ -23,8 +23,10 @@
 					<span v-html="handleDeviceStatus($item.device_status)"></span>
 				</div>
 				<div class="bd-top bd-dashed mt10 pt10">
-											<a class="label label-success label-sm mr10 J-modify"  v-on:click="openDevice($index, $event)" v-show="(!$item.device_status||$item.device_status==11)">开锁</a>
-											<a class="label label-success label-sm mr10 J-modify"  v-on:click="closeDevice($index, $event)" v-show="($item.device_status&&$item.device_status==10)">关闭</a>
+											<!--<a class="label label-success label-sm mr10 J-modify"  v-on:click="openDevice($index, $event)" v-show="(!$item.device_status||$item.device_status==11)">开锁</a>-->
+											<a class="label label-success label-sm mr10 J-modify"  v-on:click="openDevice($index, $event)" >开锁</a>
+											<a class="label label-success label-sm mr10 J-modify"  v-on:click="closeDevice($index, $event)" >关闭</a>
+											<a class="label label-info label-sm mr10 J-modify"  v-on:click="setDeviceModel($index, $event)" >设置设备模式</a>
 				</div>
 			</li>
 		</ul>

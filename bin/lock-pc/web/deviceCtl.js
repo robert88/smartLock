@@ -196,6 +196,51 @@ $(function () {
 				}else{
 					return '<a class="fs14  t-muted ">关闭</a>'
 				}
+			},
+			setDeviceModel:function (index) {
+				$.dialog.closeAll();
+				var html ='<div class="J-select">' +
+					'<input type="text" placeholder="请选择设备名称" class="form-control J-select-text"> ' +
+					'<input name="device_id" type="hidden" check-type="required" class="J-select-value device_id"> ' +
+					'<i class="fa-angle-down"></i> ' +
+					'<div class="J-select-option J-scroll">' +
+					'<a data-name="全锁模式" data-value="1" class="option">全锁模式</a>' +
+					'<a data-name="单向模式" data-value="2" class="option">单向模式</a>' +
+					'<a data-name="常开模式" data-value="3" class="option">常开模式</a>' +
+					'<a data-name="点动模式" data-value="4" class="option">点动模式</a>' +
+					'<a data-name="双向模式" data-value="5" class="option">双向模式</a> ' +
+					'<a style="display: none;">加载更多...</a></div></div>';
+				var url =  "/smart_lock/v1/device_control/setting";
+				var type = "post";
+
+				$.dialog(html, {
+					title: "请选择模式",
+					maskClose:false,
+					button: [{
+						text: "确认", click: function (e,$dialog) {
+							var value = $.trim( $dialog.find(".device_id").val() );
+							if(!value){
+								$.tips("请选择模式！");
+								return false
+							}
+							PAGE.ajax({
+								url: url,
+								type: type,
+								data: {device_id: $$vue.list[index].id, token: token,type_id:value},
+								success: function () {
+									$.tips("操作成功！", "success");
+									$$vue.list.splice(index, 1);
+								}
+							});
+
+						}
+					}, {
+						text: "取消", click: function () {
+
+						}
+					}]
+
+				})
 			}
 		},
 		mounted: function () {

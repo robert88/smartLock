@@ -30,8 +30,8 @@ function pxToRem(files){
 
 	var indexpcFile = "D:/git/smartLock/bin/lock-pc/index.html"
 	var indexwapFile = "D:/git/smartLock/bin/lock-wap/index.html"
-	wake.writeData(indexpcFile,wake.readData(indexpcFile).replace(/ver=(\d+)/gm,"ver="+ver))
-	wake.writeData(indexwapFile,wake.readData(indexwapFile).replace(/ver=(\d+)/gm,"ver="+ver))
+	wake.writeData(indexpcFile,wake.readData(indexpcFile).replace(/ver=(\d+)/gm,"ver="+ver).replace(/window.PAGE.version='\d+'/,"window.PAGE.version='"+ver+"'"))
+	wake.writeData(indexwapFile,wake.readData(indexwapFile).replace(/ver=(\d+)/gm,"ver="+ver).replace(/window.PAGE.version='\d+'/,"window.PAGE.version='"+ver+"'"))
 
 wake.copyDir("../lock-wap/", "./build/lock-wap/",function(){
 		var files =wake.findFile(__dirname+"/build/lock-wap/","css",true);
