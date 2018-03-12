@@ -1,0 +1,37 @@
+<div class="multiTime-wrap col" id="multiTimeModule">
+	<div class="multiTime-wrap-left col6">
+		<ul class="col"></ul>
+		<div class="col">
+			<div class="col6 pr10">
+				<div class="J-select">
+					<input class="form-control J-select-text" type="text" placeholder="开始时间">
+					<input class="J-select-value" v-model="start_time" type="hidden" >
+					<i class="fa-angle-down"></i>
+					<div class="J-select-option J-scroll"  >
+						<a v-for="($item, $index) in allow_start_time_list"
+						   v-bind="{ 'data-jp':$item.jp, 'data-qp': $item.qp ,'data-name':$item.name, 'data-value':$item.id}"
+						   class="option">{{$item.name}}</a>
+					</div>
+				</div>
+			</div>
+			<div class="col6 pl10">
+				<div class="J-select">
+					<input class="form-control J-select-text" type="text" placeholder="结束时间">
+					<input class="J-select-value" v-model="end_time" type="hidden" >
+					<i class="fa-angle-down"></i>
+					<div class="J-select-option J-scroll"  >
+						<a v-for="($item, $index) in allow_end_time_list"
+						   v-bind="{ 'data-jp':$item.jp, 'data-qp': $item.qp ,'data-name':$item.name, 'data-value':$item.id}"
+						   class="option">{{$item.name}}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="multiTime-wrap-right col6"></div>
+	<div class="multiTime-wrap-select">
+		<div class="turn-right"><i class="fa-angle-double-right"></i></div>
+		<div class="turn-right"><i class="fa-angle-double-left"></i></div>
+		<div class="turn-left"></div>
+	</div>
+</div>
