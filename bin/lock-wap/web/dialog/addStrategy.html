@@ -29,7 +29,7 @@
 				<div class="form-group J-validItem validItem">
 					<label><i class="t-danger fa-asterisk mr5 fs10"></i>角色</label>
 					<i class="fa-microphone-slash"></i>
-					<div class="J-select  J-select-search">
+					<div class="J-select">
 						<input class="form-control J-select-text" name="role_name" type="text" placeholder="请选择角色">
 						<input class="J-select-value" name="role_id" type="hidden" check-type="required">
 						<i class="fa-angle-down"></i>
@@ -48,7 +48,7 @@
 				<div class="form-group J-validItem validItem">
 					<label>用户</label>
 					<i class="fa-microphone-slash"></i>
-					<div class="J-select  J-select-search">
+					<div class="J-select">
 						<input class="form-control J-select-text" name="user_name" type="text" placeholder="请选择用户">
 						<input class="J-select-value" name="user_id" type="hidden">
 						<i class="fa-angle-down"></i>
@@ -96,7 +96,7 @@
 				<i class="fa-microphone-slash"></i>
 				<div class="col">
 					<div class="col6 pr10">
-						<div class="J-select  J-select-search">
+						<div class="J-select">
 							<input class="form-control J-select-text" type="text" placeholder="开始时间">
 							<input class="J-select-value" v-model="open.start_time" type="hidden" >
 							<i class="fa-angle-down"></i>
@@ -109,7 +109,7 @@
 						</div>
 					</div>
 					<div class="col6 pl10">
-						<div class="J-select  J-select-search">
+						<div class="J-select">
 							<input class="form-control J-select-text" type="text" placeholder="结束时间">
 							<input class="J-select-value" v-model="open.end_time" type="hidden" >
 							<i class="fa-angle-down"></i>
@@ -130,7 +130,7 @@
 				<i class="fa-microphone-slash"></i>
 				<div class="col">
 					<div class="col6 pr10">
-						<div class="J-select  J-select-search">
+						<div class="J-select">
 							<input class="form-control J-select-text" type="text" placeholder="开始时间">
 							<input class="J-select-value" v-model="close.start_time" type="hidden" >
 							<i class="fa-angle-down"></i>
@@ -143,7 +143,7 @@
 						</div>
 					</div>
 					<div class="col6 pl10">
-						<div class="J-select  J-select-search">
+						<div class="J-select">
 							<input class="form-control J-select-text" type="text" placeholder="结束时间">
 							<input class="J-select-value" v-model="close.end_time" type="hidden" >
 							<i class="fa-angle-down"></i>
@@ -166,7 +166,7 @@
 				<i class="fa-microphone-slash"></i>
 				<div class="col">
 					<div class="col6 pr10">
-						<div class="J-select  J-select-search">
+						<div class="J-select">
 							<input class="form-control J-select-text" type="text" placeholder="开始时间">
 							<input class="J-select-value" v-model="mode1.start_time" type="hidden" >
 							<i class="fa-angle-down"></i>
@@ -179,7 +179,7 @@
 						</div>
 					</div>
 					<div class="col6 pl10">
-						<div class="J-select  J-select-search">
+						<div class="J-select">
 							<input class="form-control J-select-text" type="text" placeholder="结束时间">
 							<input class="J-select-value" v-model="mode1.end_time" type="hidden" >
 							<i class="fa-angle-down"></i>
@@ -200,7 +200,7 @@
 				<i class="fa-microphone-slash"></i>
 				<div class="col">
 					<div class="col6 pr10">
-						<div class="J-select  J-select-search">
+						<div class="J-select">
 							<input class="form-control J-select-text" type="text" placeholder="开始时间">
 							<input class="J-select-value" v-model="mode2.start_time" type="hidden" >
 							<i class="fa-angle-down"></i>
@@ -213,7 +213,7 @@
 						</div>
 					</div>
 					<div class="col6 pl10">
-						<div class="J-select  J-select-search">
+						<div class="J-select">
 							<input class="form-control J-select-text" type="text" placeholder="结束时间">
 							<input class="J-select-value" v-model="mode2.end_time" type="hidden" >
 							<i class="fa-angle-down"></i>
@@ -236,7 +236,7 @@
 				<i class="fa-microphone-slash"></i>
 				<div class="col">
 					<div class="col6 pr10">
-						<div class="J-select  J-select-search">
+						<div class="J-select">
 							<input class="form-control J-select-text" type="text" placeholder="开始时间">
 							<input class="J-select-value" v-model="mode3.start_time" type="hidden" >
 							<i class="fa-angle-down"></i>
@@ -249,7 +249,7 @@
 						</div>
 					</div>
 					<div class="col6 pl10">
-						<div class="J-select  J-select-search">
+						<div class="J-select">
 							<input class="form-control J-select-text" type="text" placeholder="结束时间">
 							<input class="J-select-value" v-model="mode3.end_time" type="hidden" >
 							<i class="fa-angle-down"></i>
@@ -270,7 +270,7 @@
 				<i class="fa-microphone-slash"></i>
 				<div class="col">
 					<div class="col6 pr10">
-						<div class="J-select  J-select-search">
+						<div class="J-select">
 							<input class="form-control J-select-text" type="text" placeholder="开始时间">
 							<input class="J-select-value" v-model="mode4.start_time" type="hidden" >
 							<i class="fa-angle-down"></i>
@@ -283,7 +283,7 @@
 						</div>
 					</div>
 					<div class="col6 pl10">
-						<div class="J-select  J-select-search">
+						<div class="J-select">
 							<input class="form-control J-select-text" type="text" placeholder="结束时间">
 							<input class="J-select-value" v-model="mode4.end_time" type="hidden" >
 							<i class="fa-angle-down"></i>
@@ -306,7 +306,7 @@
 				<i class="fa-microphone-slash"></i>
 				<div class="col">
 					<div class="col6 pr10">
-						<div class="J-select  J-select-search">
+						<div class="J-select">
 							<input class="form-control J-select-text" type="text" placeholder="开始时间">
 							<input class="J-select-value" v-model="mode5.start_time" type="hidden" >
 							<i class="fa-angle-down"></i>
@@ -319,7 +319,7 @@
 						</div>
 					</div>
 					<div class="col6 pl10">
-						<div class="J-select  J-select-search">
+						<div class="J-select">
 							<input class="form-control J-select-text" type="text" placeholder="结束时间">
 							<input class="J-select-value" v-model="mode5.end_time" type="hidden" >
 							<i class="fa-angle-down"></i>

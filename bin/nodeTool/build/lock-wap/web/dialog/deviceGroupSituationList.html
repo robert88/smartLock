@@ -6,7 +6,7 @@
 				<li class="col6 fs16 pt10"><span class="fs14 t-muted mr5">设备名称:</span>{{$item.device_name}}</li>
 				<li class="col6"><div class="form-group J-validItem validItem">
 					<i class="fa-microphone-slash"></i>
-					<div class="J-select  J-select-search">
+					<div class="J-select">
 						<input class="form-control J-select-text" type="text"  v-bind="'value':$item.strategy_name" placeholder="请选择设置策略">
 						<input class="J-select-value" type="hidden" check-type="required" v-bind="{'data-index':$index,'value':$item.strategy_id}">
 						<i class="fa-angle-down"></i>
