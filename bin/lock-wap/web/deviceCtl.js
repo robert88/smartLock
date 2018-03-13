@@ -192,43 +192,46 @@ $(function () {
 			},
 			handleDeviceStatus:function (device_status) {
 				if(device_status=="10"){
-					return '<a class="fs14 bd bd-success plr10 ptb5 t-success bd-radius-5">开启</a>'
+					return '<a class="fs14  t-success ">开启</a>'
 				}else{
-					return '<a class="fs14 bd plr10 ptb5 t-muted bd-radius-5">关闭</a>'
+					return '<a class="fs14  t-muted ">关闭</a>'
 				}
-			},setDeviceModel:function (index) {
-				$.dialog.closeAll();
-				var html ='<div class="J-select">' +
-					'<input type="text" placeholder="请选择模式" class="form-control J-select-text" style="width: 100%"> ' +
-					'<input name="device_id" type="hidden" check-type="required" class="J-select-value device_id"> ' +
-					'<i class="fa-angle-down"></i> ' +
-					'<div class="J-select-option J-scroll">' +
-					'<a data-name="全锁模式" data-value="1" class="option">全锁模式</a>' +
-					'<a data-name="单向模式" data-value="2" class="option">单向模式</a>' +
-					'<a data-name="常开模式" data-value="3" class="option">常开模式</a>' +
-					'<a data-name="点动模式" data-value="4" class="option">点动模式</a>' +
-					'<a data-name="双向模式" data-value="5" class="option">双向模式</a> ' +
-					'<a style="display: none;">加载更多...</a></div></div>';
+			},
+            showDeviceMode:function (mode) {
+				var modeMap={"1":"全锁模式","2":"单向模式","3":"常开模式","4":"点动模式","5":"双向模式"}
+                return modeMap[$.trim(mode)]||"未设置";
+            },
+			setDeviceSingleModel:function (index,value) {
 				var url =  "/smart_lock/v1/device_control/setting";
 				var type = "post";
+				PAGE.ajax({
+					url: url,
+					type: type,
+					data: {device_id: $$vue.list[index].id, token: token,type_id:value},
+					success: function () {
+						$.tips("操作成功！", "success");
+					}
+				});
+			},
+			setDeviceModel:function (index) {
+				var $$vue = this;
 
+				$.dialog.closeAll();
+				var html ='请按设备入网，入网成功之后，请点击当前确定按钮';
 				$.dialog(html, {
-					title: "请选择模式",
+					title: "提示",
 					maskClose:false,
 					button: [{
 						text: "确认", click: function (e,$dialog) {
-							var value = $.trim( $dialog.find(".device_id").val() );
-							if(!value){
-								$.tips("请选择模式！");
-								return false
-							}
+
+							var url =  "/smart_lock/v1/device/add_hub";
+							var type = "post";
 							PAGE.ajax({
 								url: url,
 								type: type,
-								data: {device_id: $$vue.list[index].id, token: token,type_id:value},
+								data: {device_id: $$vue.list[index].id, token: token},
 								success: function () {
 									$.tips("操作成功！", "success");
-									$$vue.list.splice(index, 1);
 								}
 							});
 

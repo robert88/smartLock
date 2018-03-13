@@ -1,42 +1,42 @@
 /* the norm */
 #gritter-notice-wrapper {
 	position:fixed;
-	top:0.2rem;
-	right:0.2rem;
-	width:3.01rem;
+	top:20px;
+	right:20px;
+	width:301px;
 	z-index:9999;
 }
 #gritter-notice-wrapper.top-left {
-    left: 0.2rem;
+    left: 20px;
     right: auto;
 }
 #gritter-notice-wrapper.bottom-right {
     top: auto;
     left: auto;
-    bottom: 0.2rem;
-    right: 0.2rem;
+    bottom: 20px;
+    right: 20px;
 }
 #gritter-notice-wrapper.bottom-left {
     top: auto;
     right: auto;
-    bottom: 0.2rem;
-    left: 0.2rem;
+    bottom: 20px;
+    left: 20px;
 }
 .gritter-item-wrapper {
 	position:relative;
-	margin:0 0 0.1rem 0;
+	margin:0 0 10px 0;
 	background:url('../images/ie-spacer.gif'); /* ie7/8 fix */ 
 }
 .gritter-top {
-	background:url(../images/gritter.png) no-repeat left -0.3rem;
-	height:0.1rem;
+	background:url(../images/gritter.png) no-repeat left -30px;
+	height:10px;
 }
 .hover .gritter-top {
-	background-position:right -0.3rem;
+	background-position:right -30px;
 }
 .gritter-bottom {
 	background:url(../images/gritter.png) no-repeat left bottom;
-	height:0.08rem;
+	height:8px;
 	margin:0;
 }
 .hover .gritter-bottom {
@@ -44,14 +44,14 @@
 }
 .gritter-item {
 	display:block;
-	background:url(../images/gritter.png) no-repeat left -0.4rem;
+	background:url(../images/gritter.png) no-repeat left -40px;
 	color:#eee;
-	padding:2px 0.11rem 0.08rem 0.11rem;
-	font-size: 0.11rem;
+	padding:2px 11px 8px 11px;
+	font-size: 11px;
 	font-family:verdana;
 }
 .hover .gritter-item {
-	background-position:right -0.4rem;
+	background-position:right -40px;
 }
 .gritter-item p {
 	padding:0;
@@ -61,24 +61,24 @@
 .gritter-close {
 	display:none;
 	position:absolute;
-	top:0.05rem;
-	left:0.03rem;
+	top:5px;
+	left:3px;
 	background:url(../images/gritter.png) no-repeat left top;
 	cursor:pointer;
-	width:0.3rem;
-	height:0.3rem;
+	width:30px;
+	height:30px;
 	text-indent:-9999em;
 }
 .gritter-title {
-	font-size:0.14rem;
+	font-size:14px;
 	font-weight:bold;
-	padding:0 0 0.07rem 0;
+	padding:0 0 7px 0;
 	display:block;
 	text-shadow:1px 1px 0 #000; /* Not supported by IE :( */
 }
 .gritter-image {
-	width:0.48rem;
-	height:0.48rem;
+	width:48px;
+	height:48px;
 	float:left;
 }
 .gritter-with-image,
@@ -86,7 +86,7 @@
 	padding:0;
 }
 .gritter-with-image {
-	width:2.2rem;
+	width:220px;
 	float:right;
 }
 /* for the light (white) version of the gritter notice */

@@ -1,3 +1,5 @@
 #addStrategyForm .J-scroll{max-height: 170px;overflow: auto}
 #addStrategyForm .label-checkbox{display: inline-block;position:relative;}
 #addStrategyForm .col6{width: 100%}
+#addStrategyForm .col6.pl10{padding-left:0px;padding-right:0px;}
+#addStrategyForm .col6.pr10{padding-left:0px;padding-right:0px;}

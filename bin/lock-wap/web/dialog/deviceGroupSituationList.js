@@ -25,8 +25,12 @@ $(function () {
 		el: "#"+moduleVueId,
 		data: {
 			list: [],
-			params:{page_number:1,page_size:10,situational_id:situational_id,token:token}
+
+			params:{page_number:1,page_size:10,situational_id:situational_id,token:token},
+			device_list:[],
+			device_params:{page_number:1,situational_id:situational_id,page_size:10,token:token}
 		},
+
 		methods:{
 			mergeArray: function (obj) {
 				if (typeof obj !== "object") {
@@ -61,45 +65,61 @@ $(function () {
 				}
 				return true;
 			},
+			refreshDeviceList:function () {
+				// ### 4.21 获取带策略信息的设备列表
+
+				var $$vue = this;
+				var url = "/smart_lock/v1/device/find_strategy_list";
+				var type = "post";
+				PAGE.ajax({
+					url: url, 
+					data: $$vue.device_params,
+					type: type, 
+					success: function (ret) {
+						if (!ret) {
+							return;
+						}
+						$$vue.device_list = ret;
+						$dialog.trigger("setcenter");
+					},
+					complete: function () {
+						setTimeout(function () {
+							$dialog.trigger("setcenter");
+						},100);
+					}
+				});
+			},
 			refreshList:function () {
-				// ### 8.7 查询情景模式绑定分组列表
-				//
-				// |  POST  |  smart_lock/v1/situational_mode/find_bind_group|
+				// ### 4.19 查询分组下设备列表
+				// |  POST  |  smart_lock/v1/device_group/find_device  |
 				// | ------------- |:-------------:|
 				//
 				// **请求参数：**
 				//
 				// |  参数名称 | 参数类型 | 是否必填 | 参数描述 | 备注 |
 				// |  -------- | -------- | -------- | -------- | ---- |
-				// | situation_id| Interger | 是 |  情景模式id  |  |
-				// | page_size | Interger | 是 | 每页数量 | |
-				// |page_number | Interger |是 | 页数 ||
+				// |  group_id | Interger | 是 |  分组id  | 返回该用户有控制权限的设备 |
 
 				var $$vue = this;
-				var url = "/smart_lock/v1/situational_mode/find_bind_group";
+				var url =  "/smart_lock/v1/strategy/find_list";
 				var type = "post";
 				if ($$vue.loading) {
 					return;
 				}
 				$$vue.loading = true;
 				PAGE.ajax({
-					url: url, 
+					url: url,
 					data: $$vue.params,
-					type: type, 
+					type: type,
 					success: function (ret) {
 						if (!ret) {
 							return;
 						}
-						$$vue.list = ret.list;
-						$dialog.trigger("setcenter");
-						PAGE.setpageFooter($module.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
-							$$vue.params.page_number = page_number
-						});
+						listMap[$$vue.params.page_number] = ret.list;
+						$$vue.total_page = ret.total_page;
+						$$vue.list = $$vue.mergeArray(listMap);
 					},
 					complete: function () {
-						setTimeout(function () {
-							$dialog.trigger("setcenter");
-						},100);
 						$$vue.loading = false;
 					}
 				});
@@ -164,13 +184,33 @@ $(function () {
 						$$vue.list.splice(index,1);
 					}
 				});
+			},
+			lisenChange:function ($module) {
+				var $$vue = this;
+				$module.on("change",".J-select-value",function () {
+					var $this = $(this);
+					var $parent = $this.parents(".list-item").addClass("loading")
+					var index = $(this).data("index");
+					var strategy_id = $(this).val();
+					var device_id = $$vue.device_list[index].id;
+					var url = "/smart_lock/v1/situational_mode/set_strategy";
+					var type = "post";
+					PAGE.ajax({
+						url: url, data: {situational_id:situational_id,device_id:device_id,strategy_id:strategy_id,token:token}, type: type, success: function (ret) {
+							$parent.removeClass("loading");
+
+						}
+					});
+				})
 			}
 
 		},
 		mounted: function () {
 			this.$nextTick(function () {
+				this.refreshDeviceList();
 				this.refreshList();
 				$module = $("#" + moduleId);
+				this.lisenChange($module)
 			})
 		}
 	});

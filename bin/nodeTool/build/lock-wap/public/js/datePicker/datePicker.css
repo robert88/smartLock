@@ -1,13 +1,13 @@
 .datePicker{
     background-color: #fff;
     border: 1px solid #ccc;
-    width: 2.5rem;
+    width: 250px;
 	z-index: 1;
 }
 .datePicker thead, .datePicker caption {
     background-color: #fff;
-    height: 0.28rem;
-    line-height: 0.28rem;
+    height: 28px;
+    line-height: 28px;
     border-bottom: 1px solid #e1e1e1;
     text-align: center
 }
@@ -17,9 +17,9 @@
     padding: 0
 }
  .datePicker td {
-    width: 0.25rem;
-    height: 0.25rem;
-    line-height: 0.25rem;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
     text-align: center;
     margin: 1px;
     cursor: pointer
@@ -33,7 +33,7 @@
     color: #fff
 }
  .datePicker a,  .datePicker span {
-    margin: 0 0.1rem
+    margin: 0 10px
 }
  .datePicker td.muted {
     color: #d1d1d1 !important

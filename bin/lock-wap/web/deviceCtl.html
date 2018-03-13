@@ -1,5 +1,5 @@
 
-<div class="wrap headerModule" data-title="设备门况信息"  data-noPrev="true" data-sliderNav="true" >
+<div class="wrap headerModule" data-title="智控"  data-noPrev="true" data-sliderNav="true" >
 	<!--s:systemPerson-->
 	<div id="deviceModule">
 
@@ -12,21 +12,25 @@
 					<span class="label-name"><i class="fa-user"></i> 设备名称</span>
 					<span>{{$item.device_name}}</span>
 				</div>
-				<div>
-					<span class="label-name"><i class="fa-tablet"></i> 设备编号</span>
-					<span>{{$item.device_code}}</span>
-				</div>
-				<div><span class="label-name"><i class="fa-credit-card"></i> 联网状态</span>
-					<span>{{$item.status}}</span>
-				</div>
-				<div><span class="label-name"><i class="fa-credit-card"></i> 设备状态</span>
-					<span v-html="handleDeviceStatus($item.device_status)"></span>
-				</div>
+				<ul class="col fs14 t-muted">
+					<li class="col6"> <span class="mr5">设备模式:</span><span class="t-info">{{showDeviceMode($item.device_mode)}}</span></li>
+					<li class="col6"><span class="mr5">联网状态: </span><span class="t-info">{{$item.status}}</span></li>
+					<li class="col6"><span class="mr5">设备状态: </span><span v-html="handleDeviceStatus($item.device_status)"></span></li>
+				</ul>
+
 				<div class="bd-top bd-dashed mt10 pt10">
-											<!--<a class="label label-success label-sm mr10 J-modify"  v-on:click="openDevice($index, $event)" v-show="(!$item.device_status||$item.device_status==11)">开锁</a>-->
-											<a class="label label-success label-sm mr10 J-modify"  v-on:click="openDevice($index, $event)" >开锁</a>
-											<a class="label label-success label-sm mr10 J-modify"  v-on:click="closeDevice($index, $event)" >关闭</a>
-											<a class="label label-info label-sm mr10 J-modify"  v-on:click="setDeviceModel($index, $event)" >设置设备模式</a>
+											<a class="label label-success label-sm mr10 J-modify"  v-on:click="openDevice($index, $event)" v-show="($item.device_type==2)">开锁</a>
+											<a class="label label-success label-sm mr10"  v-on:click="closeDevice($index, $event)" v-show="($item.device_type==2)">关闭</a>
+
+											<a class="label label-success label-sm mr10 J-modify"  v-on:click="setDeviceSingleModel($index, 1)" v-show="($item.device_type==1)">全锁</a>
+											<a class="label label-success label-sm mr10"  v-on:click="setDeviceSingleModel($index, 2)" v-show="($item.device_type==1)">单向</a>
+											<a class="label label-success label-sm mr10"  v-on:click="setDeviceSingleModel($index, 3)" v-show="($item.device_type==1)">常开</a>
+											<a class="label label-success label-sm mr10"  v-on:click="setDeviceSingleModel($index, 4)" v-show="($item.device_type==1)">点动</a>
+											<a class="label label-success label-sm mr10"  v-on:click="setDeviceSingleModel($index, 5)" v-show="($item.device_type==1)">双向</a>
+
+											<!--<a class="label label-success label-sm mr10"  v-on:click="closeDevice($index, $event)" >关闭</a>-->
+											<a class="label label-info label-sm mr10"  v-on:click="setDeviceModel($index, $event)" v-show="($item.device_type==3)">添加小hub</a>
+
 				</div>
 			</li>
 		</ul>

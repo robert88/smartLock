@@ -1,10 +1,10 @@
 @import "personHistory.css";
 @import "person.css";
-.form-group .btn-send-code{padding: 0.05rem 0.12rem;top: 0.34rem;}
-.alarmModuleList{position: relative;padding-left:0.26rem}
+.form-group .btn-send-code{padding: 5px 12px;top: 34px;}
+.alarmModuleList{position: relative;padding-left:26px}
 .alarmModuleList .label-checkbox{position: absolute;left:0px;}
 .alarmModuleList .label-checkbox  i{ top: 0px;}
-.alarmModuleList .label-checkbox input:checked + .fa-check{top: 0.04rem;}
-.selectAllContent .label-checkbox{display: inline-block;width: 0.86rem;  margin-top: 0.06rem;}
-.hideScroll{overflow: auto;margin-right:-0.17rem;padding-right:0.18rem}
+.alarmModuleList .label-checkbox input:checked + .fa-check{top: 4px;}
+.selectAllContent .label-checkbox{display: inline-block;width: 86px;  margin-top: 6px;}
+.hideScroll{overflow: auto;margin-right:-17px;padding-right:18px}
 body{overflow: hidden;height: 100%;}

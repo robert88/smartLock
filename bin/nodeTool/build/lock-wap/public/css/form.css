@@ -55,10 +55,10 @@ fieldset {
 }
 .validErrMsg{
 	display: none;
-	padding-bottom: 0.1rem;
-	margin-top: -0.1rem;
+	padding-bottom: 10px;
+	margin-top: -10px;
 	top:100%;
-	line-height: 0.23rem;
+	line-height: 23px;
 }
 .validError .validErrMsg{
 	color:#da0e0e;
@@ -68,8 +68,8 @@ fieldset {
 	display: none;
 	position: absolute;
 	top: 50%;
-	margin-top: -0.13rem;
-	right: -0.3rem;
+	margin-top: -13px;
+	right: -30px;
 }
 .validError .validIcon{
 	color:#da0e0e;
@@ -79,22 +79,22 @@ fieldset {
 
 .label-checkbox input:checked + .fa-check{
  display: block;
- font-size: 0.14rem;
- top: 0.06rem;
+ font-size: 14px;
+ top: 6px;
  left: 2px;
 }
 .label-checkbox{
 	position:relative;
-	width: 0.2rem;
+	width: 20px;
 	display: block;
-	min-height: 0.2rem;
-	padding-left:0.3rem;
+	min-height: 20px;
+	padding-left:30px;
 }
 .label-checkbox .fa-check,.label-checkbox .fa-square-o{
 	position:absolute;
 	left:0;
-	font-size: 0.23rem;
-	top: 0.03rem;
+	font-size: 23px;
+	top: 3px;
 }
 
 .form-group{position:relative;}
@@ -103,42 +103,42 @@ fieldset {
 {
 	display: block;
 	width:100%;
-	margin-top:0.1rem;
+	margin-top:10px;
 	font-size: inherit;
 }
 .form-group>i{
 	color: #CCCCCC;
 	display: block !important;
-	font-size: 0.16rem;
-	height: 0.16rem;
-	top: 0.34rem;
-	margin: 0.09rem 2px 0.04rem 0.1rem;
+	font-size: 16px;
+	height: 16px;
+	top: 34px;
+	margin: 9px 2px 4px 10px;
 	position: absolute !important;
 	text-align: center;
-	width: 0.16rem;
+	width: 16px;
 	z-index: 1;
 }
 .form-control {
 	border: 1px solid #cad2db;
-	padding: 0 0.05rem 0 0.3rem;
-	-moz-border-radius: 0.05rem;
-	-webkit-border-radius: 0.05rem;
-	border-radius: 0.05rem;
-	line-height: 0.36rem;
-	margin-bottom: 0.1rem;
-	/*font-size: 0.14rem;*/
+	padding: 0 5px 0 30px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	line-height: 36px;
+	margin-bottom: 10px;
+	/*font-size: 14px;*/
 	color: #717171;
 	font-family: Arial;
 }
 .form-group .captcha-code-img {
 	position: absolute;
 	right: 0;
-	top: 0.32rem;
+	top: 32px;
 }
 .form-group .btn-send-code {
 	position: absolute;
 	right: 1px;
-	top: 0.3rem;
+	top: 30px;
 }
 
 .label-checkbox input,
@@ -146,14 +146,14 @@ fieldset {
 	display: none;
 }
 .J-select{position:relative;}
-.J-select .fa-angle-down{position:absolute;right: 0.09rem;font-size: 0.23rem;top: 0.07rem;}
-.J-select.current .J-select-option{display:block;border: 1px solid #dbe0e6;margin-top: -0.11rem;padding: 0.1rem;margin: -0.11rem 0px 0;box-shadow: 0 0.03rem 0.03rem rgba(0,0,0,0.1);position: absolute;width: 100%;background-color: #fff;z-index: 10;border-radius: 0.05rem;}
+.J-select .fa-angle-down{position:absolute;right: 9px;font-size: 23px;top: 7px;}
+.J-select.current .J-select-option{display:block;border: 1px solid #dbe0e6;margin-top: -11px;padding: 10px;margin: -11px 0px 0;box-shadow: 0 3px 3px rgba(0,0,0,0.1);position: absolute;width: 100%;background-color: #fff;z-index: 10;border-radius: 5px;}
 .J-select-option{display:none;}
 .J-select-option .option{
 	display:block;
 	border-bottom: 1px solid #e7e7e7;
 	color: #555555;
-	padding: 0.1rem;
+	padding: 10px;
 	}
 
 .J-select-option .option:hover{background:#fff;border-color: #70afc4;color:#70afc4;}
@@ -161,13 +161,13 @@ fieldset {
     position:relative;
 }
 .form-group-inline label{
-    line-height: 0.33rem;
+    line-height: 33px;
     width: 30%;
     display: inline-block;
     text-align: right;
-    padding-right:0.1rem;
+    padding-right:10px;
 }
-.form-group-inline .form-control,.form-group-inline .form-control-select{padding: 0 0.05rem 0 0.05rem;width: 60%;display: inline-block;}
+.form-group-inline .form-control,.form-group-inline .form-control-select{padding: 0 5px 0 5px;width: 60%;display: inline-block;}
 .form-group-inline .form-control-select .form-control{width:100%;}
 .form-group-inline .form-control-select{padding:0}
 .template-tr td{background: #f5ecdf !important;}
@@ -177,12 +177,12 @@ fieldset {
 .form-group-block>i{
 	color: #CCCCCC;
 	display: block !important;
-	font-size: 0.16rem;
-	height: 0.16rem;
-	top: 0.03rem;
-	margin: 0.09rem 2px 0.04rem 0.1rem;
+	font-size: 16px;
+	height: 16px;
+	top: 3px;
+	margin: 9px 2px 4px 10px;
 	position: absolute !important;
 	text-align: center;
-	width: 0.16rem;
+	width: 16px;
 	z-index: 1;
 }

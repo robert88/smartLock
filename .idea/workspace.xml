@@ -2,17 +2,108 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52c3e8da-7557-487b-b2c0-c1f8decfaf1f" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/lock-wap/public/js/common/vue.prototype.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/lock-pc/web/addStrategy.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/lock-pc/web/addStrategy.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-pc/index.html" afterPath="$PROJECT_DIR$/bin/lock-pc/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-pc/public/css/form.css" afterPath="$PROJECT_DIR$/bin/lock-pc/public/css/form.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-pc/public/css/table.css" afterPath="$PROJECT_DIR$/bin/lock-pc/public/css/table.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-pc/public/js/common/main.js" afterPath="$PROJECT_DIR$/bin/lock-pc/public/js/common/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-pc/public/js/dialog/jquery.dialog.js" afterPath="$PROJECT_DIR$/bin/lock-pc/public/js/dialog/jquery.dialog.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.html" afterPath="$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.js" afterPath="$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-pc/web/dialog/addStrategy.html" afterPath="$PROJECT_DIR$/bin/lock-pc/web/dialog/addStrategy.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-pc/web/dialog/addStrategy.js" afterPath="$PROJECT_DIR$/bin/lock-pc/web/dialog/addStrategy.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-pc/web/dialog/deviceGroupSituationList.css" afterPath="$PROJECT_DIR$/bin/lock-pc/web/dialog/deviceGroupSituationList.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-pc/web/dialog/deviceGroupSituationList.html" afterPath="$PROJECT_DIR$/bin/lock-pc/web/dialog/deviceGroupSituationList.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-pc/web/dialog/deviceGroupSituationList.js" afterPath="$PROJECT_DIR$/bin/lock-pc/web/dialog/deviceGroupSituationList.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-pc/web/dialog/modifyStrategy.html" afterPath="$PROJECT_DIR$/bin/lock-pc/web/dialog/modifyStrategy.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-pc/web/dialog/modifyStrategy.js" afterPath="$PROJECT_DIR$/bin/lock-pc/web/dialog/modifyStrategy.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-pc/web/situation.html" afterPath="$PROJECT_DIR$/bin/lock-pc/web/situation.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-pc/web/situation.js" afterPath="$PROJECT_DIR$/bin/lock-pc/web/situation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-pc/web/strategy.html" afterPath="$PROJECT_DIR$/bin/lock-pc/web/strategy.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-wap/index.html" afterPath="$PROJECT_DIR$/bin/lock-wap/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-wap/public/css/table.css" afterPath="$PROJECT_DIR$/bin/lock-wap/public/css/table.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-wap/public/js/common/page.js" afterPath="$PROJECT_DIR$/bin/lock-wap/public/js/common/page.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-wap/public/js/dialog/jquery.dialog.js" afterPath="$PROJECT_DIR$/bin/lock-wap/public/js/dialog/jquery.dialog.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-wap/web/deviceCtl.html" afterPath="$PROJECT_DIR$/bin/lock-wap/web/deviceCtl.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-wap/web/deviceCtl.js" afterPath="$PROJECT_DIR$/bin/lock-wap/web/deviceCtl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-wap/web/dialog/addStrategy.css" afterPath="$PROJECT_DIR$/bin/lock-wap/web/dialog/addStrategy.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-wap/web/dialog/addStrategy.html" afterPath="$PROJECT_DIR$/bin/lock-wap/web/dialog/addStrategy.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-wap/web/dialog/addStrategy.js" afterPath="$PROJECT_DIR$/bin/lock-wap/web/dialog/addStrategy.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-wap/web/dialog/deviceGroupSituationList.css" afterPath="$PROJECT_DIR$/bin/lock-wap/web/dialog/deviceGroupSituationList.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-wap/web/dialog/deviceGroupSituationList.html" afterPath="$PROJECT_DIR$/bin/lock-wap/web/dialog/deviceGroupSituationList.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-wap/web/dialog/deviceGroupSituationList.js" afterPath="$PROJECT_DIR$/bin/lock-wap/web/dialog/deviceGroupSituationList.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-wap/web/dialog/modifyStrategy.html" afterPath="$PROJECT_DIR$/bin/lock-wap/web/dialog/modifyStrategy.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-wap/web/dialog/modifyStrategy.js" afterPath="$PROJECT_DIR$/bin/lock-wap/web/dialog/modifyStrategy.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-wap/web/situation.html" afterPath="$PROJECT_DIR$/bin/lock-wap/web/situation.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-wap/web/situation.js" afterPath="$PROJECT_DIR$/bin/lock-wap/web/situation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/lock-wap/web/strategy.html" afterPath="$PROJECT_DIR$/bin/lock-wap/web/strategy.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/index.html" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/animate.min.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/animate.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/base.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/base.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/btn.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/btn.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/content.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/content.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/dropdown.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/dropdown.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/form.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/form.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/header.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/header.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/iconmoon/demo-files/demo.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/iconmoon/demo-files/demo.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/label.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/label.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/nav-slider.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/nav-slider.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/pager.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/pager.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/panel.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/panel.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/responsive.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/responsive.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/tab.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/tab.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/table.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/css/table.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/common/main.js" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/common/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/common/page.js" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/common/page.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/datePicker/datePicker.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/datePicker/datePicker.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/dialog/jquery.dialog.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/dialog/jquery.dialog.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/dialog/jquery.dialog.js" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/dialog/jquery.dialog.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/fullcalendar/fullcalendar.min.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/fullcalendar/fullcalendar.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/gritter/jquery.gritter.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/gritter/jquery.gritter.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/jQuery-slimScroll/examples/style.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/jQuery-slimScroll/examples/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/jQuery-slimScroll/jquery.slimscroll.js" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/jQuery-slimScroll/jquery.slimscroll.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/jQuery-slimScroll/jquery.slimscroll.min.js" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/jQuery-slimScroll/jquery.slimscroll.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/jQuery-slimScroll/slimScrollHorizontal.min.js" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/jQuery-slimScroll/slimScrollHorizontal.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/lib/jquery-1.12.4.js" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/lib/jquery-1.12.4.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/lib/jquery-1.12.4.min.js" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/lib/jquery-1.12.4.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/lib/jquery-ui-1.10.3.custom.min.js" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/lib/jquery-ui-1.10.3.custom.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/ztree/bootstrapStyle.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/public/js/ztree/bootstrapStyle.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/alarm.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/alarm.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/device.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/device.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/deviceCtl.html" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/deviceCtl.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/deviceCtl.js" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/deviceCtl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/deviceGroup.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/deviceGroup.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/addDevice.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/addDevice.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/addDeviceGroupSituation.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/addDeviceGroupSituation.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/addDeviceToGroup.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/addDeviceToGroup.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/addPerson.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/addPerson.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/addStrategy.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/addStrategy.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/addStrategy.js" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/addStrategy.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/addStrategyToSituation.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/addStrategyToSituation.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/deviceGroupList.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/deviceGroupList.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/deviceGroupSituationList.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/deviceGroupSituationList.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/deviceGroupSituationList.html" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/deviceGroupSituationList.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/deviceGroupSituationList.js" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/deviceGroupSituationList.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/modifyPerson.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/modifyPerson.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/modifyStrategy.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/modifyStrategy.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/modifyStrategy.html" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/modifyStrategy.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/modifyStrategy.js" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/modifyStrategy.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/permissions.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/permissions.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/personDetail.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/dialog/personDetail.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/login.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/login.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/modifyLoginPwd.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/modifyLoginPwd.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/person.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/person.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/personHistory.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/personHistory.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/register.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/register.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/repair.css" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/repair.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/situation.html" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/situation.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/situation.js" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/situation.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/strategy.html" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/strategy.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/wechatwifi.html" afterPath="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/wechatwifi.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nodeTool/pxToRem.js" afterPath="$PROJECT_DIR$/bin/nodeTool/pxToRem.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/error20180312_204213.log" afterPath="$PROJECT_DIR$/log/error20180312_204213.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/info20180206_200612.log" afterPath="$PROJECT_DIR$/log/info20180206_200612.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/log20180206_200612.log" afterPath="$PROJECT_DIR$/log/log20180206_200612.log" />
@@ -37,27 +128,102 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="addStrategy.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/dialog/addStrategy.html">
+      <file leaf-file-name="strategy.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/strategy.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="92" column="30" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="30" />
-              <folding>
-                <element signature="n#li#1;n#ul#1;n#form#0;n#!!top" expanded="false" />
-                <element signature="n#li#1;n#ul#2;n#form#0;n#!!top" expanded="false" />
-              </folding>
+            <state relative-caret-position="2959">
+              <caret line="244" column="9" selection-start-line="244" selection-start-column="9" selection-end-line="244" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addStrategy.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/dialog/addStrategy.html">
+      <file leaf-file-name="modifyStrategy.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/dialog/modifyStrategy.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="119" column="62" selection-start-line="119" selection-start-column="62" selection-end-line="119" selection-end-column="62" />
-              <folding>
-                <element signature="n#ul#2;n#form#0;n#!!top" expanded="false" />
-              </folding>
+            <state relative-caret-position="236">
+              <caret line="357" column="107" selection-start-line="357" selection-start-column="107" selection-end-line="357" selection-end-column="107" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deviceCtl.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/deviceCtl.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="519">
+              <caret line="231" column="84" selection-start-line="231" selection-start-column="84" selection-end-line="231" selection-end-column="84" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deviceCtl.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/deviceCtl.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="9" column="92" selection-start-line="9" selection-start-column="92" selection-end-line="9" selection-end-column="92" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rap.util.core.config.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/rap.util.core.config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="477">
+              <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="modifyStrategy.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/dialog/modifyStrategy.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="440">
+              <caret line="22" column="70" selection-start-line="22" selection-start-column="70" selection-end-line="22" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="situation.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/situation.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="32" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="31" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deviceCtl.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="500">
+              <caret line="76" column="169" selection-start-line="76" selection-start-column="169" selection-end-line="76" selection-end-column="169" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="situation.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/situation.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="49" column="127" selection-start-line="49" selection-start-column="111" selection-end-line="49" selection-end-column="127" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="situation.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/situation.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="460">
+              <caret line="227" column="29" selection-start-line="227" selection-start-column="29" selection-end-line="227" selection-end-column="29" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -82,57 +248,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/bin/lock-wap/web/alerm.html" />
-        <option value="$PROJECT_DIR$/bin/lock-wap/web/device.html" />
-        <option value="$PROJECT_DIR$/bin/lock-wap/web/device.js" />
-        <option value="$PROJECT_DIR$/bin/lock-pc/web/device.js" />
-        <option value="$PROJECT_DIR$/bin/lock-wap/web/repairLog.html" />
-        <option value="$PROJECT_DIR$/bin/lock-wap/web/alarm.js" />
-        <option value="$PROJECT_DIR$/bin/lock-wap/web/alarm.css" />
-        <option value="$PROJECT_DIR$/bin/lock-wap/web/repair.js" />
-        <option value="$PROJECT_DIR$/bin/lock-wap/web/repair.html" />
-        <option value="$PROJECT_DIR$/bin/lock-pc/web/repair.html" />
-        <option value="$PROJECT_DIR$/bin/lock-pc/web/repair.js" />
-        <option value="$PROJECT_DIR$/bin/lock-pc/public/js/common/main.js" />
-        <option value="$PROJECT_DIR$/bin/lock-wap/web/alarm.html" />
-        <option value="$PROJECT_DIR$/bin/lock-pc/web/repairLog.html" />
         <option value="$PROJECT_DIR$/bin/lock-pc/web/repairLog.js" />
         <option value="$PROJECT_DIR$/bin/lock-pc/public/js/common/page.js" />
         <option value="$PROJECT_DIR$/bin/lock-pc/web/alarm.html" />
         <option value="$PROJECT_DIR$/bin/lock-pc/web/alarm.js" />
         <option value="$PROJECT_DIR$/bin/lock-pc/web/device.html" />
-        <option value="$PROJECT_DIR$/bin/lock-pc/web/dialog/modifyStrategy.js" />
         <option value="$PROJECT_DIR$/bin/lock-wap/web/dialog/addStrategy.js" />
-        <option value="$PROJECT_DIR$/bin/lock-wap/web/dialog/modifyStrategy.js" />
         <option value="$PROJECT_DIR$/bin/lock-pc/web/dialog/addDeviceGroupSituation.html" />
         <option value="$PROJECT_DIR$/bin/lock-wap/web/dialog/addDeviceGroupSituation.html" />
         <option value="$PROJECT_DIR$/bin/lock-pc/web/strategy.js" />
         <option value="$PROJECT_DIR$/bin/lock-wap/web/repairLog.js" />
-        <option value="$PROJECT_DIR$/bin/lock-wap/public/js/common/page.js" />
         <option value="$PROJECT_DIR$/bin/lock-pc/public/css/base.css" />
         <option value="$PROJECT_DIR$/bin/lock-wap/public/css/base.css" />
         <option value="$PROJECT_DIR$/bin/lock-pc/index.html" />
-        <option value="$PROJECT_DIR$/bin/lock-wap/index.html" />
-        <option value="$PROJECT_DIR$/bin/lock-wap/web/deviceCtl.html" />
-        <option value="$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.html" />
         <option value="$PROJECT_DIR$/bin/lock-pc/public/js/dialog/jquery.dialog.css" />
-        <option value="$PROJECT_DIR$/bin/lock-pc/public/js/dialog/jquery.dialog.js" />
         <option value="$PROJECT_DIR$/bin/lock-wap/public/js/dialog/jquery.dialog.css" />
         <option value="$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/wechatwifi.html" />
-        <option value="$PROJECT_DIR$/bin/nodeTool/pxToRem.js" />
         <option value="$PROJECT_DIR$/bin/lock-wap/web/wechatwifi.html" />
         <option value="$PROJECT_DIR$/bin/lock-wap/public/css/nav-slider.css" />
-        <option value="$PROJECT_DIR$/bin/lock-pc/web/situation.html" />
+        <option value="$PROJECT_DIR$/bin/lock-wap/web/strategy.js" />
+        <option value="$PROJECT_DIR$/bin/lock-wap/web/dialog/addStrategy.html" />
+        <option value="$PROJECT_DIR$/bin/lock-wap/index.html" />
+        <option value="$PROJECT_DIR$/bin/lock-wap/web/roleList.js" />
+        <option value="$PROJECT_DIR$/bin/lock-wap/public/js/common/vue.prototype.js" />
+        <option value="$PROJECT_DIR$/bin/lock-wap/public/js/common/page.js" />
+        <option value="$PROJECT_DIR$/bin/lock-wap/web/situation.js" />
         <option value="$PROJECT_DIR$/bin/lock-pc/public/css/form.css" />
-        <option value="$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.js" />
-        <option value="$PROJECT_DIR$/bin/lock-wap/web/deviceCtl.js" />
+        <option value="$PROJECT_DIR$/bin/nodeTool/pxToRem.js" />
+        <option value="$PROJECT_DIR$/bin/lock-wap/web/dialog/deviceGroupSituationList.css" />
+        <option value="$PROJECT_DIR$/bin/lock-pc/public/js/dialog/jquery.dialog.js" />
+        <option value="$PROJECT_DIR$/bin/lock-wap/public/js/dialog/jquery.dialog.js" />
+        <option value="$PROJECT_DIR$/bin/lock-wap/web/dialog/deviceGroupSituationList.js" />
+        <option value="$PROJECT_DIR$/bin/lock-pc/public/js/common/main.js" />
+        <option value="$PROJECT_DIR$/bin/lock-pc/web/dialog/deviceGroupSituationList.html" />
+        <option value="$PROJECT_DIR$/bin/lock-wap/web/dialog/deviceGroupSituationList.html" />
+        <option value="$PROJECT_DIR$/bin/lock-pc/public/css/table.css" />
+        <option value="$PROJECT_DIR$/bin/lock-wap/public/css/table.css" />
         <option value="$PROJECT_DIR$/bin/lock-pc/web/dialog/addStrategy.html" />
         <option value="$PROJECT_DIR$/bin/lock-pc/web/dialog/addStrategy.js" />
+        <option value="$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.js" />
+        <option value="$PROJECT_DIR$/bin/lock-pc/web/dialog/modifyStrategy.html" />
+        <option value="$PROJECT_DIR$/bin/lock-pc/web/dialog/modifyStrategy.js" />
         <option value="$PROJECT_DIR$/bin/lock-pc/web/strategy.html" />
-        <option value="$PROJECT_DIR$/bin/rap.util.core.config.js" />
-        <option value="$PROJECT_DIR$/bin/lock-wap/web/strategy.js" />
         <option value="$PROJECT_DIR$/bin/lock-wap/web/strategy.html" />
-        <option value="$PROJECT_DIR$/bin/lock-wap/web/dialog/addStrategy.html" />
+        <option value="$PROJECT_DIR$/bin/lock-wap/web/dialog/modifyStrategy.js" />
+        <option value="$PROJECT_DIR$/bin/lock-wap/web/deviceCtl.js" />
+        <option value="$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.html" />
+        <option value="$PROJECT_DIR$/bin/lock-wap/web/deviceCtl.html" />
+        <option value="$PROJECT_DIR$/bin/rap.util.core.config.js" />
+        <option value="$PROJECT_DIR$/bin/lock-wap/web/situation.html" />
+        <option value="$PROJECT_DIR$/bin/lock-pc/web/situation.html" />
+        <option value="$PROJECT_DIR$/bin/lock-pc/web/situation.js" />
       </list>
     </option>
   </component>
@@ -225,6 +391,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="nodeTool" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smartLock" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smartLock" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="lock-wap" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -291,6 +475,110 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="lock-wap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smartLock" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smartLock" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lock-wap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dialog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smartLock" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smartLock" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lock-wap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smartLock" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smartLock" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lock-wap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smartLock" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smartLock" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="lock-pc" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -340,6 +628,92 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="dialog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smartLock" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smartLock" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lock-pc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smartLock" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smartLock" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lock-pc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dialog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smartLock" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smartLock" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lock-pc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -409,19 +783,19 @@
     <property name="nodejs_interpreter_path" value="C:\Program Files\nodejs\node" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\git\smartLock\bin\lock-wap\public\js\common" />
+      <recent name="D:\git\smartLock\bin\lock-pc\web" />
+      <recent name="D:\git\smartLock\bin\lock-wap\web" />
+      <recent name="D:\git\smartLock\bin\lock-pc\public\js\common" />
+      <recent name="D:\git\smartLock\bin\lock-pc\public\js" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\git\smartLock\bin\lock-wap\web\dialog" />
       <recent name="D:\git\smartLock\bin\lock\web" />
       <recent name="D:\git\smartLock\bin\lock\web\dialog" />
       <recent name="D:\git\smartLock\bin\lock\public\js\fullcalendar" />
       <recent name="D:\git\smartLock\bin\lock\public\js\gritter" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\git\smartLock\bin\lock-pc\web" />
-      <recent name="D:\git\smartLock\bin\lock-wap\web" />
-      <recent name="D:\git\smartLock\bin\lock-pc\public\js\common" />
-      <recent name="D:\git\smartLock\bin\lock-pc\public\js" />
-      <recent name="D:\git\smartLock\bin\lock-pc\web\dialog" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.web">
@@ -824,15 +1198,15 @@
       <workItem from="1520601886406" duration="17000" />
       <workItem from="1520687740161" duration="9017000" />
       <workItem from="1520746868502" duration="26669000" />
-      <workItem from="1520778147712" duration="22964000" />
+      <workItem from="1520778147712" duration="48024000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="577052000" />
+    <option name="totallyTimeSpent" value="602112000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-10" y="0" width="1932" height="1030" extended-state="0" />
+    <frame x="-10" y="0" width="1932" height="1030" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -846,7 +1220,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29555315" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23712575" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -896,296 +1270,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/repairLog.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
-          <folding>
-            <element signature="e#867#1096#0" expanded="false" />
-            <element signature="e#1126#1296#0" expanded="false" />
-            <element signature="e#1321#1388#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/repairLog.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="100" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/alarm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="123" column="0" selection-start-line="123" selection-start-column="0" selection-end-line="129" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/device.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="98" column="49" selection-start-line="98" selection-start-column="49" selection-end-line="98" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/alarm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="136" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-wap/public/js/common/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="28" column="50" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-pc/public/css/base.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="775" column="0" selection-start-line="775" selection-start-column="0" selection-end-line="779" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-wap/public/css/base.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="813" column="0" selection-start-line="813" selection-start-column="0" selection-end-line="813" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/person.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="70" column="70" selection-start-line="70" selection-start-column="70" selection-end-line="70" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-pc/public/js/dialog/jquery.dialog.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="156" column="16" selection-start-line="156" selection-start-column="16" selection-end-line="156" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-pc/public/js/dialog/jquery.dialog.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="197" column="50" selection-start-line="197" selection-start-column="50" selection-end-line="197" selection-end-column="50" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <marker date="1520858348057" expanded="true" signature="3662:3693" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-wap/public/js/dialog/jquery.dialog.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/wechatwifi.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="31" column="39" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-wap/public/css/nav-slider.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-wap/public/js/dialog/jquery.dialog.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="193" column="23" selection-start-line="193" selection-start-column="23" selection-end-line="193" selection-end-column="23" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <marker date="1520858450820" expanded="true" signature="3662:3693" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/nodeTool/build/lock-wap/web/wechatwifi.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="222" column="45" selection-start-line="222" selection-start-column="45" selection-end-line="222" selection-end-column="45" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-wap/public/js/common/page.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="839" column="17" selection-start-line="839" selection-start-column="17" selection-end-line="839" selection-end-column="17" />
-          <folding>
-            <element signature="e#17232#17354#0" expanded="false" />
-            <element signature="e#17366#17466#0" expanded="false" />
-            <element signature="e#17488#17495#0" expanded="false" />
-            <element signature="e#19706#19806#0" expanded="false" />
-            <marker date="1520785285323" expanded="true" signature="11044:11062" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-wap/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-160">
-          <caret line="94" column="4" selection-start-line="94" selection-start-column="4" selection-end-line="94" selection-end-column="4" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/wechatBindLogin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/wechatBindLogin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/nodeTool/rap.filesystem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/nodeTool/pxToRem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="46" column="119" selection-start-line="46" selection-start-column="119" selection-end-line="46" selection-end-column="119" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/strategy.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/dialog/addDeviceToGroup.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-60">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/dialog/addPerson.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/dialog/addDeviceToGroup.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="74" column="58" selection-start-line="74" selection-start-column="58" selection-end-line="74" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/device.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="91" column="26" selection-start-line="91" selection-start-column="26" selection-end-line="91" selection-end-column="60" />
-          <folding>
-            <marker date="1520763019509" expanded="true" signature="5672:5685" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/deviceGroup.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-60">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/person.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="168" column="0" selection-start-line="168" selection-start-column="0" selection-end-line="169" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/deviceCtl.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/situation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="128" column="80" selection-start-line="128" selection-start-column="62" selection-end-line="128" selection-end-column="80" />
-          <folding>
-            <element signature="e#5201#5932#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/device.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
@@ -1193,44 +1277,6 @@
           <folding>
             <marker date="1520763018973" expanded="true" signature="5616:5629" placeholder="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-pc/public/css/form.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="126" column="24" selection-start-line="126" selection-start-column="24" selection-end-line="126" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="202" column="114" selection-start-line="202" selection-start-column="114" selection-end-line="202" selection-end-column="114" />
-          <folding>
-            <marker date="1520869147190" expanded="true" signature="4823:4834" placeholder="..." />
-            <marker date="1520869147190" expanded="true" signature="5391:5405" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/deviceCtl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="205" column="82" selection-start-line="205" selection-start-column="82" selection-end-line="205" selection-end-column="82" />
-          <folding>
-            <marker date="1520869157970" expanded="true" signature="4878:4889" placeholder="..." />
-            <marker date="1520869157970" expanded="true" signature="5445:5459" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/deviceCtl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="28" column="70" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="70" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1244,54 +1290,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/situation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="40" column="201" selection-start-line="40" selection-start-column="201" selection-end-line="40" selection-end-column="201" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/rap.util.core.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="44" column="53" selection-start-line="44" selection-start-column="53" selection-end-line="44" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/strategy.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="37" column="50" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/situation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/strategy.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="40" column="27" selection-start-line="40" selection-start-column="27" selection-end-line="40" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/strategy.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="224" column="31" selection-start-line="224" selection-start-column="12" selection-end-line="224" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/strategy.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
@@ -1300,22 +1298,224 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/dialog/addStrategy.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="80" column="27" selection-start-line="80" selection-start-column="27" selection-end-line="80" selection-end-column="27" />
-          <folding>
-            <element signature="e#4287#5052#0" expanded="false" />
-            <element signature="e#5087#5799#0" expanded="false" />
-            <element signature="e#6576#7431#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/addStrategy.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/dialog/addStrategyToSituation.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-wap/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="31" column="38" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-pc/public/css/form.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="163" column="42" selection-start-line="163" selection-start-column="42" selection-end-line="163" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/roleList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-wap/public/js/common/vue.prototype.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="539">
+          <caret line="119" column="32" selection-start-line="119" selection-start-column="32" selection-end-line="119" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-wap/public/js/common/page.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="611" column="4" selection-start-line="611" selection-start-column="4" selection-end-line="611" selection-end-column="4" />
+          <folding>
+            <element signature="e#17234#17356#0" expanded="false" />
+            <element signature="e#17368#17468#0" expanded="false" />
+            <element signature="e#17490#17497#0" expanded="false" />
+            <element signature="e#19708#19808#0" expanded="false" />
+            <marker date="1520943573059" expanded="true" signature="11044:11062" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/nodeTool/pxToRem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="36" column="74" selection-start-line="36" selection-start-column="74" selection-end-line="36" selection-end-column="74" />
+          <folding>
+            <marker date="1520946008722" expanded="true" signature="1284:2105" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/dialog/addStrategyToSituation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/dialog/addStrategyToSituation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/dialog/addDevice.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="23" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/dialog/deviceGroupSituationList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-180">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/dialog/deviceGroupSituationList.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="19" column="63" selection-start-line="19" selection-start-column="63" selection-end-line="19" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/dialog/deviceGroupList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="99" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/situation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-880">
+          <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/dialog/modifyPerson.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2721">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-pc/public/js/dialog/jquery.dialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="197" column="117" selection-start-line="197" selection-start-column="117" selection-end-line="197" selection-end-column="117" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1520951652163" expanded="true" signature="3662:3693" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-wap/public/js/dialog/jquery.dialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="194" column="18" selection-start-line="194" selection-start-column="18" selection-end-line="194" selection-end-column="18" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1520951662475" expanded="true" signature="3662:3693" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/dialog/deviceGroupSituationList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2499">
+          <caret line="199" column="59" selection-start-line="199" selection-start-column="59" selection-end-line="199" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-pc/public/js/common/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="47" column="49" selection-start-line="47" selection-start-column="49" selection-end-line="47" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/dialog/deviceGroupSituationList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="118" selection-start-line="10" selection-start-column="118" selection-end-line="10" selection-end-column="118" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/dialog/deviceGroupSituationList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/dialog/addDevice.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/dialog/addStrategy.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/dialog/addStrategy.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="139" column="33" selection-start-line="139" selection-start-column="33" selection-end-line="139" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/dialog/addStrategy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
           <folding />
         </state>
       </provider>
@@ -1328,24 +1528,180 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/alarm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/strategy.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-wap/public/css/table.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/dialog/addStrategy.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="92" column="30" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="30" />
+        <state relative-caret-position="479">
+          <caret line="186" column="66" selection-start-line="186" selection-start-column="66" selection-end-line="186" selection-end-column="66" />
           <folding>
             <element signature="n#li#1;n#ul#1;n#form#0;n#!!top" expanded="false" />
+            <element signature="n#ul#2;n#form#0;n#!!top" expanded="false" />
             <element signature="n#li#1;n#ul#2;n#form#0;n#!!top" expanded="false" />
+            <element signature="n#li#1;n#ul#3;n#form#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#li#1;n#ul#3;n#form#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/dialog/addStrategy.html">
+    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/dialog/addStrategy.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="119" column="62" selection-start-line="119" selection-start-column="62" selection-end-line="119" selection-end-column="62" />
+        <state relative-caret-position="373">
+          <caret line="211" column="49" selection-start-line="211" selection-start-column="49" selection-end-line="211" selection-end-column="49" />
           <folding>
-            <element signature="n#ul#2;n#form#0;n#!!top" expanded="false" />
+            <element signature="e#5737#6502#0" expanded="false" />
+            <element signature="e#6537#7249#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/dialog/modifyStrategy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-324">
+          <caret line="402" column="20" selection-start-line="402" selection-start-column="20" selection-end-line="402" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/dialog/modifyStrategy.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="323" column="103" selection-start-line="323" selection-start-column="103" selection-end-line="323" selection-end-column="103" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-pc/public/css/table.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1301">
+          <caret line="239" column="56" selection-start-line="239" selection-start-column="56" selection-end-line="239" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/strategy.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="501">
+          <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="45" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/strategy.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="3" column="27" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/strategy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2959">
+          <caret line="244" column="9" selection-start-line="244" selection-start-column="9" selection-end-line="244" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/dialog/modifyStrategy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="357" column="107" selection-start-line="357" selection-start-column="107" selection-end-line="357" selection-end-column="107" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/deviceCtl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="519">
+          <caret line="231" column="84" selection-start-line="231" selection-start-column="84" selection-end-line="231" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/deviceCtl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="92" selection-start-line="9" selection-start-column="92" selection-end-line="9" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/rap.util.core.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/dialog/modifyStrategy.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="22" column="70" selection-start-line="22" selection-start-column="70" selection-end-line="22" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-wap/web/situation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="32" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="31" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="76" column="169" selection-start-line="76" selection-start-column="169" selection-end-line="76" selection-end-column="169" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/situation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="49" column="127" selection-start-line="49" selection-start-column="111" selection-end-line="49" selection-end-column="127" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/situation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="227" column="29" selection-start-line="227" selection-start-column="29" selection-end-line="227" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>

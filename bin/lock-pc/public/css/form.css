@@ -154,10 +154,15 @@ fieldset {
 	color: #555555;
 	padding: 10px;
 	}
-
+.J-select-option .option:last-child{
+	border-bottom:none;
+}
 .J-select-option .option:hover{background:#fff;border-color: #70afc4;color:#70afc4;}
 .form-group-inline{
     position:relative;
+}
+.J-select-option .option:hover:last-child{
+	border-bottom:none;
 }
 .form-group-inline label{
     line-height: 33px;

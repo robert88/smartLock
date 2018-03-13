@@ -586,7 +586,7 @@
 		})
 	};
 
-	
+
 	//全局方法
 	Vue.prototype.isSelf =function (email) {
 		var curAccordEmail = $.cookie("user_email");
@@ -608,7 +608,8 @@
 			}
 		}
 		return false;
-	}
+	};
+	
 	Vue.prototype.mergeArray = function (obj) {
 		if (typeof obj !== "object") {
 			return [];

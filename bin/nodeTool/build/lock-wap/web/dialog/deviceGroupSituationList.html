@@ -1,18 +1,23 @@
 <!--用户授权给设备，用户入口-->
 <div id="removeGroupFromSituation">
 	<div class="J-table" id="addDeviceToGroupVue">
-		<div class="bd-bottom ptb10" v-for="($item, $index) in list" v-cloak>
-			<ul class="col">
-				<li class="col6 fs16">设备组id</li>
-				<li class="col6">{{$item.id}}</li>
+		<div class="bd-bottom bd-dashed ptb10" v-for="($item, $index) in device_list" v-cloak>
+			<ul class="col list-item" >
+				<li class="col6 fs16 pt10"><span class="fs14 t-muted mr5">设备名称:</span>{{$item.device_name}}</li>
+				<li class="col6"><div class="form-group J-validItem validItem">
+					<i class="fa-microphone-slash"></i>
+					<div class="J-select  J-select-search">
+						<input class="form-control J-select-text" type="text"  v-bind="'value':$item.strategy_name" placeholder="请选择设置策略">
+						<input class="J-select-value" type="hidden" check-type="required" v-bind="{'data-index':$index,'value':$item.strategy_id}">
+						<i class="fa-angle-down"></i>
+						<div class="J-select-option J-scroll">
+							<a v-for="($item, $index) in list"
+							   v-bind="{ 'data-jp':$item.jp, 'data-qp': $item.qp ,'data-name':$item.name, 'data-value':$item.id}"
+							   class="option">{{$item.name}}</a>
+						</div>
+					</div>
+				</div></li>
 			</ul>
-			<ul class="col">
-				<li class="col6 fs16">设备组名称</li>
-				<li class="col6">{{$item.group_name}}</li>
-			</ul>
-			<p>
-				<a class="label label-success label-sm" v-on:click="remove($index)">移出情景</a>
-			</p>
 		</div>
 	</div>
 </div>

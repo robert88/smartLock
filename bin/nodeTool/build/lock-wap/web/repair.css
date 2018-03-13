@@ -13,7 +13,7 @@
 }
 .form-group label{
 	display: block;
-	padding-bottom: 0.1rem;
+	padding-bottom: 10px;
 }
 .form-group textarea {
 	overflow: hidden;

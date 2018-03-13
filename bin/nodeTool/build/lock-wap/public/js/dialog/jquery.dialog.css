@@ -6,9 +6,9 @@
     background-color: #ffffff;
     /* border: 1px solid #999999; */
     /* border: 1px solid rgba(0, 0, 0, 0.2); */
-    border-radius: 0.06rem;
-    -webkit-box-shadow: 0 0.03rem 0.09rem rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0.03rem 0.09rem rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
     background-clip: padding-box;
     /* box-shadow: 0px 0px 2px rgba(0, 0, 0, .5); */
         -webkit-transition-delay: .1s;
@@ -19,11 +19,11 @@
     -webkit-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
 }
-@media (min-width:13rem) {
-    .dl-dialog{min-width: 10.24rem}
+@media (min-width:1300px) {
+    .dl-dialog{min-width: 1024px}
 }
-@media (min-width:10.24rem) {
-    .dl-dialog{min-width: 6rem}
+@media (min-width:1024px) {
+    .dl-dialog{min-width: 600px}
 }
 .dl-body {
     width: auto;
@@ -32,8 +32,8 @@
 }
 
 .dl-header {
-    height: 0.4rem;
-    padding-right: 0.42rem;
+    height: 40px;
+    padding-right: 42px;
     border-bottom: 2px solid #cb0101;
 }
 
@@ -48,29 +48,29 @@
 }
 
 .dl-title {
-    padding: 0 0.1rem;
+    padding: 0 10px;
     color: #cb0101;
     font-weight: 700;
     height: 100%;
-    line-height: 0.45rem;
-    font-size: 0.18rem;
+    line-height: 45px;
+    font-size: 18px;
 }
 
 .dl-tips {
-    min-width: 1.8rem;
-    /* min-height:1rem; */
-    border-radius: 0.05rem;
-    -moz-border-radius: 0.05rem;
-    -webkit-bordder-radius: 0.05rem;
-    -o-user-select: 0.05rem;
+    min-width: 180px;
+    /* min-height:100px; */
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-bordder-radius: 5px;
+    -o-user-select: 5px;
     background: #fff;
     background-color: #ffffff;
-    border-radius: 0.06rem;
+    border-radius: 6px;
     background-clip: padding-box;
-    box-shadow: 0px 0px 0.46rem rgba(0, 0, 0, .3);
+    box-shadow: 0px 0px 46px rgba(0, 0, 0, .3);
 }
 .dl-dialog>.dl-close{
-        border-radius: 0 0.06rem 0 0;
+        border-radius: 0 6px 0 0;
         -moz-transition: all .2s ease-in-out;
         -o-transition: all .2s ease-in-out;
         -webkit-transition: all .2s ease-in-out;
@@ -81,28 +81,28 @@
 .dl-alert {
     border: 2px solid #d9d6d6;
     width: auto;
-    border-radius: 0.05rem;
+    border-radius: 5px;
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#dddddd), to(#ffffff));
 }
 
 .dl-alert .dl-header {
-    padding-left: 0.2rem;
+    padding-left: 20px;
     border-bottom: 2px solid #d9d6d6;
     color: #000;
-    height: 0.3rem;
-    line-height: 0.3rem
+    height: 30px;
+    line-height: 30px
 }
 .dl-tips-img{
     display:inline-block;
-    width:0.28rem;
-    height:0.28rem;
+    width:28px;
+    height:28px;
     background-repeat: no-repeat;
     vertical-align: middle;
 }
 .dl-tips-text{
     display:inline-block;
     vertical-align: middle;
-    margin-left:0.1rem;
+    margin-left:10px;
 }
 .dl-tips-error .dl-tips-img{
     background-image: url(dl-img/tips-error.png);
@@ -130,19 +130,19 @@
 }
 .dl-load{
     background: url(dl-img/loading.gif) no-repeat;
-    width: 0.16rem;
-    height:0.16rem;
+    width: 16px;
+    height:16px;
 }
-.dl-footer .btn{margin:0 0.1rem 0.1rem;}
+.dl-footer .btn{margin:0 10px 10px;}
 .dl-footer{
-    border-radius:0.05rem;
-    padding-top: 0.1rem;
+    border-radius:5px;
+    padding-top: 10px;
 }
 .dialogBtns{
-    margin-left: -0.15rem;
-    padding-left: 0.15rem;
-    padding-right: 0.15rem;
-    padding-top: 0.2rem;
+    margin-left: -15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 20px;
 }
 .dl-footer,.dialogBtns{
     text-align: center;
@@ -150,16 +150,16 @@
     box-sizing: content-box;
     width: 100%;
     background: #fefefe;
-    margin-top: 0.1rem;
+    margin-top: 10px;
     border-top: 1px solid #e1e1e1;
 }
 .dialogBtns:after{
     content: "";
     background: #fefefe;
     position:absolute;
-    bottom: -0.15rem;
-    height:0.15rem;
+    bottom: -15px;
+    height:15px;
     width: 100%;
     left: 0;
-    border-radius: 0 0 0.05rem 0.05rem;
+    border-radius: 0 0 5px 5px;
 }

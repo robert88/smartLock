@@ -1,9 +1,20 @@
-@media (min-width:10.24rem) {
-	#addDeviceForm{
-		width: 9.6rem;
+@media (min-width:1024px) {
+	#addDeviceToGroupVue{
+		width: 960px;
 	}
 }
-#addDeviceForm .J-scroll{
-	max-height: 1.76rem;
+#addDeviceToGroupVue .J-scroll{
+	max-height: 176px;
 	overflow: auto;
 }
+#addDeviceToGroupVue .form-group input{
+	margin-bottom: 0;
+	margin-top: 0;
+	font-size: 14px;
+	line-height: 32px;
+
+}
+#addDeviceToGroupVue .form-group>i{
+	top:0
+}
+#addDeviceToGroupVue .bd-bottom:last-child{border-bottom: none}

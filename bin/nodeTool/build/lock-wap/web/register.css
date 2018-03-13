@@ -5,9 +5,9 @@
 }
 .label-checkbox{
 	float: left;
-	padding: 0.15rem;
+	padding: 15px;
 	height: 100%;
-	width: 0.1rem;
+	width: 10px;
 }
 .checkbox{
 	display: block;

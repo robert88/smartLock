@@ -16,10 +16,10 @@
         width : 'auto',
 
         // height in pixels of the visible scroll area
-        height : '250px',
+        height : '2.5rem',
 
         // width in pixels of the scrollbar and rail
-        size : '7px',
+        size : '0.07rem',
 
         // scrollbar color, accepts any hex/color value
         color: '#000',
@@ -73,10 +73,10 @@
         touchScrollStep : 200,
 
         // sets border radius
-        borderRadius: '7px',
+        borderRadius: '0.07rem',
 
         // sets border radius of the rail
-        railBorderRadius : '7px'
+        railBorderRadius : '0.07rem'
       };
 
       var o = $.extend(defaults, options);

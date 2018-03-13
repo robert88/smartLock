@@ -52,7 +52,13 @@
 					<span class="label-name"><i class="fa-user"></i> 关锁时间</span>
 					<span>{{formatAllowTime($item.close_time)}}</span>
 				</div>
-
+				<div class="fs12">
+					<span class="mr5">全锁:{{formatAllowTime($item.mode_1_time)}}</span>
+					<span class="mr5">单向:{{formatAllowTime($item.mode_2_time)}}</span>
+					<span class="mr5">常开:{{formatAllowTime($item.mode_3_time)}}</span>
+					<span class="mr5">点动:{{formatAllowTime($item.mode_4_time)}}</span>
+					<span class="mr5">双向:{{formatAllowTime($item.mode_5_time)}}</span>
+				</div>
 				<div class="bd-top bd-dashed mt10 pt10">
 					<a class="label label-success label-sm mr10  J-dialog" v-show="hasPermission(16003)"
 					   data-url="/web/dialog/modifyStrategy.html" :data-strategy_id="$item.id"

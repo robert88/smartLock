@@ -3719,7 +3719,7 @@ jQuery( function() {
 	// Setup
 	div = document.createElement( "div" );
 	container = document.createElement( "div" );
-	container.style.cssText = "position:absolute;border:0;width:0;height:0;top:0;left:-9999px";
+	container.style.cssText = "position:absolute;border:0;width:0;height:0;top:0;left:-99.99rem";
 	body.appendChild( container ).appendChild( div );
 
 	if ( typeof div.style.zoom !== "undefined" ) {
@@ -4268,7 +4268,7 @@ jQuery.fn.extend( {
 		// Setup
 		div = document.createElement( "div" );
 		container = document.createElement( "div" );
-		container.style.cssText = "position:absolute;border:0;width:0;height:0;top:0;left:-9999px";
+		container.style.cssText = "position:absolute;border:0;width:0;height:0;top:0;left:-99.99rem";
 		body.appendChild( container ).appendChild( div );
 
 		// Support: IE6
@@ -4283,7 +4283,7 @@ jQuery.fn.extend( {
 				"-webkit-box-sizing:content-box;-moz-box-sizing:content-box;" +
 				"box-sizing:content-box;display:block;margin:0;border:0;" +
 				"padding:1px;width:1px;zoom:1";
-			div.appendChild( document.createElement( "div" ) ).style.width = "5px";
+			div.appendChild( document.createElement( "div" ) ).style.width = "0.05rem";
 			shrinkWrapBlocksVal = div.offsetWidth !== 3;
 		}
 
@@ -6541,7 +6541,7 @@ var documentElement = document.documentElement;
 	support.clearCloneStyle = div.style.backgroundClip === "content-box";
 
 	container = document.createElement( "div" );
-	container.style.cssText = "border:0;width:8px;height:0;top:0;left:-9999px;" +
+	container.style.cssText = "border:0;width:0.08rem;height:0;top:0;left:-99.99rem;" +
 		"padding:0;margin-top:1px;position:absolute";
 	div.innerHTML = "";
 	container.appendChild( div );
@@ -6630,12 +6630,12 @@ var documentElement = document.documentElement;
 			divStyle = window.getComputedStyle( div );
 			pixelPositionVal = ( divStyle || {} ).top !== "1%";
 			reliableMarginLeftVal = ( divStyle || {} ).marginLeft === "2px";
-			boxSizingReliableVal = ( divStyle || { width: "4px" } ).width === "4px";
+			boxSizingReliableVal = ( divStyle || { width: "0.04rem" } ).width === "0.04rem";
 
 			// Support: Android 4.0 - 4.3 only
 			// Some styles come back with percentage values, even though they shouldn't
 			div.style.marginRight = "50%";
-			pixelMarginRightVal = ( divStyle || { marginRight: "4px" } ).marginRight === "4px";
+			pixelMarginRightVal = ( divStyle || { marginRight: "0.04rem" } ).marginRight === "0.04rem";
 
 			// Support: Android 2.3 only
 			// Div with explicit width and no margin-right incorrectly
@@ -7436,7 +7436,7 @@ Tween.propHooks = {
 
 			// passing an empty string as a 3rd parameter to .css will automatically
 			// attempt a parseFloat and fallback to a string if the parse fails
-			// so, simple values such as "10px" are parsed to Float.
+			// so, simple values such as "0.1rem" are parsed to Float.
 			// complex values such as "rotate(1rad)" are returned as is.
 			result = jQuery.css( tween.elem, tween.prop, "" );
 

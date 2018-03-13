@@ -127,36 +127,36 @@
 	border-color: #555555;
 }
 .label {
-	height: 0.2rem;
+	height: 20px;
 	line-height: 1.15;
 }
 .label.arrow-out {
-	margin-left: 0.05rem;
+	margin-left: 5px;
 }
 .label.arrow-out:before {
-	border-width: 0.09rem 0.05rem 0.1rem;
-	left: -0.1rem;
+	border-width: 9px 5px 10px;
+	left: -10px;
 }
 .label.arrow-in {
-	margin-left: 0.05rem;
+	margin-left: 5px;
 }
 .label.arrow-in:before {
-	border-width: 0.09rem 0.05rem 0.1rem;
-	left: -0.05rem;
+	border-width: 9px 5px 10px;
+	left: -5px;
 }
 .label.arrow-out-right {
-	margin-right: 0.05rem;
+	margin-right: 5px;
 }
 .label.arrow-out-right:after {
-	border-width: 0.09rem 0.05rem 0.1rem;
-	right: -0.1rem;
+	border-width: 9px 5px 10px;
+	right: -10px;
 }
 .label.arrow-in-right {
-	margin-right: 0.05rem;
+	margin-right: 5px;
 }
 .label.arrow-in-right:after {
-	border-width: 0.09rem 0.05rem 0.1rem;
-	right: -0.05rem;
+	border-width: 9px 5px 10px;
+	right: -5px;
 }
 .label > span,
 .label > [class*="fa-"] {

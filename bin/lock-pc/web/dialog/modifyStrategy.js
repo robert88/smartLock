@@ -21,7 +21,7 @@ $(function () {
 	var $$vue = new Vue({
 		el: "#" + moduleVueId,
 		data: {
-
+			strategy_params:{strategy_id:strategy_id,token:token},
 			role_list: [],
 			roleLoading:false,
 			roleTotalPage:0,
@@ -32,12 +32,53 @@ $(function () {
 			personTotalPage:0,
 			person_list_params:{page_number:1,page_size:10,user_name:"",token:token},
 
-			strategy_params:{strategy_id:strategy_id,token:token},
 
-			allow_start_time_list:[],
-			allow_end_time_list:[],
-			start_time:0,
-			end_time:0,
+			device_list:[],
+			deviceLoading:false,
+			deviceTotalPage:0,
+			device_list_params:{page_number:1,page_size:10,user_name:"",token:token},
+			open:{
+				allow_start_time_list:[],
+				allow_end_time_list:[],
+				start_time:0,
+				end_time:0
+			},
+			mode1:{
+				allow_start_time_list:[],
+				allow_end_time_list:[],
+				start_time:0,
+				end_time:0
+			},
+			mode2:{
+				allow_start_time_list:[],
+				allow_end_time_list:[],
+				start_time:0,
+				end_time:0
+			},
+			mode3:{
+				allow_start_time_list:[],
+				allow_end_time_list:[],
+				start_time:0,
+				end_time:0
+			},
+			mode4:{
+				allow_start_time_list:[],
+				allow_end_time_list:[],
+				start_time:0,
+				end_time:0
+			},
+			mode5:{
+				allow_start_time_list:[],
+				allow_end_time_list:[],
+				start_time:0,
+				end_time:0
+			},
+			close:{
+				allow_start_time_list:[],
+				allow_end_time_list:[],
+				start_time:0,
+				end_time:0
+			},
 			allow_openmode_list:[{id:"11",name:"远程控制"},{id:"12",name:"密码"}],
 			allow_operation_list:[{id:"11",name:"开门"},{id:"12",name:"关门"}]
 		},
@@ -61,25 +102,65 @@ $(function () {
 					}
 				}
 			},
-			"start_time": function (newValue, oldValue) {
+			"open.start_time": function (newValue, oldValue) {
+
 				if (newValue != oldValue) {
-					this.allow_end_time_list =[];
-					var curTime = new Date("2018/02/04").getTime();
+					this.refreshEndList("open",newValue )
+				}
+			},
+			"close.start_time": function (newValue, oldValue) {
 
-					for(var i=0;i<=48;i++){
-						if((i/2)>newValue){
-							if(i==48){
-								this.allow_end_time_list.push({name:"24:00",id:i/2});
-							}else{
-								this.allow_end_time_list.push({name:(curTime+i/2*60*60*1000).toString().toDate().format("hh:mm"),id:i/2});
-							}
-						}
+				if (newValue != oldValue) {
+					this.refreshEndList("close",newValue )
+				}
+			},
+			"mode1.start_time": function (newValue, oldValue) {
 
-					}
+				if (newValue != oldValue) {
+					this.refreshEndList("mode1",newValue )
+				}
+			},
+			"mode2.start_time": function (newValue, oldValue) {
+
+				if (newValue != oldValue) {
+					this.refreshEndList("mode2",newValue )
+				}
+			},
+			"mode3.start_time": function (newValue, oldValue) {
+
+				if (newValue != oldValue) {
+					this.refreshEndList("mode3",newValue )
+				}
+			},
+			"mode4.start_time": function (newValue, oldValue) {
+
+				if (newValue != oldValue) {
+					this.refreshEndList("mode4",newValue )
+				}
+			},
+			"mode5.start_time": function (newValue, oldValue) {
+
+				if (newValue != oldValue) {
+					this.refreshEndList("mode5",newValue )
 				}
 			}
 		},
 		methods: {
+			refreshEndList:function (type,newValue ) {
+					this[type].allow_end_time_list =[];
+					var curTime = new Date("2018/02/04").getTime();
+					for(var i=0;i<=48;i++){
+						if((i/2)>newValue){
+							if(i==48){
+								this[type].allow_end_time_list.push({name:"24:00",id:i/2});
+							}else{
+								this[type].allow_end_time_list.push({name:(curTime+i/2*60*60*1000).toString().toDate().format("hh:mm"),id:i/2});
+							}
+						}
+
+					}
+
+			},
 			mergeArray: function (obj) {
 				if (typeof obj !== "object") {
 					return [];
@@ -112,6 +193,15 @@ $(function () {
 					this.refreshPersonList();
 				}
 			},
+			getDeviceNextPage:function () {
+				if (!this.deviceTotalPage) {
+					return;
+				}
+				if (this.device_list_params.page_number < this.deviceTotalPage) {
+					this.device_list_params.page_number++;
+					this.refreshDeviceList();
+				}
+			},
 			filter: function () {
 				$module.find(".search-filter-wrap").toggleClass("open");
 			},
@@ -122,17 +212,24 @@ $(function () {
 				return true;
 			},
 			initAllowTime:function () {
+				this.initAllowTimeByType("close")
+				this.initAllowTimeByType("open")
+				this.initAllowTimeByType("mode1")
+				this.initAllowTimeByType("mode2")
+				this.initAllowTimeByType("mode3")
+				this.initAllowTimeByType("mode4")
+				this.initAllowTimeByType("mode5")
+			},
+			initAllowTimeByType:function (type) {
 				var curTime = new Date("2018/02/04").getTime();
-				var turnTime = 0;
 				for(var i=0;i<=48;i++){
 					if(i==48){
-						this.allow_start_time_list[i] = {name:"24:00",id:i/2}
-						this.allow_end_time_list[i] = {name:"24:00",id:i/2}
+						this[type].allow_start_time_list[i] = {name:"24:00",id:i/2}
+						this[type].allow_end_time_list[i] = {name:"24:00",id:i/2}
 					}else{
-						this.allow_start_time_list[i] = {name:(curTime+i/2*60*60*1000-turnTime).toString().toDate().format("hh:mm"),id:i/2}
-						this.allow_end_time_list[i] = {name:(curTime+i/2*60*60*1000-turnTime).toString().toDate().format("hh:mm"),id:i/2}
+						this[type].allow_start_time_list[i] = {name:(curTime+i/2*60*60*1000).toString().toDate().format("hh:mm"),id:i/2}
+						this[type].allow_end_time_list[i] = {name:(curTime+i/2*60*60*1000).toString().toDate().format("hh:mm"),id:i/2}
 					}
-				
 				}
 			},
 			refreshRoleList:function () {
@@ -157,7 +254,7 @@ $(function () {
 					listMap["role"]  = listMap["role"] || [];
 					listMap["role"] [$$vue.role_params.page_number] = ret.list;
 					$$vue.roleTotalPage = ret.total_page;
-					$$vue.list = $$vue.mergeArray(listMap["person"] );
+					$$vue.list = $$vue.mergeArray(listMap["role"] );
 				},complete:function () {
 					$$vue.loading = false;
 				}});
@@ -183,7 +280,7 @@ $(function () {
 						listMap["person"]  = listMap["person"] || [];
 						listMap["person"] [$$vue.person_list_params.page_number] = ret.list;
 						$$vue.personTotalPage = ret.total_page;
-						$$vue.list = $$vue.mergeArray(listMap["role"] );
+						$$vue.list = $$vue.mergeArray(listMap["person"] );
 
 					},
 					complete: function () {
@@ -191,31 +288,79 @@ $(function () {
 					}
 				});
 			},
+			refreshDeviceList:function () {
+				var $$vue = this;
+				var url = "/smart_lock/v1/device/find_list";
+				var type = "post";
+				if ($$vue.deviceLoading) {
+					return;
+				}
+				$$vue.deviceLoading = true;
+				PAGE.ajax({
+					async:false,
+					url: url,
+					data: this.device_list_params,
+					type: type,
+					success: function (ret) {
+						if (!ret) {
+							return;
+						}
+						$$vue.device_list = ret.list||[];
+						listMap["device"]  = listMap["device"] || [];
+						listMap["device"] [$$vue.device_list_params.page_number] = ret.list;
+						$$vue.deviceTotalPage = ret.total_page;
+						$$vue.list = $$vue.mergeArray(listMap["device"] );
+
+					},
+					complete: function () {
+						$$vue.deviceLoading = false;
+					}
+				});
+			},
 			initSubmit:function () {
-				// |  POST  |  smart_lock/v1/strategy/modify|
-				// | ------------- |:-------------:|
-				//
-				// **请求参数：**
-				//
-				// |  参数名称 | 参数类型 | 是否必填 | 参数描述 | 备注 |
-				// |  -------- | -------- | -------- | -------- | ---- |
-				// |  strategy_id | Interger | 是 | 策略id  |  |
-				// |  strategy_name | String | 否 | 策略名称  |  |
-				// | role_id | Interger | 否 | 有权限角色id | |
-				// | user_id | Interger | 否 | 有权限用户id | |
-				// | allow_time | String | 否 | 允许操作时间段 | 以0点开始，分为单位的时间段，如零点半到一点允许，即30_60 |
-				// | allow_openmode | String | 否 |允许开锁方式 | 逗号隔开，11，12，13|
-				// | allow_operation | String | 否 |允许的操作| 暂定开和关两种，开门：11，关门：12。如 11，12 即开和关都允许 |
+				//表单注册
 				var $$vue = this;
 				$module.validForm({
 					success:function ($btn) {
 
-						if(($$vue.end_time*1)<=($$vue.start_time*1)){
-							$.tips("允许操作结束时间必须大于开始时间！","error");
+						if(($$vue.open.end_time*1)<=($$vue.open.start_time*1)){
+							$.tips("开锁结束时间必须大于开始时间！","error");
 							return
 						}
+						if(($$vue.close.end_time*1)<=($$vue.close.start_time*1)){
+							$.tips("关锁结束时间必须大于开始时间！","error");
+							return
+						}
+						if(($$vue.mode1.end_time*1)<=($$vue.mode1.start_time*1)){
+							$.tips("全锁状态结束时间必须大于开始时间！","error");
+							return
+						}
+						if(($$vue.mode2.end_time*1)<=($$vue.mode2.start_time*1)){
+							$.tips("单向状态结束时间必须大于开始时间！","error");
+							return
+						}
+						if(($$vue.mode3.end_time*1)<=($$vue.mode3.start_time*1)){
+							$.tips("常开状态结束时间必须大于开始时间！","error");
+							return
+						}
+						if(($$vue.mode4.end_time*1)<=($$vue.mode4.start_time*1)){
+							$.tips("点动状态结束时间必须大于开始时间！","error");
+							return
+						}
+						if(($$vue.mode5.end_time*1)<=($$vue.mode5.start_time*1)){
+							$.tips("双向状态结束时间必须大于开始时间！","error");
+							return
+						}
+						var openParam = "&open_time="+$$vue.open.start_time*60+"_"+$$vue.open.end_time*60;
+						var closeParam = "&close_time="+$$vue.close.start_time*60+"_"+$$vue.close.end_time*60;
+						var param1 = "&mode_1_time="+$$vue.mode1.start_time*60+"_"+$$vue.mode1.end_time*60;
+						var param2 = "&mode_2_time="+$$vue.mode2.start_time*60+"_"+$$vue.mode2.end_time*60;
+						var param3 = "&mode_3_time="+$$vue.mode3.start_time*60+"_"+$$vue.mode3.end_time*60;
+						var param4 = "&mode_4_time="+$$vue.mode4.start_time*60+"_"+$$vue.mode4.end_time*60;
+						var param5 = "&mode_5_time="+$$vue.mode5.start_time*60+"_"+$$vue.mode5.end_time*60;
+
 						PAGE.ajax({
-							data:$module.serialize()+"&strategy_id="+strategy_id+"&allow_time="+$$vue.start_time*60+"_"+$$vue.end_time*60+"&token="+token,
+							data:$module.serialize()+openParam+closeParam+param1+param2+param3+param4+param5+"&strategy_id="+strategy_id+"&token="+token,
 							type:'post',
 							url:"/smart_lock/v1/strategy/modify",
 							success:function (ret) {
@@ -241,12 +386,49 @@ $(function () {
 						if (!ret) {
 							return;
 						}
-						var allow_time = ret.allow_time.split("_")||[];
+						
+
 						$$vue.setInputValue("strategy_name",ret.name,$module);
 						$$vue.setSelectValueByName("role_name",ret.role_name,$module);
 						$$vue.setSelectValueByName("user_name",ret.user_name,$module);
-						$$vue.setSelectValue("start_time",Math.floor(allow_time[0]*10/60)/10,$module);
-						$$vue.setSelectValue("end_time",Math.floor(allow_time[1]*10/60)/10,$module);
+						if(ret.open_time){
+							var open_time = ret.open_time.split("_")||[];
+							$$vue.setSelectValue("open.start_time",Math.floor(open_time[0]*10/60)/10,$module);
+							$$vue.setSelectValue("open.end_time",Math.floor(open_time[1]*10/60)/10,$module);
+						}
+
+						if(ret.close_time){
+							var close_time = ret.close_time.split("_")||[];
+							$$vue.setSelectValue("close.start_time",Math.floor(close_time[0]*10/60)/10,$module);
+							$$vue.setSelectValue("close.end_time", Math.floor(close_time[1] * 10 / 60) / 10, $module);
+						}
+
+						if (ret.mode_1_time) {
+							var mode_1_time = ret.mode_1_time.split("_") || [];
+							$$vue.setSelectValue("mode1.start_time", Math.floor(mode_1_time[0] * 10 / 60) / 10, $module);
+							$$vue.setSelectValue("mode1.end_time", Math.floor(mode_1_time[1] * 10 / 60) / 10, $module);
+						}
+						if (ret.mode_2_time) {
+							var mode_2_time = ret.mode_2_time.split("_") || [];
+							$$vue.setSelectValue("mode2.start_time", Math.floor(mode_2_time[0] * 10 / 60) / 10, $module);
+							$$vue.setSelectValue("mode2.end_time", Math.floor(mode_2_time[1] * 10 / 60) / 10, $module);
+						}
+						if (ret.mode_3_time) {
+							var mode_3_time = ret.mode_3_time.split("_") || [];
+							$$vue.setSelectValue("mode3.start_time", Math.floor(mode_3_time[0] * 10 / 60) / 10, $module);
+							$$vue.setSelectValue("mode3.end_time", Math.floor(mode_3_time[1] * 10 / 60) / 10, $module);
+						}
+						if (ret.mode_4_time) {
+							var mode_4_time = ret.mode_4_time.split("_") || [];
+							$$vue.setSelectValue("mode4.start_time", Math.floor(mode_4_time[0] * 10 / 60) / 10, $module);
+							$$vue.setSelectValue("mode4.end_time", Math.floor(mode_4_time[1] * 10 / 60) / 10, $module);
+						}
+						if (ret.mode_5_time) {
+							var mode_5_time = ret.mode_5_time.split("_") || [];
+							$$vue.setSelectValue("mode5.start_time", Math.floor(mode_5_time[0] * 10 / 60) / 10, $module);
+							$$vue.setSelectValue("mode5.end_time", Math.floor(mode_5_time[1] * 10 / 60) / 10, $module);
+						}
+
 						$$vue.setSelectValue("allow_openmode",ret.allow_openmode,$module);
 						$$vue.setSelectValue("allow_operation",ret.allow_operation,$module);
 					},
@@ -266,20 +448,23 @@ $(function () {
 				this.getStrategy();
 				$module = $("#" + moduleId);
 				this.initSubmit();
+
+				$module.find(".J-scroll.role").on("scrollDown",function () {
+					if(!$$vue.roleLoading){
+						$$vue.getRoleNextPage();
+					}
+				});
+				$module.find(".J-scroll.person").on("scrollDown",function () {
+					if(!$$vue.personLoading){
+						$$vue.getPersonNextPage();
+					}
+				});
+				$module.find(".J-scroll.device").on("scrollDown",function () {
+					if(!$$vue.deviceLoading){
+						$$vue.getDeviceNextPage();
+					}
+				});
 			})
-		}
-	});
-
-
-
-	$module.find(".J-scroll.role").on("scrollDown",function () {
-		if(!$$vue.roleLoading){
-			$$vue.getRoleNextPage();
-		}
-	});
-	$module.find(".J-scroll.person").on("scrollDown",function () {
-		if(!$$vue.personLoading){
-			$$vue.getPersonNextPage();
 		}
 	});
 

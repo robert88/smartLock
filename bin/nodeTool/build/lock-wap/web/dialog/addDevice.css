@@ -1,9 +1,9 @@
-@media (min-width:10.24rem) {
+@media (min-width:1024px) {
 	#addDeviceForm{
-		width: 9.6rem;
+		width: 960px;
 	}
 }
 #addDeviceForm .J-scroll{
-	max-height: 1.76rem;
+	max-height: 176px;
 	overflow: auto;
 }

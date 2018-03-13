@@ -22,20 +22,20 @@
 }
 .navbar .dropdown-toggle i {
 	color: #FFFFFF;
-	font-size: 0.17rem;
+	font-size: 17px;
 }
 .navbar .dropdown-toggle .badge {
 	background-color: #dd5a43;
-	border-radius: 0.99rem !important;
-	font-size: 0.12rem !important;
+	border-radius: 99px !important;
+	font-size: 12px !important;
 	font-weight: 300;
-	height: 0.16rem;
-	padding: 2px 0.06rem;
+	height: 16px;
+	padding: 2px 6px;
 	position: absolute;
-	right: 0.24rem;
+	right: 24px;
 	text-align: center;
 	text-shadow: none !important;
-	top: 0.08rem;
+	top: 8px;
 }
 .navbar .dropdown-toggle .username {
 	font-weight: 600;
@@ -55,11 +55,11 @@
 	border-left: 1px solid #507aa4;
 }
 .navbar #navbar-left i {
-	margin-right: 0.05rem;
+	margin-right: 5px;
 	color: #FFFFFF;
 }
 .navbar .nav.navbar-nav.pull-right {
-	min-width: 3rem;
+	min-width: 300px;
 }
 .navbar .nav > li > a:hover,
 .navbar .nav > li > a:focus,
@@ -75,20 +75,20 @@
 	display: none;
 	float: left;
 	left: 0;
-	font-size: 0.14rem;
+	font-size: 14px;
 	list-style: none outside none;
 	margin: 0;
-	max-width: 3rem;
-	min-width: 1.66rem;
+	max-width: 300px;
+	min-width: 166px;
 	padding: 0;
 	position: absolute;
 	text-shadow: none;
 	top: 100%;
 	z-index: 1000;
 	font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	border-radius: 0.04rem;
-	-webkit-box-shadow: 0 0.06rem 0.12rem rgba(0, 0, 0, 0.175);
-	box-shadow: 0 0.06rem 0.12rem rgba(0, 0, 0, 0.175);
+	border-radius: 4px;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 	background-clip: padding-box;
 }
 .dropdown-menu .dropdown-title {
@@ -96,11 +96,11 @@
 	color: #FFFFFF;
 	display: block;
 	font-weight: 600;
-	line-height: 0.3rem;
-	padding: 0.05rem 0.1rem;
+	line-height: 30px;
+	padding: 5px 10px;
 }
 .dropdown-menu .dropdown-title i {
-	margin-right: 0.05rem;
+	margin-right: 5px;
 }
 .dropdown-menu .footer {
 	display: block;
@@ -108,14 +108,14 @@
 .dropdown-menu .footer a {
 	background-color: #dbdbdb !important;
 	font-weight: 600;
-	line-height: 0.3rem;
+	line-height: 30px;
 	text-align: center;
 	border-bottom: none !important;
 	border-top: none !important;
 }
 .dropdown-menu .footer a i {
-	margin-left: 0.05rem;
-	font-size: 0.16rem;
+	margin-left: 5px;
+	font-size: 16px;
 }
 .dropdown-menu ul {
 	margin: 0 !important;
@@ -134,8 +134,8 @@
 	border-bottom: 1px solid #FFFFFF;
 	border-top: 1px solid #E7E7E7;
 	display: block;
-	line-height: 0.4rem;
-	padding: 0 0.1rem;
+	line-height: 40px;
+	padding: 0 10px;
 }
 .dropdown-menu li a:hover {
 	color: #333333;
@@ -146,7 +146,7 @@
 
 }
 .dropdown-menu.context li a {
-	line-height: 0.3rem;
+	line-height: 30px;
 }
 .dropdown-menu .divider {
 	height: 1px;
@@ -158,77 +158,77 @@
 /* Notification */
 .dropdown-menu.notification {
 	border-top: 1px solid #486d93;
-	width: 2.7rem;
+	width: 270px;
 }
 .dropdown-menu.notification .label {
 	color: #FFFFFF;
 	display: inline-block;
-	margin: -1px 0.1rem -0.05rem -0.1rem !important;
-	padding: 0.09rem;
+	margin: -1px 10px -5px -10px !important;
+	padding: 9px;
 	text-align: center;
-	width: 0.4rem;
-	height: 0.42rem;
+	width: 40px;
+	height: 42px;
 	border-radius: 0;
 	position: absolute;
 }
 .dropdown-menu.notification .label i {
-	font-size: 0.18rem;
+	font-size: 18px;
 }
 .dropdown-menu.notification .body {
 	position: relative;
 	display: inline-block;
-	line-height: 0.2rem;
+	line-height: 20px;
 	vertical-align: middle;
 	white-space: normal;
-	margin: 0.05rem 0.05rem 0.05rem 0.4rem;
+	margin: 5px 5px 5px 40px;
 	width: 100%;
 }
 .dropdown-menu.notification .message {
-	line-height: 0.16rem;
+	line-height: 16px;
 	display: inline-block;
-	margin: 0 0.05rem 0.05rem 0;
+	margin: 0 5px 5px 0;
 }
 .dropdown-menu.notification .time {
 	color: #777777;
 	display: inline-block;
-	font-size: 0.12rem;
+	font-size: 12px;
 }
 /* Messages */
 .dropdown-menu.inbox {
 	border-top: 1px solid #486d93;
-	width: 2.8rem;
+	width: 280px;
 }
 .dropdown-menu.inbox img {
 	border-radius: 50em 50em 50em 50em;
-	height: 0.4rem;
-	margin-right: 0.1rem;
-	margin-top: 0.05rem;
-	width: 0.4rem;
+	height: 40px;
+	margin-right: 10px;
+	margin-top: 5px;
+	width: 40px;
 }
 .dropdown-menu.inbox .body {
 	position: relative;
 	display: inline-block;
-	line-height: 0.2rem;
-	max-width: 2.2rem;
+	line-height: 20px;
+	max-width: 220px;
 	vertical-align: middle;
 	white-space: normal;
-	margin: 0.05rem 0;
+	margin: 5px 0;
 }
 .dropdown-menu.inbox .from {
 	display: inline-block;
-	line-height: 0.14rem;
+	line-height: 14px;
 	font-weight: 600;
-	margin-bottom: 0.05rem;
+	margin-bottom: 5px;
 }
 .dropdown-menu.inbox .message {
-	line-height: 0.16rem;
+	line-height: 16px;
 	display: block;
-	margin-bottom: 0.05rem;
+	margin-bottom: 5px;
 }
 .dropdown-menu.inbox .time {
 	color: #777777;
 	display: block;
-	font-size: 0.12rem;
+	font-size: 12px;
 }
 .dropdown-menu.inbox .compose {
 	display: block;
@@ -239,22 +239,22 @@
 /* Tasks */
 .dropdown-menu.tasks {
 	border-top: 1px solid #486d93;
-	width: 2.5rem;
+	width: 250px;
 }
 .dropdown-menu.tasks .progress {
 	margin-top: 0 !important;
-	margin-bottom: 0.1rem !important;
-	height: 0.09rem !important;
+	margin-bottom: 10px !important;
+	height: 9px !important;
 }
 /* User Menu */
 .dropdown.user .dropdown-menu {
 	border-top: none;
 }
 .dropdown.user img {
-	margin-right: 0.05rem;
-	border-radius: 0.99rem;
-	height: 0.29rem;
-	width: 0.29rem;
+	margin-right: 5px;
+	border-radius: 99px;
+	height: 29px;
+	width: 29px;
 	/* filter: url("data:image/svg+xml;filter: gray;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); */
 
 }

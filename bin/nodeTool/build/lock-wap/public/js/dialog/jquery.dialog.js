@@ -162,7 +162,7 @@ if(!$.i18n){
 			renderStyle($title,""+(opts.titleStyle||"") );
 			//已title为最小宽度
 			
-			var $test = $("<div style='position:absolute;left:-1000px;'></div>").html($header[0].outerHTML).appendTo('body');
+			var $test = $("<div style='position:absolute;left:-10rem;'></div>").html($header[0].outerHTML).appendTo('body');
 			$header.css("min-width",$test.width());
 			$test.remove();
 			$header.appendTo($dialog);
@@ -183,7 +183,7 @@ if(!$.i18n){
 		if(opts.height!="auto"){
 			var h = parseFloat($.trim(opts.height),10)+"px";
 		}
-		var oldBodyCode = "width:"+(w?w:opts.width)+";"+"height:"+(h?h:opts.height)+";padding:15px;";
+		var oldBodyCode = "width:"+(w?w:opts.width)+";"+"height:"+(h?h:opts.height)+";padding:0.15rem;";
 	
 		renderStyle($body, oldBodyCode+ (opts.bodyStyle||"") );
 
@@ -195,10 +195,10 @@ if(!$.i18n){
 			//关闭样式
 			var titleHasClose;
 			if(opts.title){
-				titleHasClose = "right:-1px;top:0;color: #cb0101;font-size:28px;line-height:38px;width:42px;height:40px;"
+				titleHasClose = "right:-1px;top:0;color: #cb0101;font-size:0.28rem;line-height:0.38rem;width:0.42rem;height:0.42rem;"
 			}else{
 
-				 titleHasClose = "background-color:#fff;right: 10px;top: 4px;width: 24px;line-height: 20px;height: 24px;font-size: 24px;"
+				 titleHasClose = "background-color:#fff;right: 0.1rem;top: 0.04rem;width: 0.24rem;line-height: 0.2rem;height: 0.24rem;font-size: 0.24rem;"
 			}
 			if(typeof opts.close=="string" && $(opts.close).length ){
 				$close = $dialog.find(opts.close).addClass('dl-close');
@@ -617,7 +617,7 @@ if(!$.i18n){
 		})
 	}.call();
 
-	// 将font-size:12px;text-align:center;解析为对象
+	// 将font-size:0.12rem;text-align:center;解析为对象
 	function getStyleObject(str){
 		var obj = {};
 		var str = str.split(";");

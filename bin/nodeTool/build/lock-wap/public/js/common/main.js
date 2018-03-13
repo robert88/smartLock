@@ -151,7 +151,7 @@ $(function () {
 			 $.dialog("url:" + url, {
 				dialogClass: dialogClass,
 				title:$this.data("title"),
-				bodyStyle:"max-width:1000px",
+				bodyStyle:"max-width:10rem",
 				id: (dialogId ? dialogId : ""),
 				maskClose: false,
 				closeAfter: function () {

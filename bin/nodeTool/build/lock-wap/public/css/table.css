@@ -11,7 +11,7 @@ th {
 }
 .table {
 	width: 100%;
-	margin-bottom: 0.2rem;
+	margin-bottom: 20px;
 }
 .table > thead > tr > th,
 .table > tbody > tr > th,
@@ -19,13 +19,13 @@ th {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-	padding: 0.08rem;
+	padding: 8px;
 	line-height: 1.428571429;
 	vertical-align: top;
 	border-top: 1px solid #dddddd;
 }
 .table > thead > tr > th {
-	vertical-align: bottom;
+	vertical-align: top;
 	border: 2px solid #ededed;
 	color: #333;
 }
@@ -49,7 +49,7 @@ th {
 .table-condensed > thead > tr > td,
 .table-condensed > tbody > tr > td,
 .table-condensed > tfoot > tr > td {
-	padding: 0.05rem;
+	padding: 5px;
 }
 .table-bordered {
 	border: 1px solid #dddddd;
@@ -149,10 +149,10 @@ table th[class*="col-"] {
 .table-hover > tbody > .warning:hover > th {
 	background-color: #faf2cc;
 }
-@media (max-width: 7.67rem) {
+@media (max-width: 767px) {
 	.table-responsive {
 		width: 100%;
-		margin-bottom: 0.15rem;
+		margin-bottom: 15px;
 		overflow-y: hidden;
 		overflow-x: scroll;
 		-ms-overflow-style: -ms-autohiding-scrollbar;
@@ -196,4 +196,4 @@ table th[class*="col-"] {
 		border-bottom: 0;
 	}
 }
-table input{width:100%;height:100%;line-height:100%;padding: 0.03rem;}
+table input{width:100%;height:100%;line-height:100%;padding: 3px;}

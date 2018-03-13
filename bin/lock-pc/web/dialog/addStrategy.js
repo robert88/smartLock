@@ -35,6 +35,36 @@ $(function () {
 				start_time:0,
 				end_time:0
 			},
+			mode1:{
+				allow_start_time_list:[],
+				allow_end_time_list:[],
+				start_time:0,
+				end_time:0
+			},
+			mode2:{
+				allow_start_time_list:[],
+				allow_end_time_list:[],
+				start_time:0,
+				end_time:0
+			},
+			mode3:{
+				allow_start_time_list:[],
+				allow_end_time_list:[],
+				start_time:0,
+				end_time:0
+			},
+			mode4:{
+				allow_start_time_list:[],
+				allow_end_time_list:[],
+				start_time:0,
+				end_time:0
+			},
+			mode5:{
+				allow_start_time_list:[],
+				allow_end_time_list:[],
+				start_time:0,
+				end_time:0
+			},
 			close:{
 				allow_start_time_list:[],
 				allow_end_time_list:[],
@@ -74,6 +104,36 @@ $(function () {
 
 				if (newValue != oldValue) {
 					this.refreshEndList("close",newValue )
+				}
+			},
+			"mode1.start_time": function (newValue, oldValue) {
+
+				if (newValue != oldValue) {
+					this.refreshEndList("mode1",newValue )
+				}
+			},
+			"mode2.start_time": function (newValue, oldValue) {
+
+				if (newValue != oldValue) {
+					this.refreshEndList("mode2",newValue )
+				}
+			},
+			"mode3.start_time": function (newValue, oldValue) {
+
+				if (newValue != oldValue) {
+					this.refreshEndList("mode3",newValue )
+				}
+			},
+			"mode4.start_time": function (newValue, oldValue) {
+
+				if (newValue != oldValue) {
+					this.refreshEndList("mode4",newValue )
+				}
+			},
+			"mode5.start_time": function (newValue, oldValue) {
+
+				if (newValue != oldValue) {
+					this.refreshEndList("mode5",newValue )
 				}
 			}
 		},
@@ -146,6 +206,11 @@ $(function () {
 			initAllowTime:function () {
 				this.initAllowTimeByType("close")
 				this.initAllowTimeByType("open")
+				this.initAllowTimeByType("mode1")
+				this.initAllowTimeByType("mode2")
+				this.initAllowTimeByType("mode3")
+				this.initAllowTimeByType("mode4")
+				this.initAllowTimeByType("mode5")
 			},
 			initAllowTimeByType:function (type) {
 				var curTime = new Date("2018/02/04").getTime();
@@ -258,11 +323,36 @@ $(function () {
 							$.tips("关锁结束时间必须大于开始时间！","error");
 							return
 						}
+						if(($$vue.mode1.end_time*1)<=($$vue.mode1.start_time*1)){
+							$.tips("全锁状态结束时间必须大于开始时间！","error");
+							return
+						}
+						if(($$vue.mode2.end_time*1)<=($$vue.mode2.start_time*1)){
+							$.tips("单向状态结束时间必须大于开始时间！","error");
+							return
+						}
+						if(($$vue.mode3.end_time*1)<=($$vue.mode3.start_time*1)){
+							$.tips("常开状态结束时间必须大于开始时间！","error");
+							return
+						}
+						if(($$vue.mode4.end_time*1)<=($$vue.mode4.start_time*1)){
+							$.tips("点动状态结束时间必须大于开始时间！","error");
+							return
+						}
+						if(($$vue.mode5.end_time*1)<=($$vue.mode5.start_time*1)){
+							$.tips("双向状态结束时间必须大于开始时间！","error");
+							return
+						}
 						var openParam = "&open_time="+$$vue.open.start_time*60+"_"+$$vue.open.end_time*60;
 						var closeParam = "&close_time="+$$vue.close.start_time*60+"_"+$$vue.close.end_time*60;
+						var param1 = "&mode_1_time="+$$vue.mode1.start_time*60+"_"+$$vue.mode1.end_time*60;
+						var param2 = "&mode_2_time="+$$vue.mode2.start_time*60+"_"+$$vue.mode2.end_time*60;
+						var param3 = "&mode_3_time="+$$vue.mode3.start_time*60+"_"+$$vue.mode3.end_time*60;
+						var param4 = "&mode_4_time="+$$vue.mode4.start_time*60+"_"+$$vue.mode4.end_time*60;
+						var param5 = "&mode_5_time="+$$vue.mode5.start_time*60+"_"+$$vue.mode5.end_time*60;
 
 						PAGE.ajax({
-							data:$module.serialize()+openParam+closeParam+"&token="+token,
+							data:$module.serialize()+openParam+closeParam+param1+param2+param3+param4+param5+"&token="+token,
 							type:'post',
 							url:"/smart_lock/v1/strategy/add",
 							success:function (ret) {
@@ -274,14 +364,14 @@ $(function () {
 					}
 				});
 
-			}
+			},
 
 		},
 		mounted: function () {
 			this.$nextTick(function () {
 				this.refreshRoleList();
 				this.refreshPersonList();
-				this.refreshDeviceList();
+
 				this.initAllowTime();
 				$module = $("#" + moduleId);
 				this.initSubmit();

@@ -1,8 +1,8 @@
-@media (min-width:10.24rem) {
+@media (min-width:1024px) {
 	#personDetail{
-		width: 9.6rem;
+		width: 960px;
 	}
 }
 #personDetail .col{
-	height:0.6rem;
+	height:60px;
 }

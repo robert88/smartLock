@@ -216,6 +216,19 @@ $(function () {
 				this.list[index].edit = "";
 				this.$forceUpdate()
 			},
+			open_situational:function (index) {
+				var $$vue = this;
+				var url = "/smart_lock/v1/situational_mode/open_situational";
+				var type = "post";
+				PAGE.ajax({
+					url: url,
+					type: type,
+					data: {situational_id: $$vue.list[index].id,token: token},
+					success: function () {
+						$$vue.refreshList();
+					}
+				});
+			},
 			delStrategy:function (index) {
 				var $$vue = this;
 				if($$vue.list[index].strategy_id){

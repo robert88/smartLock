@@ -195,7 +195,7 @@ if(!$.i18n){
 			//关闭样式
 			var titleHasClose;
 			if(opts.title){
-				titleHasClose = "right:-1px;top:0;color: #cb0101;font-size:28px;line-height:38px;width:42px;height:40px;"
+				titleHasClose = "right:-1px;top:0;color: #cb0101;font-size:28px;line-height:38px;width:42px;height:42px;"
 			}else{
 
 				 titleHasClose = "background-color:#fff;right: 10px;top: 4px;width: 24px;line-height: 20px;height: 24px;font-size: 24px;"
