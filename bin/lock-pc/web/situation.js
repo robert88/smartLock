@@ -220,12 +220,16 @@ $(function () {
 				var $$vue = this;
 				var url = "/smart_lock/v1/situational_mode/open_situational";
 				var type = "post";
+				$module.addClass("loading");
 				PAGE.ajax({
 					url: url,
 					type: type,
 					data: {situational_id: $$vue.list[index].id,token: token},
 					success: function () {
 						$$vue.refreshList();
+					},
+					complete:function () {
+						$module.removeClass("loading");
 					}
 				});
 			},

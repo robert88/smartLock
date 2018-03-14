@@ -1,3 +1,5 @@
 #addStrategyForm .J-scroll{max-height: 170px;overflow: auto}
 #addStrategyForm .label-checkbox{display: inline-block;position:relative;}
-#addStrategyForm .col6{width:100%;}
+.fix-wap-5{margin-left:-5px;margin-right:-5px}
+.validError .validErrMsg{clear: both;}
+.timeSelectClose {font-size: 16px;top:-3px;position:relative}

@@ -53,12 +53,14 @@ fieldset {
 .validItem{
 	position:relative;
 }
+
 .validErrMsg{
 	display: none;
 	padding-bottom: 10px;
 	margin-top: -10px;
 	top:100%;
 	line-height: 23px;
+	font-size: 14px;
 }
 .validError .validErrMsg{
 	color:#da0e0e;
@@ -103,6 +105,7 @@ fieldset {
 	display: block;
 	width:100%;
 	margin-top:10px;
+	font-size: inherit;
 }
 .form-group>i{
 	color: #CCCCCC;
@@ -128,6 +131,9 @@ fieldset {
 	font-size: 14px;
 	color: #717171;
 	font-family: Arial;
+}
+.form-control.form-no-icon{
+	padding: 0 5px 0 5px;
 }
 .form-group .captcha-code-img {
 	position: absolute;

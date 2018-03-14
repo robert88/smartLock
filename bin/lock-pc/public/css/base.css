@@ -13,7 +13,7 @@ h1, h2, h3, h4, h5, h6, div, ul, li, dl, dt, dd, ol, pre, form, fieldset, input,
 html, body {
 	padding: 0;
 	margin: 0;
-	font-family: 'Microsoft Yahei', "å¾®è½¯é›…é»‘", tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+	font-family: 'Microsoft Yahei', tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
 	color: #666;
 	font-size: 14px;
 	position: relative;
@@ -44,7 +44,7 @@ img {
 	vertical-align: middle;
 }
 
-.col:after {
+.col,.col:after {
 	content: " ";
 	display: block;
 	clear: both;
@@ -337,7 +337,33 @@ img {
 	-webkit-bordder-radius: 2px;
 	-o-user-select: 2px;
 }
-
+.bd-success {
+	border-color: #a8bc7b;
+}
+.bd-success:focus {
+	border-color: #92ab59;
+}
+.bd-info {
+	border-color: #70afc4;
+}
+.bd-info:hover,
+.bd-info:focus {
+	border-color: #4c9bb5;
+}
+.bd-warning {
+	border-color: #f0ad4e;
+}
+.bd-warning:hover,
+.bd-warning:focus {
+	color: #ec971f;
+}
+.bd-danger {
+	border-color: #d9534f;
+}
+.bd-danger:hover,
+.bd-danger:focus {
+	border-color: #c9302c;
+}
 .t-overflow{
 	text-overflow: ellipsis;
 	overflow: hidden;
@@ -376,6 +402,9 @@ img {
 }
 .inline-block{
 	display: inline-block;
+}
+.vm{
+	vertical-align: middle;
 }
 .relative {
 	position: relative;
@@ -589,6 +618,9 @@ img {
 
 /*line-height*/
 .lh10{line-height: 10px;}
+.lh12{line-height: 12px;}
+.lh14{line-height: 14px;}
+.lh16{line-height: 16px;}
 .lh20{line-height: 20px;}
 .lh30{line-height: 30px;}
 .lh35{line-height: 35px;}

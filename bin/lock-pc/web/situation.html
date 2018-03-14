@@ -1,12 +1,12 @@
 <div class="wrap">
 	<div class="box border blue">
 		<div class="box-title">
-			<h4><i class="fa fa-bars"></i> <span class="box-title-text">情景模式列表</span></h4>
+			<h4><i class="fa fa-bars"></i> <span class="box-title-text">情景列表</span></h4>
 		</div>
 		<div class="box-body">
 			<div class="tabbable header-tabs">
 				<ul class="nav nav-tabs">
-					<li class="active" href="#/web/situation.html" data-title="情景模式列表"><a data-toggle="tab"><i class="fa fa-search-plus"></i> <span>情景模式列表</span></a></li>
+					<li class="active" href="#/web/situation.html" data-title="情景列表"><a data-toggle="tab"><i class="fa fa-search-plus"></i> <span>情景列表</span></a></li>
 					<li href="#/web/strategy.html" data-title="策略列表" class="hasPermission" data-hasPermission="16000"><a data-toggle="tab"><i class="fa fa-bar-chart-o"></i> <span>策略列表</span></a></li>
 				</ul>
 				<ul class="tab-content">
@@ -25,7 +25,7 @@
 										<th width="50"><label class="label-checkbox "><input type="checkbox" class="J-all-checkBox"><i class="fa-check"></i><i class="fa-square-o"></i></label></th>
 										<!--<th> id</th>-->
 										<th><i class="fa-user"></i> 情景名称</th>
-										<!--<th><i class="fa-bars"></i> 对应设备</th>-->
+										<th><i class="fa-bars"></i> 对应设备</th>
 										<th><i class="fa-bars"></i> 状态</th>
 										<th width="280"><i class="fa-wrench"></i> 操作</th>
 									</tr>
@@ -40,9 +40,9 @@
 										<!--<td>-->
 											<!--<a class="label label-info label-sm J-dialog" data-url="/web/dialog/deviceGroupSituationList.html"  :data-situation_name="$item.situation_name" :data-situational_id="$item.id"  :data-title="(''+$item.situation_name+'情景的已设置的设备组列表')" v-if="!$item.edit">查看已设置的设备组</a>-->
 										<!--</td>-->
-										<!--<td>-->
-										<!--<a class="label label-info label-sm J-dialog" data-url="/web/dialog/deviceGroupSituationList.html"  :data-situation_name="$item.situation_name" :data-situational_id="$item.id"  :data-title="(''+$item.situation_name+'情景的设备列表')" v-if="!$item.edit">查看设备</a>-->
-										<!--</td>-->
+										<td>
+										<a class="label label-info label-sm J-dialog" data-url="/web/dialog/deviceGroupSituationList.html"  :data-situation_name="$item.situation_name" :data-situational_id="$item.id"  :data-title="(''+$item.situation_name+'情景的设备列表')" v-if="!$item.edit">查看设备</a>
+										</td>
 										<td>
 											<span v-html="($item.status==1?'已启用':'未启用')"></span>
 										</td>

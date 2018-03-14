@@ -47,14 +47,20 @@ $(function () {
 				}
 				return (url+this.curTime).toString().toDate().format("hh:mm");
 			},
-			formatAllowTime:function (val) {
-				var allow_time = val.split("_")||[];
-				if(allow_time.length==2){
-					var start = this.formatDate( ($.trim(allow_time[0])||0)*60*1000 );
-					var end = this.formatDate( ($.trim(allow_time[1])||0)*60*1000 );
-					return start +" - "+end;
+			formatAllowTime:function (val,name) {
+				var ret = [];
+				var allow_timeArr = val.split(",")||[];
+              for(var i=0;i<allow_timeArr.length;i++){
+              	if(allow_timeArr[i]){
+                    var allow_time = allow_timeArr[i].split("_")||[];
+                    if(allow_time.length==2){
+                        var start = this.formatDate( ($.trim(allow_time[0])||0)*60*1000 );
+                        var end = this.formatDate( ($.trim(allow_time[1])||0)*60*1000 );
+                        ret.push("<span class='t-info bd bd-info plr5 itemValue fs12 bd-radius-5 mr5'>"+ start +"~"+end+"</span>");
+                    }
 				}
-				return "";
+			  }
+			  return "<span class='mr5 w30'>"+name+":</span><span class='inline-block w100'style='word-wrap: break-word;'>"+ret.join("")+"</span> ";
 			},
 			mergeArray: function (obj) {
 				if (typeof obj !== "object") {

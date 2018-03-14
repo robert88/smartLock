@@ -637,7 +637,10 @@
 	 *设置下拉菜单数据
 	 * */
 	Vue.prototype.setSelectValueByName=function (name, value,$module) {
-		var $input = $module.find("input[name='" + name + "']")
+		var $input = $module.find("input[name='" + name + "']");
+		if($input.length==0){
+			$input=$(name);
+		}
 		if (value != null && $input.length) {
 			if($input.parents(".J-mutil-select").length){
 				$.each(value.split(","),function (index,val) {
@@ -655,7 +658,10 @@
 	 *设置下拉菜单数据
 	 * */
 	Vue.prototype.setSelectValue=function (name, value,$module) {
-		var $input = $module.find("input[name='" + name + "']")
+		var $input = $module.find("input[name='" + name + "']");
+		if($input.length==0){
+			$input=$(name);
+		}
 		if (value != null && $input.length) {
 			if($input.parents(".J-mutil-select").length){
 				$.each(value.split(","),function (index,val) {

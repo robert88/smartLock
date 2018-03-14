@@ -59,6 +59,7 @@ fieldset {
 	margin-top: -10px;
 	top:100%;
 	line-height: 23px;
+	font-size: 14px;
 }
 .validError .validErrMsg{
 	color:#da0e0e;
@@ -130,6 +131,9 @@ fieldset {
 	color: #717171;
 	font-family: Arial;
 }
+.form-control.form-no-icon{
+	padding: 0 5px 0 5px;
+}
 .form-group .captcha-code-img {
 	position: absolute;
 	right: 0;
@@ -155,10 +159,15 @@ fieldset {
 	color: #555555;
 	padding: 10px;
 	}
-
+.J-select-option .option:last-child{
+	border-bottom:none;
+}
 .J-select-option .option:hover{background:#fff;border-color: #70afc4;color:#70afc4;}
 .form-group-inline{
     position:relative;
+}
+.J-select-option .option:hover:last-child{
+	border-bottom:none;
 }
 .form-group-inline label{
     line-height: 33px;

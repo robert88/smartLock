@@ -1,5 +1,5 @@
 
-
+//情景设置设备策略
 $(function () {
 
 	var token = PAGE.getToken();
@@ -210,7 +210,12 @@ $(function () {
 				this.refreshDeviceList();
 				this.refreshList();
 				$module = $("#" + moduleId);
-				this.lisenChange($module)
+				this.lisenChange($module);
+				$module.on("scrollDown",".J-scroll.strategy",function () {
+					if(!$$vue.loading){
+						$$vue.getNextPage();
+					}
+				});
 			})
 		}
 	});

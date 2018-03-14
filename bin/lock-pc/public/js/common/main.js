@@ -66,7 +66,7 @@ $(function () {
 	$(document).on("click",".J-loginout",function () {
 		PAGE.clearToken();
 		return false;
-	}).on("mousewheel",".J-scroll",function () {
+	}).on("mousewheel",".J-scroll",function (e) {
 		var childrenHeight = 0 ;
 		$(this).children(".option").each(function () {
 			childrenHeight += $(this).height()+$(this).css("padding-top").toFloat()+$(this).css("padding-bottom").toFloat()
@@ -74,6 +74,7 @@ $(function () {
 		if($(this).scrollTop()+$(this).height()+2>childrenHeight){
 			$(this).trigger("scrollDown");
 		}
+		e.stopPropagation();
 	}).on("mousewheel",".J-body-scroll",function () {
 
 		if($(window).scrollTop()+$(window).height()+2>$(this).height()){

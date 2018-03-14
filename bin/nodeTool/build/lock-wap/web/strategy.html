@@ -28,37 +28,20 @@
 					<span class="label-name"><i class="fa-user"></i> 策略名</span>
 					<span>{{$item.name}}</span>
 				</div>
-				<div>
-					<span class="label-name"><i class="fa-tablet"></i> 对应角色</span>
-					<span>{{$item.role_name}}</span>
-				</div>
-				<div>
-					<span class="label-name"><i class="fa-user"></i> 对应用户</span>
-					<span>{{$item.user_name}}</span>
-				</div>
-				<div>
-					<span class="label-name"><i class="fa-user"></i> 允许开锁方式</span>
-					<span>{{allow_openmodeText($item.allow_openmode)}}</span>
-				</div>
-				<div>
-					<span class="label-name"><i class="fa-user"></i> 允许的操作</span>
-					<span>{{allow_operationText($item.allow_operation)}}</span>
-				</div>
-				<div>
-					<span class="label-name"><i class="fa-user"></i> 开锁时间</span>
-					<span>{{formatAllowTime($item.open_time)}}</span>
-				</div>
-				<div>
-					<span class="label-name"><i class="fa-user"></i> 关锁时间</span>
-					<span>{{formatAllowTime($item.close_time)}}</span>
-				</div>
-				<div class="fs12">
-					<span class="mr5">全锁:{{formatAllowTime($item.mode_1_time)}}</span>
-					<span class="mr5">单向:{{formatAllowTime($item.mode_2_time)}}</span>
-					<span class="mr5">常开:{{formatAllowTime($item.mode_3_time)}}</span>
-					<span class="mr5">点动:{{formatAllowTime($item.mode_4_time)}}</span>
-					<span class="mr5">双向:{{formatAllowTime($item.mode_5_time)}}</span>
-				</div>
+
+				<ul class="fs14 col t-muted">
+					<li class="col6"><span class="mr5">对应角色:</span><span class="t-info">{{$item.role_name}}</span></li>
+					<li class="col6"><span class="mr5">对应用户:</span><span class="t-info">{{$item.user_name}}</span></li>
+					<li ><span class="mr5">允许开锁方式:</span><span class="t-info">{{allow_openmodeText($item.allow_openmode)}}</span></li>
+					<li ><span class="mr5">允许的操作:</span><span class="t-info">{{allow_operationText($item.allow_operation)}}</span></li>
+					<li class="col6"  v-html="formatAllowTime($item.open_time,'开锁')"></li>
+					<li class="col6"  v-html="formatAllowTime($item.close_time,'关锁')"></li>
+					<li class="col6"  v-html="formatAllowTime($item.mode_1_time,'全锁')"></li>
+					<li class="col6"  v-html="formatAllowTime($item.mode_2_time,'单向')"></li>
+					<li class="col6"  v-html="formatAllowTime($item.mode_3_time,'常开')"></li>
+					<li class="col6"  v-html="formatAllowTime($item.mode_4_time,'点动')"></li>
+					<li class="col6"  v-html="formatAllowTime($item.mode_5_time,'双向')"></li>
+				</ul>
 				<div class="bd-top bd-dashed mt10 pt10">
 					<a class="label label-success label-sm mr10  J-dialog" v-show="hasPermission(16003)"
 					   data-url="/web/dialog/modifyStrategy.html" :data-strategy_id="$item.id"

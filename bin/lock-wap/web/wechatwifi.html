@@ -8,10 +8,10 @@
 	$(function () {
 
 
-		// var token = PAGE.getToken();
-		// if (!token) {
-		// 	return;
-		// }
+		 var token = PAGE.getToken();
+		 if (!token) {
+		 	return;
+		 }
 
 		function wifiIntrock() {
 			var url =  "/smart_lock/v1/jssdk/wifi";
@@ -19,7 +19,7 @@
 			PAGE.ajax({
 				url: url,
 				type: type,
-				data: {url: encodeURIComponent(window.location.href)},
+				data: {url: encodeURIComponent(window.location.href),token:token},
 				success: function (ret) {
 					if(ret.length){
 						ret =ret[0]
@@ -59,15 +59,7 @@
 
 		wifiIntrock();
 
-		PAGE.destroy.push(function () {
-			if($$vue){
-				$("body").off("scrollDown."+moduleId);
-				$$vue.$destroy();
-				listMap = null;
-				$$vue = null;
-				$module=null
-			}
-		})
+
 	});
 
 </script>
