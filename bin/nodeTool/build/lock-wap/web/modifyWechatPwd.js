@@ -53,7 +53,7 @@ $(function () {
 				success:function (ret) {
 					$.tips("密码更改成功!","success",function () {
 						$.cookie("token","");
-						window.location.hash="#/web/login.html";
+						window.location.href="/#/web/login.html";
 					});
 
 				},errorCallBack:function () {

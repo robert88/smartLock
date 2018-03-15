@@ -196,7 +196,13 @@ $(function () {
 					var url = "/smart_lock/v1/situational_mode/set_strategy";
 					var type = "post";
 					PAGE.ajax({
-						url: url, data: {situational_id:situational_id,device_id:device_id,strategy_id:strategy_id,token:token}, type: type, success: function (ret) {
+						url: url,
+						data: {situational_id:situational_id,device_id:device_id,strategy_id:strategy_id,token:token},
+						type: type,
+						success: function (ret) {
+							$.tips("设置成功！","success")
+						},
+						complete: function () {
 							$parent.removeClass("loading");
 
 						}

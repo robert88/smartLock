@@ -1,8 +1,4 @@
-@media (min-width:1024px) {
-	#addDeviceToGroupVue{
-		width: 960px;
-	}
-}
+
 #addDeviceToGroupVue .J-scroll{
 	max-height: 176px;
 	overflow: auto;

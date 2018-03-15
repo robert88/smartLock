@@ -2,4 +2,4 @@
 #addStrategyForm .label-checkbox{display: inline-block;position:relative;}
 .fix-wap-5{margin-left:-5px;margin-right:-5px}
 .validError .validErrMsg{clear: both;}
-.timeSelectClose {font-size: 16px;top:-3px;position:relative}
+.timeSelectClose {font-size: 16px;top:-3px;position:relative;cursor: pointer}

@@ -1,4 +1,4 @@
-<div class="wrap headerModule" data-title="情景列表" data-nextText="策略列表" data-nextLink="#/web/strategy.html"
+<div class="wrap headerModule" data-title="情景列表" data-nextText="策略列表" data-nextLink="/#/web/strategy.html"
 	 data-noPrev="true" data-sliderNav="true" data-next-permission="16000">
 
 	<!--s:systemPerson-->
@@ -30,12 +30,12 @@
 					<span class="label-name"><i class="fa-user"></i> 状态</span>
 					<span v-html="($item.status==1?'已启用':'未启用')"></span>
 				</div>
-				<!--<div>-->
-					<!--<span class="label-name"><i class="fa-user"></i> 对应设备</span>-->
-					<!--<a class="label label-info label-sm J-dialog" data-url="/web/dialog/deviceGroupSituationList.html"-->
-					   <!--:data-situation_name="$item.situation_name" :data-situational_id="$item.id"-->
-					   <!--:data-title="(''+$item.situation_name+'情景的设备列表')" v-if="!$item.edit">查看设备</a>-->
-				<!--</div>-->
+				<div>
+					<span class="label-name"><i class="fa-user"></i> 对应设备</span>
+					<a class="label label-info label-sm J-dialog" data-url="/web/dialog/deviceGroupSituationList.html"
+					   :data-situation_name="$item.situation_name" :data-situational_id="$item.id"
+					   :data-title="(''+$item.situation_name+'情景的设备列表')" v-if="!$item.edit">设置设备策略</a>
+				</div>
 
 				<div class="bd-top bd-dashed mt10 pt10">
 				<a class="label label-success label-sm mr10 J-modify"  v-on:click="open_situational($index, 1)" v-show="$item.status==0" >开启</a>

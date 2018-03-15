@@ -18,13 +18,15 @@
     -o-transition: all .2s ease-in-out;
     -webkit-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
+    width:90%
 }
 @media (min-width:1300px) {
-    .dl-dialog{min-width: 1024px}
+    .dl-dialog{max-width: 800px}
 }
 @media (min-width:1024px) {
-    .dl-dialog{min-width: 600px}
+    .dl-dialog{max-width: 600px;}
 }
+
 .dl-body {
     width: auto;
     height: auto;

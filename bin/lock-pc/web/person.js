@@ -222,7 +222,7 @@ $(function () {
 						}
 						if(ret.page_number==1&& (!ret.list||ret.list.length==0)){
 							$.tips("请先添加角色","warn",function () {
-								window.location.hash="#/web/roleList.html";
+								window.location.href="/#/web/roleList.html";
 							});
 						}
 						$$vue.role_list = ret.list||[];

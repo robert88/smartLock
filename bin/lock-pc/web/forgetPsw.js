@@ -62,7 +62,7 @@
 				type:'post',
 				url:"/smart_lock/v1/member/reset_password",
 				success:function (ret) {
-					window.location.hash = "#/web/login.html?nomenu=1"
+					window.location.href = "/#/web/login.html?nomenu=1"
 
 				},errorCallBack:function () {
 					changeImage();

@@ -127,7 +127,7 @@ $(function () {
 							type: "post",
 							success: function (ret) {
 								$.tips("提交成功", "success", function () {
-									window.location.hash = "#/web/repairLog.html";
+									window.location.href = "/#/web/repairLog.html";
 								});
 							}
 						});

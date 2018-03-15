@@ -8,7 +8,7 @@
 	var $pageLoad = $("#pageLoad");
 	var $body = $("body");
 	var pathmap = {};
-
+debugger;
 	var PAGE = window.PAGE||{};
 
 	/*对于局部需要使用定时器的时候，不要直接使用window.setTimeout*/
@@ -199,7 +199,7 @@
 		hash = hash||window.location.hash.trim();
 
 		hash = hash ? hash : home;
-
+		hash = hash.replace(/^.*#/,"#");
 		return hash;
 	};
 
@@ -524,7 +524,9 @@
             $body.removeClass("nomenu");
 		}
 		//url指明notHashPage或者notspa
-		if((!hash&&params&&params.notHashPage) || PAGE.notSpa ||(!hash&&(window.location.pathname!="/"||!window.location.pathname))){
+
+		var hasHash=window.location.hash.replace("#","");
+		if((params&&params.notHashPage) || PAGE.notSpa || (!hasHash&&~PAGE.notHashPage.indexOf(window.location.pathname))){
 			setTitle();
 			return;
 		}
@@ -715,7 +717,7 @@
 					access_id:"12000",
 					active:"",
 					sub:[],
-					href:"#/web/person.html",
+					href:"/#/web/person.html",
 					tips:0,
 					text:"成员管理",
 					icon:"fa-group-users"
@@ -725,7 +727,7 @@
 					hasSub:"",
 					active:"",
 					sub:[],
-					href:"#/web/device.html",
+					href:"/#/web/device.html",
 					tips:0,
 					text:"设备管理",
 					icon:"fa-hdd-o"
@@ -735,7 +737,7 @@
 					hasSub:"",
 					active:"",
 					sub:[],
-					href:"#/web/roleList.html",
+					href:"/#/web/roleList.html",
 					tips:0,
 					text:"权限管理",
 					icon:"fa-legal"
@@ -744,7 +746,7 @@
 					hasSub:"",
 					active:"",
 					sub:[],
-					href:"#/web/modifyLoginPwd.html",
+					href:"/#/web/modifyLoginPwd.html",
 					tips:0,
 					text:"密码管理",
 					icon:"fa-key"
@@ -755,7 +757,7 @@
 					hasSub:"",
 					active:"",
 					sub:[],
-					href:"#/web/deviceCtl.html",
+					href:"/#/web/deviceCtl.html",
 					tips:0,
 					text:"门况信息",
 					icon:"fa-beer"
@@ -764,7 +766,7 @@
 					hasSub:"",
 					active:"",
 					sub:[],
-					href:"#/web/wechatBindLogin.html",
+					href:"/web/wechatBindLogin.html",
 					tips:0,
 					text:"绑定微信",
 					icon:"fa-bell"
@@ -774,7 +776,7 @@
 					hasSub:"",
 					active:"",
 					sub:[],
-					href:"#/web/situation.html",
+					href:"/#/web/situation.html",
 					tips:0,
 					text:"情景模式",
 					icon:"fa-crop"
@@ -785,7 +787,7 @@
 					hasSub:"",
 					active:"",
 					sub:[],
-					href:"#/web/companyInfo.html",
+					href:"/#/web/companyInfo.html",
 					tips:0,
 					text:"服务热线",
 					icon:"fa-phone-square"
@@ -794,7 +796,7 @@
 					hasSub:"",
 					active:"",
 					sub:[],
-					href:"#/web/repair.html",
+					href:"/#/web/repair.html",
 					tips:0,
 					text:"维修申报",
 					icon:"fa-truck"
@@ -804,7 +806,7 @@
 					hasSub:"",
 					active:"",
 					sub:[],
-					href:"#/web/sysLog.html",
+					href:"/#/web/sysLog.html",
 					tips:0,
 					text:"系统日志",
 					icon:"fa-truck"
@@ -839,7 +841,7 @@
 					hasSub:"",
 					active:"",
 					sub:[],
-					href:"#/web/modifyLoginPwd.html",
+					href:"/#/web/modifyLoginPwd.html",
 					tips:0,
 					text:"密码管理",
 					icon:"fa-key"
@@ -849,7 +851,7 @@
 					hasSub:"",
 					active:"",
 					sub:[],
-					href:"#/web/alarm.html",
+					href:"/#/web/alarm.html",
 					tips:0,
 					text:"紧急预警",
 					icon:"fa-bell"
@@ -859,7 +861,7 @@
 					hasSub:"",
 					active:"",
 					sub:[],
-					href:"#/web/sysLog.html",
+					href:"/#/web/sysLog.html",
 					tips:0,
 					text:"系统日志",
 					icon:"fa-truck"
@@ -870,7 +872,7 @@
 					hasSub:"",
 					active:"",
 					sub:[],
-					href:"#/web/roleList.html",
+					href:"/#/web/roleList.html",
 					tips:0,
 					text:"权限管理",
 					icon:"fa-legal"
@@ -880,7 +882,7 @@
 					access_id:"12000",
 					active:"",
 					sub:[],
-					href:"#/web/wechatBindLogin.html",
+					href:"/web/wechatBindLogin.html",
 					tips:0,
 					text:"临时密码",
 					icon:"fa-group-users"
@@ -889,7 +891,7 @@
 					hasSub:"",
 					active:"",
 					sub:[],
-					href:"#/web/wechatBindLogin.html",
+					href:"/web/wechatBindLogin.html",
 					tips:0,
 					text:"绑定微信",
 					icon:"fa-bell"
@@ -899,7 +901,7 @@
 					hasSub:"",
 					active:"",
 					sub:[],
-					href:"#/web/situation.html",
+					href:"/#/web/situation.html",
 					tips:0,
 					text:"情景模式",
 					icon:"fa-crop"
@@ -909,7 +911,7 @@
 					access_id:"12000",
 					active:"",
 					sub:[],
-					href:"#/web/person.html",
+					href:"/#/web/person.html",
 					tips:0,
 					text:"增加人员",
 					icon:"fa-group-users"
@@ -919,7 +921,7 @@
 					hasSub:"",
 					active:"",
 					sub:[],
-					href:"#/web/device.html",
+					href:"/#/web/device.html",
 					tips:0,
 					text:"门况信息",
 					icon:"fa-hdd-o"
@@ -931,7 +933,7 @@
 					hasSub:"",
 					active:"",
 					sub:[],
-					href:"#/web/deviceCtl.html",
+					href:"/#/web/deviceCtl.html",
 					tips:0,
 					text:"智控",
 					icon:"fa-beer"
@@ -941,7 +943,7 @@
 					hasSub:"",
 					active:"",
 					sub:[],
-					href:"#/web/companyInfo.html",
+					href:"/#/web/companyInfo.html",
 					tips:0,
 					text:"服务热线",
 					icon:"fa-phone-square"
@@ -950,7 +952,7 @@
 					hasSub:"",
 					active:"",
 					sub:[],
-					href:"#/web/repair.html",
+					href:"/#/web/repair.html",
 					tips:0,
 					text:"维修申报",
 					icon:"fa-truck"
@@ -1000,11 +1002,15 @@
 
 	function setTitle(){
 		var titleOptions = $pageLoadContain.find(".headerModule").data();
-		$$title.nextText = titleOptions.nexttext;
-		$$title.nextLink = titleOptions.nextlink;
-		$$title.noPrev = titleOptions.noprev;
-		$$title.sliderNav = titleOptions.slidernav;
-		$$title.title = titleOptions.title;
+
+		if(titleOptions){
+			$$title.nextText = titleOptions.nexttext;
+			$$title.nextLink = titleOptions.nextlink;
+			$$title.noPrev = titleOptions.noprev;
+			$$title.sliderNav = titleOptions.slidernav;
+			$$title.title = titleOptions.title;
+		}
+
 		$body.css("min-height",$pageLoadContain.height()+$pageLoadContain.offset().top+30);
 		$("#sidebar").css("min-height",$(window).height());
 		$(".headerModule").css("min-height",$(window).height());
@@ -1052,7 +1058,7 @@
 			$$bottomSlider.$forceUpdate();
 		}
 		if(!notRediret){
-			location.hash = ""
+			location.href = "/"
 		}
 
 	}
@@ -1100,7 +1106,7 @@
 		if(token){
 			return token;
 		}else{
-			window.location.hash="#/web/login.html?nomenu=1";
+			window.location.href="/#/web/login.html?nomenu=1";
 		}
 		return "";
 	}
@@ -1117,7 +1123,7 @@
 		if($.cookie("openid")&&checkOpenId){
 			$.dialog("url:/web/dialog/wechatLogin.html",{title:"微密码登陆"});
 		}else{
-			window.location.hash="#/web/login.html?nomenu=1";
+			window.location.href="/#/web/login.html?nomenu=1";
 		}
 		
 	}

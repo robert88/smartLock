@@ -30,7 +30,7 @@ website:    http://code.google.com/p/jquerytree/
   background-color:transparent; background-repeat:no-repeat; background-attachment: scroll;
   background-image:url("./img/bootstrap.png"); *background-image:url("./img/bootstrap.gif")}
 
-.ztree li span.button.chk {width:13px; height:13px; margin:0 2px; cursor: auto}
+.ztree li span.button.chk {width:14px; height:14px; margin:0 2px; cursor: auto}
 .ztree li span.button.chk.checkbox_false_full {background-position: -5px -5px;}
 .ztree li span.button.chk.checkbox_false_full_focus {background-position: -5px -26px;}
 .ztree li span.button.chk.checkbox_false_part {background-position: -5px -48px;}

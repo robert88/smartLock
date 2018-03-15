@@ -14,7 +14,7 @@
 		<tbody>
 		<tr v-for="($item, $index) in list"  v-show="hasPermission(14008)">
 			<!--<td><label class="label-checkbox"><input type="checkbox"><i class="fa-check"></i><i class="fa-square-o"></i></label></td>-->
-			<td><a class="J-dialog" data-dialog-url="#/web/personDetail.html" :data-id="$item.id">{{$item.name}}</a></td>
+			<td><a class="J-dialog" data-dialog-url="/#/web/personDetail.html" :data-id="$item.id">{{$item.name}}</a></td>
 			<td>{{$item.device_code}}</td>
 			<td>{{$item.device_model}}</td>
 			<td>{{$item.group_name}}</td>

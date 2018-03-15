@@ -248,7 +248,7 @@ $(function () {
                         }
                         if (ret.page_number == 1 && (!ret.list || ret.list.length == 0)) {
                             $.tips("请先添加角色", "warn", function () {
-                                window.location.hash = "#/web/roleList.html";
+                                window.location.href = "/#/web/roleList.html";
                             });
                         }
                         $$vue.role_list = ret.list || [];
@@ -337,9 +337,11 @@ $(function () {
 
             },
 			insertSelectItemValue:function (selectTime,start_time,end_time) {
+				start_time = start_time*1;
+				end_time = end_time*1;
 			for(var i=0;i<selectTime.length;i++){
-				var isLeft = start_time<selectTime[i].start_time&&end_time<=selectTime[i].start_time
-				var isRight = start_time>=selectTime[i].end_time&&end_time>selectTime[i].end_time
+				var isLeft = start_time<selectTime[i].start_time&&end_time<=selectTime[i].start_time;
+				var isRight = start_time>=selectTime[i].end_time&&end_time>selectTime[i].end_time;
 				if(isLeft||isRight){
 					if(isLeft){
 						selectTime.splice(i,0,{
@@ -390,7 +392,7 @@ $(function () {
 
 			},
             delSelectItem:function (parentIndex,index) {
-                this.timeSelectList[index].selectTime.splice(index,1);
+                this.timeSelectList[parentIndex].selectTime.splice(index,1);
             },
             initSelectItemEvent:function ($module) {
                 var $$vue = this;
@@ -415,7 +417,7 @@ $(function () {
                             params +=  "&"+curTimeList.name+"=" + curTimeValue.join(",");
                         }
                         PAGE.ajax({
-                            data: $module.serialize() + params + "&token=" + token,
+                            data: $module.serialize() + params + "&strategy_id="+strategy_id+"&token=" + token,
 							type:'post',
 							url:"/smart_lock/v1/strategy/modify",
 							success:function (ret) {

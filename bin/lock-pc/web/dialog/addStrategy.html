@@ -100,9 +100,9 @@
                 </div>
             </div>
         </li>
-        <li class="plr10 col6"  v-for="($item, $index) in timeSelectList">
+        <li class="plr10 col6"  v-for="($item, $index) in timeSelectList" v-cloak>
             <div class="form-group J-validItem validItem timeSelectListItem" v-bind="{'data-index':$index}">
-                <label>{{$item.title}}</label>
+                <label v-cloak>{{$item.title}}</label>
                 <div   class="timeSelectListItemValue pt5" v-cloak="">
                     <span class="t-info bd bd-info plr5 itemValue fs12 bd-radius-5 mr5" v-for="($item, $curIndex) in $item.selectTime" v-bind="{'data-value':$item.value}" >
                         {{$item.name}} <span class="timeSelectClose t-danger" v-bind="{'data-index':$index,'data-item-index':$curIndex}" >×</span>

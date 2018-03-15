@@ -283,6 +283,7 @@ $(function () {
 
 	PAGE.destroy.push(function () {
 		if($$vue){
+			$("body").off("scrollDown." + moduleId);
 			$$vue.$destroy();
 			$$vue = null;
 			$module=null

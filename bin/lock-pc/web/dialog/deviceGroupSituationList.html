@@ -11,6 +11,7 @@
 						<input class="J-select-value" type="hidden" check-type="required" v-bind="{'data-index':$index,'value':$item.strategy_id}">
 						<i class="fa-angle-down"></i>
 						<div class="J-select-option J-scroll strategy">
+							<a data-name="不设置" data-value="0" class="option">不设置</a>
 							<a v-for="($item, $index) in list"
 							   v-bind="{ 'data-jp':$item.jp, 'data-qp': $item.qp ,'data-name':$item.name, 'data-value':$item.id}"
 							   class="option">{{$item.name}}</a>
