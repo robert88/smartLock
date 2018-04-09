@@ -6,8 +6,9 @@
 				<div class="form-group J-validItem validItem">
 					<label><i class="t-danger fa-asterisk mr5 fs10"></i>账号</label>
 					<i class="fa fa-user"></i>
-					<input type="text" class="form-control" placeholder="请输入邮箱！" name="email"
-						   check-type="required,email"
+					<input type="text" class="form-control account" placeholder="请输入邮箱/手机！"
+						   check-type="required,email|mobile"
+						   data-mobile-msg="请填写正确的手机"
 						   data-email-msg="请填写正确的邮箱!"
 						   data-focus="true">
 				</div>

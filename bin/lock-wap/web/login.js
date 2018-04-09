@@ -44,9 +44,15 @@
 //   }
 // }
 	$form.validForm({
-		success:function ($btn) {
+		success:function ($btn,$form) {
+			var mobile = $form.find(".account").val();
+			if(mobile.indexOf("@")==-1){
+				mobile = "&phone="+mobile
+			}else{
+				mobile = "&email="+mobile
+			}
 			PAGE.ajax({
-				data:$form.serialize(),
+				data:$form.serialize()+mobile,
 				type:'post',
 				url:"/smart_lock/v1/member/login",
 				success:function (ret) {
