@@ -40,9 +40,9 @@ if(!process.env.DEBUG){
 	rap.staticPath="/static";//静态资源路径
 }
 rap.staticPathArr = [];
-// rap.staticPathArr.push((rap.rootPath + "/lock-pc" ));
+rap.staticPathArr.push((rap.rootPath + "/lock-pc" ));
 // rap.staticPathArr.push((rap.rootPath + "/lock-wap" ));
-rap.staticPathArr.push((rap.rootPath + "/nodeTool/build/lock-wap" ));
+// rap.staticPathArr.push((rap.rootPath + "/nodeTool/build/lock-wap" ));
 // rap.staticPathArr.push((rap.rootPath + "/shanxi-wap" ));
 // rap.staticPathArr.push((rap.rootPath + "/shanxi" ));
 // rap.staticPathArr.push((rap.rootPath + "/" + rap.staticPath ));

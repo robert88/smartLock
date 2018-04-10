@@ -36,6 +36,14 @@ $(function () {
 			}
 		},
 		methods: {
+            getdata: function(evt){
+                console.log(evt.draggedContext);
+            },
+            datadragEnd:function(evt){
+                console.log('拖动前的索引：'+evt.oldIndex);
+                console.log('拖动后的索引：'+evt.newIndex);
+
+            },
 			mergeArray: function (obj) {
 				if (typeof obj !== "object") {
 					return [];
