@@ -14,6 +14,7 @@ $(function () {
 		el: "#" + moduleVueId,
 		data: {
 			list: [],
+			list2:[{id:1},{id:2},{id:3}],
 			params: {page_number: 1, page_size: 10, device_name: "", device_code: "", token: token}
 		},
 		watch: {

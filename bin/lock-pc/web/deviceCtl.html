@@ -127,11 +127,11 @@
 									</tbody>
 								</table>
 								<ul class="pagination"></ul>
-								<draggable :list="list" :move="getdata" @update="datadragEnd" :options="{handle:'.dargDiv'}">
+								<draggable :list="list2" :move="getdata" @update="datadragEnd" :options="{handle:'.dargDiv'}">
 									<transition-group name="list-complete" >
-										<div v-for="element in list" :key="element.device_name"  class="list-complete-item">
-											<div class="styleclass dargDiv">{{element.device_name}}</div>
-											<div class="styleclass">{{element.device_name}}</div>
+										<div v-for="element in list2" :key="element.id"  class="list-complete-item">
+											<div class="styleclass dargDiv">{{element.id}}</div>
+											<div class="styleclass">{{element.id}}</div>
 
 										</div>
 									</transition-group>

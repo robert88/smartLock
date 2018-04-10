@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52c3e8da-7557-487b-b2c0-c1f8decfaf1f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/action/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/bin/action/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/lock-pc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/lock-pc/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.js" beforeDir="false" afterPath="$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/rap.util.core.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/bin/rap.util.core.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/error20180312_204213.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/error20180312_204213.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/info20180206_200612.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/info20180206_200612.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log/log20180206_200612.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/log20180206_200612.log" afterDir="false" />
     </list>
     <ignored path="smartLock.iws" />
@@ -101,20 +94,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="deviceCtl.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="deviceCtl.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="129" column="105" selection-start-line="129" selection-start-column="105" selection-end-line="129" selection-end-column="105" />
+            <state relative-caret-position="444">
+              <caret line="133" column="80" selection-start-line="133" selection-start-column="80" selection-end-line="133" selection-end-column="80" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="deviceCtl.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="deviceCtl.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="39" column="46" selection-start-line="39" selection-start-column="46" selection-end-line="39" selection-end-column="46" />
+            <state relative-caret-position="76">
+              <caret line="16" column="17" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -197,8 +190,8 @@
         <option value="$PROJECT_DIR$/bin/lock-pc/index.html" />
         <option value="$PROJECT_DIR$/bin/action/index.js" />
         <option value="$PROJECT_DIR$/bin/rap.util.core.config.js" />
-        <option value="$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.html" />
         <option value="$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.js" />
+        <option value="$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.html" />
       </list>
     </option>
   </component>
@@ -215,7 +208,7 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-10" />
     <option name="width" value="1932" />
     <option name="height" value="1030" />
@@ -694,12 +687,12 @@
       <workItem from="1520746868502" duration="26669000" />
       <workItem from="1520778147712" duration="65585000" />
       <workItem from="1523366895083" duration="218000" />
-      <workItem from="1523367140823" duration="3488000" />
+      <workItem from="1523367140823" duration="4321000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="623379000" />
+    <option name="totallyTimeSpent" value="624212000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-10" y="0" width="1932" height="1030" extended-state="0" />
@@ -714,11 +707,11 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2073991" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2073991" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info anchor="right" id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.38087606" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.38087606" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -1121,17 +1114,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.html">
+    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="129" column="105" selection-start-line="129" selection-start-column="105" selection-end-line="129" selection-end-column="105" />
+        <state relative-caret-position="76">
+          <caret line="16" column="17" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.js">
+    <entry file="file://$PROJECT_DIR$/bin/lock-pc/web/deviceCtl.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="39" column="46" selection-start-line="39" selection-start-column="46" selection-end-line="39" selection-end-column="46" />
+        <state relative-caret-position="444">
+          <caret line="133" column="80" selection-start-line="133" selection-start-column="80" selection-end-line="133" selection-end-column="80" />
         </state>
       </provider>
     </entry>
