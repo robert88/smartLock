@@ -1,6 +1,7 @@
 var http = require("http");
 exports = module.exports = {
 	"/":"/index.html",
+	"https://www.cnblogs.com/moqiutao/p/6423754.html":"https://www.cnblogs.com/moqiutao/p/6423754.html",
 	"/proxy":function(request,response,next){
 		// $.ajax({type:"post",url:"/proxy",dataType:"json",data:{ip:"14.215.177.38",port:443,proxyUrl:"proxyUrl"}})
 		var url = request.params.proxyUrl

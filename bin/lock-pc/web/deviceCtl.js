@@ -14,6 +14,7 @@ $(function () {
 		el: "#" + moduleVueId,
 		data: {
 			list: [],
+			list2:[{id:1},{id:2},{id:3}],
 			params: {page_number: 1, page_size: 10, device_name: "", device_code: "", token: token}
 		},
 		watch: {
@@ -36,6 +37,14 @@ $(function () {
 			}
 		},
 		methods: {
+            getdata: function(evt){
+                console.log(evt.draggedContext);
+            },
+            datadragEnd:function(evt){
+                console.log('拖动前的索引：'+evt.oldIndex);
+                console.log('拖动后的索引：'+evt.newIndex);
+
+            },
 			mergeArray: function (obj) {
 				if (typeof obj !== "object") {
 					return [];
