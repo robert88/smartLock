@@ -108,6 +108,7 @@ $(function () {
 						PAGE.setpageFooter($module.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
 							$$vue.params.page_number = page_number
 						});
+						$$vue.$forceUpdate();
 					},
 					complete:function(){
 						$$vue.loading = false;
@@ -368,7 +369,7 @@ $(function () {
 						return;
 					}
 					if(ret.page_number==1&& (!ret.list||ret.list.length==0)){
-						$$vue.list = [{
+						$$vue.list2 = [{
 							"id": 0,
 							"group_name": "无分组"
 						}];

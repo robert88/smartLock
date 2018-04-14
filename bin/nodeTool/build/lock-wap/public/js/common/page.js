@@ -8,7 +8,7 @@
 	var $pageLoad = $("#pageLoad");
 	var $body = $("body");
 	var pathmap = {};
-debugger;
+;
 	var PAGE = window.PAGE||{};
 
 	/*对于局部需要使用定时器的时候，不要直接使用window.setTimeout*/

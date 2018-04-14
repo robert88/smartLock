@@ -366,7 +366,7 @@ $(function () {
 						return;
 					}
 					if(ret.page_number==1&& (!ret.list||ret.list.length==0)){
-						$$vue.list = [{
+						$$vue.list2 = [{
 							"id": 0,
 							"group_name": "无分组"
 						}];
