@@ -226,7 +226,6 @@ $(function () {
 				].join("");
 				var $dialog = $.dialog(str, {
 					title: "删除记录",
-					width: 400,
 					button: [{
 						text: "确认", click: function () {
 							var sms_code =  $dialog.find("input[name='sms_code']").val();

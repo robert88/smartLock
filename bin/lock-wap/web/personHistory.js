@@ -118,7 +118,6 @@ $(function () {
 				var type = "post";
 				$.dialog("是否要恢复用户？", {
 					title: "恢复用户",
-					width:400,
 					button: [{
 						text: "确认", click: function () {
 							if($$vue.list[index].id){

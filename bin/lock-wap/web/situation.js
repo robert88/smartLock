@@ -173,7 +173,6 @@ $(function () {
 				var type = "post";
 				$.dialog("是否要删除该记录？", {
 					title: "删除记录",
-					width: 400,
 					button: [{
 						text: "确认", click: function () {
 							PAGE.ajax({
@@ -240,7 +239,6 @@ $(function () {
 					var type = "post";
 					$.dialog("是否要解除当前策略？", {
 						title: "解除策略",
-						width: 400,
 						button: [{
 							text: "确认", click: function () {
 								PAGE.ajax({
