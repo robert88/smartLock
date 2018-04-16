@@ -31,6 +31,12 @@
 											<!--<a class="label label-success label-sm mr10"  v-on:click="closeDevice($index, $event)" >关闭</a>-->
 											<a class="label label-info label-sm mr10"  v-on:click="setDeviceModel($index, $event)" v-show="($item.device_type==3)">添加小hub</a>
 
+											<a class="label label-info label-sm mr10"  v-on:click="setDeviceSliderModel($index, 1)" v-show="($item.device_type==4)">设置左边锁模式</a>
+											<a class="label label-info label-sm mr10"  v-on:click="setDeviceSliderModel($index, 2)" v-show="($item.device_type==4)">设置右边锁模式</a>
+											<a class="label label-info label-sm mr10"  v-on:click="setDeviceSliderModel($index, 3)" v-show="($item.device_type==4)">设置点动开锁</a>
+											<a class="label label-info label-sm mr10"  v-on:click="setDeviceSliderModel($index, 4)" v-show="($item.device_type==4)">设置点动关锁</a>
+
+
 				</div>
 			</li>
 		</ul>

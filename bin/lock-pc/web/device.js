@@ -108,7 +108,6 @@ $(function () {
 						PAGE.setpageFooter($module.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
 							$$vue.params.page_number = page_number
 						});
-						$$vue.$forceUpdate();
 					},
 					complete:function(){
 						$$vue.loading = false;

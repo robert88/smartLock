@@ -15,7 +15,7 @@ $(function () {
 		data: {
 			list: [],
 			params:{page_number:1,page_size:10,user_name:"",email:"",phone:"",role_id:"",token:token},
-
+			saveUserAjax:{url:"/smart_lock/v1/user/set_order",type:"get"},
 			role_list: [],
 			roleLoading:false,
 			roleTotalPage:0,
@@ -81,6 +81,42 @@ $(function () {
 			},
 		},
 		methods: {
+			datadragEnd:function(evt){
+				var $$vue = this;
+				console.log('拖动前的索引：'+evt.oldIndex);
+				console.log('拖动后的索引：'+evt.newIndex);
+				var list;
+			
+				for(var i=0;i<$$vue.list.length;i++){
+					list = $$vue.list[i]
+					console.log(list.id,i,list.orders,list.orgOrders);
+				}
+				// return{page_number:$vue.page_number,token:token}
+				// PAGE.ajax({
+				// 	url: url,
+				// 	data: {page_number:$$vue.page_number,token:token,orders:""},
+				// 	type: type,
+				// 	success: function (ret) {
+				// 		if (!ret) {
+				// 			return;
+				// 		}
+				//
+				// 		ret.list = ret.list||[];
+				// 		$.each(ret.list,function (idx) {
+				// 			ret.list[idx].orders = idx;
+				// 			ret.list[idx].orgOrders = idx;
+				// 		});
+				// 		$$vue.list = ret.list;
+				// 		PAGE.setpageFooter($module.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
+				// 			$$vue.params.page_number = page_number*1
+				// 		});
+				//
+				// 	},
+				// 	complete: function () {
+				// 		$$vue.loading = false;
+				// 	}
+				// });
+			},
 			mergeArray: function (obj) {
 				if (typeof obj !== "object") {
 					return [];
@@ -131,8 +167,13 @@ $(function () {
 						if (!ret) {
 							return;
 						}
-						$$vue.list = ret.list||[];
-
+						
+						ret.list = ret.list||[];
+						$.each(ret.list,function (idx) {
+							ret.list[idx].orders = idx;
+							ret.list[idx].orgOrders = idx;
+						});
+						$$vue.list = ret.list;
 						PAGE.setpageFooter($module.find(".pagination"), ret.total_page, ret.page_number, function (page_number) {
 							$$vue.params.page_number = page_number*1
 						});

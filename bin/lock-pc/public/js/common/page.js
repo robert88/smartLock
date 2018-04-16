@@ -695,7 +695,7 @@
 	 * */
 	Vue.prototype.initEvent=function ($module) {
 		var $$vue = this;
-		$module.on("update",function () {
+		$module.on("listupdate",function () {
 			$$vue.refreshList();
 		})
 		$module.on("click",".J-filter",function () {

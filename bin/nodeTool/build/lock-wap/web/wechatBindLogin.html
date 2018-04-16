@@ -10,33 +10,33 @@
 		<meta content="telephone=no" name="format-detection">
 
 		<!--start mergeCss:main.min-->
-		<link rel="stylesheet" type="text/css" href="/public/css/base.css?ver=1523677020" >
-		<link rel="stylesheet" type="text/css" href="/public/css/iconmoon/style.css?ver=1523677020">
-		<link rel="stylesheet" type="text/css" href="/public/css/form.css?ver=1523677020">
-		<link rel="stylesheet" type="text/css" href="/public/css/btn.css?ver=1523677020">
-		<link rel="stylesheet" type="text/css" href="/public/css/header.css?ver=1523677020">
-		<link rel="stylesheet" type="text/css" href="/public/css/content.css?ver=1523677020">
-		<link rel="stylesheet" type="text/css" href="/public/css/nav-slider.css?ver=1523677020">
-		<link rel="stylesheet" type="text/css" href="/public/css/label.css?ver=1523677020">
-		<link rel="stylesheet" type="text/css" href="/public/js/dialog/jquery.dialog.css?ver=1523677020">
+		<link rel="stylesheet" type="text/css" href="/public/css/base.css?ver=1523901112" >
+		<link rel="stylesheet" type="text/css" href="/public/css/iconmoon/style.css?ver=1523901112">
+		<link rel="stylesheet" type="text/css" href="/public/css/form.css?ver=1523901112">
+		<link rel="stylesheet" type="text/css" href="/public/css/btn.css?ver=1523901112">
+		<link rel="stylesheet" type="text/css" href="/public/css/header.css?ver=1523901112">
+		<link rel="stylesheet" type="text/css" href="/public/css/content.css?ver=1523901112">
+		<link rel="stylesheet" type="text/css" href="/public/css/nav-slider.css?ver=1523901112">
+		<link rel="stylesheet" type="text/css" href="/public/css/label.css?ver=1523901112">
+		<link rel="stylesheet" type="text/css" href="/public/js/dialog/jquery.dialog.css?ver=1523901112">
 		<!--end mergeCss-->
 
 		<!--start mergeCss:lib.min-->
-		<link rel="stylesheet" type="text/css" href="/public/css/animate.min.css?ver=1523677020" />
+		<link rel="stylesheet" type="text/css" href="/public/css/animate.min.css?ver=1523901112" />
 		<!--<link rel="stylesheet" type="text/css" href="/public/css/fullcalendar.min.css" />-->
 		<!--<link rel="stylesheet" type="text/css" href="/public/css/jquery.gritter.css" />-->
 		<!--end mergeCss-->
 
 		<!--start mergeJs:lib.min-->
-		<script src="/public/js/lib/jquery-1.12.4.min.js?ver=1523677020"></script>
-		<script src="/public/js/common/jquery.cookie.min.js?ver=1523677020"></script>
-		<script src="/public/js/lib/jquery-ui-sortable.min.js?ver=1523677020"></script>
-		<script src="/public/js/lib/vue.js?ver=1523677020"></script>
-		<script src="/public/js/common/prototype.js?ver=1523677020"></script>
-		<script src="/public/js/common/base.js?ver=1523677020"></script>
-		<script src="/public/js/common/require.js?ver=1523677020"></script>
-		<script src="/public/js/dialog/jquery.dialog.js?ver=1523677020"></script>
-		<script src="/public/js/common/validForm.js?ver=1523677020"></script>
+		<script src="/public/js/lib/jquery-1.12.4.min.js?ver=1523901112"></script>
+		<script src="/public/js/common/jquery.cookie.min.js?ver=1523901112"></script>
+		<script src="/public/js/lib/jquery-ui-sortable.min.js?ver=1523901112"></script>
+		<script src="/public/js/lib/vue.js?ver=1523901112"></script>
+		<script src="/public/js/common/prototype.js?ver=1523901112"></script>
+		<script src="/public/js/common/base.js?ver=1523901112"></script>
+		<script src="/public/js/common/require.js?ver=1523901112"></script>
+		<script src="/public/js/dialog/jquery.dialog.js?ver=1523901112"></script>
+		<script src="/public/js/common/validForm.js?ver=1523901112"></script>
 		<!--end mergeJs-->
 
 	</head>
@@ -95,6 +95,10 @@
 	<div id="main-content-css"></div>
 	<div id="main-content-page">
 <div class="wrap headerModule" data-title="绑定微密码登录" >
+	<div class="bind-info tc" style="display: none">
+		<h3 class="mt20"></h3>
+		<p class="mt20"></p>
+	</div>
 	<div class="form-group tc mt20">
 		<a class="btn btn-info J-bind-wechat fw12" style="display: none">
 			绑定微密码登录
@@ -138,6 +142,8 @@
 				success:function (ret) {
 					if(ret.status==1){
 						$(".J-bind-wechat").html("已绑定微密码登录").addClass("disable").show()
+						$(".bind-info").show().find("h3").html(ret.nicktname)
+						$(".bind-info").find("p").html("<img src='"+ret.nicktname+"'>");
 					}else{
 						$(".J-bind-wechat").html("绑定微密码登录").show();
 						bindClick();
@@ -194,7 +200,7 @@
 </div>
 </div>
 
-	<script type="text/javascript" src="/public/js/common/main.js?ver=1523677020"></script>
+	<script type="text/javascript" src="/public/js/common/main.js?ver=1523901112"></script>
 
 	</body>
 
@@ -203,7 +209,7 @@
 			window.PAGE = {};
 			window.PAGE.HOME = "/#/web/device.html";
 			window.PAGE.ERROR404 = "#/html/web404";
-			window.PAGE.version='1523677020';
+			window.PAGE.version='1523901112';
 			window.PAGE.destroy = [];
 			PAGE.notHashPage = ["/web/wechatwifi.html","/web/wechatBindLogin.html"]
 			window.PAGE.loading = null;
@@ -216,10 +222,11 @@
 			window.PAGE.curLanguage = "en";
 			window.PAGE.reload = null;
 			window.PAGE.data = {};
+			window.PAGE.dialogTop = true;
 		})()
 	</script>
-	<script src="/public/js/common/ajax.js?ver=1523677020"></script>
-	<script src="/public/js/common/page.js?ver=1523677020"></script>
-	<script src="/public/js/common/pagination.js?ver=1523677020"></script>
+	<script src="/public/js/common/ajax.js?ver=1523901112"></script>
+	<script src="/public/js/common/page.js?ver=1523901112"></script>
+	<script src="/public/js/common/pagination.js?ver=1523901112"></script>
 
 </html>

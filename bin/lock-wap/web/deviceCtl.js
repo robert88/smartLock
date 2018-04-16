@@ -213,6 +213,18 @@ $(function () {
 					}
 				});
 			},
+			setDeviceSliderModel:function (index,value) {
+				var url =  "/smart_lock/v1/device_control/setting_edge";
+				var type = "post";
+				PAGE.ajax({
+					url: url,
+					type: type,
+					data: {device_id: $$vue.list[index].id, token: token,type_id:value},
+					success: function () {
+						$.tips("操作成功！", "success");
+					}
+				});
+			},
 			setDeviceModel:function (index) {
 				var $$vue = this;
 

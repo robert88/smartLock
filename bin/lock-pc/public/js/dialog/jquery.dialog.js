@@ -582,7 +582,11 @@ if(!$.i18n){
 					$this.css({left: center.x});
 				}
 			}else{
-				$this.css({top: center.y,left: center.x});
+				if(opts.frameType=="dialog"){
+					$this.css({top: (PAGE&&PAGE.dialogTop)?($(window).scrollTop()+opts.minTop):center.y,left: center.x});
+				}else{
+					$this.css({top: center.y,left: center.x});
+				}
 			}
 
 			$target.data("setcenter",true);

@@ -197,3 +197,32 @@ table th[class*="col-"] {
 	}
 }
 table input{width:100%;height:100%;line-height:100%;padding: 3px;}
+.display-table{
+	display: table;
+	border-collapse: collapse;
+}
+.display-table-row{
+	display: table-row;
+}
+.display-th,.display-td{
+	display: table-cell;
+	vertical-align: middle;
+	border-collapse: collapse;
+	color: #666;
+	padding: 0 8px;
+	height: 37px;
+	line-height: 1.428571429;
+	border-left: 1px solid #ededed;
+	border-top: 1px solid #ededed;
+}
+.display-th{
+	color: #333;
+	font-weight: 700;
+}
+.display-th:first-child{
+	border-top: 1px solid #ededed;}
+.display-td:last-child,.display-th:last-child{
+	border-right: 1px solid #ededed;}
+.display-table-row:nth-child(odd){
+	background-color: #f2f2f2;
+}

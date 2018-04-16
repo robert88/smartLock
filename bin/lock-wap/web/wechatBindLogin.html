@@ -1,5 +1,9 @@
 
 <div class="wrap headerModule" data-title="绑定微密码登录" >
+	<div class="bind-info tc" style="display: none">
+		<h3 class="mt20"></h3>
+		<p class="mt20"></p>
+	</div>
 	<div class="form-group tc mt20">
 		<a class="btn btn-info J-bind-wechat fw12" style="display: none">
 			绑定微密码登录
@@ -43,6 +47,8 @@
 				success:function (ret) {
 					if(ret.status==1){
 						$(".J-bind-wechat").html("已绑定微密码登录").addClass("disable").show()
+						$(".bind-info").show().find("h3").html(ret.nicktname)
+						$(".bind-info").find("p").html("<img src='"+ret.imgurl+"'>");
 					}else{
 						$(".J-bind-wechat").html("绑定微密码登录").show();
 						bindClick();
