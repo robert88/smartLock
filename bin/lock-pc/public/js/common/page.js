@@ -707,6 +707,33 @@
 
 
 	}
+    /**
+     *保存排序
+     * */
+    Vue.prototype.datadragEnd=function(evt){
+        var $$vue = this;
+        var list;
+        var orders=[]
+        for(var i=0;i<$$vue.list.length;i++){
+            list = $$vue.list[i];
+            if(list&&i!=list.orders){
+                orders.push(list.id+"_"+(i+1))
+            }
+        }
+        PAGE.ajax({
+            url: $$vue.saveUserAjax.url,
+            type: $$vue.saveUserAjax.type,
+            data: {page_number:$$vue.params.page_number,token:token,orders:orders.join(",")},
+            success: function (ret) {
+                for(var i=0;i<$$vue.list.length;i++){
+                    list = $$vue.list[i];
+                    if(list&&i!=list.orders){
+                        list.orders = i;
+                    }
+                }
+            }
+        });
+    }
 
 	var $$header = new Vue({
 		el:"#pageCommonHeaderVue",

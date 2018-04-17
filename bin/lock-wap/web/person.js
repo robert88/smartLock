@@ -14,6 +14,7 @@ $(function () {
 		el: "#" + moduleVueId,
 		data: {
 			list: [],
+            saveUserAjax:{url:"/smart_lock/v1/user/set_order",type:"post"},
 			params: {page_number: 1, page_size: 10, user_name: "", token: token}
 		},
 		watch: {

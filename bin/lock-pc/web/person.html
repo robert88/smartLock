@@ -68,30 +68,30 @@
 
 
 						<div class=" J-table">
+							<ul class="display-table-row">
+								<li class="display-th" style="width:3%"><label class="label-checkbox "><input type="checkbox" class="J-all-checkBox"><i class="fa-check"></i><i class="fa-square-o"></i></label></li>
+								<li class="display-th" style="width:10%"><i class="fa-user"></i> 姓名</li>
+								<li class="display-th" style="width:10%"><i class="fa-tablet "></i> 电话</li>
+								<li class="display-th" style="width:15%"><i class="fa-envelope-o"></i> 邮箱</li>
+								<li class="display-th" style="width:15%"><i class="fa-credit-card"></i> 身份证</li>
+								<li class="display-th" style="width:10%"><i class="fa-suitcase"></i> 角色</li>
+								<li class="display-th" style="width:13%"><i class="fa-suitcase"></i> 已授权的设备</li>
+								<li class="display-th" style="width:24%"><i class="fa-wrench"></i> 操作</li>
+							</ul>
 
-							<draggable :list="list" @update="datadragEnd" :options="{handle:'.dargDiv',animation:150}">
-								<ul class="display-table-row">
-									<li class="display-th" style="width:3%"><label class="label-checkbox "><input type="checkbox" class="J-all-checkBox"><i class="fa-check"></i><i class="fa-square-o"></i></label></li>
-									<li class="display-th" style="width:10%"><i class="fa-user"></i> 姓名</li>
-									<li class="display-th" style="width:10%"><i class="fa-tablet "></i> 电话</li>
-									<li class="display-th" style="width:10%"><i class="fa-envelope-o"></i> 邮箱</li>
-									<li class="display-th" style="width:10%"><i class="fa-credit-card"></i> 身份证</li>
-									<li class="display-th" style="width:10%"><i class="fa-suitcase"></i> 角色</li>
-									<li class="display-th" style="width:10%"><i class="fa-suitcase"></i> 已授权的设备</li>
-									<li class="display-th" style="width:47%"><i class="fa-wrench"></i> 操作</li>
-								</ul>
+							<draggable :list="list" @sort="datadragEnd" :options="{handle:'.dargDiv',animation:150}">
 
 								<ul v-for="($item, $index) in list"  v-cloak v-show="hasPermission(12004)" class="display-table-row  dargDiv" :key="$item.orders">
 									<li class="display-td" style="width:3%"><label class="label-checkbox"><input type="checkbox"><i class="fa-check"></i><i class="fa-square-o"></i></label></li>
 									<li class="display-td" style="width:10%"><a class="J-dialog t-info hover-link" data-url="/web/dialog/personDetail.html" :data-id="$item.id" :data-title="($item.user_name+'用户信息详情')">{{$item.user_name}}</a></li>
 									<li class="display-td" style="width:10%">{{$item.user_phone}}</li>
-									<li class="display-td" style="width:10%">{{$item.user_email}}</li>
-									<li class="display-td" style="width:10%">{{$item.user_card}}</li>
+									<li class="display-td" style="width:15%">{{$item.user_email}}</li>
+									<li class="display-td" style="width:15%">{{$item.user_card}}</li>
 									<li class="display-td" style="width:10%">{{$item.role_id}}</li>
-									<li class="display-td" style="width:47%">
+									<li class="display-td" style="width:13%">
 										<a class="label label-info label-sm J-dialog" data-url="/web/dialog/userToDeviceAuthList.html"  :data-user_id="$item.id"  :data-title="('已授权'+$item.user_name+'用户的设备列表')" v-if="!$item.edit">查看已授权的设备</a>
 									</li>
-									<li class="display-td" style="width:10%">
+									<li class="display-td" style="width:24%">
 										<a class="label label-success label-sm ml10 J-dialog" data-url="/web/dialog/modifyPerson.html" :data-user_id="$item.id" :data-title="('修改'+$item.user_name+'用户信息详情')" v-show="hasPermission(12003)">修改用户信息</a>
 										<a class="label label-success label-sm ml10 J-dialog" data-url="/web/dialog/authUserToDevice.html" :data-user_id="$item.id" :data-title="($item.user_name+'用户')" :data-name="$item.user_name" v-show="hasPermission(13006)">设备授权</a>
 										<a class="label label-danger label-sm" v-on:click="del($index, $event)" v-show="isSelf($item.user_email)&&hasPermission(12002)||($item.type!=11)" ><i class="fa-trash-o" title="删除"></i></a>

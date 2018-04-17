@@ -163,10 +163,11 @@
 	line-height: 1;
 }
 .label {
-	display: inline;
-	padding: .2em .6em .3em;
+	display: inline-block;
+	padding: .3em .6em .2em;
 	font-size: 75%;
 	font-weight: bold;
+	margin-top: .2em;
 	line-height: 1;
 	color: #ffffff;
 	text-align: center;
@@ -229,3 +230,15 @@
 .label-danger[href]:focus {
 	background-color: #c9302c;
 }
+.t-success{color:#92ab59}
+.t-info{color:#70afc4}
+.t-warning{color: #ec971f;}
+.t-muted{color: #999;}
+.t-danger{color: #c9302c;}
+.t-white{color:#fff;}
+.bg-success{background-color:#92ab59}
+.bg-info{background-color:#70afc4}
+.bg-warning{background-color: #ec971f;}
+.bg-muted{background-color: #999;}
+.bg-danger{background-color: #c9302c;}
+.bg-white{background-color:#fff;}
