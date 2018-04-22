@@ -221,7 +221,7 @@ $(function () {
 					'<label ><i class="t-danger fa-asterisk mr5 fs10"></i>手机验证码</label>',
 					'<i class="fa-comment-o" ></i>',
 					'<a class="btn btn-warning btn-send-code J-getMobileCode"><span class="text-gradient">发送验证码</span></a>',
-					'<input type="text" class="form-control" name="sms_code" placeholder="请输入手机验证码!" check-type="required" data-focus="true">',
+					'<input type="text" class="form-control J-getMobileCode-input" name="sms_code" placeholder="请输入手机验证码!" check-type="required" data-focus="true">',
 					'</div>'
 				].join("");
 				var $dialog = $.dialog(str, {
@@ -258,16 +258,20 @@ $(function () {
 				//发送短信验证码
 				$dialog.find(".J-getMobileCode").click(function () {
 					$dialog.find(".J-sendMsg").hide();
+					var smsurl = "/smart_lock/v1/member/sms";
+						var smstype="post";
 					var $this =$(this);
 					if($this.data("lock") || $this.data("lock-text")){
 						return ;
 					}
+
 					var captcha_code =  $dialog.find("input[name='captcha_code']").val();
 
 					if(!captcha_code){
 						$dialog.find("input[name='captcha_code']").parents(".J-validItem").removeClass("validSuccess").addClass("validError").find(".J-valid-msg").html("请填写正确的图形验证码")
 						return ;
 					}
+
 					$this.data("lock",true).data("lock-text",true);
 					var $text =$this.find(".text-gradient");
 
@@ -277,9 +281,10 @@ $(function () {
 					var originText = $text.data("origin-text");
 					$text.data("text",60).html(60);
 
-					PAGE.ajax({type:"post",
-						data:{sms_type:"check",phone:$$vue.authPhone,captcha_code:captcha_code},
-						url:"/smart_lock/v1/member/sms",
+					PAGE.ajax({
+						url: smsurl,
+						type: smstype,
+						data:{sms_type:"check_new",device_id: $$vue.list[index].id,phone:$$vue.authPhone,captcha_code:captcha_code, token: token},
 						success:function () {
 							$dialog.find(".J-sendMsg").show();
 							timoutCount($text,60,function(){

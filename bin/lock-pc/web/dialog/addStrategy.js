@@ -132,9 +132,9 @@ $(function () {
                 var curListObj = this.timeSelectList[type]
                 var newEndList = []
                 var curTime = new Date("2018/02/04").getTime();
-                for (var i = 0; i <= 48; i++) {
+                for (var i = 0; i <= 144; i++) {
                     if ((i / 2) > newValue) {
-                        if (i == 48) {
+                        if (i == 144) {
                             newEndList.push({name: "24:00", id: i / 2});
                         } else {
                             newEndList.push({
@@ -203,9 +203,9 @@ $(function () {
             },
             initAllowTimeByType: function (curTimeList) {
 
-                for (var i = 0; i <= 48; i++) {
-                    var curMinute = i*30;
-                    if (curMinute == 48*30) {
+                for (var i = 0; i <= 144; i++) {
+                    var curMinute = i*10;
+                    if (curMinute == 144*10) {
                         curTimeList.allow_start_time_list[i] = {name: "24:00", id:curMinute}
                         curTimeList.allow_end_time_list[i] = {name: "24:00", id: curMinute}
                     } else {

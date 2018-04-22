@@ -261,6 +261,8 @@ $(function () {
 				//发送短信验证码
 				$dialog.find(".J-getMobileCode").click(function () {
 					$dialog.find(".J-sendMsg").hide();
+					var smsurl = "/smart_lock/v1/member/sms";
+						var smstype="post";
 					var $this =$(this);
 					if($this.data("lock") || $this.data("lock-text")){
 						return ;
@@ -271,6 +273,7 @@ $(function () {
 						$dialog.find("input[name='captcha_code']").parents(".J-validItem").removeClass("validSuccess").addClass("validError").find(".J-valid-msg").html("请填写正确的图形验证码")
 						return ;
 					}
+
 					$this.data("lock",true).data("lock-text",true);
 					var $text =$this.find(".text-gradient");
 
@@ -280,9 +283,10 @@ $(function () {
 					var originText = $text.data("origin-text");
 					$text.data("text",60).html(60);
 
-					PAGE.ajax({type:"post",
-						data:{sms_type:"check",phone:$$vue.authPhone,captcha_code:captcha_code},
-						url:"/smart_lock/v1/member/sms",
+					PAGE.ajax({
+						url: smsurl,
+						type: smstype,
+						data:{sms_type:"check_new",device_id: $$vue.list[index].id,phone:$$vue.authPhone,captcha_code:captcha_code, token: token},
 						success:function () {
 							$dialog.find(".J-sendMsg").show();
 							timoutCount($text,60,function(){
