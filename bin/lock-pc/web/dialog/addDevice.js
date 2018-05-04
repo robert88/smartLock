@@ -33,7 +33,7 @@ $(function () {
 				success:function (ret) {
 					$.dialog.closeAll();
 					$.tips("添加成功！","success");
-					$relativeModule.trigger("update");
+					$relativeModule.trigger("listupdate");
 				}
 			})
 		}
