@@ -263,7 +263,12 @@
 		$pageCss.html("");
 		$pageJs.html("");
 		$body.scrollTop(0);
-
+		if(PAGE.ajaxXHR&&PAGE.ajaxXHR.length){
+			for(var i=0;i<PAGE.ajaxXHR.length;i++){
+				PAGE.ajaxXHR[i].abort();
+			}
+			PAGE.ajaxXHR.length=0;
+		}
 		removeEventByGuid(window);
 		removeEventByGuid(document);
 		removeEventByGuid(document.body);
