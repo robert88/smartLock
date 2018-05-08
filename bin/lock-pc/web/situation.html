@@ -48,7 +48,7 @@
 										</td>
 										<td>
 											<a class="label label-success label-sm mr10 J-modify"  v-on:click="open_situational($index, 1)" v-show="$item.status==0" >开启</a>
-											<a class="label label-success label-sm mr10 J-modify"  v-on:click="open_situational($index, 0)" v-show="$item.status==1" >关闭</a>
+											<a class="label label-success label-sm mr10 J-modify"  v-on:click="close_situational($index, 0)" v-show="$item.status==1" >关闭</a>
 											<a class="label label-success label-sm mr10 J-modify"  v-on:click="modify($index, $event)" v-show="hasPermission(18003)" >修改情景名称</a>
 											<!--<a class="label label-success label-sm mr10 J-dialog"  data-url="/web/dialog/addDeviceGroupSituation.html"  :data-situational_id="$item.id"  :data-title="(''+$item.situation_name+'情景添加设备组')">添加设备组</a>-->
 											<!--<a class="label label-success label-sm mr10 J-dialog" data-url="/web/dialog/addStrategyToSituation.html"  :data-situational_id="$item.id"  :data-title="(''+$item.situation_name+'情景绑定策略')" v-show="hasPermission(18005)" >绑定策略</a>-->
