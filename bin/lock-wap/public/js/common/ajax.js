@@ -174,9 +174,17 @@
 			if(options.loading){
 				$(".loading").hide();
 			}
+			if(PAGE.ajaxXHR.indexOf(ajaxXHR)!=-1){
+				PAGE.ajaxXHR.splice(PAGE.ajaxXHR.indexOf(ajaxXHR),1);
+			}
+			
 		}
 
 		ajaxOption.error = function (XMLHttpRequest, textStatus, errorThrown) {
+			if(XMLHttpRequest.statusText=="abort"){
+				console.log("ajax abort by page.js");
+				return;
+			}
 			try {
 				var $text = $(XMLHttpRequest.responseText);
 			} catch (e) {
@@ -195,7 +203,10 @@
 		if(options.loading){
 			$(".loading").show();
 		}
-		$.ajax(ajaxOption);
+		PAGE.ajaxXHR = PAGE.ajaxXHR||[];
+		var ajaxXHR = $.ajax(ajaxOption);
+		PAGE.ajaxXHR.push(ajaxXHR);
+	
 	};
 	/*带btn*/
 	PAGE.ajaxBtn = function ($btn, opts) {

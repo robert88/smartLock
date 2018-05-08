@@ -15,6 +15,7 @@
 				<ul class="col fs14 t-muted">
 					<li class="col6"> <span class="mr5">设备模式:</span><span class="t-info">{{showDeviceMode($item.device_mode)}}</span></li>
 					<li class="col6"><span class="mr5">联网状态: </span><span class="t-info">{{$item.status}}</span></li>
+					<li class="col6"><span class="mr5">设备电量: </span><span class="t-info">{{($item.energy?($item.energy+'%'):'')}}</span></li>
 					<li class="col6"><span class="mr5">设备状态: </span><span v-html="handleDeviceStatus($item.device_status)"></span></li>
 				</ul>
 

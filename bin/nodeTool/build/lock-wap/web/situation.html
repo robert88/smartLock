@@ -39,7 +39,7 @@
 
 				<div class="bd-top bd-dashed mt10 pt10">
 				<a class="label label-success label-sm mr10 J-modify"  v-on:click="open_situational($index, 1)" v-show="$item.status==0" >开启</a>
-											<a class="label label-success label-sm mr10 J-modify"  v-on:click="open_situational($index, 0)" v-show="$item.status==1" >关闭</a>
+											<a class="label label-success label-sm mr10 J-modify"  v-on:click="close_situational($index, 0)" v-show="$item.status==1" >关闭</a>
 
 					<a class="label label-success label-sm mr10 J-modify" v-on:click="modify($index, $event)"
 					   v-show="hasPermission(18003)">修改情景名称</a>

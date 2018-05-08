@@ -129,7 +129,7 @@ $(function () {
 
 	$dialog[0].destroy  = function () {
 		if($$vue){
-			$relativeModule.trigger("update");
+			$relativeModule.trigger("listupdate");
 			$("body").off("scrollDown." + moduleId);
 			$$vue.$destroy();
 			listMap = null;

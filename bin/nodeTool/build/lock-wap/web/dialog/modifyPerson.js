@@ -39,7 +39,7 @@ $(function () {
 				success:function (ret) {
 					$.dialog.closeAll();
 					$.tips("修改成功！","success");
-					$("#systemPerson").trigger("update");
+					$("#systemPerson").trigger("listupdate");
 				}
 			})
 		}

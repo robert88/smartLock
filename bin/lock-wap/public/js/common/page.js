@@ -261,7 +261,12 @@
 		$pageCss.html("");
 		$pageJs.html("");
 		$body.scrollTop(0);
-
+		if(PAGE.ajaxXHR&&PAGE.ajaxXHR.length){
+			for(var i=0;i<PAGE.ajaxXHR.length;i++){
+				PAGE.ajaxXHR[i].abort();
+			}
+			PAGE.ajaxXHR.length=0;
+		}
 		removeEventByGuid(window);
 		removeEventByGuid(document);
 		removeEventByGuid(document.body);
@@ -682,7 +687,7 @@
 	 * */
 	Vue.prototype.initEvent=function ($module) {
 		var $$vue = this;
-		$module.on("update",function () {
+		$module.on("listupdate",function () {
 			$$vue.refreshList();
 		})
 		$module.on("click",".J-filter",function () {

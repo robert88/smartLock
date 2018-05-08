@@ -71,7 +71,7 @@ $(function () {
 			},
 			refreshList: function () {
 				// ### 4.5 查询设备列表
-				// |  POST  |  smart_lock/v1/device/find_list  |
+				// |  POST  |  smart_lock/v1/device/find_status  |
 				// | ------------- |:-------------:|
 				//
 				// **请求参数：**
@@ -83,7 +83,7 @@ $(function () {
 				// | device_name | String | 否 | 设备名称| |
 				// | device_code | String | 否 | 设备编码 | |
 				var $$vue = this;
-				var url = "/smart_lock/v1/device/find_list";
+				var url = "/smart_lock/v1/device/find_status";
 				var type = "post";
 				if ($$vue.loading) {
 					return;
@@ -100,6 +100,12 @@ $(function () {
 						listMap[$$vue.params.page_number] = ret.list;
 						$$vue.total_page = ret.total_page;
 						$$vue.list = $$vue.mergeArray(listMap);
+						PAGE.setTimeout(function(){
+							if($$vue){
+								$$vue.refreshList();
+							}
+
+						},30000);
 					},
 					complete: function () {
 						$$vue.loading = false;

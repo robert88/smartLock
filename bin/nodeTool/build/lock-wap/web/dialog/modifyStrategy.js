@@ -423,7 +423,7 @@ $(function () {
 							success:function (ret) {
 								$.dialog.closeAll();
 								$.tips("修改成功！","success");
-								$relativeModule.trigger("update");
+								$relativeModule.trigger("listupdate");
 							}
 						})
 					}

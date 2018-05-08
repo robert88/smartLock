@@ -110,7 +110,7 @@ Vue.prototype.setSelectValue=function (name, value,$module) {
  * */
 Vue.prototype.initEvent=function (type,$module) {
 	var $$vue = this;
-	$module.on("update",function () {
+	$module.on("listupdate",function () {
 		$$vue.refreshList(type);
 	})
 	$module.on("click",".J-filter",function () {

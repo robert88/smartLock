@@ -109,7 +109,7 @@ $(function () {
 	//窗口关闭时调用
 	$dialog[0].destroy = function () {
 		if($$vue){
-			$("#systemPerson").trigger("update");
+			$("#systemPerson").trigger("listupdate");
 			$$vue.$destroy();
 			$form = null;
 			$$vue = null;
