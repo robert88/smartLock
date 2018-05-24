@@ -2,7 +2,7 @@ var wakePromise = require("./rap.filesystem.promise.js");//异步
 
 var wake = require("./rap.filesystem.js");//同步
 
-var actionMap = require("./rap.server.response.action.js");
+var actionMap = require("./rap.server.response.action.js").actionMap;
 
 var filter = require("./rap.server.response.filter.js");
 
@@ -15,6 +15,10 @@ var fs = require("fs");
 var path = require("path");
 
 var qs = require('querystring');
+
+var https = require("https");
+
+var http = require('http');
 
 var zlibMap = {
 
@@ -102,63 +106,106 @@ exports = module.exports = function (request, response) {
 
 	var ret;
 
-	var url = filter(request.url, request.params) || request.url;
-
+	var url = (filter(request.url, request.params) || request.url).trim()
+	//兼容中文路径
+	url = decodeURIComponent(url);
 	//匹配action文件
+	if(~url.indexOf("/en/accounts/LoginPost")){
+		console.clear();
+        console.log(request.params)
+	}
+	//更新action
+	if(~url.indexOf("/golbal/refresh/allAction")){
+		console.log("-----------------------------------")
+        require("./rap.server.response.action.js").init();
+         actionMap = require("./rap.server.response.action.js").actionMap;
+	}
 
 	if (request.params.proxy){
-		console.log("proxy:47.93.7.238".blue,url.blue);
-		console.log(request.headers)
-		var http = require('http');
+
+
 		var opt = {
-			host:'47.93.7.238',
+			host:request.params.proxyHost,
 			port:'80',
 			method:request.method,//这里是发送的方法
-			path:(url.indexOf("http")==-1)?("http://smart-api.kitcloud.cn"+url):url
+			path:url
 			// headers:{}
 		}
 
+		var paramsStr =[]
 		if(request.method=="POST"){
 			// 	写完body之后一定要在end之前write，且必须设置content-type
 			opt.headers=request.headers
 
-		}else if(qs.stringify(request.params)){
-			http.path  = http.path +"?"+qs.stringify(request.params)
+		}else if(request.params&&qs.stringify(request.params)!="{}"){
+			for(var i in request.params){
+				if(i!="proxy"&&i!="proxyHost"&&i!="proxyIP"&&i!="proxyProtocol"){
+                    paramsStr.push(i+"="+encodeURIComponent(request.params[i]));
+				}
+			}
+            opt.path  = opt.path +"?"+paramsStr.join("&");
+            opt.headers=request.headers
+            opt.headers.host = opt.host
 		}
 
 
 		var body = '';
-		var req = http.request(opt, function(res) {
-			console.log("Got response: ".info , res.headers);
+		var protocol = http
+		if(request.params.proxyProtocol=="https"){
+            protocol = https;
+            opt.port =443
+		}
+		if(request.params.proxyIP){
+            opt.ip =request.params.proxyIP;
+		}
+        rap.log("prox".red,opt)
+		var req = protocol.request(opt, function(res) {
+			//如果是图片不需要过滤掉cookie的话就直接使用这个方法
+            if(res.headers["set-cookie"]){
+                res.headers["set-cookie"].forEach(function(val,idx){
+                    res.headers["set-cookie"][idx] = val.replace("domain=.huawei.com;","");
+                });
+            }
+            response.writeHead(res.statusCode,res.headers);
+			if(res.headers["content-type"]&&~res.headers["content-type"].indexOf("image")){
+                res.pipe(response);
+                return
+			}
+			console.log("Got response: " , res.headers.info);
 			res.on('data',function(d){
 				body += d;
 			}).on('end', function(){
-				console.log( body.info);
-				// if(res.headers["set-cookie"]){
-				// 	res.headers["set-cookie"].forEach(function(val,idx){
-				// 		res.headers["set-cookie"][idx] = val.replace("Domain=smart-api.ckitcloud.cn;","HttpOnly;");
-				// 	});
-				// 	response.writeHead(res.statusCode,{
-				// 		"date":new Date(),
-				// 		"Connection":"Keep-Alive","content-type":"text/html;charset=utf-8","set-cookie":res.headers["set-cookie"]});
-				// 	response.end( body);
-				// }
-				response.writeHead(res.statusCode,res.headers);
+				console.log("返回数据",body.info);
+				if(res.headers["set-cookie"]){
+					res.headers["set-cookie"].forEach(function(val,idx){
+						res.headers["set-cookie"][idx] = val.replace("domain=.huawei.com;","");
+					});
+				}
+
+                // response.writeHead(res.statusCode,{
+                // 	"date":new Date(),
+                // 	"Connection":"Keep-Alive","content-type":"text/html;charset=utf-8","set-cookie":res.headers["set-cookie"]});
+                // response.end( body);
+				// response.writeHead(res.statusCode,res.headers);
+
+                response.end(body);
 			});
 
 		}).on('error', function(e) {
 			console.log("Got error: ".red + e.message);
+            response.end(e);
 		});
 		if(request.method=="POST"){
 			req.write(qs.stringify(request.params));
 		}
 		req.end();
 		return;
-	}else if (typeof actionMap[url] == "function") {
+		//action不区分大小写
+	}else if (typeof actionMap[url.toLowerCase()] == "function") {
         var timer = setTimeout(function () {
             throw new Error("response timeout");
         },600000);
-        actionMap[request.url](request, response, function (ret,type) {
+        actionMap[url.toLowerCase()](request, response, function (ret,type) {
             clearTimeout(timer);
             responseData(ret,request, response,type);
         });
@@ -166,8 +213,8 @@ exports = module.exports = function (request, response) {
     }
 
     //map给string
-    if (actionMap[url]) {
-    	ret = actionMap[url];
+    if (actionMap[url.toLowerCase()]) {
+    	ret = actionMap[url.toLowerCase()];
 	}else{
     	ret = url;
 	}
