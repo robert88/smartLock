@@ -6,37 +6,46 @@ rap.info("根文件路径：", rap.rootPath+rap.staticPath);
 var files = wake.findFile(rap.rootPath + rap.actionPath, "js", true);
 
 //获取指定action目录
-exports = module.exports = {};
+exports = module.exports = {actionMap:{}};
 
-files.forEach(function (file) {
+exports.init=function(){
+    var actionMap = {}
+    files.forEach(function (file) {
 
-	//提取对象
-	var subMap = require(file);
+        //提取对象
 
-	//提取action前缀
-	var action = file.replace(rap.rootPath + rap.actionPath, "").replace(/\.js$/i, "");
+	//	console.log("##################333###",require.cache[require.resolve(file)])
+        delete require.cache[require.resolve(file)]
+        var subMap = require(file);
 
-	//得到完整的action
-	for (var key in subMap) {
-		if (typeof subMap[key] == "function") {
+        //提取action前缀
+        var action = file.replace(rap.rootPath + rap.actionPath, "").replace(/\.js$/i, "");
 
-			//以/开始
-			if(key.indexOf("/")==0){
-				exports[key] = subMap[key];
-			}else{
-				exports[action + "/" + key] = subMap[key];
-			}
+        //得到完整的action
+        for (var key in subMap) {
+            if (typeof subMap[key] == "function") {
 
-		}else{
-			exports[key] = subMap[key];
-		}
-	}
+                //以/开始
+                if(key.indexOf("/")==0){
+                    //exports不区分大小写
+                    actionMap[key.toLowerCase()] = subMap[key];
+                }else{
+                    actionMap[(action + "/" + key).toLowerCase()] = subMap[key];
+                }
 
-	//得到完整的action是当前文件
-	if (typeof subMap == "function") {
-		exports[action] = subMap;
-	}
+            }else{
+                actionMap[key.toLowerCase()] = subMap[key];
+            }
+        }
 
-});
+        //得到完整的action是当前文件
+        if (typeof subMap == "function") {
+            actionMap[action.toLowerCase()] = subMap;
+        }
+
+    });
+    exports.actionMap=actionMap;
+}
+exports.init();
 
 rap.info("action map", exports);
