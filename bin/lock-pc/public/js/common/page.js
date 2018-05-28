@@ -199,7 +199,7 @@
 		hash = hash||window.location.hash.trim();
 
 		hash = hash ? hash : home;
-		
+
 		hash = hash.replace(/^.*#/,"#");
 
 		return hash;
@@ -343,17 +343,17 @@
 			if (!pathmap[paths[i]]) {
 				pathmap[paths[i]] = {status: "ready"};
 			} else if(pathmap[paths[i]].status=="loaded"){
-		         //加加了但是删除掉了
-		        var $path;
-		        if(loadFileType == "link"){
-                    $path = $("[href='"+pathmap[paths[i]].src+"']");
-		        }else{
-                    $path = $("[src='"+pathmap[paths[i]].src+"']");
-		        }
-		        if($path.length==0){
-		            pathmap[paths[i]] = {status: "ready"};
-		        }
-		    }
+				//加加了但是删除掉了
+				var $path;
+				if(loadFileType == "link"){
+					$path = $("[href='"+pathmap[paths[i]].src+"']");
+				}else{
+					$path = $("[src='"+pathmap[paths[i]].src+"']");
+				}
+				if($path.length==0){
+					pathmap[paths[i]] = {status: "ready"};
+				}
+			}
 			loadStackHandle.push({src: paths[i]});
 		}
 		var len = loadStackHandle.length;
@@ -372,7 +372,7 @@
 		var handle = loadStackHandle.shift();
 		var path = handle.src;
 		if (pathmap[path].status != "ready"){
-	
+
 			return
 		}
 		pathmap[path].status = "loadding";
@@ -540,9 +540,9 @@
 		setBreadcrumb(config.action);
 
 		if(config.params&&config.params.nomenu){
-                $body.addClass("nomenu");
-        }else{
-            $body.removeClass("nomenu");
+			$body.addClass("nomenu");
+		}else{
+			$body.removeClass("nomenu");
 		}
 		//url指明notHashPage或者notspa
 		var hasHash=window.location.hash.replace("#","");
@@ -607,7 +607,7 @@
 			}
 		})
 	};
-	
+
 	//全局方法
 	Vue.prototype.isSelf =function (email) {
 		var curAccordEmail = $.cookie("user_email");
@@ -712,33 +712,33 @@
 
 
 	}
-    /**
-     *保存排序
-     * */
-    Vue.prototype.datadragEnd=function(evt){
-        var $$vue = this;
-        var list;
-        var orders=[]
-        for(var i=0;i<$$vue.list.length;i++){
-            list = $$vue.list[i];
-            if(list&&i!=list.orders){
-                orders.push(list.id+"_"+(i+1))
-            }
-        }
-        PAGE.ajax({
-            url: $$vue.saveUserAjax.url,
-            type: $$vue.saveUserAjax.type,
-            data: {page_number:$$vue.params.page_number,token:token,orders:orders.join(",")},
-            success: function (ret) {
-                for(var i=0;i<$$vue.list.length;i++){
-                    list = $$vue.list[i];
-                    if(list&&i!=list.orders){
-                        list.orders = i;
-                    }
-                }
-            }
-        });
-    }
+	/**
+	 *保存排序
+	 * */
+	Vue.prototype.datadragEnd=function(evt){
+		var $$vue = this;
+		var list;
+		var orders=[]
+		for(var i=0;i<$$vue.list.length;i++){
+			list = $$vue.list[i];
+			if(list&&i!=list.orders){
+				orders.push(list.id+"_"+(i+1))
+			}
+		}
+		PAGE.ajax({
+			url: $$vue.saveUserAjax.url,
+			type: $$vue.saveUserAjax.type,
+			data: {page_number:$$vue.params.page_number,token:token,orders:orders.join(",")},
+			success: function (ret) {
+				for(var i=0;i<$$vue.list.length;i++){
+					list = $$vue.list[i];
+					if(list&&i!=list.orders){
+						list.orders = i;
+					}
+				}
+			}
+		});
+	}
 
 	var $$header = new Vue({
 		el:"#pageCommonHeaderVue",
@@ -808,7 +808,7 @@
 					icon:"fa-beer"
 				},
 				{
-				access_id:"14000",
+					access_id:"14000",
 					hasSub:"",
 					active:"",
 					sub:[],
@@ -942,14 +942,19 @@
 	/**
 	 *启动页面
 	 * */
-	PAGE.clearToken = function () {
+	PAGE.clearToken = function (checkOpenId) {
 		$.cookie("token","");
 		$.cookie("role_id","");
-		$.cookie("user_email","");
+		$.cookie("user_email","")
 		$.cookie("user_name","");
 		$.cookie("access_list","");
-		$$header.user_name = "";
-		window.location.href="/#/web/login.html?nomenu=1";
+		// $$header.user_name = "";
+		if($.cookie("openid")&&checkOpenId){
+			$.dialog("url:/web/dialog/wechatLogin.html",{title:"微密码登陆"});
+		}else{
+			window.location.href="/#/web/login.html?nomenu=1";
+		}
+
 	}
 	/**
 	 *监听hashchange事件切换页面，监听事件load事件

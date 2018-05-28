@@ -104,7 +104,7 @@
 			if(window.location.host.indexOf(".kitcloud.cn")!=-1){
 				document.domain = "kitcloud.cn";
 			}
-			
+
 			if(ajaxOption.url.indexOf("http://")==-1){
 				ajaxOption.url= "http://" + (apiDomain+ajaxOption.url).toURI()
 			}
@@ -159,7 +159,7 @@
 				errorHander(ret, "dataError", error, errorCallBack,ajaxOption.msg);
 				//session失效了
 				if(ret.code==140026){
-					PAGE.clearToken();
+					PAGE.clearToken(true);
 				}
 			}
 
@@ -177,7 +177,7 @@
 			if(PAGE.ajaxXHR.indexOf(ajaxXHR)!=-1){
 				PAGE.ajaxXHR.splice(PAGE.ajaxXHR.indexOf(ajaxXHR),1);
 			}
-			
+
 		}
 
 		ajaxOption.error = function (XMLHttpRequest, textStatus, errorThrown) {
@@ -206,7 +206,7 @@
 		PAGE.ajaxXHR = PAGE.ajaxXHR||[];
 		var ajaxXHR = $.ajax(ajaxOption);
 		PAGE.ajaxXHR.push(ajaxXHR);
-	
+
 	};
 	/*带btn*/
 	PAGE.ajaxBtn = function ($btn, opts) {
