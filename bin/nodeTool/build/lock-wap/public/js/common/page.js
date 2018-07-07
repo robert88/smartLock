@@ -1111,6 +1111,7 @@
 			var params = $.getParam(window.location.href);
 			//没有登陆才需要请求openid
 			if(!token){
+				// alert("token:"+token+" href:"+window.location.href)
 				//没有openid就直接跳转
 				if(!$.cookie("openid")&&!params.openid&&$.cookie("askOpenId")){
 					//防止死循环
