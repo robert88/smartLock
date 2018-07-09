@@ -47,21 +47,22 @@
 
 									<draggable :list="list"  @sortupdate="datadragEnd" :options="{handle:'.dargDiv',animation:150}">
 										<ul class="display-table-row">
-											<li class="display-th" style="width:10%"><i class="fa-user"></i> 设备名称</li>
-											<li class="display-th" style="width:10%"><i class="fa-tablet "></i> 设备模式</li>
-											<li class="display-th" style="width:10%"><i class="fa-envelope-o"></i> 联网状态</li>
-											<li class="display-th" style="width:10%"><i class="fa-credit-card"></i> 设备状态</li>
-											<li class="display-th" style="width:10%"><i class="fa-credit-card"></i> 设备电量</li>
-											<li class="display-th" style="width:10%"><i class="fa-suitcase"></i> 更新时间</li>
+											<li class="display-th" style="width:13%"><i class="fa-user"></i> 设备名称</li>
+											<li class="display-th" style="width:13%"><i class="fa-tablet "></i> 设备模式</li>
+											<li class="display-th" style="width:13%"><i class="fa-envelope-o"></i> 联网状态</li>
+											<li class="display-th" style="width:13%"><i class="fa-credit-card"></i> 设备状态</li>
+											<li class="display-th" style="width:14%"><i class="fa-credit-card"></i> 设备电量</li>
+											<li class="display-th" style="width:14%"><i class="fa-suitcase"></i> 更新时间</li>
 											<li class="display-th" style="width:20%"><i class="fa-wrench"></i> 操作</li>
 										</ul>
 
 										<ul v-for="($item, $index) in list"  v-cloak class="display-table-row  dargDiv" :key="$item.id">
-											<li  class="display-td" style="width:10%"><a class="J-dialog" data-dialog-url="/#/web/personDetail.html" :data-id="$item.id">{{$item.device_name}}</a></li>
-											<li class="display-td" style="width:10%">{{showDeviceMode($item.device_mode)}}</li>
-											<li class="display-td" style="width:10%">{{$item.status}}</li>
-											<li class="display-td" style="width:10%" v-html="handleDeviceStatus($item.device_status)"></li>
-											<li class="display-td" style="width:10%" >{{$item.update_time}}</li>
+											<li  class="display-td" style="width:13%"><a class="J-dialog" data-dialog-url="/#/web/personDetail.html" :data-id="$item.id">{{$item.device_name}}</a></li>
+											<li class="display-td" style="width:13%">{{showDeviceMode($item.device_mode)}}</li>
+											<li class="display-td" style="width:13%">{{$item.status}}</li>
+											<li class="display-td" style="width:13%" v-html="handleDeviceStatus($item.device_status)"></li>
+											<li class="display-td" style="width:14%" >{{($item.energy?($item.energy+'%'):'')}}</li>
+											<li class="display-td" style="width:14%" >{{$item.update_time}}</li>
 											<li class="display-td" style="width:20%">
 												<a class="label label-success label-sm mr10 J-modify"  v-on:click="openDevice($index, $event)" v-show="($item.device_type==2)">开锁</a>
 												<a class="label label-success label-sm mr10"  v-on:click="closeDevice($index, $event)" v-show="($item.device_type==2)">关闭</a>
